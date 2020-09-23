@@ -65,20 +65,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\meilo\\.nuget\\packages\\": {}
+    "C:\\Users\\Meiner\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\meilo\\Desktop\\Derank Photon\\TheBotUI\\TheBotUI.csproj",
+      "projectUniqueName": "C:\\Users\\Meiner\\Documents\\GitHub\\PhotonBots\\TheBotUI\\TheBotUI.csproj",
       "projectName": "TheBotUI",
-      "projectPath": "C:\\Users\\meilo\\Desktop\\Derank Photon\\TheBotUI\\TheBotUI.csproj",
-      "packagesPath": "C:\\Users\\meilo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\meilo\\Desktop\\Derank Photon\\TheBotUI\\obj\\",
+      "projectPath": "C:\\Users\\Meiner\\Documents\\GitHub\\PhotonBots\\TheBotUI\\TheBotUI.csproj",
+      "packagesPath": "C:\\Users\\Meiner\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Meiner\\Documents\\GitHub\\PhotonBots\\TheBotUI\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "configFilePaths": [
-        "C:\\Users\\meilo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Meiner\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

@@ -217,3 +217,20 @@ C:\Users\meilo\Desktop\Derank Photon\TheBotUI\obj\x64\Debug\net472\TheBotUI.Asse
 C:\Users\meilo\Desktop\Derank Photon\TheBotUI\obj\x64\Debug\net472\TheBotUI.csproj.CopyComplete
 C:\Users\meilo\Desktop\Derank Photon\TheBotUI\obj\x64\Debug\net472\TheBotUI.exe
 C:\Users\meilo\Desktop\Derank Photon\TheBotUI\obj\x64\Debug\net472\TheBotUI.pdb
+C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\bin\x64\Debug\net472\TheBotUI.exe.config
+C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\bin\x64\Debug\net472\TheBotUI.exe
+C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\bin\x64\Debug\net472\TheBotUI.pdb
+C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\bin\x64\Debug\net472\Newtonsoft.Json.dll
+C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\bin\x64\Debug\net472\0Harmony.dll
+C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\bin\x64\Debug\net472\Photon3DotNet.dll
+C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\bin\x64\Debug\net472\PhotonLoadbalancingApi.dll
+C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\obj\x64\Debug\net472\TheBotUI.csprojAssemblyReference.cache
+C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\obj\x64\Debug\net472\TheBotUI.Form1.resources
+C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\obj\x64\Debug\net472\TheBotUI.Properties.Resources.resources
+C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\obj\x64\Debug\net472\TheBotUI.csproj.GenerateResource.cache
+C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\obj\x64\Debug\net472\TheBotUI.csproj.CoreCompileInputs.cache
+C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\obj\x64\Debug\net472\TheBotUI.AssemblyInfoInputs.cache
+C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\obj\x64\Debug\net472\TheBotUI.AssemblyInfo.cs
+C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\obj\x64\Debug\net472\TheBotUI.csproj.CopyComplete
+C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\obj\x64\Debug\net472\TheBotUI.exe
+C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\obj\x64\Debug\net472\TheBotUI.pdb

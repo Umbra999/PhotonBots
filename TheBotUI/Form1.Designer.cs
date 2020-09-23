@@ -715,7 +715,7 @@ namespace TheBotUI {
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(532, 32);
             this.SearchButton.TabIndex = 46;
-            this.SearchButton.Text = "Search (2)";
+            this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = false;
             this.SearchButton.Click += new System.EventHandler(this.Searchbutton_Click);
             // 
@@ -749,7 +749,7 @@ namespace TheBotUI {
             this.CrashSearch.Name = "CrashSearch";
             this.CrashSearch.Size = new System.Drawing.Size(533, 32);
             this.CrashSearch.TabIndex = 49;
-            this.CrashSearch.Text = "CrashSearch (2)";
+            this.CrashSearch.Text = "CrashSearch";
             this.CrashSearch.UseVisualStyleBackColor = false;
             this.CrashSearch.Click += new System.EventHandler(this.CrashSearch_Click);
             // 

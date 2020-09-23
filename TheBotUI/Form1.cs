@@ -575,7 +575,7 @@ namespace TheBotUI {
                     = ConsoleColor.Cyan;
                 foreach (string worldID in Worlds)
                 {
-                    Thread.Sleep(4000);
+                    Thread.Sleep(3000);
                     Console.ForegroundColor
                                 = ConsoleColor.Cyan;
                     WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
@@ -654,7 +654,7 @@ namespace TheBotUI {
                     roomOptions.DeleteNullProperties = false;
                     roomOptions.PublishUserId = false;
                     bool isJoined = selectedBot.PhotonClient.OpJoinOrCreateRoom(enterRoomParams);
-                    Thread.Sleep(3000);
+                    Thread.Sleep(2500);
                     Console.ForegroundColor
                         = ConsoleColor.Green;
                     Console.WriteLine("[WengaBOT] Instanciating all Bots");

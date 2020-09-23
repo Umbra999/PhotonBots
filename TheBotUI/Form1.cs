@@ -654,7 +654,7 @@ namespace TheBotUI {
                     roomOptions.DeleteNullProperties = false;
                     roomOptions.PublishUserId = false;
                     bool isJoined = selectedBot.PhotonClient.OpJoinOrCreateRoom(enterRoomParams);
-                    Thread.Sleep(2500);
+                    Thread.Sleep(3000);
                     Console.ForegroundColor
                         = ConsoleColor.Green;
                     Console.WriteLine("[WengaBOT] Instanciating all Bots");
@@ -975,7 +975,7 @@ namespace TheBotUI {
                     roomOptions.DeleteNullProperties = false;
                     roomOptions.PublishUserId = false;
                     bool isJoined = selectedBot.PhotonClient.OpJoinOrCreateRoom(enterRoomParams);
-                    Thread.Sleep(2500);
+                    Thread.Sleep(3000);
                     Console.ForegroundColor
                         = ConsoleColor.Green;
                     Console.WriteLine("[WengaBOT] Instanciating all Bots");

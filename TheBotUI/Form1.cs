@@ -883,7 +883,144 @@ namespace TheBotUI {
 
         private void CrashSearch_Click(object sender, EventArgs e)
         {
+            CrashSearchFunc();
+        }
 
+        public async void CrashSearchFunc()
+        {
+            try
+            {
+                string[] Worlds = File.ReadAllLines(@"WorldsCrash.txt");
+                Search = true;
+                Console.ForegroundColor
+                    = ConsoleColor.Cyan;
+                foreach (string worldID in Worlds)
+                {
+                    Thread.Sleep(3000);
+                    Console.ForegroundColor
+                                = ConsoleColor.Cyan;
+                    WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
+                    Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Length);
+                    if (worldRES.publicOccupants != 0)
+                    {
+                        Thread.Sleep(1500);
+                        List<string> Instances = new List<string>();
+                        foreach (object instanceObj in worldRES.instances)
+                        {
+                            Console.ForegroundColor
+                                = ConsoleColor.Cyan;
+                            Console.WriteLine("[WengaBOT] INSTANCE: " + instanceObj.ToString().Split(',')[0].Replace("[", "").Replace('"', ' '));
+                            Instances.Add(float.Parse(instanceObj.ToString().Split(',')[0].Replace("[", "").Replace('"', ' '), System.Globalization.NumberStyles.Integer).ToString());
+                        }
+                        foreach (string Instance in Instances)
+                        {
+                            Console.ForegroundColor
+                                = ConsoleColor.Cyan;
+                            Console.WriteLine("[WengaBOT] Joining: " + worldID + ":" + Instance + " Cap: " + Convert.ToString(worldRES.capacity));
+                            CrashJoinRoom(worldRES, worldID + ":" + Instance);
+                            Thread.Sleep(1500);
+                            new Thread(() =>
+                            {
+                                Invoke(new MethodInvoker(() =>
+                                {
+                                    foreach (ListViewItem item in botInstancesList.Items)
+                                    {
+                                        var bot = (Bot)item.Tag;
+                                        if (bot.PhotonClient.InRoom)
+                                        {
+                                            bot.PhotonClient.OpLeaveRoom(false);
+                                        }
+                                    }
+                                    playerList.Items.Clear();
+                                }));
+                            }).Start();
+                        }
+                    }
+                    else
+                    {
+                        Thread.Sleep(800);
+                    }
+                }
+                Console.WriteLine("----Search Stopped----");
+                Search = false;
+            }
+            catch (Exception e5)
+            {
+                Console.WriteLine(e5.ToString());
+            }
+            CrashSearchFunc();
+        }
+        public void CrashJoinRoom(WorldRES world, string WorldInstanceID)
+        {
+            try
+            {
+                if (selectedBot != null)
+                {
+                    EnterRoomParams enterRoomParams = new EnterRoomParams();
+                    enterRoomParams.RoomName = WorldInstanceID;
+                    RoomOptions roomOptions = new RoomOptions();
+                    roomOptions.IsOpen = true;
+                    roomOptions.IsVisible = true;
+                    roomOptions.MaxPlayers = Convert.ToByte(world.capacity * 2);
+                    System.Collections.Hashtable hashtable = new System.Collections.Hashtable();
+                    hashtable["name"] = world.id;
+                    roomOptions.CustomRoomProperties = hashtable;
+                    enterRoomParams.RoomOptions = roomOptions;
+                    string[] customRoomPropertiesForLobby = new string[]
+                    {
+                    "name"
+                    };
+                    roomOptions.CustomRoomPropertiesForLobby = customRoomPropertiesForLobby;
+                    roomOptions.EmptyRoomTtl = 0;
+                    roomOptions.DeleteNullProperties = false;
+                    roomOptions.PublishUserId = false;
+                    bool isJoined = selectedBot.PhotonClient.OpJoinOrCreateRoom(enterRoomParams);
+                    Thread.Sleep(2500);
+                    Console.ForegroundColor
+                        = ConsoleColor.Green;
+                    Console.WriteLine("[WengaBOT] Instanciating all Bots");
+                    if (selectedBot.PhotonClient.InRoom)
+                    {
+                        selectedBot.PhotonClient.InstantiateSelf();
+                    }
+                    Thread.Sleep(6500);
+                    if (selectedBot.PhotonClient.CurrentRoom == null)
+                    {
+                        Console.ForegroundColor
+                        = ConsoleColor.Red;
+                        Console.WriteLine("[WengaBOT] Error Room is null");
+                        Thread.Sleep(500);
+                    }
+                    Console.ForegroundColor
+                    = ConsoleColor.Red;
+                    Console.WriteLine("[WengaBOT] Leaving Room");
+                    Console.ForegroundColor
+                    = ConsoleColor.Cyan;
+                    selectedBot.PhotonClient.OpLeaveRoom(false);
+                    playerList.Items.Clear();
+                }
+                Thread.Sleep(3000);
+                new Thread(() =>
+                {
+                    Invoke(new MethodInvoker(() =>
+                    {
+                        foreach (ListViewItem item in botInstancesList.Items)
+                        {
+                            var bot = (Bot)item.Tag;
+                            if (bot.PhotonClient.InRoom)
+                            {
+                                bot.PhotonClient.OpLeaveRoom(false);
+                            }
+                        }
+                        playerList.Items.Clear();
+                    }));
+                }).Start();
+                Thread.Sleep(1500);
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void DerankInput_TextChanged(object sender, EventArgs e)

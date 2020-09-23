@@ -1,0 +1,14 @@
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\bin\Debug\netcoreapp3.0\TheBotUI.exe
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\bin\Debug\netcoreapp3.0\TheBotUI.deps.json
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\bin\Debug\netcoreapp3.0\TheBotUI.runtimeconfig.json
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\bin\Debug\netcoreapp3.0\TheBotUI.runtimeconfig.dev.json
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\bin\Debug\netcoreapp3.0\TheBotUI.dll
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\bin\Debug\netcoreapp3.0\TheBotUI.pdb
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\obj\Debug\netcoreapp3.0\TheBotUI.Form1.resources
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\obj\Debug\netcoreapp3.0\TheBotUI.csproj.GenerateResource.cache
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\obj\Debug\netcoreapp3.0\TheBotUI.csproj.CoreCompileInputs.cache
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\obj\Debug\netcoreapp3.0\TheBotUI.AssemblyInfoInputs.cache
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\obj\Debug\netcoreapp3.0\TheBotUI.AssemblyInfo.cs
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\obj\Debug\netcoreapp3.0\TheBotUI.dll
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\obj\Debug\netcoreapp3.0\TheBotUI.pdb
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\obj\Debug\netcoreapp3.0\TheBotUI.Properties.Resources.resources

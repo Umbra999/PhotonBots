@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "o//XJglbxqVd3xvCtGLre81VSPe0xtWtMu08bcSYlyns9iyqK7QG0+3K5ZJmJgfaf2Hc5kjziI5P9Z/yZ/fGOg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\meilo\\Desktop\\Derank Photon\\TheBotUI\\TheBotUI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\meilo\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

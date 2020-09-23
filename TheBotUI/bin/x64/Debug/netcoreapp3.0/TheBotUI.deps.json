@@ -1,0 +1,83 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.0": {
+      "TheBotUI/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.2",
+          "0Harmony": "1.2.0.1",
+          "Photon3DotNet": "4.1.2.14",
+          "PhotonLoadbalancingApi": "4.1.2.14"
+        },
+        "runtime": {
+          "TheBotUI.dll": {}
+        }
+      },
+      "Newtonsoft.Json/12.0.2": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.2.23222"
+          }
+        }
+      },
+      "0Harmony/1.2.0.1": {
+        "runtime": {
+          "0Harmony.dll": {
+            "assemblyVersion": "1.2.0.1",
+            "fileVersion": "1.2.0.1"
+          }
+        }
+      },
+      "Photon3DotNet/4.1.2.14": {
+        "runtime": {
+          "Photon3DotNet.dll": {
+            "assemblyVersion": "4.1.2.14",
+            "fileVersion": "4.1.2.14"
+          }
+        }
+      },
+      "PhotonLoadbalancingApi/4.1.2.14": {
+        "runtime": {
+          "PhotonLoadbalancingApi.dll": {
+            "assemblyVersion": "4.1.2.14",
+            "fileVersion": "4.1.2.14"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TheBotUI/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Newtonsoft.Json/12.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
+      "path": "newtonsoft.json/12.0.2",
+      "hashPath": "newtonsoft.json.12.0.2.nupkg.sha512"
+    },
+    "0Harmony/1.2.0.1": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Photon3DotNet/4.1.2.14": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PhotonLoadbalancingApi/4.1.2.14": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

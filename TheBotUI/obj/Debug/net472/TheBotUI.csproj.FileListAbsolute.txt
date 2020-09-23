@@ -1,0 +1,11 @@
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\bin\Debug\net472\TheBotUI.exe.config
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\bin\Debug\net472\TheBotUI.exe
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\bin\Debug\net472\TheBotUI.pdb
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\obj\Debug\net472\TheBotUI.Form1.resources
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\obj\Debug\net472\TheBotUI.csproj.GenerateResource.cache
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\obj\Debug\net472\TheBotUI.csproj.CoreCompileInputs.cache
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\obj\Debug\net472\TheBotUI.AssemblyInfoInputs.cache
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\obj\Debug\net472\TheBotUI.AssemblyInfo.cs
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\obj\Debug\net472\TheBotUI.exe
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\obj\Debug\net472\TheBotUI.pdb
+C:\Users\localadmin\source\repos\TheBotUI\TheBotUI\obj\Debug\net472\TheBotUI.Properties.Resources.resources

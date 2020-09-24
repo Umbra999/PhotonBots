@@ -181,7 +181,7 @@ namespace TheBotUI {
                 playerList.Items.Clear();
             }
          //   string[] authdata = File.ReadAllLines("auth.txt");
-            string secondLine = File.ReadLines(@"AuthNormal.txt").ElementAtOrDefault(0);
+            string secondLine = File.ReadLines(@"Auth/AuthNormal.txt").ElementAtOrDefault(0);
            // foreach (string login in secondLine)
             {
                 string[] userpass = secondLine.Split(new char[] { ':' }, 2);
@@ -223,7 +223,7 @@ namespace TheBotUI {
                 botInstancesList.Items.Clear();
                 playerList.Items.Clear();
             }
-            string[] authdata = File.ReadAllLines("AuthNormal.txt");
+            string[] authdata = File.ReadAllLines("Auth/AuthNormal.txt");
             foreach(string login in authdata) {
                 string[] userpass = login.Split(new char[] { ':' }, 2);
                 new Thread(() => {
@@ -660,7 +660,7 @@ namespace TheBotUI {
                         /*Dictionary<string, object> pictionary = (Dictionary<string, object>)item.Value.CustomProperties["steamUserID"];*///statusDescription steamUserID
                                                                                                                                            //Dictionary<string, object> eictionary = (Dictionary<string, object>)item.Value.CustomProperties["steamUserID"];
                         var UserID = dictionary["id"];
-                        if (File.ReadAllText("CSWenga.txt").Contains(UserID.ToString()))
+                        if (File.ReadAllText("Access/CSWenga.txt").Contains(UserID.ToString()))
                         {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook("https://discord.com/api/webhooks/755116773568938046/Ex_z8B5UuoE4_3K9uUKUceRPYnawtHfaM8X7ptde2l30SoqqxvJVElmcv1ZtrtGstwDJ", "[Wenga's Egirl] Found Player: " + dictionary["displayName"].ToString() + "  | in: " + world.name + "  [" + WorldInstanceID + "]");
@@ -681,47 +681,47 @@ namespace TheBotUI {
 
                         // SELL STUFF ONLY ADD AND REMOVE //
 
-                        if (File.ReadAllText("CSBigsmoke002.txt").Contains(UserID.ToString()))
+                        if (File.ReadAllText("Access/CSBigsmoke002.txt").Contains(UserID.ToString()))
                         {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook("https://discord.com/api/webhooks/755140836789846057/vaOWcGbThUHq_89bldjSDYaxBPUUVu8sxLE3jyVL1DBkObe-GZa1thsL5By0nstsecMY", "[Wenga's Egirl] Found Player: " + dictionary["displayName"].ToString() + "  | in: " + world.name + "  [" + WorldInstanceID + "]");
                         }
 
-                        if (File.ReadAllText("CSJaypox.txt").Contains(UserID.ToString()))
+                        if (File.ReadAllText("Access/CSJaypox.txt").Contains(UserID.ToString()))
                         {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook("https://discord.com/api/webhooks/755141107507134497/H6WesOAl55Ho5LDB_istpHdLlv4_Z_ZBO2K-bRb8n_UAqMcjg5rMaNiQ8iF_ZpRFrCfy", "[Wenga's Egirl] Found Player: " + dictionary["displayName"].ToString() + "  | in: " + world.name + "  [" + WorldInstanceID + "]");
                         }
 
-                        if (File.ReadAllText("CSDayOfThePlay.txt").Contains(UserID.ToString()))
+                        if (File.ReadAllText("Access/CSDayOfThePlay.txt").Contains(UserID.ToString()))
                         {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook("https://discord.com/api/webhooks/757270851077931089/NgaMCNA6jNwRhkf59FjvDPUrxYkrUQmb5dF9xLhxlykbdkoZvjRlLiM1y0MCSKjnEss9", "[Wenga's Egirl] Found Player: " + dictionary["displayName"].ToString() + "  | in: " + world.name + "  [" + WorldInstanceID + "]");
                         }
 
-                        if (File.ReadAllText("CSAkeno.txt").Contains(UserID.ToString()))
+                        if (File.ReadAllText("Access/CSAkeno.txt").Contains(UserID.ToString()))
                         {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook("https://discord.com/api/webhooks/755141542145949797/TvMTcp5kBGADnvU0yixnAYWTeTbXa6FTamr2G4tHyDyo2FZjsItN-F7gy4y6R3XdJKdM", "[Wenga's Egirl] Found Player: " + dictionary["displayName"].ToString() + "  | in: " + world.name + "  [" + WorldInstanceID + "]");
                         }
 
-                        if (File.ReadAllText("CSCatzii.txt").Contains(UserID.ToString()))
+                        if (File.ReadAllText("Access/CSCatzii.txt").Contains(UserID.ToString()))
                         {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook("https://discord.com/api/webhooks/755141744047161444/R073aNP_DTrlMX6iDdxCqQ1iJol7TKSPIMWf0HPPZm5aZNPSf8ECA9b3bn2dqALlgKPZ", "[Wenga's Egirl] Found Player: " + dictionary["displayName"].ToString() + "  | in: " + world.name + "  [" + WorldInstanceID + "]");
                         }
 
-                        if (File.ReadAllText("CSVx.txt").Contains(UserID.ToString()))
+                        if (File.ReadAllText("Access/CSVx.txt").Contains(UserID.ToString()))
                         {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook("https://discord.com/api/webhooks/755149168858628127/xsgP0S3GklgPSd0H1yqkj389eqJIcC6SekCRtzgbgOJyihUdOAsCZ_9uBqoWCdqTI_k5", "[Wenga's Egirl] Found Player: " + dictionary["displayName"].ToString() + "  | in: " + world.name + "  [" + WorldInstanceID + "]");
                         }
-                        if (File.ReadAllText("CSSexyToxiBuff.txt").Contains(UserID.ToString()))
+                        if (File.ReadAllText("Access/CSSexyToxiBuff.txt").Contains(UserID.ToString()))
                         {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook("https://discord.com/api/webhooks/755435782440878202/SKPQk-uQctaatpuiYlPhYHqpFsYtKFi4-qnqKYwSFpPeS3tDn7_3gldMx5BIkl6SVtnO", "[Wenga's Egirl] Found Player: " + dictionary["displayName"].ToString() + "  | in: " + world.name + "  [" + WorldInstanceID + "]");
                         }
-                        if (File.ReadAllText("CSSypherr.txt").Contains(UserID.ToString()))
+                        if (File.ReadAllText("Access/CSSypherr.txt").Contains(UserID.ToString()))
                         {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook("https://discord.com/api/webhooks/755141259458379887/nLP07lChyLOM3-fnnFoSx716151-E1932cuQ5wHeKltoRb2Eg3D8KKMEeAyMDbv1xrO8", "[Wenga's Egirl] Found Player: " + dictionary["displayName"].ToString() + "  | in: " + world.name + "  [" + WorldInstanceID + "]");
@@ -785,7 +785,7 @@ namespace TheBotUI {
                     playerList.Items.Clear();
                 }
                 //   string[] authdata = File.ReadAllLines("auth.txt");
-                string secondLine = File.ReadLines(@"AuthSearch.txt").ElementAtOrDefault(0);
+                string secondLine = File.ReadLines(@"Auth/AuthSearch.txt").ElementAtOrDefault(0);
                 // foreach (string login in secondLine)
                 {
                     string[] userpass = secondLine.Split(new char[] { ':' }, 2);
@@ -827,7 +827,7 @@ namespace TheBotUI {
                     botInstancesList.Items.Clear();
                     playerList.Items.Clear();
                 }
-                string[] authdata = File.ReadAllLines("AuthSearch.txt");
+                string[] authdata = File.ReadAllLines("Auth/AuthSearch.txt");
                 foreach (string login in authdata)
                 {
                     string[] userpass = login.Split(new char[] { ':' }, 2);

@@ -301,7 +301,11 @@ namespace TheBotUI {
             roomOptions.PublishUserId = false;
             bool isJoined = selectedBot.PhotonClient.OpJoinOrCreateRoom(enterRoomParams);
             Console.WriteLine(isJoined ? "[WengaBOT] Successfully joined to room!" : "[WengaBOT] JoinOrCreateRoom failed!");
-            InstantiateButton_Click(null, null);
+            Thread.Sleep(2000);
+            if (selectedBot.PhotonClient.InRoom)
+            {
+                selectedBot.PhotonClient.InstantiateSelf();
+            }
         }
         private void InstantiateButton_Click(object sender, EventArgs e) 
         {
@@ -315,6 +319,9 @@ namespace TheBotUI {
             if (selectedBot.PhotonClient.InRoom) 
             {
                 selectedBot.PhotonClient.InstantiateSelfInvis();
+                Console.ForegroundColor
+                    = ConsoleColor.Green;
+                Console.WriteLine("Instantiate Bot with desync parameters");
             }
         }
 
@@ -360,6 +367,7 @@ namespace TheBotUI {
             Console.ForegroundColor
             = ConsoleColor.DarkGray;
             Console.WriteLine("[WengaBOT] Connecting all Bots");
+            Thread.Sleep(1500);
             if (string.IsNullOrEmpty(worldAInstanceIDTextBox.Text) || !worldAInstanceIDTextBox.Text.Contains("wrld"))
             {
                 worldAInstanceIDTextBox.Text = "[WengaBOT] Incorrect format or empty!";
@@ -372,6 +380,7 @@ namespace TheBotUI {
                     {
                         foreach (ListViewItem item in botInstancesList.Items)
                         {
+                            Thread.Sleep(500);
                             var bot = (Bot)item.Tag;
                             EnterRoomParams enterRoomParams = new EnterRoomParams();
                             enterRoomParams.RoomName = worldAInstanceIDTextBox.Text;
@@ -394,7 +403,7 @@ namespace TheBotUI {
                             roomOptions.PublishUserId = false;
                             bool isJoined = bot.PhotonClient.OpJoinOrCreateRoom(enterRoomParams);
                             Console.WriteLine(isJoined ? "[WengaBOT] Successfully joined to room!" : "[WengaBOT] JoinOrCreateRoom failed!");
-                            Thread.Sleep(100);
+                            Thread.Sleep(1000);
                         }
                     }));
                 }).Start();

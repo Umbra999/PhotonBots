@@ -85,14 +85,13 @@ namespace TheBotUI {
             this.UpdateRelease = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.SwitchAvi = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.playerList = new TheBotUI.CustomComponents.CustomListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.botInstancesList = new TheBotUI.CustomComponents.CustomListView();
             this.botInstances = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.SwitchAvi = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -220,8 +219,7 @@ namespace TheBotUI {
             this.infoLabel.Size = new System.Drawing.Size(21, 23);
             this.infoLabel.TabIndex = 16;
             this.infoLabel.Text = "?";
-            this.loginToolTip.SetToolTip(this.infoLabel, "Leave Username and Password empty, goes through each line in auth.txt\nand will ma" +
-        "ke a new instance. Separate Username and Password with \':\'");
+            this.loginToolTip.SetToolTip(this.infoLabel, "1 = Userpass Auth Only\r\n2 = Token Auth Only");
             // 
             // panel4
             // 
@@ -560,7 +558,7 @@ namespace TheBotUI {
             this.instantiateInvisButton.Name = "instantiateInvisButton";
             this.instantiateInvisButton.Size = new System.Drawing.Size(549, 32);
             this.instantiateInvisButton.TabIndex = 35;
-            this.instantiateInvisButton.Text = "Instantiate invisible";
+            this.instantiateInvisButton.Text = "Desync Instantiate ";
             this.instantiateInvisButton.UseVisualStyleBackColor = false;
             this.instantiateInvisButton.Click += new System.EventHandler(this.InstantiateInvisButton_Click);
             // 
@@ -836,17 +834,32 @@ namespace TheBotUI {
             this.panel11.Size = new System.Drawing.Size(1100, 2);
             this.panel11.TabIndex = 56;
             // 
-            // label3
+            // SwitchAvi
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 10F);
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(1445, 96);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(181, 38);
-            this.label3.TabIndex = 57;
-            this.label3.Text = "1 = Userpass Auth Only\r\n2 = Token Auth Only";
+            this.SwitchAvi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.SwitchAvi.FlatAppearance.BorderSize = 0;
+            this.SwitchAvi.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.SwitchAvi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SwitchAvi.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.SwitchAvi.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SwitchAvi.Location = new System.Drawing.Point(1141, 554);
+            this.SwitchAvi.Margin = new System.Windows.Forms.Padding(4);
+            this.SwitchAvi.Name = "SwitchAvi";
+            this.SwitchAvi.Size = new System.Drawing.Size(296, 32);
+            this.SwitchAvi.TabIndex = 58;
+            this.SwitchAvi.Text = "Switch Avatar";
+            this.SwitchAvi.UseVisualStyleBackColor = false;
+            this.SwitchAvi.Click += new System.EventHandler(this.SwitchAvi_Click);
+            // 
+            // textBox2
+            // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox2.Font = new System.Drawing.Font("Arial", 12F);
+            this.textBox2.Location = new System.Drawing.Point(1443, 553);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(247, 30);
+            this.textBox2.TabIndex = 59;
             // 
             // playerList
             // 
@@ -904,33 +917,6 @@ namespace TheBotUI {
             this.botInstances.Text = "Bot Instance";
             this.botInstances.Width = 197;
             // 
-            // SwitchAvi
-            // 
-            this.SwitchAvi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
-            this.SwitchAvi.FlatAppearance.BorderSize = 0;
-            this.SwitchAvi.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.SwitchAvi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SwitchAvi.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.SwitchAvi.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.SwitchAvi.Location = new System.Drawing.Point(1141, 554);
-            this.SwitchAvi.Margin = new System.Windows.Forms.Padding(4);
-            this.SwitchAvi.Name = "SwitchAvi";
-            this.SwitchAvi.Size = new System.Drawing.Size(296, 32);
-            this.SwitchAvi.TabIndex = 58;
-            this.SwitchAvi.Text = "Switch Avatar";
-            this.SwitchAvi.UseVisualStyleBackColor = false;
-            this.SwitchAvi.Click += new System.EventHandler(this.SwitchAvi_Click);
-            // 
-            // textBox2
-            // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Font = new System.Drawing.Font("Arial", 12F);
-            this.textBox2.Location = new System.Drawing.Point(1443, 553);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(247, 30);
-            this.textBox2.TabIndex = 59;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -939,7 +925,6 @@ namespace TheBotUI {
             this.ClientSize = new System.Drawing.Size(1708, 886);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.SwitchAvi);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.panel11);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.UpdateRelease);
@@ -1066,7 +1051,6 @@ namespace TheBotUI {
         public Button UpdateRelease;
         public Label label2;
         public Panel panel11;
-        public Label label3;
         public Button SwitchAvi;
         public TextBox textBox2;
     }

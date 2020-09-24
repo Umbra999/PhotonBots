@@ -310,20 +310,19 @@ namespace TheBotUI.Core
             Console.WriteLine("[WengaBOT] Bot left the room!");
         }
 
-        public bool BanInstanciate() 
+        public bool BanInstanciate()
         {
+            //Creating instantiate parameters
             Console.ForegroundColor
-                    = ConsoleColor.Red;
+                = ConsoleColor.Red;
             Console.WriteLine("[WengaBOT] Account Banned");
-            InstantiateParameters parameters = new InstantiateParameters("VRCPlayer",
-                0,
-                null,
-                0,
+            InstantiateParameters parameters = new InstantiateParameters(
+                "VRCPlayer", 0, null, 0,
                 new int[3]
                 {
                     int.Parse(this.LocalPlayer.ActorNumber + "00001"),
                     int.Parse(this.LocalPlayer.ActorNumber + "00002"),
-                    int.Parse(this.LocalPlayer.ActorNumber + "99999")
+                    int.Parse(this.LocalPlayer.ActorNumber + "00003")
                 },
                 this.LocalPlayer,
                 this.LoadBalancingPeer.ServerTimeInMilliSeconds);
@@ -331,7 +330,6 @@ namespace TheBotUI.Core
             //Instantiation ID
             int intID = parameters.viewIDs[0];
 
-            SendInstantiateEvHashtable.Clear();
             SendInstantiateEvHashtable[(byte)0] = parameters.prefabName;
             if (parameters.viewIDs.Length > 1)
                 SendInstantiateEvHashtable[(byte)4] = parameters.viewIDs;
@@ -339,8 +337,8 @@ namespace TheBotUI.Core
             SendInstantiateEvHashtable[(byte)7] = intID;
 
             //Adding our instantiation to the Roomcache
-            SendInstantiateRaiseEventOptions = RaiseEventOptions.Default;
-            SendInstantiateRaiseEventOptions.CachingOption = EventCaching.AddToRoomCache;
+            SendInstantiateRaiseEventOptions = new RaiseEventOptions();
+            SendInstantiateRaiseEventOptions.TargetActors = new int[] { 0 };
             //Finally calling OpRaiseEvent to send it over the network
             return this.OpRaiseEvent(202, SendInstantiateEvHashtable, SendInstantiateRaiseEventOptions, SendOptions.SendUnreliable);
         }
@@ -386,9 +384,11 @@ namespace TheBotUI.Core
             //Creating instantiate parameters
             Console.ForegroundColor
                 = ConsoleColor.DarkGreen;
-            Console.WriteLine("[WengaBOT] Instantiate Bot Invisible");
-            InstantiateParameters parameters = new InstantiateParameters(
-                "VRCPlayer",0,null,0,
+            Console.WriteLine("[WengaBOT] Instantiate Bot");
+            InstantiateParameters parameters = new InstantiateParameters("VRCPlayer",
+                0,
+                null,
+                0,
                 new int[3]
                 {
                     int.Parse(this.LocalPlayer.ActorNumber + "00001"),
@@ -401,6 +401,7 @@ namespace TheBotUI.Core
             //Instantiation ID
             int intID = parameters.viewIDs[0];
 
+            SendInstantiateEvHashtable.Clear();
             SendInstantiateEvHashtable[(byte)0] = parameters.prefabName;
             if (parameters.viewIDs.Length > 1)
                 SendInstantiateEvHashtable[(byte)4] = parameters.viewIDs;
@@ -408,12 +409,13 @@ namespace TheBotUI.Core
             SendInstantiateEvHashtable[(byte)7] = intID;
 
             //Adding our instantiation to the Roomcache
-            SendInstantiateRaiseEventOptions = new RaiseEventOptions();
-            SendInstantiateRaiseEventOptions.TargetActors = new int[] { 0 };
+            SendInstantiateRaiseEventOptions = RaiseEventOptions.Default;
+            SendInstantiateRaiseEventOptions.CachingOption = EventCaching.AddToRoomCache;
             //Finally calling OpRaiseEvent to send it over the network
-            return this.OpRaiseEvent(202, SendInstantiateEvHashtable, SendInstantiateRaiseEventOptions, SendOptions.SendUnreliable);
+            return this.OpRaiseEvent(210, SendInstantiateEvHashtable, SendInstantiateRaiseEventOptions, SendOptions.SendUnreliable);
         }
     }
+
     public struct InstantiateParameters {
         public int[] viewIDs;
         public byte objLevelPrefix;

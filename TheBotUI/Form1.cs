@@ -164,31 +164,7 @@ namespace TheBotUI {
                         Thread.Sleep(2500);
                     }
                 }).Start();
-                //new Thread(() => {
-                //    while (true) {
-                //        if (selectedBot.PhotonClient.logs.Count > 0 || selectedBot.PhotonClient.eventLogs.Count > 0) {
-                //            //Invoke(new MethodInvoker(() => { logsList.Items.Clear(); }));
-                //            List<ListViewItem> logs = new List<ListViewItem>(225);
-                //            if (photonLogsRadioButton.Checked)
-                //                foreach (string log in selectedBot.PhotonClient.logs.ToList()) {
-                //                    ListViewItem l = new ListViewItem(log);
-                //                    logs.Add(l);
-                //                }
-                //            if (eventLogsRadioButton.Checked)
-                //                foreach (string log in selectedBot.PhotonClient.eventLogs) {
-                //                    ListViewItem l = new ListViewItem(log);
-                //                    logs.Add(l);
-                //                }
-                //            Invoke(new MethodInvoker(() => { logsList.Items.AddRange(logs.ToArray()); }));
-                //            Thread.Sleep(5000);
-                //        }
-                //    }    
-                //}).Start();
             }
-        }
-        public void OnDisconnected(DisconnectCause cause)
-        {
-            
         }
 
         public void NormalAuth_Click(object sender, EventArgs e) 
@@ -575,7 +551,7 @@ namespace TheBotUI {
                     = ConsoleColor.Cyan;
                 foreach (string worldID in Worlds)
                 {
-                    Thread.Sleep(3000);
+                    Thread.Sleep(8000);
                     Console.ForegroundColor
                                 = ConsoleColor.Cyan;
                     WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
@@ -896,7 +872,7 @@ namespace TheBotUI {
                     = ConsoleColor.Cyan;
                 foreach (string worldID in Worlds)
                 {
-                    Thread.Sleep(3000);
+                    Thread.Sleep(8000);
                     Console.ForegroundColor
                                 = ConsoleColor.Cyan;
                     WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
@@ -983,7 +959,7 @@ namespace TheBotUI {
                     {
                         selectedBot.PhotonClient.InstantiateSelf();
                     }
-                    Thread.Sleep(6500);
+                    Thread.Sleep(8500);
                     if (selectedBot.PhotonClient.CurrentRoom == null)
                     {
                         Console.ForegroundColor

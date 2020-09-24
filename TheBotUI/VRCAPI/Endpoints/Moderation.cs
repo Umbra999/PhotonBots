@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VRChatAPI;
+using Newtonsoft.Json;
 
 namespace TheBotUI.VRCAPI.Endpoints
 {
@@ -16,11 +17,12 @@ namespace TheBotUI.VRCAPI.Endpoints
         }
         public async void SendModeration(string Id,Type type)
         {
-            System.Net.Http.HttpContent content = new System.Net.Http.StringContent("");
-            content.Headers.Add("type", type.ToString());
-            content.Headers.Add("moderated", Id);
-            Variables.HttpClient.DefaultRequestHeaders.Add("type", type.ToString());
-            Variables.HttpClient.DefaultRequestHeaders.Add("moderated", Id);
+            var json = JsonConvert.SerializeObject(new ModerationHeader() 
+            {
+                type = type.ToString(),
+                moderated = Id,
+            });
+            System.Net.Http.HttpContent content = new System.Net.Http.StringContent(json);
             var response = await Variables.HttpClient.PostAsync($"auth/user/playermoderations?apiKey={Variables.APIKey}", content);
             if (response.IsSuccessStatusCode)
             {
@@ -31,6 +33,11 @@ namespace TheBotUI.VRCAPI.Endpoints
                 Console.WriteLine("[Failure] " + response.StatusCode + " | " + response.ReasonPhrase);
             }
         }
+    }
+    public class ModerationHeader
+    {
+        public string type;
+        public string moderated;
     }
     public enum Type
     {

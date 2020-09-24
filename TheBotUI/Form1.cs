@@ -321,7 +321,7 @@ namespace TheBotUI {
                 selectedBot.PhotonClient.InstantiateSelfInvis();
                 Console.ForegroundColor
                     = ConsoleColor.Green;
-                Console.WriteLine("Instantiate Bot with desync parameters");
+                Console.WriteLine("[WengaBOT] Instantiate Bot with desync parameters");
             }
         }
 

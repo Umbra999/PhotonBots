@@ -412,7 +412,7 @@ namespace TheBotUI.Core
             SendInstantiateRaiseEventOptions = RaiseEventOptions.Default;
             SendInstantiateRaiseEventOptions.CachingOption = EventCaching.AddToRoomCache;
             //Finally calling OpRaiseEvent to send it over the network
-            return this.OpRaiseEvent(210, SendInstantiateEvHashtable, SendInstantiateRaiseEventOptions, SendOptions.SendUnreliable);
+            return this.OpRaiseEvent(202, SendInstantiateEvHashtable, SendInstantiateRaiseEventOptions, SendOptions.SendUnreliable);
         }
     }
 

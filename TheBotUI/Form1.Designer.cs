@@ -92,6 +92,7 @@ namespace TheBotUI {
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.botInstancesList = new TheBotUI.CustomComponents.CustomListView();
             this.botInstances = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -917,12 +918,26 @@ namespace TheBotUI {
             this.botInstances.Text = "Bot Instance";
             this.botInstances.Width = 197;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.12F);
+            this.checkBox1.ForeColor = System.Drawing.Color.LavenderBlush;
+            this.checkBox1.Location = new System.Drawing.Point(1588, 350);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(102, 29);
+            this.checkBox1.TabIndex = 60;
+            this.checkBox1.Text = "Follow ";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(36)))));
             this.ClientSize = new System.Drawing.Size(1708, 886);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.SwitchAvi);
             this.Controls.Add(this.panel11);
@@ -1053,6 +1068,7 @@ namespace TheBotUI {
         public Panel panel11;
         public Button SwitchAvi;
         public TextBox textBox2;
+        private CheckBox checkBox1;
     }
 }
 

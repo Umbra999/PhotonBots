@@ -169,12 +169,16 @@ namespace TheBotUI.Core
 
         public void OnDisconnected(DisconnectCause cause) 
         {
+
             Console.ForegroundColor
                     = ConsoleColor.Red;
-            Console.WriteLine("[WengaBOT] Disconnected Cause:" + cause + "-> Re-Auth Disabled");
-            Form1.SendWebHook("https://discordapp.com/api/webhooks/758563365534302220/6RBmwDCRbeikeRwnKCkVtuR6Qi5Ha97h11y6NwLP4AO10s24UkU_n25tI5NPl5zn7jO3", "[WengaBOT ERROR] Bot disconnected cause: " + cause);
-            Form1.SendWebHook("https://discordapp.com/api/webhooks/758563365534302220/6RBmwDCRbeikeRwnKCkVtuR6Qi5Ha97h11y6NwLP4AO10s24UkU_n25tI5NPl5zn7jO3", "[WengaBOT ERROR] Re-auth is disabled, Bot closed");
-            Application.Exit();
+            Console.WriteLine("[WengaBOT] Disconnected Cause:" + cause + "-> Re-Auth");
+            Form1.SendWebHook("https://discordapp.com/api/webhooks/758563365534302220/6RBmwDCRbeikeRwnKCkVtuR6Qi5Ha97h11y6NwLP4AO10s24UkU_n25tI5NPl5zn7jO3", "[WengaBOT ERROR] Bot disconnected cause: " + (cause) + " -> Re-Auth");
+
+            //Console.WriteLine("[WengaBOT] Disconnected Cause:" + cause + "-> Re-Auth Disabled");
+            //Form1.SendWebHook("https://discordapp.com/api/webhooks/758563365534302220/6RBmwDCRbeikeRwnKCkVtuR6Qi5Ha97h11y6NwLP4AO10s24UkU_n25tI5NPl5zn7jO3", "[WengaBOT ERROR] Bot disconnected cause: " + cause);
+            //Form1.SendWebHook("https://discordapp.com/api/webhooks/758563365534302220/6RBmwDCRbeikeRwnKCkVtuR6Qi5Ha97h11y6NwLP4AO10s24UkU_n25tI5NPl5zn7jO3", "[WengaBOT ERROR] Re-auth is disabled, Bot closed");
+            //Application.Exit();
         }
 
         public void OnRegionListReceived(RegionHandler regionHandler) 
@@ -376,43 +380,7 @@ namespace TheBotUI.Core
             SendInstantiateRaiseEventOptions = RaiseEventOptions.Default;
             SendInstantiateRaiseEventOptions.CachingOption = EventCaching.AddToRoomCache;
             //Finally calling OpRaiseEvent to send it over the network
-            return this.OpRaiseEvent(202, SendInstantiateEvHashtable, SendInstantiateRaiseEventOptions, SendOptions.SendUnreliable);
-        }
-
-        public bool InstantiateSelfInvis()
-        {
-            //Creating instantiate parameters
-            Console.ForegroundColor
-                = ConsoleColor.DarkGreen;
-            Console.WriteLine("[WengaBOT] Instantiate Bot");
-            InstantiateParameters parameters = new InstantiateParameters("VRCPlayer",
-                0,
-                null,
-                0,
-                new int[3]
-                {
-                    int.Parse(this.LocalPlayer.ActorNumber + "00001"),
-                    int.Parse(this.LocalPlayer.ActorNumber + "00002"),
-                    int.Parse(this.LocalPlayer.ActorNumber + "00003")
-                },
-                this.LocalPlayer,
-                this.LoadBalancingPeer.ServerTimeInMilliSeconds);
-
-            //Instantiation ID
-            int intID = parameters.viewIDs[0];
-
-            SendInstantiateEvHashtable.Clear();
-            SendInstantiateEvHashtable[(byte)0] = parameters.prefabName;
-            if (parameters.viewIDs.Length > 1)
-                SendInstantiateEvHashtable[(byte)4] = parameters.viewIDs;
-            SendInstantiateEvHashtable[(byte)6] = parameters.timestamp;
-            SendInstantiateEvHashtable[(byte)7] = intID;
-
-            //Adding our instantiation to the Roomcache
-            SendInstantiateRaiseEventOptions = RaiseEventOptions.Default;
-            SendInstantiateRaiseEventOptions.CachingOption = EventCaching.AddToRoomCache;
-            //Finally calling OpRaiseEvent to send it over the network
-            return this.OpRaiseEvent(202, SendInstantiateEvHashtable, SendInstantiateRaiseEventOptions, SendOptions.SendUnreliable);
+            return this.OpRaiseEvent(202, SendInstantiateEvHashtable, SendInstantiateRaiseEventOptions, SendOptions.SendReliable);
         }
     }
 

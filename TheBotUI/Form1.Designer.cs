@@ -559,7 +559,7 @@ namespace TheBotUI {
             this.instantiateInvisButton.Name = "instantiateInvisButton";
             this.instantiateInvisButton.Size = new System.Drawing.Size(549, 32);
             this.instantiateInvisButton.TabIndex = 35;
-            this.instantiateInvisButton.Text = "Desync Instantiate ";
+            this.instantiateInvisButton.Text = "Desync";
             this.instantiateInvisButton.UseVisualStyleBackColor = false;
             this.instantiateInvisButton.Click += new System.EventHandler(this.InstantiateInvisButton_Click);
             // 

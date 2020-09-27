@@ -167,84 +167,100 @@ namespace TheBotUI {
             }
         }
 
-        public void NormalAuth_Click(object sender, EventArgs e) 
-        // Default Auth, needs atleast 1 bot to connect to VRC Api
+        public void Auth()
         {
-            botInstancesList.Items.Add("Кря");
-            botInstancesList.Items.Add("Кря");
-            Thread.Sleep(2000);
             {
-                Console.ForegroundColor
-                = ConsoleColor.Green;
-                Console.WriteLine("Items Cleaned");
-                botInstancesList.Items.Clear();
-                playerList.Items.Clear();
-            }
-         //   string[] authdata = File.ReadAllLines("auth.txt");
-            string secondLine = File.ReadLines(@"Auth/AuthNormal.txt").ElementAtOrDefault(0);
-           // foreach (string login in secondLine)
-            {
-                string[] userpass = secondLine.Split(new char[] { ':' }, 2);
-                new Thread(() => {
-                    Bot bot = new Bot(userpass[0], userpass[1]);
-                    if (bot != null)
-                    {
-                        if (bot.APIClient != null)
+                botInstancesList.Items.Add("Кря");
+                botInstancesList.Items.Add("Кря");
+                Thread.Sleep(2000);
+                {
+                    Console.ForegroundColor
+                    = ConsoleColor.Green;
+                    Console.WriteLine("Items Cleaned");
+                    botInstancesList.Items.Clear();
+                    playerList.Items.Clear();
+                }
+                //   string[] authdata = File.ReadAllLines("auth.txt");
+                string secondLine = File.ReadLines(@"Auth/AuthNormal.txt").ElementAtOrDefault(0);
+                // foreach (string login in secondLine)
+                {
+                    string[] userpass = secondLine.Split(new char[] { ':' }, 2);
+                    new Thread(() => {
+                        Bot bot = new Bot(userpass[0], userpass[1]);
+                        if (bot != null)
                         {
-                            Invoke(new MethodInvoker(() => {
-                                ListViewItem item = new ListViewItem(bot.APIClient.Variables.UserSelfRES.displayName);
-                                item.Tag = bot;
-                                botInstancesList.Items.Add(item);
-                            }));
+                            if (bot.APIClient != null)
+                            {
+                                Invoke(new MethodInvoker(() => {
+                                    ListViewItem item = new ListViewItem(bot.APIClient.Variables.UserSelfRES.displayName);
+                                    item.Tag = bot;
+                                    botInstancesList.Items.Add(item);
+                                }));
+                            }
+                            else
+                            {
+                                MessageBox.Show("[WengaBOT] API failed to initialize", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("[WengaBOT] API failed to initialize", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("[WengaBOT] Bot failed to initialize", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("[WengaBOT] Bot failed to initialize", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }).Start();
+                    }).Start();
+                }
+                Thread.Sleep(2000);
+                {
+                    Console.ForegroundColor
+                    = ConsoleColor.Green;
+                    Console.WriteLine("API Cleaned");
+                    botInstancesList.Items.Clear();
+                    playerList.Items.Clear();
+                }
+                {
+                    Console.ForegroundColor
+                    = ConsoleColor.Blue;
+                    Console.WriteLine("Fully Cleaned");
+                    botInstancesList.Items.Clear();
+                    playerList.Items.Clear();
+                }
+                string[] authdata = File.ReadAllLines("Auth/AuthNormal.txt");
+                foreach (string login in authdata)
+                {
+                    string[] userpass = login.Split(new char[] { ':' }, 2);
+                    new Thread(() => {
+                        Bot bot = new Bot(userpass[0], userpass[1]);
+                        if (bot != null)
+                        {
+                            if (bot.APIClient != null)
+                            {
+                                Invoke(new MethodInvoker(() => {
+                                    ListViewItem item = new ListViewItem(bot.APIClient.Variables.UserSelfRES.displayName);
+                                    item.Tag = bot;
+                                    botInstancesList.Items.Add(item);
+                                }));
+                            }
+                            else
+                            {
+                                MessageBox.Show("[WengaBOT] API failed to initialize", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("[WengaBOT] Bot failed to initialize", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }).Start();
+                }
             }
+        }
+        public void NormalAuth_Click(object sender, EventArgs e) 
+        {
+            Auth();
+        }
+
+        public void OnDisconnected(DisconnectCause cause)
+        {
             Thread.Sleep(2000);
-            {
-                Console.ForegroundColor
-                = ConsoleColor.Green;
-                Console.WriteLine("API Cleaned");
-                botInstancesList.Items.Clear();
-                playerList.Items.Clear();
-            }
-            {
-                Console.ForegroundColor
-                = ConsoleColor.Blue;
-                Console.WriteLine("Fully Cleaned");
-                botInstancesList.Items.Clear();
-                playerList.Items.Clear();
-            }
-            string[] authdata = File.ReadAllLines("Auth/AuthNormal.txt");
-            foreach(string login in authdata) {
-                string[] userpass = login.Split(new char[] { ':' }, 2);
-                new Thread(() => {
-                    Bot bot = new Bot(userpass[0], userpass[1]);
-                    if (bot != null) {
-                        if (bot.APIClient != null) {
-                            Invoke(new MethodInvoker(() => {
-                                ListViewItem item = new ListViewItem(bot.APIClient.Variables.UserSelfRES.displayName);
-                                item.Tag = bot;
-                                botInstancesList.Items.Add(item);
-                            }));
-                        }
-                        else {
-                            MessageBox.Show("[WengaBOT] API failed to initialize", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    else {
-                        MessageBox.Show("[WengaBOT] Bot failed to initialize", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }).Start();
-            }
+            Auth();
         }
 
         private void JoinRoomButton_Click(object sender, EventArgs e) 
@@ -318,10 +334,7 @@ namespace TheBotUI {
         private void InstantiateInvisButton_Click(object sender, EventArgs e) {
             if (selectedBot.PhotonClient.InRoom) 
             {
-                selectedBot.PhotonClient.InstantiateSelfInvis();
-                Console.ForegroundColor
-                    = ConsoleColor.Green;
-                Console.WriteLine("[WengaBOT] Instantiate Bot with desync parameters");
+                // Add Desync event stuff here
             }
         }
 
@@ -1037,6 +1050,8 @@ namespace TheBotUI {
         {
             if (selectedBot.PhotonClient.InRoom)
             {
+                Console.ForegroundColor
+                    = ConsoleColor.Red;
                 Console.WriteLine("[WengaBOT] Exploiting Ban. Please wait...");
                 Thread.Sleep(10000);
                 selectedBot.PhotonClient.BanInstanciate();
@@ -1049,14 +1064,10 @@ namespace TheBotUI {
             }
         }
 
+        public static string AppVersion;
         public void GetAppVersion()
         {
-            FetchLatestAppVersion();
-        }
-
-        public void FetchLatestAppVersion()
-        {
-            var copycat = new LoadBalancingClient();
+            File.Delete("release.txt");
             var directory = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"Low\VRChat\VRChat");
             if (directory != null && directory.Exists)
             {
@@ -1082,7 +1093,48 @@ namespace TheBotUI {
                                 if (line.Contains("[VRCFlowNetworkManager] Using server url: "))
                                 {
                                     string[] arr = line.Split(new[] { "[VRCFlowNetworkManager] Using server url: " }, StringSplitOptions.None);
-                                    copycat.AppVersion = arr[1] + "_2.5";
+                                    AppVersion = arr[1] + "_2.5";
+                                    File.AppendAllText("release.txt", AppVersion + Environment.NewLine);
+                                    Console.ForegroundColor
+                                        = ConsoleColor.Green;
+                                    Console.WriteLine("[WengaBOT] Release updated to:" + AppVersion);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        public static string CurrentRoom;
+        public static void FetchRoom()
+        {
+            var directory = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"Low\VRChat\VRChat");
+            if (directory != null && directory.Exists)
+            {
+                FileInfo target = null;
+                foreach (var info in directory.GetFiles("output_log_*.txt", SearchOption.TopDirectoryOnly))
+                {
+                    if (target == null || info.LastAccessTime.CompareTo(target.LastAccessTime) >= 0)
+                    {
+                        target = info;
+                    }
+                }
+                if (target != null)
+                {
+                    var fs = new FileStream(target.FullName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                    using (var sr = new StreamReader(fs))
+                    {
+                        string line;
+
+                        while ((line = sr.ReadLine()) != null)
+                        {
+                            if (line != null)
+                            {
+                                if (line.Contains("[RoomManager] Joining w"))
+                                {
+                                    string[] arr = line.Split(new[] { "[RoomManager] Joining " }, StringSplitOptions.None);
+                                    CurrentRoom = arr[1];
                                 }
                             }
                         }

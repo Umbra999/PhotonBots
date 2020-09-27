@@ -87,12 +87,15 @@ namespace TheBotUI {
             this.panel11 = new System.Windows.Forms.Panel();
             this.SwitchAvi = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.MasterVarLabel = new System.Windows.Forms.Label();
             this.playerList = new TheBotUI.CustomComponents.CustomListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.botInstancesList = new TheBotUI.CustomComponents.CustomListView();
             this.botInstances = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.JoinAll = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -310,7 +313,7 @@ namespace TheBotUI {
             this.connectionStatusLabel.AutoSize = true;
             this.connectionStatusLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.connectionStatusLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.connectionStatusLabel.Location = new System.Drawing.Point(595, 191);
+            this.connectionStatusLabel.Location = new System.Drawing.Point(606, 192);
             this.connectionStatusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.connectionStatusLabel.Name = "connectionStatusLabel";
             this.connectionStatusLabel.Size = new System.Drawing.Size(217, 27);
@@ -322,7 +325,7 @@ namespace TheBotUI {
             this.connectionStatusVarLabel.AutoSize = true;
             this.connectionStatusVarLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.connectionStatusVarLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.connectionStatusVarLabel.Location = new System.Drawing.Point(828, 191);
+            this.connectionStatusVarLabel.Location = new System.Drawing.Point(831, 192);
             this.connectionStatusVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.connectionStatusVarLabel.Name = "connectionStatusVarLabel";
             this.connectionStatusVarLabel.Size = new System.Drawing.Size(51, 27);
@@ -346,7 +349,7 @@ namespace TheBotUI {
             this.pingVarLabel.AutoSize = true;
             this.pingVarLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.pingVarLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pingVarLabel.Location = new System.Drawing.Point(1159, 191);
+            this.pingVarLabel.Location = new System.Drawing.Point(1080, 192);
             this.pingVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.pingVarLabel.Name = "pingVarLabel";
             this.pingVarLabel.Size = new System.Drawing.Size(51, 27);
@@ -358,7 +361,7 @@ namespace TheBotUI {
             this.pingLabel.AutoSize = true;
             this.pingLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.pingLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pingLabel.Location = new System.Drawing.Point(1080, 191);
+            this.pingLabel.Location = new System.Drawing.Point(1004, 192);
             this.pingLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.pingLabel.Name = "pingLabel";
             this.pingLabel.Size = new System.Drawing.Size(68, 27);
@@ -370,7 +373,7 @@ namespace TheBotUI {
             this.inRoomVarLabel.AutoSize = true;
             this.inRoomVarLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.inRoomVarLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.inRoomVarLabel.Location = new System.Drawing.Point(1400, 191);
+            this.inRoomVarLabel.Location = new System.Drawing.Point(1272, 192);
             this.inRoomVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.inRoomVarLabel.Name = "inRoomVarLabel";
             this.inRoomVarLabel.Size = new System.Drawing.Size(51, 27);
@@ -382,7 +385,7 @@ namespace TheBotUI {
             this.inRoomLabel.AutoSize = true;
             this.inRoomLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.inRoomLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.inRoomLabel.Location = new System.Drawing.Point(1275, 191);
+            this.inRoomLabel.Location = new System.Drawing.Point(1155, 192);
             this.inRoomLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.inRoomLabel.Name = "inRoomLabel";
             this.inRoomLabel.Size = new System.Drawing.Size(109, 27);
@@ -394,7 +397,7 @@ namespace TheBotUI {
             this.playersVarLabel.AutoSize = true;
             this.playersVarLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.playersVarLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.playersVarLabel.Location = new System.Drawing.Point(1629, 191);
+            this.playersVarLabel.Location = new System.Drawing.Point(1438, 192);
             this.playersVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.playersVarLabel.Name = "playersVarLabel";
             this.playersVarLabel.Size = new System.Drawing.Size(51, 27);
@@ -406,7 +409,7 @@ namespace TheBotUI {
             this.playersLabel.AutoSize = true;
             this.playersLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.playersLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.playersLabel.Location = new System.Drawing.Point(1517, 191);
+            this.playersLabel.Location = new System.Drawing.Point(1331, 192);
             this.playersLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.playersLabel.Name = "playersLabel";
             this.playersLabel.Size = new System.Drawing.Size(99, 27);
@@ -652,10 +655,10 @@ namespace TheBotUI {
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button5.Location = new System.Drawing.Point(601, 513);
+            this.button5.Location = new System.Drawing.Point(1141, 594);
             this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(532, 32);
+            this.button5.Size = new System.Drawing.Size(549, 31);
             this.button5.TabIndex = 42;
             this.button5.Text = "Uspeak";
             this.button5.UseVisualStyleBackColor = false;
@@ -862,6 +865,43 @@ namespace TheBotUI {
             this.textBox2.Size = new System.Drawing.Size(247, 30);
             this.textBox2.TabIndex = 59;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.12F);
+            this.checkBox1.ForeColor = System.Drawing.Color.LavenderBlush;
+            this.checkBox1.Location = new System.Drawing.Point(1588, 350);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(102, 29);
+            this.checkBox1.TabIndex = 60;
+            this.checkBox1.Text = "Follow ";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 14F);
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.Location = new System.Drawing.Point(1490, 192);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(114, 27);
+            this.label3.TabIndex = 61;
+            this.label3.Text = "MasterID:";
+            // 
+            // MasterVarLabel
+            // 
+            this.MasterVarLabel.AutoSize = true;
+            this.MasterVarLabel.Font = new System.Drawing.Font("Arial", 14F);
+            this.MasterVarLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.MasterVarLabel.Location = new System.Drawing.Point(1612, 192);
+            this.MasterVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.MasterVarLabel.Name = "MasterVarLabel";
+            this.MasterVarLabel.Size = new System.Drawing.Size(51, 27);
+            this.MasterVarLabel.TabIndex = 62;
+            this.MasterVarLabel.Text = "N/A";
+            // 
             // playerList
             // 
             this.playerList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
@@ -918,18 +958,22 @@ namespace TheBotUI {
             this.botInstances.Text = "Bot Instance";
             this.botInstances.Width = 197;
             // 
-            // checkBox1
+            // JoinAll
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.12F);
-            this.checkBox1.ForeColor = System.Drawing.Color.LavenderBlush;
-            this.checkBox1.Location = new System.Drawing.Point(1588, 350);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(102, 29);
-            this.checkBox1.TabIndex = 60;
-            this.checkBox1.Text = "Follow ";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.JoinAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.JoinAll.FlatAppearance.BorderSize = 0;
+            this.JoinAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.JoinAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.JoinAll.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.JoinAll.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.JoinAll.Location = new System.Drawing.Point(601, 514);
+            this.JoinAll.Margin = new System.Windows.Forms.Padding(4);
+            this.JoinAll.Name = "JoinAll";
+            this.JoinAll.Size = new System.Drawing.Size(532, 32);
+            this.JoinAll.TabIndex = 63;
+            this.JoinAll.Text = "Connect and Join All";
+            this.JoinAll.UseVisualStyleBackColor = false;
+            this.JoinAll.Click += new System.EventHandler(this.JoinAll_Click_1);
             // 
             // Form1
             // 
@@ -937,6 +981,9 @@ namespace TheBotUI {
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(36)))));
             this.ClientSize = new System.Drawing.Size(1708, 886);
+            this.Controls.Add(this.JoinAll);
+            this.Controls.Add(this.MasterVarLabel);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.SwitchAvi);
@@ -1069,6 +1116,9 @@ namespace TheBotUI {
         public Button SwitchAvi;
         public TextBox textBox2;
         private CheckBox checkBox1;
+        public Label label3;
+        public Label MasterVarLabel;
+        public Button JoinAll;
     }
 }
 

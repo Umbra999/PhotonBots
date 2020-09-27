@@ -14,6 +14,7 @@ using System.Collections.Specialized;
 using ExitGames.Client.Photon;
 using System.Collections;
 using VRChatAPI;
+using Newtonsoft.Json;
 #if NET472
 using System.Diagnostics;
 #endif
@@ -292,6 +293,7 @@ namespace TheBotUI {
                 selectedBot.PhotonClient.OpLeaveRoom(false);
             else
                 MessageBox.Show("[WengaBOT] Can't leave room when not in a room!", "[WengaBOT] Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            playerList.Items.Clear();
         }
 
         private void JoinLastRoomButton_Click(object sender, EventArgs e)
@@ -1161,6 +1163,39 @@ namespace TheBotUI {
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             // Wenga add stuff here when he not lazy 
+        }
+
+        private void JoinAll_Click_1(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in botInstancesList.Items)
+            {
+                EnterRoomParams enterRoomParams = new EnterRoomParams();
+                enterRoomParams.RoomName = worldAInstanceIDTextBox.Text;
+                RoomOptions roomOptions = new RoomOptions();
+                roomOptions.IsOpen = true;
+                roomOptions.IsVisible = true;
+                roomOptions.MaxPlayers = Convert.ToByte(usernameTextBox.Text);
+                roomOptions.MaxPlayers = Convert.ToByte(roomOptions.MaxPlayers * 2);
+                System.Collections.Hashtable hashtable = new System.Collections.Hashtable();
+                hashtable["name"] = worldAInstanceIDTextBox.Text;
+                roomOptions.CustomRoomProperties = hashtable;
+                enterRoomParams.RoomOptions = roomOptions;
+                string[] customRoomPropertiesForLobby = new string[]
+                {
+                        "name"
+                };
+                roomOptions.CustomRoomPropertiesForLobby = customRoomPropertiesForLobby;
+                roomOptions.EmptyRoomTtl = 0;
+                roomOptions.DeleteNullProperties = false;
+                roomOptions.PublishUserId = false;
+                bool isJoined = selectedBot.PhotonClient.OpJoinOrCreateRoom(enterRoomParams);
+                Console.WriteLine(isJoined ? "[WengaBOT] Successfully joined to room!" : "[WengaBOT] JoinOrCreateRoom failed!");
+                Thread.Sleep(2000);
+                if (selectedBot.PhotonClient.InRoom)
+                {
+                    selectedBot.PhotonClient.InstantiateSelf();
+                }
+            }
         }
     }
 }

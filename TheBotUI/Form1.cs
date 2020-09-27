@@ -1069,7 +1069,6 @@ namespace TheBotUI {
         public static string AppVersion;
         public void GetAppVersion()
         {
-            File.Delete("release.txt");
             var directory = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"Low\VRChat\VRChat");
             if (directory != null && directory.Exists)
             {
@@ -1096,6 +1095,8 @@ namespace TheBotUI {
                                 {
                                     string[] arr = line.Split(new[] { "[VRCFlowNetworkManager] Using server url: " }, StringSplitOptions.None);
                                     AppVersion = arr[1] + "_2.5";
+                                    File.Delete("release.txt");
+                                    Thread.Sleep(100);
                                     File.AppendAllText("release.txt", AppVersion + Environment.NewLine);
                                     Console.ForegroundColor
                                         = ConsoleColor.Green;

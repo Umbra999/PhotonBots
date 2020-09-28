@@ -41,9 +41,10 @@ namespace VRChatAPI.Endpoints
             {
                 WorldRES world = await GetWorld(worldID);
                 List<string> instances = new List<string>();
-                foreach (object instance in world.instances)
+                foreach (var instance in world.instances)
                 {
-                    instances.Add(float.Parse(instance.ToString().Split(',')[0].Replace("[", "").Replace('"', ' ')).ToString());
+                    instances.Add(instance.Key);
+                    //instances.Add(float.Parse(instance.ToString().Split(',')[0].Replace("[", "").Replace('"', ' ')).ToString());
                 }
                 return instances.ToArray();
             }

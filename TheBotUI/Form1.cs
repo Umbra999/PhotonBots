@@ -567,24 +567,23 @@ namespace TheBotUI {
                 Search = true;
                 Console.ForegroundColor
                     = ConsoleColor.Cyan;
+                int i = 0;
                 foreach (string worldID in Worlds)
                 {
                     Thread.Sleep(25000);
                     Console.ForegroundColor
                                 = ConsoleColor.Cyan;
-                    WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
-                    Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Keys.Count);
-                    if (worldRES.publicOccupants != 0)
+                    var Worldbot = (Bot)botInstancesList.Items[i].Tag;
+                    if (i <= botInstancesList.Items.Count)
+                        i++;
+                    else
+                        i = 0;
+                    WorldRES worldRES = await Worldbot.APIClient.Worlds.GetWorld(worldID);
+                    if (worldRES.publicOccupants > 0)
                     {
                         Thread.Sleep(1000);
-                        List<string> Instances = new List<string>();
-                        foreach (object instanceObj in worldRES.instances)
-                        {
-                            Console.ForegroundColor
-                                = ConsoleColor.Cyan;
-                            Console.WriteLine("[WengaBOT] INSTANCE: " + instanceObj.ToString().Split(',')[0].Replace("[", "").Replace('"', ' '));
-                            Instances.Add(instanceObj.Key);
-                        }
+                        List<string> Instances = VRChatAPI.Endpoints.Worlds.GetInstances(worldRES).ToList();
+                        Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + Instances.Count);
                         foreach (string Instance in Instances)
                         {
                             Console.ForegroundColor
@@ -888,24 +887,27 @@ namespace TheBotUI {
                 Search = true;
                 Console.ForegroundColor
                     = ConsoleColor.Cyan;
+                int i = 0;
                 foreach (string worldID in Worlds)
                 {
                     Thread.Sleep(35000);
                     Console.ForegroundColor
                                 = ConsoleColor.Cyan;
-                    WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
-                    Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Keys.Count);
-                    if (worldRES.publicOccupants != 0)
+                    var Worldbot = (Bot)botInstancesList.Items[i].Tag;
+                    if (i <= botInstancesList.Items.Count)
+                    {
+                        i++;
+                    }
+                    else
+                    {
+                        i = 0;
+                    }
+                    WorldRES worldRES = await Worldbot.APIClient.Worlds.GetWorld(worldID);
+                    if (worldRES.publicOccupants > 0)
                     {
                         Thread.Sleep(1500);
-                        List<string> Instances = new List<string>();
-                        foreach (var instanceObj in worldRES.instances)
-                        {
-                            Console.ForegroundColor
-                                = ConsoleColor.Cyan;
-                            Console.WriteLine("[WengaBOT] INSTANCE: " + instanceObj.ToString().Split(',')[0].Replace("[", "").Replace('"', ' '));
-                            Instances.Add(instanceObj.Key);
-                        }
+                        List<string> Instances = VRChatAPI.Endpoints.Worlds.GetInstances(worldRES).ToList();
+                        Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + Instances.Count);
                         foreach (string Instance in Instances)
                         {
                             Console.ForegroundColor

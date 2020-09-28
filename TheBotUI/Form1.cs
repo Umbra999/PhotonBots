@@ -573,7 +573,7 @@ namespace TheBotUI {
                     Console.ForegroundColor
                                 = ConsoleColor.Cyan;
                     WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
-                    Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Length);
+                    Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Keys.Count);
                     if (worldRES.publicOccupants != 0)
                     {
                         Thread.Sleep(1000);
@@ -583,7 +583,7 @@ namespace TheBotUI {
                             Console.ForegroundColor
                                 = ConsoleColor.Cyan;
                             Console.WriteLine("[WengaBOT] INSTANCE: " + instanceObj.ToString().Split(',')[0].Replace("[", "").Replace('"', ' '));
-                            Instances.Add(float.Parse(instanceObj.ToString().Split(',')[0].Replace("[", "").Replace('"', ' '),System.Globalization.NumberStyles.Integer).ToString());
+                            Instances.Add(instanceObj.Key);
                         }
                         foreach (string Instance in Instances)
                         {
@@ -894,17 +894,17 @@ namespace TheBotUI {
                     Console.ForegroundColor
                                 = ConsoleColor.Cyan;
                     WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
-                    Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Length);
+                    Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Keys.Count);
                     if (worldRES.publicOccupants != 0)
                     {
                         Thread.Sleep(1500);
                         List<string> Instances = new List<string>();
-                        foreach (object instanceObj in worldRES.instances)
+                        foreach (var instanceObj in worldRES.instances)
                         {
                             Console.ForegroundColor
                                 = ConsoleColor.Cyan;
                             Console.WriteLine("[WengaBOT] INSTANCE: " + instanceObj.ToString().Split(',')[0].Replace("[", "").Replace('"', ' '));
-                            Instances.Add(float.Parse(instanceObj.ToString().Split(',')[0].Replace("[", "").Replace('"', ' '), System.Globalization.NumberStyles.Integer).ToString());
+                            Instances.Add(instanceObj.Key);
                         }
                         foreach (string Instance in Instances)
                         {

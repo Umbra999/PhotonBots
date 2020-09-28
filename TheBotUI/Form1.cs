@@ -578,6 +578,10 @@ namespace TheBotUI {
                         i++;
                     else
                         i = 0;
+                    if(Worldbot == null)
+                    {
+                        Console.WriteLine("[WengaBOT] Bot for WorldRequest was Null");
+                    }
                     WorldRES worldRES = await Worldbot.APIClient.Worlds.GetWorld(worldID);
                     if (worldRES.publicOccupants > 0)
                     {
@@ -895,13 +899,9 @@ namespace TheBotUI {
                                 = ConsoleColor.Cyan;
                     var Worldbot = (Bot)botInstancesList.Items[i].Tag;
                     if (i <= botInstancesList.Items.Count)
-                    {
                         i++;
-                    }
                     else
-                    {
                         i = 0;
-                    }
                     WorldRES worldRES = await Worldbot.APIClient.Worlds.GetWorld(worldID);
                     if (worldRES.publicOccupants > 0)
                     {

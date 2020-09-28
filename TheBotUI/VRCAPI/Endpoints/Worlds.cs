@@ -25,13 +25,16 @@ namespace VRChatAPI.Endpoints
         public async Task<WorldRES> GetWorld(string WorldID)
         {
             string json = "";
-            var world = null;
+            WorldRES world = null;
             var response = await Variables.HttpClient.GetAsync("https://api.vrchat.cloud/api/1/worlds/"+WorldID+ "?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26");
             json = await response.Content.ReadAsStringAsync();
-
             if (response.IsSuccessStatusCode)
             {
                 world = JsonConvert.DeserializeObject<WorldRES>(json);
+            }
+            else
+            {
+                Console.WriteLine("[Failure] " + response.StatusCode + " | " + json);
             }
             return world;
         }

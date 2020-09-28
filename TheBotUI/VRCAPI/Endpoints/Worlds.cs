@@ -1,5 +1,4 @@
-﻿using Microsoft.SqlServer.Server;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,36 +12,46 @@ using VRChatAPI;
 
 namespace VRChatAPI.Endpoints
 {
-    public class Worlds
+    static class Worlds
     {
-        private Variables Variables;
-        public Worlds(ref Variables variables)
-        {
-            Variables = variables;
-        }
-
-
-        public async Task<WorldRES> GetWorld(string WorldID)
+  
+        public static async Task<WorldRES> GetWorld(string WorldID)
         {
             string json = "";
-            var world = null;
-            var response = await Variables.HttpClient.GetAsync("https://api.vrchat.cloud/api/1/worlds/"+WorldID+ "?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26");
+            WorldRES world = null;
+            HttpClient RequestClient = new HttpClient();
+            RequestClient.DefaultRequestHeaders.Accept.Clear();
+            RequestClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            string[] Login = File.ReadAllLines("Auth/APIAuth.txt");
+            var byteArray = Encoding.ASCII.GetBytes(Login[0]);
+            RequestClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+            var response = await RequestClient.GetAsync("https://api.vrchat.cloud/api/1/worlds/"+WorldID+ "?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26");
             json = await response.Content.ReadAsStringAsync();
 
             if (response.IsSuccessStatusCode)
             {
                 world = JsonConvert.DeserializeObject<WorldRES>(json);
             }
+
             return world;
         }
-        public static string[] GetInstances(WorldRES worldRES)
+        public static async Task<string[]> GetInstances(string worldID)
         {
-            List<string> instances = new List<string>();
-            foreach(var sex in worldRES.instances)
+            try
             {
-                instances.Add(sex[0].ToString());
+                WorldRES world = await GetWorld(worldID);
+                List<string> instances = new List<string>();
+                foreach (var instance in world.instances)
+                {
+                    instances.Add(instance.Key);
+                    //instances.Add(float.Parse(instance.ToString().Split(',')[0].Replace("[", "").Replace('"', ' ')).ToString());
+                }
+                return instances.ToArray();
             }
-            return instances.ToArray();
+            catch (Exception)
+            {
+            }
+            return new string[0];
         }
     }
 }

@@ -258,12 +258,6 @@ namespace TheBotUI {
             Auth();
         }
 
-        public void OnDisconnected(DisconnectCause cause)
-        {
-            Thread.Sleep(2000);
-            Auth();
-        }
-
         private void JoinRoomButton_Click(object sender, EventArgs e) 
         {
             EnterRoomParams enterRoomParams = new EnterRoomParams();

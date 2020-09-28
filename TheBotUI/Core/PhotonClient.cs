@@ -153,10 +153,10 @@ namespace TheBotUI.Core
                         { "id", "avtr_b8ee959b-7d38-4287-a5b2-9545f238a4b9" }
                     }
                 },
-                { "modTag", "Wenga#0666"},
+                { "modTag", ""},
                 { "isInvisible", false },
                 { "avatarVariations", "avtr_b960b658-58fe-4210-a0b0-773a6aa1f3bc" },
-                { "status", "offline" },
+                { "status", "active" },
                 { "statusDescription", "Wenga#0666" },
                 { "inVRMode", true },
                 { "showSocialRank", true },
@@ -174,6 +174,7 @@ namespace TheBotUI.Core
                     = ConsoleColor.Red;
             Console.WriteLine("[WengaBOT] Disconnected Cause:" + cause + "-> Re-Auth");
             Form1.SendWebHook("https://discordapp.com/api/webhooks/758563365534302220/6RBmwDCRbeikeRwnKCkVtuR6Qi5Ha97h11y6NwLP4AO10s24UkU_n25tI5NPl5zn7jO3", "[WengaBOT ERROR] Bot disconnected cause: " + (cause) + " -> Re-Auth");
+            ReconnectAndRejoin();
 
             //Console.WriteLine("[WengaBOT] Disconnected Cause:" + cause + "-> Re-Auth Disabled");
             //Form1.SendWebHook("https://discordapp.com/api/webhooks/758563365534302220/6RBmwDCRbeikeRwnKCkVtuR6Qi5Ha97h11y6NwLP4AO10s24UkU_n25tI5NPl5zn7jO3", "[WengaBOT ERROR] Bot disconnected cause: " + cause);

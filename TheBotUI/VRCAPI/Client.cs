@@ -13,7 +13,6 @@ namespace VRChatAPI {
         public Config Config { get; set; }
         public Users Users { get; set; }
         public Moderation Moderation { get; set; }
-        public Worlds Worlds { get; set; }
 
         public Variables Variables;
 
@@ -50,7 +49,6 @@ namespace VRChatAPI {
             this.Config = new Config(ref this.Variables);
             this.Users = new Users(ref this.Variables);
             this.Moderation = new Moderation(ref this.Variables);
-            this.Worlds = new Worlds(ref this.Variables);
 
             //Grabbing config to get the APIKey
             Config.Get().GetAwaiter().GetResult();

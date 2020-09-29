@@ -577,13 +577,12 @@ namespace TheBotUI {
                     if (worldRES.publicOccupants != 0)
                     {
                         Thread.Sleep(1000);
-                        List<string> Instances = new List<string>();
-                        foreach (object instanceObj in worldRES.instances)
+                        List<string> Instances = VRChatAPI.Endpoints.Worlds.GetInstances(worldRES).ToList();
+                        foreach (var instancetag in Instances)
                         {
                             Console.ForegroundColor
                                 = ConsoleColor.Cyan;
-                            Console.WriteLine("[WengaBOT] INSTANCE: " + instanceObj.ToString().Split(',')[0].Replace("[", "").Replace('"', ' '));
-                            Instances.Add(float.Parse(instanceObj.ToString().Split(',')[0].Replace("[", "").Replace('"', ' '),System.Globalization.NumberStyles.Integer).ToString());
+                            Console.WriteLine("[WengaBOT] INSTANCE: " + instancetag);
                         }
                         foreach (string Instance in Instances)
                         {
@@ -898,13 +897,12 @@ namespace TheBotUI {
                     if (worldRES.publicOccupants != 0)
                     {
                         Thread.Sleep(1500);
-                        List<string> Instances = new List<string>();
-                        foreach (object instanceObj in worldRES.instances)
+                        List<string> Instances = VRChatAPI.Endpoints.Worlds.GetInstances(worldRES).ToList();
+                        foreach (var instancetag in Instances)
                         {
                             Console.ForegroundColor
                                 = ConsoleColor.Cyan;
-                            Console.WriteLine("[WengaBOT] INSTANCE: " + instanceObj.ToString().Split(',')[0].Replace("[", "").Replace('"', ' '));
-                            Instances.Add(float.Parse(instanceObj.ToString().Split(',')[0].Replace("[", "").Replace('"', ' '), System.Globalization.NumberStyles.Integer).ToString());
+                            Console.WriteLine("[WengaBOT] INSTANCE: " + instancetag);
                         }
                         foreach (string Instance in Instances)
                         {

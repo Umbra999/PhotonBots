@@ -1,21 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Meiner\\Documents\\GitHub\\PhotonBots\\TheBotUI\\TheBotUI.csproj": {}
+    "C:\\Users\\Dayof\\source\\repos\\PhotonBots\\TheBotUI\\TheBotUI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Meiner\\Documents\\GitHub\\PhotonBots\\TheBotUI\\TheBotUI.csproj": {
+    "C:\\Users\\Dayof\\source\\repos\\PhotonBots\\TheBotUI\\TheBotUI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Meiner\\Documents\\GitHub\\PhotonBots\\TheBotUI\\TheBotUI.csproj",
+        "projectUniqueName": "C:\\Users\\Dayof\\source\\repos\\PhotonBots\\TheBotUI\\TheBotUI.csproj",
         "projectName": "TheBotUI",
-        "projectPath": "C:\\Users\\Meiner\\Documents\\GitHub\\PhotonBots\\TheBotUI\\TheBotUI.csproj",
-        "packagesPath": "C:\\Users\\Meiner\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Meiner\\Documents\\GitHub\\PhotonBots\\TheBotUI\\obj\\",
+        "projectPath": "C:\\Users\\Dayof\\source\\repos\\PhotonBots\\TheBotUI\\TheBotUI.csproj",
+        "packagesPath": "C:\\Users\\Dayof\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dayof\\source\\repos\\PhotonBots\\TheBotUI\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "configFilePaths": [
-          "C:\\Users\\Meiner\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dayof\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

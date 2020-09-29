@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "0OUgfOcCA1kip1ut6zuIM7QUyG6SS6dZB/+8Q56xA8rhgFdTAo6YVYmxh7z6fNwLqYRcyblTC4BSdj2KL+9M2Q==",
+  "dgSpecHash": "8QMoCksiR9wvGT5WnKTdixxRQlDJqgyOUCeNOjmKaESZGx60ifmOB/M5RPIKHEcux5ybi/BPzAHivPHecjIjfQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Meiner\\Documents\\GitHub\\PhotonBots\\TheBotUI\\TheBotUI.csproj",
+  "projectFilePath": "C:\\Users\\Dayof\\source\\repos\\PhotonBots\\TheBotUI\\TheBotUI.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Meiner\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512"
+    "C:\\Users\\Dayof\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512"
   ],
   "logs": []
 }

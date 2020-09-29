@@ -12,6 +12,6 @@ namespace TheBotUI.VRCAPI.Responses
         public string name { get; set; }
         public int capacity { get; set; }
         public int publicOccupants { get; set; }
-        public object[] instances { get; set; }
+        public object[][] instances { get; set; }
     }
 }

@@ -292,10 +292,25 @@ namespace TheBotUI {
         private void InstantiateInvisButton_Click(object sender, EventArgs e) {
             if (selectedBot.PhotonClient.InRoom) 
             {
-                // Add Desync event stuff here
+                new Thread(() =>
+                {
+                    for (int ii = 0; ii < 20; ii++)
+                    {
+                        100.EventSpammer(5, () =>
+                        {
+                            foreach (ListViewItem item in botInstancesList.Items)
+                            {
+                                var bot = (Bot)item.Tag;
+                                bot.PhotonClient.OpRaiseEvent(210, new int[] { int.MaxValue, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.All }, SendOptions.SendReliable);
+                            }
+                        });
+                        Thread.Sleep(2000);
+                    }
+                    Console.WriteLine("Job Done!", ConsoleColor.Cyan);
+                })
+                { IsBackground = true }.Start();
             }
         }
-
         private void button1_Click_1(object sender, EventArgs e)
         {
             Console.ForegroundColor

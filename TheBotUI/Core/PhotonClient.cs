@@ -132,7 +132,8 @@ namespace TheBotUI.Core
         }
 
         private void PhotonLoop() {
-            while (true) {
+            while (true) 
+            {
                 DoPhotonStuff();
                 Thread.Sleep(10);
             }
@@ -201,8 +202,7 @@ namespace TheBotUI.Core
 
         public void OnDisconnected(DisconnectCause cause) 
         {
-
-            Console.ForegroundColor
+                Console.ForegroundColor
                     = ConsoleColor.Red;
             Console.WriteLine("[WengaBOT] Disconnected Cause:" + cause + "-> Re-Auth");
             Form1.SendWebHook("https://discordapp.com/api/webhooks/758563365534302220/6RBmwDCRbeikeRwnKCkVtuR6Qi5Ha97h11y6NwLP4AO10s24UkU_n25tI5NPl5zn7jO3", "[WengaBOT ERROR] Bot disconnected cause: " + (cause) + " -> Re-Auth");

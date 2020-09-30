@@ -42,7 +42,6 @@ namespace TheBotUI {
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.loginViaTXTButton = new System.Windows.Forms.Button();
             this.loginToolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -69,7 +68,6 @@ namespace TheBotUI {
             this.instantiateInvisButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.usernameLabel = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -262,17 +260,6 @@ namespace TheBotUI {
             this.panel5.Size = new System.Drawing.Size(1124, 5);
             this.panel5.TabIndex = 5;
             // 
-            // usernameTextBox
-            // 
-            this.usernameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.usernameTextBox.Font = new System.Drawing.Font("Arial", 12F);
-            this.usernameTextBox.Location = new System.Drawing.Point(867, 114);
-            this.usernameTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.usernameTextBox.Name = "usernameTextBox";
-            this.usernameTextBox.Size = new System.Drawing.Size(173, 30);
-            this.usernameTextBox.TabIndex = 9;
-            this.usernameTextBox.TextChanged += new System.EventHandler(this.usernameTextBox_TextChanged);
-            // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
@@ -290,7 +277,7 @@ namespace TheBotUI {
             this.loginViaTXTButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.loginViaTXTButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.loginViaTXTButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.loginViaTXTButton.Location = new System.Drawing.Point(1085, 96);
+            this.loginViaTXTButton.Location = new System.Drawing.Point(925, 96);
             this.loginViaTXTButton.Margin = new System.Windows.Forms.Padding(4);
             this.loginViaTXTButton.Name = "loginViaTXTButton";
             this.loginViaTXTButton.Size = new System.Drawing.Size(163, 32);
@@ -600,19 +587,6 @@ namespace TheBotUI {
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
-            // usernameLabel
-            // 
-            this.usernameLabel.AutoSize = true;
-            this.usernameLabel.Font = new System.Drawing.Font("Arial", 14F);
-            this.usernameLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.usernameLabel.Location = new System.Drawing.Point(876, 84);
-            this.usernameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(148, 27);
-            this.usernameLabel.TabIndex = 10;
-            this.usernameLabel.Text = "MAXPlayers:";
-            this.usernameLabel.Click += new System.EventHandler(this.usernameLabel_Click);
-            // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
@@ -729,7 +703,7 @@ namespace TheBotUI {
             this.buttonTokenAuth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTokenAuth.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.buttonTokenAuth.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonTokenAuth.Location = new System.Drawing.Point(1268, 96);
+            this.buttonTokenAuth.Location = new System.Drawing.Point(1112, 96);
             this.buttonTokenAuth.Margin = new System.Windows.Forms.Padding(4);
             this.buttonTokenAuth.Name = "buttonTokenAuth";
             this.buttonTokenAuth.Size = new System.Drawing.Size(169, 32);
@@ -1027,9 +1001,7 @@ namespace TheBotUI {
             this.Controls.Add(this.connectionStatusLabel);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.loginViaTXTButton);
-            this.Controls.Add(this.usernameLabel);
             this.Controls.Add(this.panel6);
-            this.Controls.Add(this.usernameTextBox);
             this.Controls.Add(this.playerList);
             this.Controls.Add(this.botInstancesList);
             this.Controls.Add(this.panel3);
@@ -1068,7 +1040,6 @@ namespace TheBotUI {
         public CustomListView botInstancesList;
         public CustomListView playerList;
         public Button settingsButton;
-        public TextBox usernameTextBox;
         public Panel panel6;
         public Button loginViaTXTButton;
         public Label infoLabel;
@@ -1097,7 +1068,6 @@ namespace TheBotUI {
         public Button instantiateInvisButton;
         public Button button1;
         public Button button2;
-        public Label usernameLabel;
         public Button button3;
         public Button button4;
         public Button button5;

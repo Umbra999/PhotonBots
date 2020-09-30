@@ -193,9 +193,9 @@ namespace TheBotUI {
                             if (bot.APIClient != null)
                             {
                                 Invoke(new MethodInvoker(() => {
-                                    ListViewItem item = new ListViewItem(bot.APIClient.Variables.UserSelfRES.displayName);
-                                    item.Tag = bot;
-                                    botInstancesList.Items.Add(item);
+                                    //ListViewItem item = new ListViewItem(bot.APIClient.Variables.UserSelfRES.displayName);
+                                    //item.Tag = bot;
+                                    //botInstancesList.Items.Add(item);
                                 }));
                             }
                             else
@@ -275,11 +275,9 @@ namespace TheBotUI {
         {
             bool isJoined = selectedBot.PhotonClient.JoinRoom(worldAInstanceIDTextBox.Text);
             Console.WriteLine(isJoined ? "[WengaBOT] Successfully joined to room!" : "[WengaBOT] JoinOrCreateRoom failed!");
-            Thread.Sleep(2000);
-            if (selectedBot.PhotonClient.InRoom)
-            {
-                selectedBot.PhotonClient.InstantiateSelf();
-            }
+            Thread.Sleep(5000);
+            selectedBot.PhotonClient.InstantiateSelf();
+
         }
         private void InstantiateButton_Click(object sender, EventArgs e) 
         {
@@ -302,11 +300,12 @@ namespace TheBotUI {
                             {
                                 var bot = (Bot)item.Tag;
                                 bot.PhotonClient.OpRaiseEvent(210, new int[] { int.MaxValue, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.All }, SendOptions.SendReliable);
+                                bot.PhotonClient.OpRaiseEvent(209, new int[] { int.MaxValue, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.All }, SendOptions.SendReliable);
                             }
                         });
                         Thread.Sleep(2000);
                     }
-                    Console.WriteLine("Job Done!", ConsoleColor.Cyan);
+                    Console.WriteLine("[WengaBOT] Lobby Desynced!", ConsoleColor.Green);
                 })
                 { IsBackground = true }.Start();
             }
@@ -368,28 +367,9 @@ namespace TheBotUI {
                         {
                             Thread.Sleep(500);
                             var bot = (Bot)item.Tag;
-                            EnterRoomParams enterRoomParams = new EnterRoomParams();
-                            enterRoomParams.RoomName = worldAInstanceIDTextBox.Text;
-                            RoomOptions roomOptions = new RoomOptions();
-                            roomOptions.IsOpen = true;
-                            roomOptions.IsVisible = true;
-                            roomOptions.MaxPlayers = Convert.ToByte(usernameTextBox.Text);
-                            roomOptions.MaxPlayers = Convert.ToByte(roomOptions.MaxPlayers * 2);
-                            System.Collections.Hashtable hashtable = new System.Collections.Hashtable();
-                            hashtable["name"] = worldAInstanceIDTextBox.Text;
-                            roomOptions.CustomRoomProperties = hashtable;
-                            enterRoomParams.RoomOptions = roomOptions;
-                            string[] customRoomPropertiesForLobby = new string[]
-                            {
-                                   "name"
-                            };
-                            roomOptions.CustomRoomPropertiesForLobby = customRoomPropertiesForLobby;
-                            roomOptions.EmptyRoomTtl = 0;
-                            roomOptions.DeleteNullProperties = true;
-                            roomOptions.PublishUserId = false;
-                            bool isJoined = bot.PhotonClient.OpJoinOrCreateRoom(enterRoomParams);
+                            bool isJoined = bot.PhotonClient.JoinRoom(worldAInstanceIDTextBox.Text);
                             Console.WriteLine(isJoined ? "[WengaBOT] Successfully joined to room!" : "[WengaBOT] JoinOrCreateRoom failed!");
-                            Thread.Sleep(1000);
+                            Thread.Sleep(500);
                         }
                     }));
                 }).Start();
@@ -1085,13 +1065,10 @@ namespace TheBotUI {
             foreach (ListViewItem item in botInstancesList.Items)
             {
                 var bot = (Bot)item.Tag;
-                bool isJoined = selectedBot.PhotonClient.JoinRoom(worldAInstanceIDTextBox.Text);
+                bool isJoined = bot.PhotonClient.JoinRoom(worldAInstanceIDTextBox.Text);
                 Console.WriteLine(isJoined ? "[WengaBOT] Successfully joined to room!" : "[WengaBOT] JoinOrCreateRoom failed!");
-                Thread.Sleep(2000);
-                if (selectedBot.PhotonClient.InRoom)
-                {
-                    selectedBot.PhotonClient.InstantiateSelf();
-                }
+                Thread.Sleep(5000);
+                bot.PhotonClient.InstantiateSelf();
             }
         }
     }

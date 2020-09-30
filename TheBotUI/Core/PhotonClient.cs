@@ -71,6 +71,38 @@ namespace TheBotUI.Core
             }
         }
 
+        public bool JoinRoom(string roomdata)
+        {
+            string[] tempSplit = roomdata.Split(':');
+            int cap = VRChatAPI.Endpoints.Worlds.FetchRoomCap(tempSplit[0]);
+
+            EnterRoomParams enterRoomParams = new EnterRoomParams
+            {
+                CreateIfNotExists = true,
+                RoomName = roomdata
+            };
+            RoomOptions roomOptions = new RoomOptions
+            {
+                IsOpen = true,
+                IsVisible = true,
+                MaxPlayers = Convert.ToByte(cap * 2)
+            };
+            Hashtable hashtable = new Hashtable
+            {
+                ["name"] = "name"
+            };
+            roomOptions.CustomRoomProperties = hashtable;
+            enterRoomParams.RoomOptions = roomOptions;
+            string[] customroompropertiesforlobby = new string[]
+            {
+                "name"
+            };
+            roomOptions.CustomRoomPropertiesForLobby = customroompropertiesforlobby;
+            roomOptions.EmptyRoomTtl = 0;
+            roomOptions.DeleteNullProperties = true;
+            roomOptions.PublishUserId = false;
+            return OpJoinRoom(enterRoomParams);
+        }
         private void OnResponseReceived(OperationResponse opResponse) 
         {
             Console.ForegroundColor

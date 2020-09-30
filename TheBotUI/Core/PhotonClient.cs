@@ -202,11 +202,39 @@ namespace TheBotUI.Core
 
         public void OnDisconnected(DisconnectCause cause) 
         {
+            if (Form1.Search)
+            {
                 Console.ForegroundColor
                     = ConsoleColor.Red;
-            Console.WriteLine("[WengaBOT] Disconnected Cause:" + cause + "-> Re-Auth");
-            Form1.SendWebHook("https://discordapp.com/api/webhooks/758563365534302220/6RBmwDCRbeikeRwnKCkVtuR6Qi5Ha97h11y6NwLP4AO10s24UkU_n25tI5NPl5zn7jO3", "[WengaBOT ERROR] Bot disconnected cause: " + (cause) + " -> Re-Auth");
-            ReconnectAndRejoin();
+                Console.WriteLine("[WengaBOT] Disconnected while Search Cause:" + cause + "-> Re-Auth (Master & Rejoin)");
+                Form1.SendWebHook("https://discordapp.com/api/webhooks/758563365534302220/6RBmwDCRbeikeRwnKCkVtuR6Qi5Ha97h11y6NwLP4AO10s24UkU_n25tI5NPl5zn7jO3", "[WengaBOT ERROR] Bot disconnected while searching cause: " + (cause) + " -> Re-Auth");
+                ReconnectAndRejoin();
+            }
+            else if (Form1.Desync)
+            {
+                Console.ForegroundColor
+                = ConsoleColor.Red;
+                Console.WriteLine("[WengaBOT] Disconnected while Desync Cause:" + cause + "-> Re-Auth (Master & Rejoin)");
+                Thread.Sleep(4000);
+                ReconnectAndRejoin();
+            }
+            else if (Form1.Disconnecting)
+            {
+                Console.ForegroundColor
+                = ConsoleColor.Red;
+                Console.WriteLine("[WengaBOT] Disconnected while Disconnect Cause:" + cause + "-> Re-Auth (Master Only)");
+                ReconnectToMaster();
+            }
+            else
+            {
+                Console.ForegroundColor
+                    = ConsoleColor.Red;
+                Console.WriteLine("[WengaBOT] Disconnected Random Cause:" + cause + "-> Re-Auth (Master Only)");
+                Form1.SendWebHook("https://discordapp.com/api/webhooks/758563365534302220/6RBmwDCRbeikeRwnKCkVtuR6Qi5Ha97h11y6NwLP4AO10s24UkU_n25tI5NPl5zn7jO3", "[WengaBOT ERROR] Bot disconnected random cause: " + (cause) + " -> Re-Auth");
+                ReconnectToMaster();
+            }
+
+            
 
             //Console.WriteLine("[WengaBOT] Disconnected Cause:" + cause + "-> Re-Auth Disabled");
             //Form1.SendWebHook("https://discordapp.com/api/webhooks/758563365534302220/6RBmwDCRbeikeRwnKCkVtuR6Qi5Ha97h11y6NwLP4AO10s24UkU_n25tI5NPl5zn7jO3", "[WengaBOT ERROR] Bot disconnected cause: " + cause);

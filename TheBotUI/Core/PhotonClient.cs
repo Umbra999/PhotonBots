@@ -264,14 +264,14 @@ namespace TheBotUI.Core
         {
             Console.ForegroundColor
                     = ConsoleColor.DarkGreen;
-            Console.WriteLine("[WengaBOT] " + newPlayer.GetDisplayName() + " joined the room!");
+            Console.WriteLine("[WengaBOT] " + newPlayer.GetDisplayName() + " [" + newPlayer.ActorNumber + "]" + " joined the room!");
         }
 
         public void OnPlayerLeftRoom(Player otherPlayer) 
         {
             Console.ForegroundColor
                     = ConsoleColor.Red;
-            Console.WriteLine("[WengaBOT] " + otherPlayer.GetDisplayName() + " left the room!");
+            Console.WriteLine("[WengaBOT] " + otherPlayer.GetDisplayName() + " [" + otherPlayer.ActorNumber + "]" + " left the room!");
         }
 
         public void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged) 
@@ -286,7 +286,7 @@ namespace TheBotUI.Core
         {
             Console.ForegroundColor
                     = ConsoleColor.Yellow;
-            Console.WriteLine("[WengaBOT] " + targetPlayer.GetDisplayName() + " changed PhotonProperties");
+            Console.WriteLine("[WengaBOT] " + targetPlayer.GetDisplayName() + " [" + targetPlayer.ActorNumber + "]" + " changed PhotonProperties");
             //New props:" + changedProps.ToStringFull())
         }
 

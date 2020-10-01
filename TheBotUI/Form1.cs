@@ -181,34 +181,7 @@ namespace TheBotUI {
                     botInstancesList.Items.Clear();
                     playerList.Items.Clear();
                 }
-                //   string[] authdata = File.ReadAllLines("auth.txt");
-                string secondLine = File.ReadLines(@"Auth/AuthNormal.txt").ElementAtOrDefault(0);
-                // foreach (string login in secondLine)
-                {
-                    string[] userpass = secondLine.Split(new char[] { ':' }, 2);
-                    new Thread(() => {
-                        Bot bot = new Bot(userpass[0], userpass[1]);
-                        if (bot != null)
-                        {
-                            if (bot.APIClient != null)
-                            {
-                                Invoke(new MethodInvoker(() => {
-                                    //ListViewItem item = new ListViewItem(bot.APIClient.Variables.UserSelfRES.displayName);
-                                    //item.Tag = bot;
-                                    //botInstancesList.Items.Add(item);
-                                }));
-                            }
-                            else
-                            {
-                                MessageBox.Show("[WengaBOT] API failed to initialize", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("[WengaBOT] Bot failed to initialize", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }).Start();
-                }
+                
                 Thread.Sleep(2000);
                 {
                     Console.ForegroundColor
@@ -239,6 +212,7 @@ namespace TheBotUI {
                                     item.Tag = bot;
                                     botInstancesList.Items.Add(item);
                                 }));
+                                Console.Title = "[WengaBOT] Bots are active...";
                             }
                             else
                             {
@@ -280,7 +254,7 @@ namespace TheBotUI {
         {
             bool isJoined = selectedBot.PhotonClient.JoinRoom(worldAInstanceIDTextBox.Text);
             Console.WriteLine(isJoined ? "[WengaBOT] Successfully joined to room!" : "[WengaBOT] JoinOrCreateRoom failed!");
-            Thread.Sleep(3500);
+            Thread.Sleep(3000);
             selectedBot.PhotonClient.InstantiateSelf();
 
         }
@@ -298,7 +272,9 @@ namespace TheBotUI {
             {
                 new Thread(() =>
                 {
-                    Console.WriteLine("[WengaBOT] Started Desync", ConsoleColor.Green);
+                    Console.ForegroundColor
+                        = ConsoleColor.DarkRed;
+                    Console.WriteLine("[WengaBOT] Started Desync");
                     for (int ii = 0; ii < 20; ii++)
                     {
                         100.EventSpammer(5, () =>
@@ -313,7 +289,9 @@ namespace TheBotUI {
                         });
                         Thread.Sleep(2000);
                     }
-                    Console.WriteLine("[WengaBOT] Lobby Desynced", ConsoleColor.Green);
+                    Console.ForegroundColor
+                        = ConsoleColor.DarkGreen;
+                    Console.WriteLine("[WengaBOT] Lobby Desynced");
                     Desync = false;
                 })
                 { IsBackground = true }.Start();
@@ -459,23 +437,17 @@ namespace TheBotUI {
                     Console.WriteLine(isJoined ? "[WengaBOT] Successfully joined to room!" : "[WengaBOT] JoinOrCreateRoom failed!");
                 }
                 Thread.Sleep(3000);
-                //ggStream
                 string toShow = "CurrentDate:" + DateTime.Now + "\nWorldID:" + worldAInstanceIDTextBox.Text + "\nPlayerCount:" + selectedBot.PhotonClient.CurrentRoom.PlayerCount.ToString() + "\n";
-                //  string tDShow = "";
                 foreach (var item in selectedBot.PhotonClient.CurrentRoom.Players)
                 {
-                    //avatarVariations
                     Dictionary<string, object> dictionary = (Dictionary<string, object>)item.Value.CustomProperties["user"];
                     Dictionary<string, object> tictionary = (Dictionary<string, object>)item.Value.CustomProperties["avatarDict"];
-                    /*Dictionary<string, object> pictionary = (Dictionary<string, object>)item.Value.CustomProperties["steamUserID"];*///statusDescription steamUserID
                     //Dictionary<string, object> eictionary = (Dictionary<string, object>)item.Value.CustomProperties["steamUserID"];
+
                     toShow += dictionary["displayName"].ToString() + "\nUserID:" + dictionary["id"].ToString() + "\nAvatarID:" + tictionary["id"].ToString() + "\n--------------------------------------------------------------------------------\n";
-                    // tDShow +=  tictionary["id"].ToString() + "\n";
                 }
                 MessageBox.Show(toShow, "Users on an instance:", MessageBoxButtons.OK, MessageBoxIcon.None);
-                //    DateTime dateTime = new DateTime();
-                string tath = @"InstanceCheckLog\\" + DateTime.Now.ToString("dd/MM") + ".txt";
-                //string path = @"InstanceCheckLog\\" + DateTime.Now.ToString("dd/MM_HH");
+                string tath = @"Logger\\" + DateTime.Now.ToString("dd/MM") + ".txt";
 
                 if (!File.Exists(tath))
                 {
@@ -486,7 +458,6 @@ namespace TheBotUI {
                 string appendText = toShow + Environment.NewLine;
                 File.AppendAllText(tath, appendText);
 
-                // Open the file to read from.
                 string[] readText = File.ReadAllLines(tath);
                 foreach (string s in readText)
                 {
@@ -501,9 +472,6 @@ namespace TheBotUI {
                     selectedBot.PhotonClient.OpLeaveRoom(false);
                     playerList.Items.Clear();
                 }
-                //selectedBot.PhotonClient.Send253event();
-                //selectedBot.PhotonClient.InstantiateSelfInvis();
-                //if (selectedBot.PhotonClient.InRoom)
             }
         }
         public static bool Search = false;
@@ -727,7 +695,7 @@ namespace TheBotUI {
             {
                 botInstancesList.Items.Add("Кря");
                 botInstancesList.Items.Add("Кря");
-                Thread.Sleep(2000);
+                Thread.Sleep(1500);
                 {
                     Console.ForegroundColor
                     = ConsoleColor.Green;
@@ -735,35 +703,8 @@ namespace TheBotUI {
                     botInstancesList.Items.Clear();
                     playerList.Items.Clear();
                 }
-                //   string[] authdata = File.ReadAllLines("auth.txt");
-                string secondLine = File.ReadLines(@"Auth/AuthSearch.txt").ElementAtOrDefault(0);
-                // foreach (string login in secondLine)
-                {
-                    string[] userpass = secondLine.Split(new char[] { ':' }, 2);
-                    new Thread(() => {
-                        Bot bot = new Bot(userpass[0], userpass[1]);
-                        if (bot != null)
-                        {
-                            if (bot.APIClient != null)
-                            {
-                                Invoke(new MethodInvoker(() => {
-                                    //ListViewItem item = new ListViewItem(bot.APIClient.Variables.UserSelfRES.displayName);
-                                    //item.Tag = bot;
-                                    //botInstancesList.Items.Add(item);
-                                }));
-                            }
-                            else
-                            {
-                                MessageBox.Show("[WengaBOT] API failed to initialize", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("[WengaBOT] Bot failed to initialize", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }).Start();
-                }
-                Thread.Sleep(2000);
+          
+                Thread.Sleep(1000);
                 {
                     Console.ForegroundColor
                     = ConsoleColor.Green;
@@ -1081,7 +1022,7 @@ namespace TheBotUI {
                 var bot = (Bot)item.Tag;
                 bool isJoined = bot.PhotonClient.JoinRoom(worldAInstanceIDTextBox.Text);
                 Console.WriteLine(isJoined ? "[WengaBOT] Successfully joined to room!" : "[WengaBOT] JoinOrCreateRoom failed!");
-                Thread.Sleep(3500);
+                Thread.Sleep(3000);
                 bot.PhotonClient.InstantiateSelf();
             }
         }

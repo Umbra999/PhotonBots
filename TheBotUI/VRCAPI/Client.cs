@@ -6,7 +6,8 @@ using System.Text;
 using TheBotUI.VRCAPI.Endpoints;
 using VRChatAPI.Endpoints;
 
-namespace VRChatAPI {
+namespace VRChatAPI 
+{
 
     public class Client {
         public Auth Auth { get; set; }
@@ -31,16 +32,20 @@ namespace VRChatAPI {
             }
         }
 
-        public Client(string username, string password) {
+        public Client(string username, string password) 
+        {
             this.Variables = new Variables();
 
-            if (Variables.HttpClient == null) {
+            if (Variables.HttpClient == null) 
+            {
                 //Cookie Container to grab the AuthCookie
                 Variables.CookieContainer = new CookieContainer();
-                Variables.HttpClientHandler = new HttpClientHandler() {
+                Variables.HttpClientHandler = new HttpClientHandler() 
+                {
                     CookieContainer = Variables.CookieContainer
                 };
-                Variables.HttpClient = new HttpClient(Variables.HttpClientHandler) {
+                Variables.HttpClient = new HttpClient(Variables.HttpClientHandler) 
+                {
                     BaseAddress = new Uri(Variables.BaseAddress)
                 };
             }

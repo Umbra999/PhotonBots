@@ -131,7 +131,8 @@ namespace TheBotUI.Core
             }
         }
 
-        private void PhotonLoop() {
+        private void PhotonLoop() 
+        {
             while (true) 
             {
                 DoPhotonStuff();
@@ -188,7 +189,7 @@ namespace TheBotUI.Core
                 },
                 { "modTag", ""},
                 { "isInvisible", false },
-                { "avatarVariations", "avtr_b960b658-58fe-4210-a0b0-773a6aa1f3bc" },
+                { "avatarVariations", "" },
                 { "status", "active" },
                 { "statusDescription", "Wenga#0666" },
                 { "inVRMode", true },
@@ -212,11 +213,11 @@ namespace TheBotUI.Core
             }
             else if (Form1.Desync)
             {
+                // Add Auto Rejoin world 
                 Console.ForegroundColor
                 = ConsoleColor.Red;
-                Console.WriteLine("[WengaBOT] Disconnected while Desync Cause:" + cause + "-> Re-Auth (Master & Rejoin)");
-                Thread.Sleep(4000);
-                ReconnectAndRejoin();
+                Console.WriteLine("[WengaBOT] Disconnected while Desync Cause:" + cause + "-> Re-Auth (Master Only");
+                ReconnectToMaster();
             }
             else if (Form1.Disconnecting)
             {
@@ -233,8 +234,6 @@ namespace TheBotUI.Core
                 Form1.SendWebHook("https://discordapp.com/api/webhooks/758563365534302220/6RBmwDCRbeikeRwnKCkVtuR6Qi5Ha97h11y6NwLP4AO10s24UkU_n25tI5NPl5zn7jO3", "[WengaBOT ERROR] Bot disconnected random cause: " + (cause) + " -> Re-Auth");
                 ReconnectToMaster();
             }
-
-            
 
             //Console.WriteLine("[WengaBOT] Disconnected Cause:" + cause + "-> Re-Auth Disabled");
             //Form1.SendWebHook("https://discordapp.com/api/webhooks/758563365534302220/6RBmwDCRbeikeRwnKCkVtuR6Qi5Ha97h11y6NwLP4AO10s24UkU_n25tI5NPl5zn7jO3", "[WengaBOT ERROR] Bot disconnected cause: " + cause);
@@ -265,14 +264,14 @@ namespace TheBotUI.Core
         {
             Console.ForegroundColor
                     = ConsoleColor.DarkGreen;
-            Console.WriteLine("[WengaBOT] " + newPlayer.NickName + "joined the room!");
+            Console.WriteLine("[WengaBOT] " + newPlayer.GetDisplayName() + " joined the room!");
         }
 
         public void OnPlayerLeftRoom(Player otherPlayer) 
         {
             Console.ForegroundColor
                     = ConsoleColor.Red;
-            Console.WriteLine("[WengaBOT] " + otherPlayer.NickName + "left the room!");
+            Console.WriteLine("[WengaBOT] " + otherPlayer.GetDisplayName() + " left the room!");
         }
 
         public void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged) 
@@ -287,7 +286,7 @@ namespace TheBotUI.Core
         {
             Console.ForegroundColor
                     = ConsoleColor.Yellow;
-            Console.WriteLine("[WengaBOT] " + targetPlayer.NickName + "changed PhotonProperties!");
+            Console.WriteLine("[WengaBOT] " + targetPlayer.GetDisplayName() + " changed PhotonProperties");
             //New props:" + changedProps.ToStringFull())
         }
 
@@ -295,7 +294,7 @@ namespace TheBotUI.Core
         {
             Console.ForegroundColor
                     = ConsoleColor.Yellow;
-            Console.WriteLine("[WengaBOT] " + newMasterClient.NickName + "is the new Masterclient");
+            Console.WriteLine("[WengaBOT] " + newMasterClient.GetDisplayName() + " is the new Masterclient");
         }
 
         public void OnJoinedLobby() 
@@ -344,7 +343,7 @@ namespace TheBotUI.Core
         {
             Console.ForegroundColor
                     = ConsoleColor.Red;
-            Console.WriteLine($"[WengaBOT] Failed to create room! Code: {returnCode} Message: {(string.IsNullOrEmpty(message) ? "N/A" : message)}");
+            Console.WriteLine($"[WengaBOT] Bot failed to create room! Code: {returnCode} Message: {(string.IsNullOrEmpty(message) ? "N/A" : message)}");
         }
 
         public void OnJoinedRoom() 
@@ -358,14 +357,14 @@ namespace TheBotUI.Core
         {
             Console.ForegroundColor
                     = ConsoleColor.Red;
-            Console.WriteLine($"[WengaBOT] Failed to join room! Code: {returnCode} Message: {(string.IsNullOrEmpty(message) ? "N/A" : message)}");
+            Console.WriteLine($"[WengaBOT] Bot failed to join room! Code: {returnCode} Message: {(string.IsNullOrEmpty(message) ? "N/A" : message)}");
         }
 
         public void OnJoinRandomFailed(short returnCode, string message) 
         {
             Console.ForegroundColor
                     = ConsoleColor.Red;
-            Console.WriteLine("[WengaBOT] Failed to join random room!");
+            Console.WriteLine("[WengaBOT] Bot failed to join random room!");
         }
 
         public void OnLeftRoom() 

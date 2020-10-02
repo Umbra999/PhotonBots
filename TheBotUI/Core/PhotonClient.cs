@@ -152,7 +152,8 @@ namespace TheBotUI.Core
         }
 
         private void HandlerLoop() {
-            while (true) {
+            while (true) 
+            {
                 DoHandlerStuff();
                 Thread.Sleep(10);
             }
@@ -294,7 +295,7 @@ namespace TheBotUI.Core
         {
             Console.ForegroundColor
                     = ConsoleColor.Yellow;
-            Console.WriteLine("[WengaBOT] " + newMasterClient.GetDisplayName() + " is the new Masterclient");
+            Console.WriteLine("[WengaBOT] " + newMasterClient.GetDisplayName() + " [" + newMasterClient.ActorNumber + "]" + " is the new Masterclient");
         }
 
         public void OnJoinedLobby() 

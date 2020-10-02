@@ -29,33 +29,26 @@ namespace TheBotUI {
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.minimizeButton = new System.Windows.Forms.Button();
-            this.maximizeButton = new System.Windows.Forms.Button();
-            this.exitButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.exitButton = new System.Windows.Forms.Button();
             this.settingsButton = new System.Windows.Forms.Button();
-            this.botInstancesLabel = new System.Windows.Forms.Label();
-            this.playerlistLabel = new System.Windows.Forms.Label();
+            this.connectionStatusLabel = new System.Windows.Forms.Label();
+            this.connectionStatusVarLabel = new System.Windows.Forms.Label();
+            this.MasterVarLabel = new System.Windows.Forms.Label();
+            this.pingLabel = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pingVarLabel = new System.Windows.Forms.Label();
+            this.inRoomLabel = new System.Windows.Forms.Label();
+            this.inRoomVarLabel = new System.Windows.Forms.Label();
+            this.playersLabel = new System.Windows.Forms.Label();
+            this.playersVarLabel = new System.Windows.Forms.Label();
             this.infoLabel = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.loginViaTXTButton = new System.Windows.Forms.Button();
             this.loginToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.panel7 = new System.Windows.Forms.Panel();
-            this.connectionStatusLabel = new System.Windows.Forms.Label();
-            this.connectionStatusVarLabel = new System.Windows.Forms.Label();
-            this.statsLabel = new System.Windows.Forms.Label();
-            this.pingVarLabel = new System.Windows.Forms.Label();
-            this.pingLabel = new System.Windows.Forms.Label();
-            this.inRoomVarLabel = new System.Windows.Forms.Label();
-            this.inRoomLabel = new System.Windows.Forms.Label();
-            this.playersVarLabel = new System.Windows.Forms.Label();
-            this.playersLabel = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
             this.roomsLabel = new System.Windows.Forms.Label();
             this.worldAInstanceIDLabel = new System.Windows.Forms.Label();
             this.worldAInstanceIDTextBox = new System.Windows.Forms.TextBox();
@@ -71,8 +64,6 @@ namespace TheBotUI {
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.SearchButton = new System.Windows.Forms.Button();
             this.buttonTokenAuth = new System.Windows.Forms.Button();
@@ -82,33 +73,22 @@ namespace TheBotUI {
             this.BanExploit = new System.Windows.Forms.Button();
             this.UpdateRelease = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel11 = new System.Windows.Forms.Panel();
             this.SwitchAvi = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.MasterVarLabel = new System.Windows.Forms.Label();
+            this.JoinAll = new System.Windows.Forms.Button();
+            this.MasterDisconnect = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.playerList = new TheBotUI.CustomComponents.CustomListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.botInstancesList = new TheBotUI.CustomComponents.CustomListView();
             this.botInstances = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.JoinAll = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.panel1.Controls.Add(this.minimizeButton);
-            this.panel1.Controls.Add(this.maximizeButton);
-            this.panel1.Controls.Add(this.exitButton);
-            this.panel1.Location = new System.Drawing.Point(1539, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(168, 39);
-            this.panel1.TabIndex = 0;
             // 
             // minimizeButton
             // 
@@ -117,7 +97,7 @@ namespace TheBotUI {
             this.minimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.minimizeButton.ForeColor = System.Drawing.Color.White;
             this.minimizeButton.Image = global::TheBotUI.Properties.Resources.minimize;
-            this.minimizeButton.Location = new System.Drawing.Point(0, 0);
+            this.minimizeButton.Location = new System.Drawing.Point(1578, 9);
             this.minimizeButton.Margin = new System.Windows.Forms.Padding(0);
             this.minimizeButton.Name = "minimizeButton";
             this.minimizeButton.Size = new System.Drawing.Size(56, 39);
@@ -125,20 +105,30 @@ namespace TheBotUI {
             this.minimizeButton.UseVisualStyleBackColor = true;
             this.minimizeButton.Click += new System.EventHandler(this.Button3_Click);
             // 
-            // maximizeButton
+            // panel2
             // 
-            this.maximizeButton.FlatAppearance.BorderSize = 0;
-            this.maximizeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.maximizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.maximizeButton.ForeColor = System.Drawing.Color.White;
-            this.maximizeButton.Image = global::TheBotUI.Properties.Resources.maximize;
-            this.maximizeButton.Location = new System.Drawing.Point(56, 0);
-            this.maximizeButton.Margin = new System.Windows.Forms.Padding(0);
-            this.maximizeButton.Name = "maximizeButton";
-            this.maximizeButton.Size = new System.Drawing.Size(56, 39);
-            this.maximizeButton.TabIndex = 2;
-            this.maximizeButton.UseVisualStyleBackColor = true;
-            this.maximizeButton.Click += new System.EventHandler(this.Button2_Click);
+            this.panel2.Controls.Add(this.exitButton);
+            this.panel2.Controls.Add(this.minimizeButton);
+            this.panel2.Controls.Add(this.settingsButton);
+            this.panel2.Controls.Add(this.connectionStatusLabel);
+            this.panel2.Controls.Add(this.connectionStatusVarLabel);
+            this.panel2.Controls.Add(this.MasterVarLabel);
+            this.panel2.Controls.Add(this.pingLabel);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.pingVarLabel);
+            this.panel2.Controls.Add(this.inRoomLabel);
+            this.panel2.Controls.Add(this.inRoomVarLabel);
+            this.panel2.Controls.Add(this.playersLabel);
+            this.panel2.Controls.Add(this.playersVarLabel);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1708, 76);
+            this.panel2.TabIndex = 2;
+            this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
+            this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
+            this.panel2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseUp);
             // 
             // exitButton
             // 
@@ -148,29 +138,13 @@ namespace TheBotUI {
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitButton.ForeColor = System.Drawing.Color.White;
             this.exitButton.Image = global::TheBotUI.Properties.Resources.close;
-            this.exitButton.Location = new System.Drawing.Point(112, 0);
+            this.exitButton.Location = new System.Drawing.Point(1634, 9);
             this.exitButton.Margin = new System.Windows.Forms.Padding(0);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(56, 39);
             this.exitButton.TabIndex = 1;
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.Button1_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.settingsButton);
-            this.panel2.Controls.Add(this.botInstancesLabel);
-            this.panel2.Controls.Add(this.playerlistLabel);
-            this.panel2.Controls.Add(this.infoLabel);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1708, 79);
-            this.panel2.TabIndex = 2;
-            this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
-            this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
-            this.panel2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseUp);
             // 
             // settingsButton
             // 
@@ -179,43 +153,139 @@ namespace TheBotUI {
             this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.settingsButton.ForeColor = System.Drawing.Color.White;
             this.settingsButton.Image = global::TheBotUI.Properties.Resources.settings;
-            this.settingsButton.Location = new System.Drawing.Point(0, 0);
+            this.settingsButton.Location = new System.Drawing.Point(19, 18);
             this.settingsButton.Margin = new System.Windows.Forms.Padding(0);
             this.settingsButton.Name = "settingsButton";
             this.settingsButton.Size = new System.Drawing.Size(56, 39);
             this.settingsButton.TabIndex = 4;
             this.settingsButton.UseVisualStyleBackColor = true;
             // 
-            // botInstancesLabel
+            // connectionStatusLabel
             // 
-            this.botInstancesLabel.AutoSize = true;
-            this.botInstancesLabel.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botInstancesLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.botInstancesLabel.Location = new System.Drawing.Point(16, 52);
-            this.botInstancesLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.botInstancesLabel.Name = "botInstancesLabel";
-            this.botInstancesLabel.Size = new System.Drawing.Size(170, 29);
-            this.botInstancesLabel.TabIndex = 1;
-            this.botInstancesLabel.Text = "Bot Instances";
+            this.connectionStatusLabel.AutoSize = true;
+            this.connectionStatusLabel.Font = new System.Drawing.Font("Arial", 14F);
+            this.connectionStatusLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.connectionStatusLabel.Location = new System.Drawing.Point(153, 21);
+            this.connectionStatusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.connectionStatusLabel.Name = "connectionStatusLabel";
+            this.connectionStatusLabel.Size = new System.Drawing.Size(88, 27);
+            this.connectionStatusLabel.TabIndex = 17;
+            this.connectionStatusLabel.Text = "Status:";
             // 
-            // playerlistLabel
+            // connectionStatusVarLabel
             // 
-            this.playerlistLabel.AutoSize = true;
-            this.playerlistLabel.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerlistLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.playerlistLabel.Location = new System.Drawing.Point(299, 52);
-            this.playerlistLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.playerlistLabel.Name = "playerlistLabel";
-            this.playerlistLabel.Size = new System.Drawing.Size(119, 29);
-            this.playerlistLabel.TabIndex = 0;
-            this.playerlistLabel.Text = "Playerlist";
+            this.connectionStatusVarLabel.AutoSize = true;
+            this.connectionStatusVarLabel.Font = new System.Drawing.Font("Arial", 14F);
+            this.connectionStatusVarLabel.ForeColor = System.Drawing.Color.DarkRed;
+            this.connectionStatusVarLabel.Location = new System.Drawing.Point(249, 21);
+            this.connectionStatusVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.connectionStatusVarLabel.Name = "connectionStatusVarLabel";
+            this.connectionStatusVarLabel.Size = new System.Drawing.Size(51, 27);
+            this.connectionStatusVarLabel.TabIndex = 18;
+            this.connectionStatusVarLabel.Text = "N/A";
+            // 
+            // MasterVarLabel
+            // 
+            this.MasterVarLabel.AutoSize = true;
+            this.MasterVarLabel.Font = new System.Drawing.Font("Arial", 14F);
+            this.MasterVarLabel.ForeColor = System.Drawing.Color.DarkRed;
+            this.MasterVarLabel.Location = new System.Drawing.Point(1214, 21);
+            this.MasterVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.MasterVarLabel.Name = "MasterVarLabel";
+            this.MasterVarLabel.Size = new System.Drawing.Size(51, 27);
+            this.MasterVarLabel.TabIndex = 62;
+            this.MasterVarLabel.Text = "N/A";
+            // 
+            // pingLabel
+            // 
+            this.pingLabel.AutoSize = true;
+            this.pingLabel.Font = new System.Drawing.Font("Arial", 14F);
+            this.pingLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pingLabel.Location = new System.Drawing.Point(418, 21);
+            this.pingLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.pingLabel.Name = "pingLabel";
+            this.pingLabel.Size = new System.Drawing.Size(68, 27);
+            this.pingLabel.TabIndex = 19;
+            this.pingLabel.Text = "Ping:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 14F);
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.Location = new System.Drawing.Point(1091, 21);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(114, 27);
+            this.label3.TabIndex = 61;
+            this.label3.Text = "MasterID:";
+            // 
+            // pingVarLabel
+            // 
+            this.pingVarLabel.AutoSize = true;
+            this.pingVarLabel.Font = new System.Drawing.Font("Arial", 14F);
+            this.pingVarLabel.ForeColor = System.Drawing.Color.DarkRed;
+            this.pingVarLabel.Location = new System.Drawing.Point(503, 21);
+            this.pingVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.pingVarLabel.Name = "pingVarLabel";
+            this.pingVarLabel.Size = new System.Drawing.Size(51, 27);
+            this.pingVarLabel.TabIndex = 20;
+            this.pingVarLabel.Text = "N/A";
+            // 
+            // inRoomLabel
+            // 
+            this.inRoomLabel.AutoSize = true;
+            this.inRoomLabel.Font = new System.Drawing.Font("Arial", 14F);
+            this.inRoomLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.inRoomLabel.Location = new System.Drawing.Point(613, 21);
+            this.inRoomLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.inRoomLabel.Name = "inRoomLabel";
+            this.inRoomLabel.Size = new System.Drawing.Size(109, 27);
+            this.inRoomLabel.TabIndex = 21;
+            this.inRoomLabel.Text = "In Room:";
+            // 
+            // inRoomVarLabel
+            // 
+            this.inRoomVarLabel.AutoSize = true;
+            this.inRoomVarLabel.Font = new System.Drawing.Font("Arial", 14F);
+            this.inRoomVarLabel.ForeColor = System.Drawing.Color.DarkRed;
+            this.inRoomVarLabel.Location = new System.Drawing.Point(730, 21);
+            this.inRoomVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.inRoomVarLabel.Name = "inRoomVarLabel";
+            this.inRoomVarLabel.Size = new System.Drawing.Size(51, 27);
+            this.inRoomVarLabel.TabIndex = 22;
+            this.inRoomVarLabel.Text = "N/A";
+            // 
+            // playersLabel
+            // 
+            this.playersLabel.AutoSize = true;
+            this.playersLabel.Font = new System.Drawing.Font("Arial", 14F);
+            this.playersLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.playersLabel.Location = new System.Drawing.Point(859, 21);
+            this.playersLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.playersLabel.Name = "playersLabel";
+            this.playersLabel.Size = new System.Drawing.Size(99, 27);
+            this.playersLabel.TabIndex = 23;
+            this.playersLabel.Text = "Players:";
+            // 
+            // playersVarLabel
+            // 
+            this.playersVarLabel.AutoSize = true;
+            this.playersVarLabel.Font = new System.Drawing.Font("Arial", 14F);
+            this.playersVarLabel.ForeColor = System.Drawing.Color.DarkRed;
+            this.playersVarLabel.Location = new System.Drawing.Point(966, 21);
+            this.playersVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.playersVarLabel.Name = "playersVarLabel";
+            this.playersVarLabel.Size = new System.Drawing.Size(51, 27);
+            this.playersVarLabel.TabIndex = 24;
+            this.playersVarLabel.Text = "N/A";
             // 
             // infoLabel
             // 
             this.infoLabel.AutoSize = true;
             this.infoLabel.Font = new System.Drawing.Font("Arial", 12F);
-            this.infoLabel.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.infoLabel.Location = new System.Drawing.Point(1676, 53);
+            this.infoLabel.ForeColor = System.Drawing.Color.Lime;
+            this.infoLabel.Location = new System.Drawing.Point(1659, 84);
             this.infoLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.infoLabel.Name = "infoLabel";
             this.infoLabel.Size = new System.Drawing.Size(21, 23);
@@ -225,49 +295,21 @@ namespace TheBotUI {
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.panel4.Location = new System.Drawing.Point(579, 47);
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.panel4.Location = new System.Drawing.Point(562, 84);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(5, 832);
+            this.panel4.Size = new System.Drawing.Size(10, 811);
             this.panel4.TabIndex = 4;
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
-            this.panel8.Location = new System.Drawing.Point(597, 186);
-            this.panel8.Margin = new System.Windows.Forms.Padding(4);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1100, 2);
-            this.panel8.TabIndex = 7;
-            this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.panel8_Paint);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.panel3.Location = new System.Drawing.Point(285, 46);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(5, 833);
-            this.panel3.TabIndex = 3;
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.panel5.Location = new System.Drawing.Point(583, 684);
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.panel5.Location = new System.Drawing.Point(578, 733);
             this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1124, 5);
             this.panel5.TabIndex = 5;
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.panel6.Location = new System.Drawing.Point(11, 44);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1693, 5);
-            this.panel6.TabIndex = 6;
             // 
             // loginViaTXTButton
             // 
@@ -277,7 +319,7 @@ namespace TheBotUI {
             this.loginViaTXTButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.loginViaTXTButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.loginViaTXTButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.loginViaTXTButton.Location = new System.Drawing.Point(925, 96);
+            this.loginViaTXTButton.Location = new System.Drawing.Point(947, 95);
             this.loginViaTXTButton.Margin = new System.Windows.Forms.Padding(4);
             this.loginViaTXTButton.Name = "loginViaTXTButton";
             this.loginViaTXTButton.Size = new System.Drawing.Size(163, 32);
@@ -288,136 +330,19 @@ namespace TheBotUI {
             // 
             // panel7
             // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
             this.panel7.Location = new System.Drawing.Point(583, 148);
             this.panel7.Margin = new System.Windows.Forms.Padding(4);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(1124, 5);
             this.panel7.TabIndex = 6;
             // 
-            // connectionStatusLabel
-            // 
-            this.connectionStatusLabel.AutoSize = true;
-            this.connectionStatusLabel.Font = new System.Drawing.Font("Arial", 14F);
-            this.connectionStatusLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.connectionStatusLabel.Location = new System.Drawing.Point(606, 192);
-            this.connectionStatusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.connectionStatusLabel.Name = "connectionStatusLabel";
-            this.connectionStatusLabel.Size = new System.Drawing.Size(217, 27);
-            this.connectionStatusLabel.TabIndex = 17;
-            this.connectionStatusLabel.Text = "Connection Status:";
-            // 
-            // connectionStatusVarLabel
-            // 
-            this.connectionStatusVarLabel.AutoSize = true;
-            this.connectionStatusVarLabel.Font = new System.Drawing.Font("Arial", 14F);
-            this.connectionStatusVarLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.connectionStatusVarLabel.Location = new System.Drawing.Point(831, 192);
-            this.connectionStatusVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.connectionStatusVarLabel.Name = "connectionStatusVarLabel";
-            this.connectionStatusVarLabel.Size = new System.Drawing.Size(51, 27);
-            this.connectionStatusVarLabel.TabIndex = 18;
-            this.connectionStatusVarLabel.Text = "N/A";
-            // 
-            // statsLabel
-            // 
-            this.statsLabel.AutoSize = true;
-            this.statsLabel.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statsLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.statsLabel.Location = new System.Drawing.Point(593, 156);
-            this.statsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.statsLabel.Name = "statsLabel";
-            this.statsLabel.Size = new System.Drawing.Size(71, 29);
-            this.statsLabel.TabIndex = 5;
-            this.statsLabel.Text = "Stats";
-            // 
-            // pingVarLabel
-            // 
-            this.pingVarLabel.AutoSize = true;
-            this.pingVarLabel.Font = new System.Drawing.Font("Arial", 14F);
-            this.pingVarLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pingVarLabel.Location = new System.Drawing.Point(1080, 192);
-            this.pingVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.pingVarLabel.Name = "pingVarLabel";
-            this.pingVarLabel.Size = new System.Drawing.Size(51, 27);
-            this.pingVarLabel.TabIndex = 20;
-            this.pingVarLabel.Text = "N/A";
-            // 
-            // pingLabel
-            // 
-            this.pingLabel.AutoSize = true;
-            this.pingLabel.Font = new System.Drawing.Font("Arial", 14F);
-            this.pingLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pingLabel.Location = new System.Drawing.Point(1004, 192);
-            this.pingLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.pingLabel.Name = "pingLabel";
-            this.pingLabel.Size = new System.Drawing.Size(68, 27);
-            this.pingLabel.TabIndex = 19;
-            this.pingLabel.Text = "Ping:";
-            // 
-            // inRoomVarLabel
-            // 
-            this.inRoomVarLabel.AutoSize = true;
-            this.inRoomVarLabel.Font = new System.Drawing.Font("Arial", 14F);
-            this.inRoomVarLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.inRoomVarLabel.Location = new System.Drawing.Point(1272, 192);
-            this.inRoomVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.inRoomVarLabel.Name = "inRoomVarLabel";
-            this.inRoomVarLabel.Size = new System.Drawing.Size(51, 27);
-            this.inRoomVarLabel.TabIndex = 22;
-            this.inRoomVarLabel.Text = "N/A";
-            // 
-            // inRoomLabel
-            // 
-            this.inRoomLabel.AutoSize = true;
-            this.inRoomLabel.Font = new System.Drawing.Font("Arial", 14F);
-            this.inRoomLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.inRoomLabel.Location = new System.Drawing.Point(1155, 192);
-            this.inRoomLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.inRoomLabel.Name = "inRoomLabel";
-            this.inRoomLabel.Size = new System.Drawing.Size(109, 27);
-            this.inRoomLabel.TabIndex = 21;
-            this.inRoomLabel.Text = "In Room:";
-            // 
-            // playersVarLabel
-            // 
-            this.playersVarLabel.AutoSize = true;
-            this.playersVarLabel.Font = new System.Drawing.Font("Arial", 14F);
-            this.playersVarLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.playersVarLabel.Location = new System.Drawing.Point(1438, 192);
-            this.playersVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.playersVarLabel.Name = "playersVarLabel";
-            this.playersVarLabel.Size = new System.Drawing.Size(51, 27);
-            this.playersVarLabel.TabIndex = 24;
-            this.playersVarLabel.Text = "N/A";
-            // 
-            // playersLabel
-            // 
-            this.playersLabel.AutoSize = true;
-            this.playersLabel.Font = new System.Drawing.Font("Arial", 14F);
-            this.playersLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.playersLabel.Location = new System.Drawing.Point(1331, 192);
-            this.playersLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.playersLabel.Name = "playersLabel";
-            this.playersLabel.Size = new System.Drawing.Size(99, 27);
-            this.playersLabel.TabIndex = 23;
-            this.playersLabel.Text = "Players:";
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
-            this.panel9.Location = new System.Drawing.Point(597, 266);
-            this.panel9.Margin = new System.Windows.Forms.Padding(4);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1100, 2);
-            this.panel9.TabIndex = 26;
-            // 
             // roomsLabel
             // 
             this.roomsLabel.AutoSize = true;
             this.roomsLabel.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.roomsLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.roomsLabel.Location = new System.Drawing.Point(593, 236);
+            this.roomsLabel.Location = new System.Drawing.Point(1012, 157);
             this.roomsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.roomsLabel.Name = "roomsLabel";
             this.roomsLabel.Size = new System.Drawing.Size(175, 29);
@@ -429,7 +354,7 @@ namespace TheBotUI {
             this.worldAInstanceIDLabel.AutoSize = true;
             this.worldAInstanceIDLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.worldAInstanceIDLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.worldAInstanceIDLabel.Location = new System.Drawing.Point(596, 274);
+            this.worldAInstanceIDLabel.Location = new System.Drawing.Point(585, 234);
             this.worldAInstanceIDLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.worldAInstanceIDLabel.Name = "worldAInstanceIDLabel";
             this.worldAInstanceIDLabel.Size = new System.Drawing.Size(234, 27);
@@ -441,7 +366,7 @@ namespace TheBotUI {
             this.worldAInstanceIDTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.worldAInstanceIDTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.worldAInstanceIDTextBox.Font = new System.Drawing.Font("Arial", 12F);
-            this.worldAInstanceIDTextBox.Location = new System.Drawing.Point(852, 272);
+            this.worldAInstanceIDTextBox.Location = new System.Drawing.Point(835, 234);
             this.worldAInstanceIDTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.worldAInstanceIDTextBox.Name = "worldAInstanceIDTextBox";
             this.worldAInstanceIDTextBox.Size = new System.Drawing.Size(838, 30);
@@ -455,10 +380,10 @@ namespace TheBotUI {
             this.joinRoomButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.joinRoomButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.joinRoomButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.joinRoomButton.Location = new System.Drawing.Point(601, 310);
+            this.joinRoomButton.Location = new System.Drawing.Point(835, 194);
             this.joinRoomButton.Margin = new System.Windows.Forms.Padding(4);
             this.joinRoomButton.Name = "joinRoomButton";
-            this.joinRoomButton.Size = new System.Drawing.Size(281, 32);
+            this.joinRoomButton.Size = new System.Drawing.Size(196, 32);
             this.joinRoomButton.TabIndex = 29;
             this.joinRoomButton.Text = "Join";
             this.joinRoomButton.UseVisualStyleBackColor = false;
@@ -472,10 +397,10 @@ namespace TheBotUI {
             this.leaveRoomButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.leaveRoomButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.leaveRoomButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.leaveRoomButton.Location = new System.Drawing.Point(891, 311);
+            this.leaveRoomButton.Location = new System.Drawing.Point(1039, 194);
             this.leaveRoomButton.Margin = new System.Windows.Forms.Padding(4);
             this.leaveRoomButton.Name = "leaveRoomButton";
-            this.leaveRoomButton.Size = new System.Drawing.Size(281, 32);
+            this.leaveRoomButton.Size = new System.Drawing.Size(239, 32);
             this.leaveRoomButton.TabIndex = 30;
             this.leaveRoomButton.Text = "Leave";
             this.leaveRoomButton.UseVisualStyleBackColor = false;
@@ -489,10 +414,10 @@ namespace TheBotUI {
             this.joinLastRoomButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.joinLastRoomButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.joinLastRoomButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.joinLastRoomButton.Location = new System.Drawing.Point(1180, 311);
+            this.joinLastRoomButton.Location = new System.Drawing.Point(1286, 194);
             this.joinLastRoomButton.Margin = new System.Windows.Forms.Padding(4);
             this.joinLastRoomButton.Name = "joinLastRoomButton";
-            this.joinLastRoomButton.Size = new System.Drawing.Size(283, 32);
+            this.joinLastRoomButton.Size = new System.Drawing.Size(187, 32);
             this.joinLastRoomButton.TabIndex = 31;
             this.joinLastRoomButton.Text = "Connect and Join";
             this.joinLastRoomButton.UseVisualStyleBackColor = false;
@@ -500,8 +425,8 @@ namespace TheBotUI {
             // 
             // panel10
             // 
-            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
-            this.panel10.Location = new System.Drawing.Point(597, 385);
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.panel10.Location = new System.Drawing.Point(580, 877);
             this.panel10.Margin = new System.Windows.Forms.Padding(4);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(1100, 2);
@@ -512,12 +437,12 @@ namespace TheBotUI {
             this.inRoomActions.AutoSize = true;
             this.inRoomActions.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inRoomActions.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.inRoomActions.Location = new System.Drawing.Point(593, 356);
+            this.inRoomActions.Location = new System.Drawing.Point(1012, 282);
             this.inRoomActions.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.inRoomActions.Name = "inRoomActions";
-            this.inRoomActions.Size = new System.Drawing.Size(204, 29);
+            this.inRoomActions.Size = new System.Drawing.Size(191, 29);
             this.inRoomActions.TabIndex = 32;
-            this.inRoomActions.Text = "In Room Actions";
+            this.inRoomActions.Text = "Photon Actions";
             // 
             // instantiateButton
             // 
@@ -527,7 +452,7 @@ namespace TheBotUI {
             this.instantiateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.instantiateButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.instantiateButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.instantiateButton.Location = new System.Drawing.Point(601, 395);
+            this.instantiateButton.Location = new System.Drawing.Point(580, 315);
             this.instantiateButton.Margin = new System.Windows.Forms.Padding(4);
             this.instantiateButton.Name = "instantiateButton";
             this.instantiateButton.Size = new System.Drawing.Size(532, 32);
@@ -544,12 +469,12 @@ namespace TheBotUI {
             this.instantiateInvisButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.instantiateInvisButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.instantiateInvisButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.instantiateInvisButton.Location = new System.Drawing.Point(1141, 395);
+            this.instantiateInvisButton.Location = new System.Drawing.Point(580, 568);
             this.instantiateInvisButton.Margin = new System.Windows.Forms.Padding(4);
             this.instantiateInvisButton.Name = "instantiateInvisButton";
-            this.instantiateInvisButton.Size = new System.Drawing.Size(549, 32);
+            this.instantiateInvisButton.Size = new System.Drawing.Size(530, 32);
             this.instantiateInvisButton.TabIndex = 35;
-            this.instantiateInvisButton.Text = "Desync";
+            this.instantiateInvisButton.Text = "Desync Lobby";
             this.instantiateInvisButton.UseVisualStyleBackColor = false;
             this.instantiateInvisButton.Click += new System.EventHandler(this.InstantiateInvisButton_Click);
             // 
@@ -561,7 +486,7 @@ namespace TheBotUI {
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(601, 434);
+            this.button1.Location = new System.Drawing.Point(1123, 315);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(532, 32);
@@ -578,10 +503,10 @@ namespace TheBotUI {
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(1141, 434);
+            this.button2.Location = new System.Drawing.Point(590, 815);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(549, 32);
+            this.button2.Size = new System.Drawing.Size(194, 32);
             this.button2.TabIndex = 39;
             this.button2.Text = "ClearList";
             this.button2.UseVisualStyleBackColor = false;
@@ -595,7 +520,7 @@ namespace TheBotUI {
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(601, 474);
+            this.button3.Location = new System.Drawing.Point(580, 355);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(532, 32);
@@ -612,10 +537,10 @@ namespace TheBotUI {
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button4.Location = new System.Drawing.Point(1141, 474);
+            this.button4.Location = new System.Drawing.Point(1123, 435);
             this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(549, 32);
+            this.button4.Size = new System.Drawing.Size(533, 32);
             this.button4.TabIndex = 41;
             this.button4.Text = "Disconnect All";
             this.button4.UseVisualStyleBackColor = false;
@@ -629,37 +554,14 @@ namespace TheBotUI {
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button5.Location = new System.Drawing.Point(1141, 594);
+            this.button5.Location = new System.Drawing.Point(580, 608);
             this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(549, 31);
+            this.button5.Size = new System.Drawing.Size(530, 31);
             this.button5.TabIndex = 42;
-            this.button5.Text = "Uspeak";
+            this.button5.Text = "Uspeak (Outdated)";
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Arial", 12F);
-            this.textBox1.Location = new System.Drawing.Point(639, 114);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(173, 30);
-            this.textBox1.TabIndex = 43;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 14F);
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(613, 84);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(217, 27);
-            this.label1.TabIndex = 44;
-            this.label1.Text = "Connection Status:";
             // 
             // button6
             // 
@@ -669,12 +571,12 @@ namespace TheBotUI {
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.button6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button6.Location = new System.Drawing.Point(1467, 311);
+            this.button6.Location = new System.Drawing.Point(1481, 194);
             this.button6.Margin = new System.Windows.Forms.Padding(4);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(223, 32);
+            this.button6.Size = new System.Drawing.Size(192, 32);
             this.button6.TabIndex = 45;
-            this.button6.Text = "Check";
+            this.button6.Text = "Log";
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
@@ -686,7 +588,7 @@ namespace TheBotUI {
             this.SearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SearchButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.SearchButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.SearchButton.Location = new System.Drawing.Point(601, 553);
+            this.SearchButton.Location = new System.Drawing.Point(580, 395);
             this.SearchButton.Margin = new System.Windows.Forms.Padding(4);
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(532, 32);
@@ -703,7 +605,7 @@ namespace TheBotUI {
             this.buttonTokenAuth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTokenAuth.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.buttonTokenAuth.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonTokenAuth.Location = new System.Drawing.Point(1112, 96);
+            this.buttonTokenAuth.Location = new System.Drawing.Point(1123, 95);
             this.buttonTokenAuth.Margin = new System.Windows.Forms.Padding(4);
             this.buttonTokenAuth.Name = "buttonTokenAuth";
             this.buttonTokenAuth.Size = new System.Drawing.Size(169, 32);
@@ -720,7 +622,7 @@ namespace TheBotUI {
             this.CrashSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CrashSearch.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.CrashSearch.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.CrashSearch.Location = new System.Drawing.Point(600, 593);
+            this.CrashSearch.Location = new System.Drawing.Point(1123, 395);
             this.CrashSearch.Margin = new System.Windows.Forms.Padding(4);
             this.CrashSearch.Name = "CrashSearch";
             this.CrashSearch.Size = new System.Drawing.Size(533, 32);
@@ -737,7 +639,7 @@ namespace TheBotUI {
             this.DerankButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DerankButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.DerankButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.DerankButton.Location = new System.Drawing.Point(1141, 514);
+            this.DerankButton.Location = new System.Drawing.Point(1123, 527);
             this.DerankButton.Margin = new System.Windows.Forms.Padding(4);
             this.DerankButton.Name = "DerankButton";
             this.DerankButton.Size = new System.Drawing.Size(296, 32);
@@ -750,10 +652,10 @@ namespace TheBotUI {
             // 
             this.DerankInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DerankInput.Font = new System.Drawing.Font("Arial", 12F);
-            this.DerankInput.Location = new System.Drawing.Point(1443, 513);
+            this.DerankInput.Location = new System.Drawing.Point(1433, 527);
             this.DerankInput.Margin = new System.Windows.Forms.Padding(4);
             this.DerankInput.Name = "DerankInput";
-            this.DerankInput.Size = new System.Drawing.Size(247, 30);
+            this.DerankInput.Size = new System.Drawing.Size(223, 30);
             this.DerankInput.TabIndex = 51;
             this.DerankInput.TextChanged += new System.EventHandler(this.DerankInput_TextChanged);
             // 
@@ -765,10 +667,10 @@ namespace TheBotUI {
             this.BanExploit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BanExploit.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.BanExploit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.BanExploit.Location = new System.Drawing.Point(601, 633);
+            this.BanExploit.Location = new System.Drawing.Point(1122, 606);
             this.BanExploit.Margin = new System.Windows.Forms.Padding(4);
             this.BanExploit.Name = "BanExploit";
-            this.BanExploit.Size = new System.Drawing.Size(532, 32);
+            this.BanExploit.Size = new System.Drawing.Size(534, 32);
             this.BanExploit.TabIndex = 52;
             this.BanExploit.Text = "SelfBan Exploit";
             this.BanExploit.UseVisualStyleBackColor = false;
@@ -782,7 +684,7 @@ namespace TheBotUI {
             this.UpdateRelease.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UpdateRelease.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.UpdateRelease.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.UpdateRelease.Location = new System.Drawing.Point(597, 734);
+            this.UpdateRelease.Location = new System.Drawing.Point(590, 775);
             this.UpdateRelease.Margin = new System.Windows.Forms.Padding(4);
             this.UpdateRelease.Name = "UpdateRelease";
             this.UpdateRelease.Size = new System.Drawing.Size(196, 32);
@@ -796,21 +698,12 @@ namespace TheBotUI {
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(592, 693);
+            this.label2.Location = new System.Drawing.Point(1091, 742);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 29);
             this.label2.TabIndex = 55;
             this.label2.Text = "Misc";
-            // 
-            // panel11
-            // 
-            this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
-            this.panel11.Location = new System.Drawing.Point(597, 724);
-            this.panel11.Margin = new System.Windows.Forms.Padding(4);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(1100, 2);
-            this.panel11.TabIndex = 56;
             // 
             // SwitchAvi
             // 
@@ -820,7 +713,7 @@ namespace TheBotUI {
             this.SwitchAvi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SwitchAvi.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.SwitchAvi.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.SwitchAvi.Location = new System.Drawing.Point(1141, 554);
+            this.SwitchAvi.Location = new System.Drawing.Point(1123, 567);
             this.SwitchAvi.Margin = new System.Windows.Forms.Padding(4);
             this.SwitchAvi.Name = "SwitchAvi";
             this.SwitchAvi.Size = new System.Drawing.Size(296, 32);
@@ -833,10 +726,10 @@ namespace TheBotUI {
             // 
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox2.Font = new System.Drawing.Font("Arial", 12F);
-            this.textBox2.Location = new System.Drawing.Point(1443, 553);
+            this.textBox2.Location = new System.Drawing.Point(1433, 568);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(247, 30);
+            this.textBox2.Size = new System.Drawing.Size(223, 30);
             this.textBox2.TabIndex = 59;
             // 
             // checkBox1
@@ -844,7 +737,7 @@ namespace TheBotUI {
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.12F);
             this.checkBox1.ForeColor = System.Drawing.Color.LavenderBlush;
-            this.checkBox1.Location = new System.Drawing.Point(1588, 350);
+            this.checkBox1.Location = new System.Drawing.Point(590, 194);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(102, 29);
             this.checkBox1.TabIndex = 60;
@@ -852,33 +745,73 @@ namespace TheBotUI {
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // label3
+            // JoinAll
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 14F);
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(1490, 192);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 27);
-            this.label3.TabIndex = 61;
-            this.label3.Text = "MasterID:";
+            this.JoinAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.JoinAll.FlatAppearance.BorderSize = 0;
+            this.JoinAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.JoinAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.JoinAll.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.JoinAll.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.JoinAll.Location = new System.Drawing.Point(1123, 355);
+            this.JoinAll.Margin = new System.Windows.Forms.Padding(4);
+            this.JoinAll.Name = "JoinAll";
+            this.JoinAll.Size = new System.Drawing.Size(532, 32);
+            this.JoinAll.TabIndex = 63;
+            this.JoinAll.Text = "Connect and Join All";
+            this.JoinAll.UseVisualStyleBackColor = false;
+            this.JoinAll.Click += new System.EventHandler(this.JoinAll_Click_1);
             // 
-            // MasterVarLabel
+            // MasterDisconnect
             // 
-            this.MasterVarLabel.AutoSize = true;
-            this.MasterVarLabel.Font = new System.Drawing.Font("Arial", 14F);
-            this.MasterVarLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.MasterVarLabel.Location = new System.Drawing.Point(1612, 192);
-            this.MasterVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.MasterVarLabel.Name = "MasterVarLabel";
-            this.MasterVarLabel.Size = new System.Drawing.Size(51, 27);
-            this.MasterVarLabel.TabIndex = 62;
-            this.MasterVarLabel.Text = "N/A";
+            this.MasterDisconnect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.MasterDisconnect.FlatAppearance.BorderSize = 0;
+            this.MasterDisconnect.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.MasterDisconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MasterDisconnect.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.MasterDisconnect.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.MasterDisconnect.Location = new System.Drawing.Point(580, 527);
+            this.MasterDisconnect.Margin = new System.Windows.Forms.Padding(4);
+            this.MasterDisconnect.Name = "MasterDisconnect";
+            this.MasterDisconnect.Size = new System.Drawing.Size(532, 32);
+            this.MasterDisconnect.TabIndex = 64;
+            this.MasterDisconnect.Text = "Desync Masterclient";
+            this.MasterDisconnect.UseVisualStyleBackColor = false;
+            this.MasterDisconnect.Click += new System.EventHandler(this.MasterDisconnect_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label4.Location = new System.Drawing.Point(1073, 491);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(107, 29);
+            this.label4.TabIndex = 65;
+            this.label4.Text = "Exploits";
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.panel3.Location = new System.Drawing.Point(583, 272);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1124, 5);
+            this.panel3.TabIndex = 7;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.panel1.Location = new System.Drawing.Point(584, 482);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1124, 5);
+            this.panel1.TabIndex = 8;
             // 
             // playerList
             // 
-            this.playerList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.playerList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
             this.playerList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.playerList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
@@ -888,7 +821,7 @@ namespace TheBotUI {
             this.playerList.GridLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.playerList.GridLines = true;
             this.playerList.HideSelection = false;
-            this.playerList.Location = new System.Drawing.Point(299, 86);
+            this.playerList.Location = new System.Drawing.Point(288, 84);
             this.playerList.Margin = new System.Windows.Forms.Padding(4);
             this.playerList.Name = "playerList";
             this.playerList.Size = new System.Drawing.Size(266, 785);
@@ -899,16 +832,16 @@ namespace TheBotUI {
             // columnHeader1
             // 
             this.columnHeader1.Text = "Player";
-            this.columnHeader1.Width = 155;
+            this.columnHeader1.Width = 160;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "ID";
-            this.columnHeader2.Width = 45;
+            this.columnHeader2.Width = 102;
             // 
             // botInstancesList
             // 
-            this.botInstancesList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.botInstancesList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
             this.botInstancesList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.botInstancesList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.botInstances});
@@ -918,10 +851,10 @@ namespace TheBotUI {
             this.botInstancesList.GridLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.botInstancesList.GridLines = true;
             this.botInstancesList.HideSelection = false;
-            this.botInstancesList.Location = new System.Drawing.Point(11, 86);
+            this.botInstancesList.Location = new System.Drawing.Point(9, 84);
             this.botInstancesList.Margin = new System.Windows.Forms.Padding(0);
             this.botInstancesList.Name = "botInstancesList";
-            this.botInstancesList.Size = new System.Drawing.Size(266, 785);
+            this.botInstancesList.Size = new System.Drawing.Size(257, 785);
             this.botInstancesList.TabIndex = 6;
             this.botInstancesList.UseCompatibleStateImageBehavior = false;
             this.botInstancesList.View = System.Windows.Forms.View.Details;
@@ -930,49 +863,46 @@ namespace TheBotUI {
             // botInstances
             // 
             this.botInstances.Text = "Bot Instance";
-            this.botInstances.Width = 197;
+            this.botInstances.Width = 204;
             // 
-            // JoinAll
+            // label1
             // 
-            this.JoinAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
-            this.JoinAll.FlatAppearance.BorderSize = 0;
-            this.JoinAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.JoinAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.JoinAll.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.JoinAll.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.JoinAll.Location = new System.Drawing.Point(601, 514);
-            this.JoinAll.Margin = new System.Windows.Forms.Padding(4);
-            this.JoinAll.Name = "JoinAll";
-            this.JoinAll.Size = new System.Drawing.Size(532, 32);
-            this.JoinAll.TabIndex = 63;
-            this.JoinAll.Text = "Connect and Join All";
-            this.JoinAll.UseVisualStyleBackColor = false;
-            this.JoinAll.Click += new System.EventHandler(this.JoinAll_Click_1);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(1488, 846);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(202, 23);
+            this.label1.TabIndex = 66;
+            this.label1.Text = "Photonbots by Wenga";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(36)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
             this.ClientSize = new System.Drawing.Size(1708, 886);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.MasterDisconnect);
+            this.Controls.Add(this.infoLabel);
             this.Controls.Add(this.JoinAll);
-            this.Controls.Add(this.MasterVarLabel);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.buttonTokenAuth);
+            this.Controls.Add(this.loginViaTXTButton);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.SwitchAvi);
-            this.Controls.Add(this.panel11);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.UpdateRelease);
             this.Controls.Add(this.BanExploit);
             this.Controls.Add(this.DerankInput);
             this.Controls.Add(this.DerankButton);
             this.Controls.Add(this.CrashSearch);
-            this.Controls.Add(this.buttonTokenAuth);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -987,34 +917,18 @@ namespace TheBotUI {
             this.Controls.Add(this.joinRoomButton);
             this.Controls.Add(this.worldAInstanceIDLabel);
             this.Controls.Add(this.worldAInstanceIDTextBox);
-            this.Controls.Add(this.panel9);
             this.Controls.Add(this.roomsLabel);
-            this.Controls.Add(this.playersVarLabel);
-            this.Controls.Add(this.playersLabel);
-            this.Controls.Add(this.inRoomVarLabel);
-            this.Controls.Add(this.inRoomLabel);
-            this.Controls.Add(this.pingVarLabel);
-            this.Controls.Add(this.pingLabel);
-            this.Controls.Add(this.panel8);
-            this.Controls.Add(this.statsLabel);
-            this.Controls.Add(this.connectionStatusVarLabel);
-            this.Controls.Add(this.connectionStatusLabel);
             this.Controls.Add(this.panel7);
-            this.Controls.Add(this.loginViaTXTButton);
-            this.Controls.Add(this.panel6);
             this.Controls.Add(this.playerList);
             this.Controls.Add(this.botInstancesList);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "TheBot UI";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -1023,15 +937,8 @@ namespace TheBotUI {
         }
 
         #endregion
-
-        public Panel panel1;
-        public Button exitButton;
         public Button minimizeButton;
-        public Button maximizeButton;
         public Panel panel2;
-        public Panel panel3;
-        public Label botInstancesLabel;
-        public Label playerlistLabel;
         public Panel panel4;
         public Panel panel5;
         public ColumnHeader botInstances;
@@ -1039,23 +946,18 @@ namespace TheBotUI {
         public ColumnHeader columnHeader2;
         public CustomListView botInstancesList;
         public CustomListView playerList;
-        public Button settingsButton;
-        public Panel panel6;
         public Button loginViaTXTButton;
         public Label infoLabel;
         public ToolTip loginToolTip;
         public Panel panel7;
         public Label connectionStatusLabel;
         public Label connectionStatusVarLabel;
-        public Panel panel8;
-        public Label statsLabel;
         public Label pingVarLabel;
         public Label pingLabel;
         public Label inRoomVarLabel;
         public Label inRoomLabel;
         public Label playersVarLabel;
         public Label playersLabel;
-        public Panel panel9;
         public Label roomsLabel;
         public Label worldAInstanceIDLabel;
         public TextBox worldAInstanceIDTextBox;
@@ -1071,8 +973,6 @@ namespace TheBotUI {
         public Button button3;
         public Button button4;
         public Button button5;
-        public TextBox textBox1;
-        public Label label1;
         public Button button6;
         public Button SearchButton;
         public Button buttonTokenAuth;
@@ -1082,13 +982,19 @@ namespace TheBotUI {
         public Button BanExploit;
         public Button UpdateRelease;
         public Label label2;
-        public Panel panel11;
         public Button SwitchAvi;
         public TextBox textBox2;
         private CheckBox checkBox1;
         public Label label3;
         public Label MasterVarLabel;
         public Button JoinAll;
+        public Button MasterDisconnect;
+        public Button exitButton;
+        public Button settingsButton;
+        public Label label4;
+        public Panel panel3;
+        public Panel panel1;
+        public Label label1;
     }
 }
 

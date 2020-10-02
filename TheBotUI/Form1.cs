@@ -101,7 +101,9 @@ namespace TheBotUI {
                                 connectionStatusVarLabel.Text = selectedBot.PhotonClient.IsConnectedAndReady ? "Connected" : "Not connected";
                                 pingVarLabel.Text = selectedBot.PhotonClient.LoadBalancingPeer.RoundTripTime.ToString();
                                 inRoomVarLabel.Text = selectedBot.PhotonClient.InRoom ? "Yes" : "No";
-                                playersVarLabel.Text = selectedBot.PhotonClient.CurrentRoom != null && selectedBot.PhotonClient.CurrentRoom.PlayerCount > 0 ? selectedBot.PhotonClient.CurrentRoom.PlayerCount.ToString() : "N/A";
+                                playersVarLabel.Text = selectedBot.PhotonClient.CurrentRoom != null && selectedBot.PhotonClient.CurrentRoom.PlayerCount > 0 ? selectedBot.PhotonClient.CurrentRoom.PlayerCount.ToString() + "/" + selectedBot.PhotonClient.CurrentRoom.MaxPlayers.ToString() : "N/A";
+                                MasterVarLabel.Text = selectedBot.PhotonClient.InRoom ? selectedBot.PhotonClient.CurrentRoom.MasterClientId.ToString() : "N/A";
+                                ServerVarLabel.Text = selectedBot.PhotonClient.InRoom ? selectedBot.PhotonClient.CurrentRoom.IsVisible ? "Yes" : "No" : "N/A";
                             }
                         }));
                         Thread.Sleep(1000);

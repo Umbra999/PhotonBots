@@ -79,7 +79,6 @@ namespace TheBotUI {
             _start_point = new Point(e.X, e.Y);
         }
 
-
         private void listView1_itemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             if (e.Item.Tag != null)
@@ -104,6 +103,14 @@ namespace TheBotUI {
                                 playersVarLabel.Text = selectedBot.PhotonClient.CurrentRoom != null && selectedBot.PhotonClient.CurrentRoom.PlayerCount > 0 ? selectedBot.PhotonClient.CurrentRoom.PlayerCount.ToString() + "/" + selectedBot.PhotonClient.CurrentRoom.MaxPlayers.ToString() : "N/A";
                                 MasterVarLabel.Text = selectedBot.PhotonClient.InRoom ? selectedBot.PhotonClient.CurrentRoom.MasterClientId.ToString() : "N/A";
                                 ServerVarLabel.Text = selectedBot.PhotonClient.InRoom ? selectedBot.PhotonClient.CurrentRoom.IsVisible ? "Yes" : "No" : "N/A";
+                                AllMasterVarLabel.Text = selectedBot.PhotonClient.PlayersOnMasterCount.ToString();
+                                AllPlayersVarLabel.Text = selectedBot.PhotonClient.PlayersInRoomsCount.ToString();
+                                AllRoomsVarLabel.Text = selectedBot.PhotonClient.RoomsCount.ToString();
+                                ConnectionVarLabel.Text = selectedBot.PhotonClient.MasterServerAddress.ToString();
+                                MasterDisconnect.Text = selectedBot.PhotonClient.InRoom ? "Desync Masterclient" + " [" + selectedBot.PhotonClient.CurrentRoom.MasterClientId.ToString() + "]" : "Desync Masterclient";
+                                OpenVarLabel.Text = selectedBot.PhotonClient.InRoom ? selectedBot.PhotonClient.CurrentRoom.IsOpen ? "Yes" : "No" : "N/A";
+                                RegionVarLabel.Text = selectedBot.PhotonClient.CloudRegion.ToString();
+                                AdressVarLabel.Text = selectedBot.PhotonClient.InRoom ? selectedBot.PhotonClient.GameServerAddress.ToString() : "";
                             }
                         }));
                         Thread.Sleep(1000);

@@ -50,4 +50,11 @@ public static class PhotonExtensions
                 Thread.Sleep(25);
         }
     }
+    private static RaiseEventOptions SetPlayerAsTarget(Player ply)
+    {
+        return new RaiseEventOptions
+        {
+            TargetActors = new int[] { ply.ActorNumber }
+        };
+    }
 }

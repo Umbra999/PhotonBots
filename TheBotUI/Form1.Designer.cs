@@ -105,6 +105,7 @@ namespace TheBotUI {
             botInstancesList = new TheBotUI.CustomComponents.CustomListView();
             this.botInstances = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button7 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.SuspendLayout();
@@ -170,7 +171,7 @@ namespace TheBotUI {
             this.OpenVarLabel.AutoSize = true;
             this.OpenVarLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.OpenVarLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.OpenVarLabel.Location = new System.Drawing.Point(1286, 21);
+            this.OpenVarLabel.Location = new System.Drawing.Point(1310, 21);
             this.OpenVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.OpenVarLabel.Name = "OpenVarLabel";
             this.OpenVarLabel.Size = new System.Drawing.Size(51, 27);
@@ -182,7 +183,7 @@ namespace TheBotUI {
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 14F);
             this.label10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label10.Location = new System.Drawing.Point(1199, 21);
+            this.label10.Location = new System.Drawing.Point(1223, 21);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(79, 27);
@@ -194,7 +195,7 @@ namespace TheBotUI {
             this.ServerVarLabel.AutoSize = true;
             this.ServerVarLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.ServerVarLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.ServerVarLabel.Location = new System.Drawing.Point(1136, 21);
+            this.ServerVarLabel.Location = new System.Drawing.Point(1152, 21);
             this.ServerVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ServerVarLabel.Name = "ServerVarLabel";
             this.ServerVarLabel.Size = new System.Drawing.Size(51, 27);
@@ -206,7 +207,7 @@ namespace TheBotUI {
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 14F);
             this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label5.Location = new System.Drawing.Point(1045, 21);
+            this.label5.Location = new System.Drawing.Point(1055, 21);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(89, 27);
@@ -272,7 +273,7 @@ namespace TheBotUI {
             this.MasterVarLabel.AutoSize = true;
             this.MasterVarLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.MasterVarLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.MasterVarLabel.Location = new System.Drawing.Point(986, 21);
+            this.MasterVarLabel.Location = new System.Drawing.Point(980, 21);
             this.MasterVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.MasterVarLabel.Name = "MasterVarLabel";
             this.MasterVarLabel.Size = new System.Drawing.Size(51, 27);
@@ -552,7 +553,7 @@ namespace TheBotUI {
             this.instantiateInvisButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.instantiateInvisButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.instantiateInvisButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.instantiateInvisButton.Location = new System.Drawing.Point(580, 568);
+            this.instantiateInvisButton.Location = new System.Drawing.Point(580, 566);
             this.instantiateInvisButton.Margin = new System.Windows.Forms.Padding(4);
             this.instantiateInvisButton.Name = "instantiateInvisButton";
             this.instantiateInvisButton.Size = new System.Drawing.Size(530, 32);
@@ -836,10 +837,10 @@ namespace TheBotUI {
             this.MasterDisconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MasterDisconnect.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.MasterDisconnect.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.MasterDisconnect.Location = new System.Drawing.Point(580, 527);
+            this.MasterDisconnect.Location = new System.Drawing.Point(580, 528);
             this.MasterDisconnect.Margin = new System.Windows.Forms.Padding(4);
             this.MasterDisconnect.Name = "MasterDisconnect";
-            this.MasterDisconnect.Size = new System.Drawing.Size(532, 32);
+            this.MasterDisconnect.Size = new System.Drawing.Size(530, 32);
             this.MasterDisconnect.TabIndex = 64;
             this.MasterDisconnect.Text = "Desync Masterclient";
             this.MasterDisconnect.UseVisualStyleBackColor = false;
@@ -1074,12 +1075,12 @@ namespace TheBotUI {
             // columnHeader1
             // 
             this.columnHeader1.Text = "Player";
-            this.columnHeader1.Width = 183;
+            this.columnHeader1.Width = 177;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "ID";
-            this.columnHeader2.Width = 81;
+            this.columnHeader2.Width = 85;
             // 
             // botInstancesList
             // 
@@ -1124,12 +1125,30 @@ namespace TheBotUI {
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click_1);
             // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button5.Location = new System.Drawing.Point(580, 646);
+            this.button5.Margin = new System.Windows.Forms.Padding(4);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(530, 32);
+            this.button5.TabIndex = 69;
+            this.button5.Text = "Disconnect Lobby";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
             this.ClientSize = new System.Drawing.Size(1708, 886);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.label6);
@@ -1263,6 +1282,7 @@ namespace TheBotUI {
         public Label label11;
         public Label AdressVarLabel;
         public Button button7;
+        public Button button5;
         public static CustomListView botInstancesList;
     }
 }

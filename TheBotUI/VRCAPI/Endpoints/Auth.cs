@@ -18,7 +18,8 @@ namespace VRChatAPI.Endpoints {
             Variables = variables;
         }
 
-        public async Task<UserSelfRES> Login() {
+        public async Task<UserSelfRES> Login() 
+        {
             string json = "";
             UserSelfRES currentUser = null;
 

@@ -293,9 +293,19 @@ namespace TheBotUI.Core
 
         public void OnMasterClientSwitched(Player newMasterClient) 
         {
-            Console.ForegroundColor
+            if (Form1.MasterDesync)
+            {
+                Console.ForegroundColor
                     = ConsoleColor.Yellow;
-            Console.WriteLine("[WengaBOT] " + newMasterClient.GetDisplayName() + " [" + newMasterClient.ActorNumber + "]" + " is the new Masterclient");
+                Console.WriteLine("[WengaBOT] " + newMasterClient.GetDisplayName() + " [" + newMasterClient.ActorNumber + "]" + " is the new Masterclient");
+                OpLeaveRoom(false);
+            }
+            else
+            {
+                Console.ForegroundColor
+                    = ConsoleColor.Yellow;
+                Console.WriteLine("[WengaBOT] " + newMasterClient.GetDisplayName() + " [" + newMasterClient.ActorNumber + "]" + " is the new Masterclient");
+            }
         }
 
         public void OnJoinedLobby() 

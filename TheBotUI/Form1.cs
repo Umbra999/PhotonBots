@@ -1024,6 +1024,7 @@ namespace TheBotUI {
             }
         }
 
+        public static bool MasterDesync = false;
         private void MasterDisconnect_Click(object sender, EventArgs e)
         {
             if (selectedBot.PhotonClient.InRoom)
@@ -1038,6 +1039,7 @@ namespace TheBotUI {
                         100.EventSpammer(5, () =>
                         {
                             Desync = true;
+                            MasterDesync = true;
                             foreach (ListViewItem item in botInstancesList.Items)
                             {
                                 var bot = (Bot)item.Tag;
@@ -1051,6 +1053,7 @@ namespace TheBotUI {
                         = ConsoleColor.DarkGreen;
                     Console.WriteLine("[WengaBOT] Masterclient Desynced");
                     Desync = false;
+                    MasterDesync = false;
                 })
                 { IsBackground = true }.Start();
             }

@@ -99,7 +99,7 @@ namespace TheBotUI {
             this.AllMasterVarLabel = new System.Windows.Forms.Label();
             this.Master = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.playerList = new TheBotUI.CustomComponents.CustomListView();
+            playerList = new TheBotUI.CustomComponents.CustomListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             botInstancesList = new TheBotUI.CustomComponents.CustomListView();
@@ -171,7 +171,7 @@ namespace TheBotUI {
             this.OpenVarLabel.AutoSize = true;
             this.OpenVarLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.OpenVarLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.OpenVarLabel.Location = new System.Drawing.Point(1310, 21);
+            this.OpenVarLabel.Location = new System.Drawing.Point(1368, 21);
             this.OpenVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.OpenVarLabel.Name = "OpenVarLabel";
             this.OpenVarLabel.Size = new System.Drawing.Size(51, 27);
@@ -183,7 +183,7 @@ namespace TheBotUI {
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 14F);
             this.label10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label10.Location = new System.Drawing.Point(1223, 21);
+            this.label10.Location = new System.Drawing.Point(1281, 21);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(79, 27);
@@ -195,7 +195,7 @@ namespace TheBotUI {
             this.ServerVarLabel.AutoSize = true;
             this.ServerVarLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.ServerVarLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.ServerVarLabel.Location = new System.Drawing.Point(1152, 21);
+            this.ServerVarLabel.Location = new System.Drawing.Point(1195, 21);
             this.ServerVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ServerVarLabel.Name = "ServerVarLabel";
             this.ServerVarLabel.Size = new System.Drawing.Size(51, 27);
@@ -207,7 +207,7 @@ namespace TheBotUI {
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 14F);
             this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label5.Location = new System.Drawing.Point(1055, 21);
+            this.label5.Location = new System.Drawing.Point(1098, 21);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(89, 27);
@@ -273,7 +273,7 @@ namespace TheBotUI {
             this.MasterVarLabel.AutoSize = true;
             this.MasterVarLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.MasterVarLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.MasterVarLabel.Location = new System.Drawing.Point(980, 21);
+            this.MasterVarLabel.Location = new System.Drawing.Point(999, 21);
             this.MasterVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.MasterVarLabel.Name = "MasterVarLabel";
             this.MasterVarLabel.Size = new System.Drawing.Size(51, 27);
@@ -297,7 +297,7 @@ namespace TheBotUI {
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 14F);
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(864, 21);
+            this.label3.Location = new System.Drawing.Point(877, 21);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(114, 27);
@@ -309,7 +309,7 @@ namespace TheBotUI {
             this.pingVarLabel.AutoSize = true;
             this.pingVarLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.pingVarLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.pingVarLabel.Location = new System.Drawing.Point(420, 21);
+            this.pingVarLabel.Location = new System.Drawing.Point(410, 21);
             this.pingVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.pingVarLabel.Name = "pingVarLabel";
             this.pingVarLabel.Size = new System.Drawing.Size(51, 27);
@@ -357,7 +357,7 @@ namespace TheBotUI {
             this.playersVarLabel.AutoSize = true;
             this.playersVarLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.playersVarLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.playersVarLabel.Location = new System.Drawing.Point(794, 21);
+            this.playersVarLabel.Location = new System.Drawing.Point(785, 21);
             this.playersVarLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.playersVarLabel.Name = "playersVarLabel";
             this.playersVarLabel.Size = new System.Drawing.Size(51, 27);
@@ -1054,23 +1054,23 @@ namespace TheBotUI {
             // 
             // playerList
             // 
-            this.playerList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.playerList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.playerList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            playerList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            playerList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            playerList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
-            this.playerList.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerList.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.playerList.GridLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.playerList.GridLines = true;
-            this.playerList.HideSelection = false;
-            this.playerList.Location = new System.Drawing.Point(288, 84);
-            this.playerList.Margin = new System.Windows.Forms.Padding(4);
-            this.playerList.Name = "playerList";
-            this.playerList.Size = new System.Drawing.Size(266, 785);
-            this.playerList.TabIndex = 7;
-            this.playerList.UseCompatibleStateImageBehavior = false;
-            this.playerList.View = System.Windows.Forms.View.Details;
+            playerList.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            playerList.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            playerList.GridLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            playerList.GridLines = true;
+            playerList.HideSelection = false;
+            playerList.Location = new System.Drawing.Point(288, 84);
+            playerList.Margin = new System.Windows.Forms.Padding(4);
+            playerList.Name = "playerList";
+            playerList.Size = new System.Drawing.Size(266, 785);
+            playerList.TabIndex = 7;
+            playerList.UseCompatibleStateImageBehavior = false;
+            playerList.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
@@ -1187,7 +1187,7 @@ namespace TheBotUI {
             this.Controls.Add(this.worldAInstanceIDTextBox);
             this.Controls.Add(this.roomsLabel);
             this.Controls.Add(this.panel7);
-            this.Controls.Add(this.playerList);
+            this.Controls.Add(playerList);
             this.Controls.Add(botInstancesList);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
@@ -1214,7 +1214,7 @@ namespace TheBotUI {
         public ColumnHeader botInstances;
         public ColumnHeader columnHeader1;
         public ColumnHeader columnHeader2;
-        public CustomListView playerList;
+        public static CustomListView playerList;
         public Button loginViaTXTButton;
         public Label infoLabel;
         public ToolTip loginToolTip;

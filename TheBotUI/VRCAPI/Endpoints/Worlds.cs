@@ -13,25 +13,27 @@ using VRChatAPI;
 
 namespace VRChatAPI.Endpoints
 {
-    static class Worlds
+    public class Worlds
     {
-  
-        public static async Task<WorldRES> GetWorld(string WorldID)
+        private Variables Variables;
+        public Worlds(ref Variables variables)
+        {
+            Variables = variables;
+        }
+        public async Task<WorldRES> GetWorld(string WorldID)
         {
             string json = "";
             WorldRES world = null;
-            HttpClient RequestClient = new HttpClient();
-            RequestClient.DefaultRequestHeaders.Accept.Clear();
-            RequestClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            string[] Login = File.ReadAllLines("Auth/APIAuth.txt");
-            var byteArray = Encoding.ASCII.GetBytes(Login[0]);
-            RequestClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
-            var response = await RequestClient.GetAsync("https://api.vrchat.cloud/api/1/worlds/"+WorldID+ "?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26");
+            var response = await Variables.HttpClient.GetAsync($"worlds/{WorldID}?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26");
             json = await response.Content.ReadAsStringAsync();
 
             if (response.IsSuccessStatusCode)
             {
                 world = JsonConvert.DeserializeObject<WorldRES>(json);
+            }
+            else
+            {
+                Console.WriteLine(json);
             }
 
             return world;

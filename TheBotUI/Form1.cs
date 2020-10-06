@@ -490,7 +490,8 @@ namespace TheBotUI {
                         Thread.Sleep(30000);
                         Console.ForegroundColor
                                     = ConsoleColor.Cyan;
-                        WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
+                        var Bot = (Bot)botInstancesList.Items[0].Tag;
+                        WorldRES worldRES = await Bot.APIClient.Worlds.GetWorld(worldID);
                         Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Length);
                         if (worldRES.publicOccupants != 0)
                         {
@@ -712,7 +713,8 @@ namespace TheBotUI {
                     Thread.Sleep(35000);
                     Console.ForegroundColor
                                 = ConsoleColor.Cyan;
-                    WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
+                    var Bot = (Bot)botInstancesList.Items[0].Tag;
+                    WorldRES worldRES = await Bot.APIClient.Worlds.GetWorld(worldID);
                     Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Length);
                     if (worldRES.publicOccupants != 0)
                     {

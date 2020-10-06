@@ -98,8 +98,10 @@ namespace TheBotUI {
                             if (selectedBot.PhotonClient != null)
                             {
                                 connectionStatusVarLabel.Text = selectedBot.PhotonClient.IsConnectedAndReady ? "Connected" : "Not connected";
+                                connectionStatusVarLabel.ForeColor = selectedBot.PhotonClient.IsConnectedAndReady ? Color.Green : Color.Red;
                                 pingVarLabel.Text = selectedBot.PhotonClient.LoadBalancingPeer.RoundTripTime.ToString();
                                 inRoomVarLabel.Text = selectedBot.PhotonClient.InRoom ? "Yes" : "No";
+                                inRoomVarLabel.ForeColor = selectedBot.PhotonClient.InRoom ? Color.Green : Color.Red;
                                 playersVarLabel.Text = selectedBot.PhotonClient.CurrentRoom != null && selectedBot.PhotonClient.CurrentRoom.PlayerCount > 0 ? selectedBot.PhotonClient.CurrentRoom.PlayerCount.ToString() + "/" + selectedBot.PhotonClient.CurrentRoom.MaxPlayers.ToString() : "N/A";
                                 MasterVarLabel.Text = selectedBot.PhotonClient.InRoom ? selectedBot.PhotonClient.CurrentRoom.MasterClientId.ToString() : "N/A";
                                 ServerVarLabel.Text = selectedBot.PhotonClient.InRoom ? selectedBot.PhotonClient.CurrentRoom.IsVisible ? "Yes" : "No" : "N/A";
@@ -841,8 +843,11 @@ namespace TheBotUI {
         private void DerankButton_Click(object sender, EventArgs e)
         {
             string id = DerankInput.Text;
-            if(!id.Contains("usr_"))
+            if (!id.Contains("usr_"))
+            {
                 Console.WriteLine("[WengaBOT]" + id + " Is not a Valid User Id");
+                DerankInput.Text = "Invalid ID";
+            }
             foreach(ListViewItem item in botInstancesList.Items)
             {
                 Bot bot = (Bot)item.Tag;
@@ -968,7 +973,18 @@ namespace TheBotUI {
 
         private void SwitchAvi_Click(object sender, EventArgs e)
         {
-            //Day add Stuff here <3
+            var id = AvatarSwitchText.Text;
+            if (id.Contains("avtr_"))
+            {
+                // -Day: Add later
+                Console.WriteLine("[Day:] WIP");
+            }
+            else
+            {
+                Console.WriteLine("are you retarded");
+                AvatarSwitchText.Text = "Invalid ID";
+            }
+ 
         }
 
         public void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -993,7 +1009,7 @@ namespace TheBotUI {
         }
         public static bool ShouldPauseRoomCheckerLoop = false;
         public static bool StopRoomChecker = true;
-        public static void RoomCheckerLoop()
+        public void RoomCheckerLoop()
         {
                 new Thread(() =>
                 {

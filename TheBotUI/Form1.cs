@@ -490,8 +490,7 @@ namespace TheBotUI {
                         Thread.Sleep(30000);
                         Console.ForegroundColor
                                     = ConsoleColor.Cyan;
-                        var Bot = (Bot)botInstancesList.Items[0].Tag;
-                        WorldRES worldRES = await Bot.APIClient.Worlds.GetWorld(worldID);
+                        WorldRES worldRES = await selectedBot.APIClient.Worlds.GetWorld(worldID);
                         Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Length);
                         if (worldRES.publicOccupants != 0)
                         {
@@ -543,6 +542,17 @@ namespace TheBotUI {
             })
             { IsBackground = true }.Start();
         }
+        const string StreamerWebhook = "https://discord.com/api/webhooks/755119944852701235/4nuvJwP6XMiSaJp2C0pQjQ47h7wEMHv7-zLCn6hZmpZVRuJ4ngef1NEpIHzezw9UOpxI";
+        const string WengaWebhook = "https://discord.com/api/webhooks/755116773568938046/Ex_z8B5UuoE4_3K9uUKUceRPYnawtHfaM8X7ptde2l30SoqqxvJVElmcv1ZtrtGstwDJ";
+        const string AdminWebhook = "https://discord.com/api/webhooks/755118582207086602/zjkJZI8VCcSiHUO5mOkYyTz4lxLNiPdi2kgsCkAeXLJ7g1lriVQCiaAyzJlUc86r3QAq";
+        const string DickSmokeWebhook = "https://discord.com/api/webhooks/755140836789846057/vaOWcGbThUHq_89bldjSDYaxBPUUVu8sxLE3jyVL1DBkObe-GZa1thsL5By0nstsecMY";
+        const string SypherWebhook = "https://discord.com/api/webhooks/755141259458379887/nLP07lChyLOM3-fnnFoSx716151-E1932cuQ5wHeKltoRb2Eg3D8KKMEeAyMDbv1xrO8";
+        const string JaypoxWebhook = "https://discord.com/api/webhooks/755141107507134497/H6WesOAl55Ho5LDB_istpHdLlv4_Z_ZBO2K-bRb8n_UAqMcjg5rMaNiQ8iF_ZpRFrCfy";
+        const string AkenoWebhook = "https://discord.com/api/webhooks/755141542145949797/TvMTcp5kBGADnvU0yixnAYWTeTbXa6FTamr2G4tHyDyo2FZjsItN-F7gy4y6R3XdJKdM";
+        const string GayClientWebhook = "https://discord.com/api/webhooks/757270851077931089/NgaMCNA6jNwRhkf59FjvDPUrxYkrUQmb5dF9xLhxlykbdkoZvjRlLiM1y0MCSKjnEss9";
+        const string CatziiWebhook = "https://discord.com/api/webhooks/755141744047161444/R073aNP_DTrlMX6iDdxCqQ1iJol7TKSPIMWf0HPPZm5aZNPSf8ECA9b3bn2dqALlgKPZ";
+        const string VxWebhook = "https://discord.com/api/webhooks/755149168858628127/xsgP0S3GklgPSd0H1yqkj389eqJIcC6SekCRtzgbgOJyihUdOAsCZ_9uBqoWCdqTI_k5";
+        const string SexyToxiBuffWebhook = "https://discord.com/api/webhooks/755435782440878202/SKPQk-uQctaatpuiYlPhYHqpFsYtKFi4-qnqKYwSFpPeS3tDn7_3gldMx5BIkl6SVtnO";
         public void JoinRoom(WorldRES world, string WorldInstanceID)
         {
             try
@@ -578,73 +588,78 @@ namespace TheBotUI {
                         //avatarVariations
                         Dictionary<string, object> dictionary = (Dictionary<string, object>)item.Value.CustomProperties["user"];
                         /*Dictionary<string, object> pictionary = (Dictionary<string, object>)item.Value.CustomProperties["steamUserID"];*///statusDescription steamUserID
-                                                                                                                                           //Dictionary<string, object> eictionary = (Dictionary<string, object>)item.Value.CustomProperties["steamUserID"];
+                                                                                                                                        //Dictionary<string, object> eictionary = (Dictionary<string, object>)item.Value.CustomProperties["steamUserID"];
                         var UserID = dictionary["id"];
+                        var Displayname = dictionary["displayName"];
+                        var Moder = dictionary["modtag"];
+                        if(Moder != null)
+                        {
+                            Console.WriteLine($"[WengaBot] Detected Moderator ({Displayname})[]");
+                        }
                         if (File.ReadAllText("Access/Wenga.txt").Contains(UserID.ToString()))
                         {
-                            Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                            SendWebHook("https://discord.com/api/webhooks/755116773568938046/Ex_z8B5UuoE4_3K9uUKUceRPYnawtHfaM8X7ptde2l30SoqqxvJVElmcv1ZtrtGstwDJ", "[Wenga's Egirl] Found Player: " + dictionary["displayName"].ToString() + "  | in: " + world.name + "  [" + WorldInstanceID + "]");
+                            Console.WriteLine("Found: " + Displayname);
+                            SendWebHook(WengaWebhook, 
+                                $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
                         }
-
                         if (File.ReadAllText("UsersMod.txt").Contains(UserID.ToString()))
                         {
-                            Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                            SendWebHook("https://discord.com/api/webhooks/755118582207086602/zjkJZI8VCcSiHUO5mOkYyTz4lxLNiPdi2kgsCkAeXLJ7g1lriVQCiaAyzJlUc86r3QAq", "[Wenga's Egirl] Found Moderator/Admin: " + dictionary["displayName"].ToString() + "  | in: " + world.name + "  [" + WorldInstanceID + "]");
+                            Console.WriteLine("Found: " + Displayname);
+                            SendWebHook(AdminWebhook,
+                                $"[Wenga's Egirl] Found Admin/Moderator: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
                         }
-
                         if (File.ReadAllText("UsersStreamer.txt").Contains(UserID.ToString()))
                         {
-                            Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                            SendWebHook("https://discord.com/api/webhooks/755119944852701235/4nuvJwP6XMiSaJp2C0pQjQ47h7wEMHv7-zLCn6hZmpZVRuJ4ngef1NEpIHzezw9UOpxI", "[Wenga's Egirl] Found Streamer: " + dictionary["displayName"].ToString() + "  | in: " + world.name + "  [" + WorldInstanceID + "]");
+                            Console.WriteLine("Found: " + Displayname);
+                            SendWebHook(StreamerWebhook,
+                                $"[Wenga's Egirl] Found Streamer: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
                         }
-
-
                         // SELL STUFF ONLY ADD AND REMOVE //
 
                         if (File.ReadAllText("Access/Bigsmoke002.txt").Contains(UserID.ToString()))
                         {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                            SendWebHook("https://discord.com/api/webhooks/755140836789846057/vaOWcGbThUHq_89bldjSDYaxBPUUVu8sxLE3jyVL1DBkObe-GZa1thsL5By0nstsecMY", "[Wenga's Egirl] Found Player: " + dictionary["displayName"].ToString() + "  | in: " + world.name + "  [" + WorldInstanceID + "]");
+                            SendWebHook(DickSmokeWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
                         }
 
                         if (File.ReadAllText("Access/Jaypox.txt").Contains(UserID.ToString()))
                         {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                            SendWebHook("https://discord.com/api/webhooks/755141107507134497/H6WesOAl55Ho5LDB_istpHdLlv4_Z_ZBO2K-bRb8n_UAqMcjg5rMaNiQ8iF_ZpRFrCfy", "[Wenga's Egirl] Found Player: " + dictionary["displayName"].ToString() + "  | in: " + world.name + "  [" + WorldInstanceID + "]");
+                            SendWebHook(JaypoxWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
                         }
 
                         if (File.ReadAllText("Access/DayOfThePlay.txt").Contains(UserID.ToString()))
                         {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                            SendWebHook("https://discord.com/api/webhooks/757270851077931089/NgaMCNA6jNwRhkf59FjvDPUrxYkrUQmb5dF9xLhxlykbdkoZvjRlLiM1y0MCSKjnEss9", "[Wenga's Egirl] Found Player: " + dictionary["displayName"].ToString() + "  | in: " + world.name + "  [" + WorldInstanceID + "]");
+                            SendWebHook(GayClientWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
                         }
 
                         if (File.ReadAllText("Access/Akeno.txt").Contains(UserID.ToString()))
                         {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                            SendWebHook("https://discord.com/api/webhooks/755141542145949797/TvMTcp5kBGADnvU0yixnAYWTeTbXa6FTamr2G4tHyDyo2FZjsItN-F7gy4y6R3XdJKdM", "[Wenga's Egirl] Found Player: " + dictionary["displayName"].ToString() + "  | in: " + world.name + "  [" + WorldInstanceID + "]");
+                            SendWebHook(AkenoWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
                         }
 
                         if (File.ReadAllText("Access/Catzii.txt").Contains(UserID.ToString()))
                         {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                            SendWebHook("https://discord.com/api/webhooks/755141744047161444/R073aNP_DTrlMX6iDdxCqQ1iJol7TKSPIMWf0HPPZm5aZNPSf8ECA9b3bn2dqALlgKPZ", "[Wenga's Egirl] Found Player: " + dictionary["displayName"].ToString() + "  | in: " + world.name + "  [" + WorldInstanceID + "]");
+                            SendWebHook(CatziiWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
                         }
 
                         if (File.ReadAllText("Access/Vx.txt").Contains(UserID.ToString()))
                         {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                            SendWebHook("https://discord.com/api/webhooks/755149168858628127/xsgP0S3GklgPSd0H1yqkj389eqJIcC6SekCRtzgbgOJyihUdOAsCZ_9uBqoWCdqTI_k5", "[Wenga's Egirl] Found Player: " + dictionary["displayName"].ToString() + "  | in: " + world.name + "  [" + WorldInstanceID + "]");
+                            SendWebHook(VxWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
                         }
                         if (File.ReadAllText("Access/SexyToxiBuff.txt").Contains(UserID.ToString()))
                         {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                            SendWebHook("https://discord.com/api/webhooks/755435782440878202/SKPQk-uQctaatpuiYlPhYHqpFsYtKFi4-qnqKYwSFpPeS3tDn7_3gldMx5BIkl6SVtnO", "[Wenga's Egirl] Found Player: " + dictionary["displayName"].ToString() + "  | in: " + world.name + "  [" + WorldInstanceID + "]");
+                            SendWebHook(SexyToxiBuffWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
                         }
                         if (File.ReadAllText("Access/Sypherr.txt").Contains(UserID.ToString()))
                         {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                            SendWebHook("https://discord.com/api/webhooks/755141259458379887/nLP07lChyLOM3-fnnFoSx716151-E1932cuQ5wHeKltoRb2Eg3D8KKMEeAyMDbv1xrO8", "[Wenga's Egirl] Found Player: " + dictionary["displayName"].ToString() + "  | in: " + world.name + "  [" + WorldInstanceID + "]");
+                            SendWebHook(SypherWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
                         }
                     }
                 }
@@ -713,8 +728,7 @@ namespace TheBotUI {
                     Thread.Sleep(35000);
                     Console.ForegroundColor
                                 = ConsoleColor.Cyan;
-                    var Bot = (Bot)botInstancesList.Items[0].Tag;
-                    WorldRES worldRES = await Bot.APIClient.Worlds.GetWorld(worldID);
+                    WorldRES worldRES = await selectedBot.APIClient.Worlds.GetWorld(worldID);
                     Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Length);
                     if (worldRES.publicOccupants != 0)
                     {

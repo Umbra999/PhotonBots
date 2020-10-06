@@ -30,7 +30,7 @@ namespace TheBotUI.VRCAPI.Endpoints
             }
             else
             {
-                Console.WriteLine("[Failure] " + response.StatusCode + " | " + response.ReasonPhrase);
+                Console.WriteLine("[Failure] " + response.StatusCode + " | " + response);
             }
         }
     }

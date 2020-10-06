@@ -24,7 +24,8 @@ namespace TheBotUI {
     public partial class Form1 : Form {
         public Bot selectedBot;
 
-        public Form1() {
+        public Form1() 
+        {
             InitializeComponent();
         }
 
@@ -48,6 +49,7 @@ namespace TheBotUI {
                     playerList.Items.Clear();
                 }));
             }).Start();
+            Thread.Sleep(1000);
             Application.Exit();
         }
 
@@ -98,21 +100,32 @@ namespace TheBotUI {
                             if (selectedBot.PhotonClient != null)
                             {
                                 connectionStatusVarLabel.Text = selectedBot.PhotonClient.IsConnectedAndReady ? "Connected" : "Not connected";
-                                connectionStatusVarLabel.ForeColor = selectedBot.PhotonClient.IsConnectedAndReady ? Color.Green : Color.Red;
+                                connectionStatusVarLabel.ForeColor = selectedBot.PhotonClient.IsConnectedAndReady ? Color.Green : Color.DarkRed;
                                 pingVarLabel.Text = selectedBot.PhotonClient.LoadBalancingPeer.RoundTripTime.ToString();
+                                pingVarLabel.ForeColor = Color.Green;
                                 inRoomVarLabel.Text = selectedBot.PhotonClient.InRoom ? "Yes" : "No";
-                                inRoomVarLabel.ForeColor = selectedBot.PhotonClient.InRoom ? Color.Green : Color.Red;
+                                inRoomVarLabel.ForeColor = selectedBot.PhotonClient.InRoom ? Color.Green : Color.DarkRed;
                                 playersVarLabel.Text = selectedBot.PhotonClient.CurrentRoom != null && selectedBot.PhotonClient.CurrentRoom.PlayerCount > 0 ? selectedBot.PhotonClient.CurrentRoom.PlayerCount.ToString() + "/" + selectedBot.PhotonClient.CurrentRoom.MaxPlayers.ToString() : "N/A";
+                                playersVarLabel.ForeColor = selectedBot.PhotonClient.CurrentRoom != null && selectedBot.PhotonClient.CurrentRoom.PlayerCount > 0 ? Color.Green : Color.DarkRed;
                                 MasterVarLabel.Text = selectedBot.PhotonClient.InRoom ? selectedBot.PhotonClient.CurrentRoom.MasterClientId.ToString() : "N/A";
+                                MasterVarLabel.ForeColor = selectedBot.PhotonClient.InRoom ? Color.Green : Color.DarkRed;
                                 ServerVarLabel.Text = selectedBot.PhotonClient.InRoom ? selectedBot.PhotonClient.CurrentRoom.IsVisible ? "Yes" : "No" : "N/A";
+                                ServerVarLabel.ForeColor = selectedBot.PhotonClient.InRoom ? selectedBot.PhotonClient.CurrentRoom.IsVisible ? Color.Green : Color.DarkRed : Color.DarkRed;
                                 AllMasterVarLabel.Text = selectedBot.PhotonClient.PlayersOnMasterCount.ToString();
+                                AllMasterVarLabel.ForeColor = Color.Green;
                                 AllPlayersVarLabel.Text = selectedBot.PhotonClient.PlayersInRoomsCount.ToString();
+                                AllPlayersVarLabel.ForeColor = Color.Green;
                                 AllRoomsVarLabel.Text = selectedBot.PhotonClient.RoomsCount.ToString();
+                                AllRoomsVarLabel.ForeColor = Color.Green;
                                 ConnectionVarLabel.Text = selectedBot.PhotonClient.MasterServerAddress.ToString();
+                                ConnectionVarLabel.ForeColor = Color.Green;
                                 MasterDisconnect.Text = selectedBot.PhotonClient.InRoom ? "Desync Masterclient" + " [" + selectedBot.PhotonClient.CurrentRoom.MasterClientId.ToString() + "]" : "Desync Masterclient";
                                 OpenVarLabel.Text = selectedBot.PhotonClient.InRoom ? selectedBot.PhotonClient.CurrentRoom.IsOpen ? "Yes" : "No" : "N/A";
+                                OpenVarLabel.ForeColor = selectedBot.PhotonClient.InRoom ? selectedBot.PhotonClient.CurrentRoom.IsOpen ? Color.Green : Color.DarkRed : Color.DarkRed;
                                 RegionVarLabel.Text = selectedBot.PhotonClient.CloudRegion.ToString();
+                                RegionVarLabel.ForeColor = Color.Green;
                                 AdressVarLabel.Text = selectedBot.PhotonClient.InRoom ? selectedBot.PhotonClient.GameServerAddress.ToString() : "";
+                                AdressVarLabel.ForeColor = selectedBot.PhotonClient.InRoom ? Color.Green : Color.DarkRed;
                             }
                         }));
                         Thread.Sleep(1000);
@@ -391,6 +404,7 @@ namespace TheBotUI {
                         {
                             Thread.Sleep(100);
                             bot.PhotonClient.OpLeaveRoom(false);
+                            playerList.Items.Clear();
                         }
                     }
                     playerList.Items.Clear();
@@ -526,11 +540,7 @@ namespace TheBotUI {
                                         playerList.Items.Clear();
                                     }));
                                 }).Start();
-                            }
-                        }
-                        else
-                        {
-                            Thread.Sleep(800);
+                            }                         
                         }
                     }
                     Console.WriteLine("----Search Stopped----");
@@ -547,6 +557,7 @@ namespace TheBotUI {
         const string StreamerWebhook = "https://discord.com/api/webhooks/755119944852701235/4nuvJwP6XMiSaJp2C0pQjQ47h7wEMHv7-zLCn6hZmpZVRuJ4ngef1NEpIHzezw9UOpxI";
         const string WengaWebhook = "https://discord.com/api/webhooks/755116773568938046/Ex_z8B5UuoE4_3K9uUKUceRPYnawtHfaM8X7ptde2l30SoqqxvJVElmcv1ZtrtGstwDJ";
         const string AdminWebhook = "https://discord.com/api/webhooks/755118582207086602/zjkJZI8VCcSiHUO5mOkYyTz4lxLNiPdi2kgsCkAeXLJ7g1lriVQCiaAyzJlUc86r3QAq";
+        //Sell Webhooks
         const string DickSmokeWebhook = "https://discord.com/api/webhooks/755140836789846057/vaOWcGbThUHq_89bldjSDYaxBPUUVu8sxLE3jyVL1DBkObe-GZa1thsL5By0nstsecMY";
         const string SypherWebhook = "https://discord.com/api/webhooks/755141259458379887/nLP07lChyLOM3-fnnFoSx716151-E1932cuQ5wHeKltoRb2Eg3D8KKMEeAyMDbv1xrO8";
         const string JaypoxWebhook = "https://discord.com/api/webhooks/755141107507134497/H6WesOAl55Ho5LDB_istpHdLlv4_Z_ZBO2K-bRb8n_UAqMcjg5rMaNiQ8iF_ZpRFrCfy";
@@ -587,16 +598,16 @@ namespace TheBotUI {
                     playerList.Items.Clear();
                     foreach (var item in selectedBot.PhotonClient.CurrentRoom.Players)
                     {
-                        //avatarVariations
                         Dictionary<string, object> dictionary = (Dictionary<string, object>)item.Value.CustomProperties["user"];
-                        /*Dictionary<string, object> pictionary = (Dictionary<string, object>)item.Value.CustomProperties["steamUserID"];*///statusDescription steamUserID
-                                                                                                                                        //Dictionary<string, object> eictionary = (Dictionary<string, object>)item.Value.CustomProperties["steamUserID"];
+                       
                         var UserID = dictionary["id"];
                         var Displayname = dictionary["displayName"];
                         var Moder = dictionary["modtag"];
                         if(Moder != null)
                         {
                             Console.WriteLine($"[WengaBot] Detected Moderator ({Displayname})[]");
+                            SendWebHook(AdminWebhook,
+                                $"[Wenga's Egirl] Found Admin/Moderator: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
                         }
                         if (File.ReadAllText("Access/Wenga.txt").Contains(UserID.ToString()))
                         {
@@ -606,6 +617,7 @@ namespace TheBotUI {
                         }
                         if (File.ReadAllText("UsersMod.txt").Contains(UserID.ToString()))
                         {
+                            // @Day do we need this one still?
                             Console.WriteLine("Found: " + Displayname);
                             SendWebHook(AdminWebhook,
                                 $"[Wenga's Egirl] Found Admin/Moderator: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
@@ -616,8 +628,8 @@ namespace TheBotUI {
                             SendWebHook(StreamerWebhook,
                                 $"[Wenga's Egirl] Found Streamer: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
                         }
-                        // SELL STUFF ONLY ADD AND REMOVE //
 
+                        // SELL STUFF ONLY ADD AND REMOVE //
                         if (File.ReadAllText("Access/Bigsmoke002.txt").Contains(UserID.ToString()))
                         {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
@@ -709,7 +721,7 @@ namespace TheBotUI {
         private void buttonSearchAuth_Click(object sender, EventArgs e)
             //Replace this with Authcookie stuff
         {
-            Auth();
+            
         }
 
         private void CrashSearch_Click(object sender, EventArgs e)
@@ -790,7 +802,7 @@ namespace TheBotUI {
                     Thread.Sleep(3000);
                     Console.ForegroundColor
                         = ConsoleColor.Green;
-                    Console.WriteLine("[WengaBOT] Instanciating all Bots");
+                    Console.WriteLine("[WengaBOT] Instanciating Crashbot");
                     if (selectedBot.PhotonClient.InRoom)
                     {
                         selectedBot.PhotonClient.InstantiateSelf();
@@ -981,7 +993,7 @@ namespace TheBotUI {
             }
             else
             {
-                Console.WriteLine("are you retarded");
+                Console.WriteLine("[WengaBOT] Invalid Avatar ID");
                 AvatarSwitchText.Text = "Invalid ID";
             }
  

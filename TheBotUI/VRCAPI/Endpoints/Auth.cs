@@ -7,7 +7,8 @@ using VRChatAPI.Responses;
 
 namespace VRChatAPI.Endpoints {
 
-    public class Auth {
+    public class Auth 
+    {
         public string Username { get; set; }
         public string Password { get; set; }
         public Variables Variables;
@@ -26,13 +27,13 @@ namespace VRChatAPI.Endpoints {
             var response = await Variables.HttpClient.GetAsync($"auth/user?apiKey={Variables.APIKey}");
             json = await response.Content.ReadAsStringAsync();
 
-            if (response.IsSuccessStatusCode) {
+            if (response.IsSuccessStatusCode) 
+            {
                 currentUser = JsonConvert.DeserializeObject<UserSelfRES>(json);
                 foreach (var cookie in Variables.CookieContainer.GetCookies(new Uri(Variables.BaseAddress)).Cast<Cookie>())
                     if (cookie.Name == "auth")
                         Variables.AuthCookie = cookie.Value;
             }
-
             return currentUser;
         }
     }

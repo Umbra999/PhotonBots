@@ -45,6 +45,7 @@ namespace TheBotUI {
                         {
                             bot.PhotonClient.OpLeaveRoom(false);
                         }
+                        bot.APIClient.Auth.Logout();
                     }
                     playerList.Items.Clear();
                 }));

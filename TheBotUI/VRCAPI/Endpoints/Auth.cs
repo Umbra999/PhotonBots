@@ -36,5 +36,9 @@ namespace VRChatAPI.Endpoints {
             }
             return currentUser;
         }
+        public async void Logout()
+        {
+            await Variables.HttpClient.PutAsync($"Logout",null);
+        }
     }
 }

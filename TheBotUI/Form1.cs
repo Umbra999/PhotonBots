@@ -492,8 +492,10 @@ namespace TheBotUI {
         {
             SearchFunc();
         }
-        public async void SearchFunc()
+        public void SearchFunc()
         {
+            new Thread(async()=>
+            {
                 try
                 {
                     string[] Worlds = File.ReadAllLines(@"Worlds.txt");
@@ -519,27 +521,12 @@ namespace TheBotUI {
                             }
                             foreach (string Instance in Instances)
                             {
+                                Thread.Sleep(4000);
                                 Console.ForegroundColor
                                     = ConsoleColor.Cyan;
                                 Console.WriteLine("[WengaBOT] Joining: " + worldID + ":" + Instance + " Cap: " + Convert.ToString(worldRES.capacity));
                                 JoinRoom(worldRES, worldID + ":" + Instance);
-                                Thread.Sleep(1000);
-                                new Thread(() =>
-                                {
-                                    Invoke(new MethodInvoker(() =>
-                                    {
-                                        foreach (ListViewItem item in botInstancesList.Items)
-                                        {
-                                            var bot = (Bot)item.Tag;
-                                            if (bot.PhotonClient.InRoom)
-                                            {
-                                                bot.PhotonClient.OpLeaveRoom(false);
-                                            }
-                                        }
-                                        playerList.Items.Clear();
-                                    }));
-                                }).Start();
-                            }                         
+                            }
                         }
                     }
                     Console.WriteLine("----Search Stopped----");
@@ -550,7 +537,9 @@ namespace TheBotUI {
                     Console.WriteLine(e5.ToString());
                 }
                 SearchFunc();
+            }){IsBackground = true}.Start();   
         }
+
         const string StreamerWebhook = "https://discord.com/api/webhooks/755119944852701235/4nuvJwP6XMiSaJp2C0pQjQ47h7wEMHv7-zLCn6hZmpZVRuJ4ngef1NEpIHzezw9UOpxI";
         const string WengaWebhook = "https://discord.com/api/webhooks/755116773568938046/Ex_z8B5UuoE4_3K9uUKUceRPYnawtHfaM8X7ptde2l30SoqqxvJVElmcv1ZtrtGstwDJ";
         const string AdminWebhook = "https://discord.com/api/webhooks/755118582207086602/zjkJZI8VCcSiHUO5mOkYyTz4lxLNiPdi2kgsCkAeXLJ7g1lriVQCiaAyzJlUc86r3QAq";
@@ -570,12 +559,12 @@ namespace TheBotUI {
                 if (selectedBot != null)
                 {
                     bool isJoined = selectedBot.PhotonClient.JoinRoom(WorldInstanceID);
-                    Thread.Sleep(2500);
+                    Thread.Sleep(4000);
                     Console.ForegroundColor
                         = ConsoleColor.Green;
                     Console.WriteLine("[WengaBOT] Instanciating Searchbot");
                     selectedBot.PhotonClient.InstantiateSelf();
-                    Thread.Sleep(3500);
+                    Thread.Sleep(3000);
                     if (selectedBot.PhotonClient.CurrentRoom == null)
                     {
                         Console.ForegroundColor

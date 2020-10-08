@@ -578,66 +578,77 @@ namespace TheBotUI {
                     Console.ForegroundColor
                     = ConsoleColor.Cyan;
                     selectedBot.PhotonClient.OpLeaveRoom(false);
-                    playerList.Items.Clear();
                     foreach (var item in selectedBot.PhotonClient.CurrentRoom.Players)
                     {
                         Dictionary<string, object> dictionary = (Dictionary<string, object>)item.Value.CustomProperties["user"];
                        
                         var UserID = dictionary["id"];
                         var Displayname = dictionary["displayName"];
-                        var Moder = dictionary["modtag"];
-                        if(Moder != null)
-                            Console.WriteLine($"[WengaBot] Detected Moderator ({Displayname})[]");
-                            SendWebHook(AdminWebhook,
-                                $"[Wenga's Egirl] Found Admin/Moderator: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
                         if (File.ReadAllText("Access/Wenga.txt").Contains(UserID.ToString()))
+                        {
                             Console.WriteLine("Found: " + Displayname);
-                            SendWebHook(WengaWebhook, 
-                                $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
-
+                            SendWebHook(WengaWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                        }
                         if (File.ReadAllText("UsersMod.txt").Contains(UserID.ToString()))
-                            // @Day do we need this one still?
+                        {
                             Console.WriteLine("Found: " + Displayname);
-                            SendWebHook(AdminWebhook,
-                                $"[Wenga's Egirl] Found Admin/Moderator: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                            SendWebHook(AdminWebhook, $"[Wenga's Egirl] Found Admin/Moderator: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                        }                            
 
                         if (File.ReadAllText("UsersStreamer.txt").Contains(UserID.ToString()))
+                        {
                             Console.WriteLine("Found: " + Displayname);
-                            SendWebHook(StreamerWebhook,
-                                $"[Wenga's Egirl] Found Streamer: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                            SendWebHook(StreamerWebhook, $"[Wenga's Egirl] Found Streamer: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                        }
 
                         // SELL STUFF ONLY ADD AND REMOVE //
                         if (File.ReadAllText("Access/Bigsmoke002.txt").Contains(UserID.ToString()))
+                        {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook(DickSmokeWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                        }
 
                         if (File.ReadAllText("Access/Jaypox.txt").Contains(UserID.ToString()))
+                        {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook(JaypoxWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                        }
 
                         if (File.ReadAllText("Access/DayOfThePlay.txt").Contains(UserID.ToString()))
+                        {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook(GayClientWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                        }
 
                         if (File.ReadAllText("Access/Akeno.txt").Contains(UserID.ToString()))
+                        {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook(AkenoWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                        }
 
                         if (File.ReadAllText("Access/Catzii.txt").Contains(UserID.ToString()))
+                        {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook(CatziiWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                        }
 
                         if (File.ReadAllText("Access/Vx.txt").Contains(UserID.ToString()))
+                        {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook(VxWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                        }
 
-                        if (File.ReadAllText("Access/SexyToxiBuff.txt").Contains(UserID.ToString())) 
+                        if (File.ReadAllText("Access/SexyToxiBuff.txt").Contains(UserID.ToString()))
+                        {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook(SexyToxiBuffWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                        }
                         
                         if (File.ReadAllText("Access/Sypherr.txt").Contains(UserID.ToString()))
+                        {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook(SypherWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                        }
                     }
                 }
             }

@@ -5,7 +5,7 @@ using VRChatAPI.Responses;
 namespace VRChatAPI {
 
     public class Variables {
-        public HttpClient HttpClient { get; set; }
+        public static HttpClient HttpClient { get; set; }
         public HttpClientHandler HttpClientHandler { get; set; }
         public CookieContainer CookieContainer { get; set; }
         public ConfigRES Config { get; set; }

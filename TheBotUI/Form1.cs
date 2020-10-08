@@ -504,14 +504,10 @@ namespace TheBotUI {
                         = ConsoleColor.Cyan;
                     foreach (string worldID in Worlds)
                     {
-                        Thread.Sleep(30000);
+                        Thread.Sleep(10000);
                         Console.ForegroundColor
                                     = ConsoleColor.Cyan;
-<<<<<<< HEAD
-                        WorldRES worldRES = await selectedBot.APIClient.Worlds.GetWorld(worldID);
-=======
                         WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
->>>>>>> parent of 4b08110... Made Worlds use the ApiClient from bots if it dont work base is GARBAJE
                         Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Length);
                         if (worldRES.publicOccupants != 0)
                         {
@@ -578,15 +574,12 @@ namespace TheBotUI {
                 if (selectedBot != null)
                 {
                     bool isJoined = selectedBot.PhotonClient.JoinRoom(WorldInstanceID);
-                    Thread.Sleep(2500);
+                    Thread.Sleep(3000);
                     Console.ForegroundColor
                         = ConsoleColor.Green;
                     Console.WriteLine("[WengaBOT] Instanciating Searchbot");
-                    if (selectedBot.PhotonClient.InRoom)
-                    {
-                        selectedBot.PhotonClient.InstantiateSelf();
-                    }
-                    Thread.Sleep(4000);
+                    selectedBot.PhotonClient.InstantiateSelf();
+                    Thread.Sleep(3500);
                     if (selectedBot.PhotonClient.CurrentRoom == null)
                     {
                         Console.ForegroundColor
@@ -601,6 +594,7 @@ namespace TheBotUI {
                     = ConsoleColor.Cyan;
                     selectedBot.PhotonClient.OpLeaveRoom(false);
                     playerList.Items.Clear();
+                    Thread.Sleep(500);
                     foreach (var item in selectedBot.PhotonClient.CurrentRoom.Players)
                     {
                         Dictionary<string, object> dictionary = (Dictionary<string, object>)item.Value.CustomProperties["user"];
@@ -609,77 +603,57 @@ namespace TheBotUI {
                         var Displayname = dictionary["displayName"];
                         var Moder = dictionary["modtag"];
                         if(Moder != null)
-                        {
                             Console.WriteLine($"[WengaBot] Detected Moderator ({Displayname})[]");
                             SendWebHook(AdminWebhook,
                                 $"[Wenga's Egirl] Found Admin/Moderator: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
-                        }
                         if (File.ReadAllText("Access/Wenga.txt").Contains(UserID.ToString()))
-                        {
                             Console.WriteLine("Found: " + Displayname);
                             SendWebHook(WengaWebhook, 
                                 $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
-                        }
+
                         if (File.ReadAllText("UsersMod.txt").Contains(UserID.ToString()))
-                        {
                             // @Day do we need this one still?
                             Console.WriteLine("Found: " + Displayname);
                             SendWebHook(AdminWebhook,
                                 $"[Wenga's Egirl] Found Admin/Moderator: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
-                        }
+
                         if (File.ReadAllText("UsersStreamer.txt").Contains(UserID.ToString()))
-                        {
                             Console.WriteLine("Found: " + Displayname);
                             SendWebHook(StreamerWebhook,
                                 $"[Wenga's Egirl] Found Streamer: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
-                        }
 
                         // SELL STUFF ONLY ADD AND REMOVE //
                         if (File.ReadAllText("Access/Bigsmoke002.txt").Contains(UserID.ToString()))
-                        {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook(DickSmokeWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
-                        }
 
                         if (File.ReadAllText("Access/Jaypox.txt").Contains(UserID.ToString()))
-                        {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook(JaypoxWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
-                        }
 
                         if (File.ReadAllText("Access/DayOfThePlay.txt").Contains(UserID.ToString()))
-                        {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook(GayClientWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
-                        }
 
                         if (File.ReadAllText("Access/Akeno.txt").Contains(UserID.ToString()))
-                        {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook(AkenoWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
-                        }
 
                         if (File.ReadAllText("Access/Catzii.txt").Contains(UserID.ToString()))
-                        {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook(CatziiWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
-                        }
 
                         if (File.ReadAllText("Access/Vx.txt").Contains(UserID.ToString()))
-                        {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook(VxWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
-                        }
-                        if (File.ReadAllText("Access/SexyToxiBuff.txt").Contains(UserID.ToString()))
-                        {
+
+                        if (File.ReadAllText("Access/SexyToxiBuff.txt").Contains(UserID.ToString())) 
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook(SexyToxiBuffWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
-                        }
+                        
                         if (File.ReadAllText("Access/Sypherr.txt").Contains(UserID.ToString()))
-                        {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook(SypherWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
-                        }
                     }
                 }
                 Thread.Sleep(3000);
@@ -747,11 +721,7 @@ namespace TheBotUI {
                     Thread.Sleep(35000);
                     Console.ForegroundColor
                                 = ConsoleColor.Cyan;
-<<<<<<< HEAD
-                    WorldRES worldRES = await selectedBot.APIClient.Worlds.GetWorld(worldID);
-=======
                     WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
->>>>>>> parent of 4b08110... Made Worlds use the ApiClient from bots if it dont work base is GARBAJE
                     Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Length);
                     if (worldRES.publicOccupants != 0)
                     {

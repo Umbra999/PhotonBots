@@ -15,7 +15,7 @@ namespace VRChatAPI.Endpoints
 {
     static class Worlds
     {
-  
+
         public static async Task<WorldRES> GetWorld(string WorldID)
         {
             string json = "";
@@ -23,17 +23,20 @@ namespace VRChatAPI.Endpoints
             HttpClient RequestClient = new HttpClient();
             RequestClient.DefaultRequestHeaders.Accept.Clear();
             RequestClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            string[] Login = File.ReadAllLines("Auth/APIAuth.txt");
-            var byteArray = Encoding.ASCII.GetBytes(Login[0]);
+            var lines = File.ReadAllLines("Auth/APIAuth.txt");
+            var r = new Random();
+            var randomLineNumber = r.Next(0, lines.Length - 1);
+            var Login = lines[randomLineNumber];
+            var byteArray = Encoding.ASCII.GetBytes(Login);
             RequestClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
             var response = await RequestClient.GetAsync("https://api.vrchat.cloud/api/1/worlds/"+WorldID+ "?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26");
             json = await response.Content.ReadAsStringAsync();
+            await Variables.HttpClient.PutAsync($"Logout", null);
 
             if (response.IsSuccessStatusCode)
             {
                 world = JsonConvert.DeserializeObject<WorldRES>(json);
             }
-
             return world;
         }
         public static int FetchRoomCap(string worldId)

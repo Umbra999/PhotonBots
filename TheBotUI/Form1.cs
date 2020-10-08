@@ -570,7 +570,7 @@ namespace TheBotUI {
                 if (selectedBot != null)
                 {
                     bool isJoined = selectedBot.PhotonClient.JoinRoom(WorldInstanceID);
-                    Thread.Sleep(3000);
+                    Thread.Sleep(2500);
                     Console.ForegroundColor
                         = ConsoleColor.Green;
                     Console.WriteLine("[WengaBOT] Instanciating Searchbot");
@@ -590,7 +590,6 @@ namespace TheBotUI {
                     = ConsoleColor.Cyan;
                     selectedBot.PhotonClient.OpLeaveRoom(false);
                     playerList.Items.Clear();
-                    Thread.Sleep(500);
                     foreach (var item in selectedBot.PhotonClient.CurrentRoom.Players)
                     {
                         Dictionary<string, object> dictionary = (Dictionary<string, object>)item.Value.CustomProperties["user"];

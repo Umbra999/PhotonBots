@@ -504,14 +504,14 @@ namespace TheBotUI {
                         = ConsoleColor.Cyan;
                     foreach (string worldID in Worlds)
                     {
-                        Thread.Sleep(10000);
+                        Thread.Sleep(4000);
                         Console.ForegroundColor
                                     = ConsoleColor.Cyan;
                         WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
                         Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Length);
                         if (worldRES.publicOccupants != 0)
                         {
-                            Thread.Sleep(1000);
+                            Thread.Sleep(500);
                             List<string> Instances = VRChatAPI.Endpoints.Worlds.GetInstances(worldRES).ToList();
                             foreach (var instancetag in Instances)
                             {
@@ -559,7 +559,7 @@ namespace TheBotUI {
                 if (selectedBot != null)
                 {
                     bool isJoined = selectedBot.PhotonClient.JoinRoom(WorldInstanceID);
-                    Thread.Sleep(4000);
+                    Thread.Sleep(2500);
                     Console.ForegroundColor
                         = ConsoleColor.Green;
                     Console.WriteLine("[WengaBOT] Instanciating Searchbot");
@@ -640,23 +640,6 @@ namespace TheBotUI {
                             SendWebHook(SypherWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
                     }
                 }
-                Thread.Sleep(3000);
-                new Thread(() =>
-                {
-                    Invoke(new MethodInvoker(() =>
-                    {
-                        foreach (ListViewItem item in botInstancesList.Items)
-                        {
-                            var bot = (Bot)item.Tag;
-                            if (bot.PhotonClient.InRoom)
-                            {
-                                bot.PhotonClient.OpLeaveRoom(false);
-                            }
-                        }
-                        playerList.Items.Clear();
-                    }));
-                }).Start();
-                Thread.Sleep(1500);
             }
             catch (Exception)
             {
@@ -682,9 +665,8 @@ namespace TheBotUI {
         }
 
         private void buttonSearchAuth_Click(object sender, EventArgs e)
-            //Replace this with Authcookie stuff
         {
-            
+            //Replace this with Authcookie stuff 
         }
 
         private void CrashSearch_Click(object sender, EventArgs e)
@@ -702,14 +684,14 @@ namespace TheBotUI {
                     = ConsoleColor.Cyan;
                 foreach (string worldID in Worlds)
                 {
-                    Thread.Sleep(35000);
+                    Thread.Sleep(15000);
                     Console.ForegroundColor
                                 = ConsoleColor.Cyan;
                     WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
                     Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Length);
                     if (worldRES.publicOccupants != 0)
                     {
-                        Thread.Sleep(1500);
+                        Thread.Sleep(1000);
                         List<string> Instances = VRChatAPI.Endpoints.Worlds.GetInstances(worldRES).ToList();
                         foreach (var instancetag in Instances)
                         {
@@ -724,26 +706,7 @@ namespace TheBotUI {
                             Console.WriteLine("[WengaBOT] Joining: " + worldID + ":" + Instance + " Cap: " + Convert.ToString(worldRES.capacity));
                             CrashJoinRoom(worldID + ":" + Instance);
                             Thread.Sleep(1500);
-                            new Thread(() =>
-                            {
-                                Invoke(new MethodInvoker(() =>
-                                {
-                                    foreach (ListViewItem item in botInstancesList.Items)
-                                    {
-                                        var bot = (Bot)item.Tag;
-                                        if (bot.PhotonClient.InRoom)
-                                        {
-                                            bot.PhotonClient.OpLeaveRoom(false);
-                                        }
-                                    }
-                                    playerList.Items.Clear();
-                                }));
-                            }).Start();
                         }
-                    }
-                    else
-                    {
-                        Thread.Sleep(800);
                     }
                 }
                 Console.WriteLine("----Search Stopped----");
@@ -785,24 +748,7 @@ namespace TheBotUI {
                     = ConsoleColor.Cyan;
                     selectedBot.PhotonClient.OpLeaveRoom(false);
                     playerList.Items.Clear();
-                }
-                Thread.Sleep(3000);
-                new Thread(() =>
-                {
-                    Invoke(new MethodInvoker(() =>
-                    {
-                        foreach (ListViewItem item in botInstancesList.Items)
-                        {
-                            var bot = (Bot)item.Tag;
-                            if (bot.PhotonClient.InRoom)
-                            {
-                                bot.PhotonClient.OpLeaveRoom(false);
-                            }
-                        }
-                        playerList.Items.Clear();
-                    }));
-                }).Start();
-                Thread.Sleep(1500);
+                }    
             }
             catch (Exception)
             {

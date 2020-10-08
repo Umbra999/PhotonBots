@@ -507,7 +507,11 @@ namespace TheBotUI {
                         Thread.Sleep(30000);
                         Console.ForegroundColor
                                     = ConsoleColor.Cyan;
+<<<<<<< HEAD
                         WorldRES worldRES = await selectedBot.APIClient.Worlds.GetWorld(worldID);
+=======
+                        WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
+>>>>>>> parent of 4b08110... Made Worlds use the ApiClient from bots if it dont work base is GARBAJE
                         Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Length);
                         if (worldRES.publicOccupants != 0)
                         {
@@ -743,7 +747,11 @@ namespace TheBotUI {
                     Thread.Sleep(35000);
                     Console.ForegroundColor
                                 = ConsoleColor.Cyan;
+<<<<<<< HEAD
                     WorldRES worldRES = await selectedBot.APIClient.Worlds.GetWorld(worldID);
+=======
+                    WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
+>>>>>>> parent of 4b08110... Made Worlds use the ApiClient from bots if it dont work base is GARBAJE
                     Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Length);
                     if (worldRES.publicOccupants != 0)
                     {

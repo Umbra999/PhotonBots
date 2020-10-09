@@ -15,7 +15,11 @@ namespace VRChatAPI.Endpoints
 {
     static class Worlds
     {
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> parent of 4b08110... Made Worlds use the ApiClient from bots if it dont work base is GARBAJE
         public static async Task<WorldRES> GetWorld(string WorldID)
         {
             string json = "";
@@ -23,11 +27,16 @@ namespace VRChatAPI.Endpoints
             HttpClient RequestClient = new HttpClient();
             RequestClient.DefaultRequestHeaders.Accept.Clear();
             RequestClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+<<<<<<< HEAD
             var lines = File.ReadAllLines("Auth/APIAuth.txt");
             var r = new Random();
             var randomLineNumber = r.Next(0, lines.Length - 1);
             var Login = lines[randomLineNumber];
             var byteArray = Encoding.ASCII.GetBytes(Login);
+=======
+            string[] Login = File.ReadAllLines("Auth/APIAuth.txt");
+            var byteArray = Encoding.ASCII.GetBytes(Login[0]);
+>>>>>>> parent of 4b08110... Made Worlds use the ApiClient from bots if it dont work base is GARBAJE
             RequestClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
             var response = await RequestClient.GetAsync("https://api.vrchat.cloud/api/1/worlds/"+WorldID+ "?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26");
             json = await response.Content.ReadAsStringAsync();
@@ -37,6 +46,10 @@ namespace VRChatAPI.Endpoints
             {
                 world = JsonConvert.DeserializeObject<WorldRES>(json);
             }
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 4b08110... Made Worlds use the ApiClient from bots if it dont work base is GARBAJE
             return world;
         }
         public static int FetchRoomCap(string worldId)

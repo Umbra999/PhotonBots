@@ -964,7 +964,7 @@ namespace TheBotUI {
                                     else
                                     {
                                         bot.PhotonClient.JoinRoom(CurrentRoom);
-                                        Thread.Sleep(2500);
+                                        Thread.Sleep(3000);
                                         bot.PhotonClient.InstantiateSelf();
                                     }
                                 }

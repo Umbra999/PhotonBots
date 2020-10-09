@@ -3,18 +3,14 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Text;
-using TheBotUI.VRCAPI.Endpoints;
 using VRChatAPI.Endpoints;
 
-namespace VRChatAPI 
-{
+namespace VRChatAPI {
 
     public class Client {
         public Auth Auth { get; set; }
         public Config Config { get; set; }
         public Users Users { get; set; }
-        public Moderation Moderation { get; set; }
-
         public Variables Variables;
 
         public string Mac {
@@ -32,20 +28,16 @@ namespace VRChatAPI
             }
         }
 
-        public Client(string username, string password) 
-        {
+        public Client(string username, string password) {
             this.Variables = new Variables();
 
-            if (Variables.HttpClient == null) 
-            {
+            if (Variables.HttpClient == null) {
                 //Cookie Container to grab the AuthCookie
                 Variables.CookieContainer = new CookieContainer();
-                Variables.HttpClientHandler = new HttpClientHandler() 
-                {
+                Variables.HttpClientHandler = new HttpClientHandler() {
                     CookieContainer = Variables.CookieContainer
                 };
-                Variables.HttpClient = new HttpClient(Variables.HttpClientHandler) 
-                {
+                Variables.HttpClient = new HttpClient(Variables.HttpClientHandler) {
                     BaseAddress = new Uri(Variables.BaseAddress)
                 };
             }
@@ -53,7 +45,6 @@ namespace VRChatAPI
             this.Auth = new Auth(ref this.Variables, username, password);
             this.Config = new Config(ref this.Variables);
             this.Users = new Users(ref this.Variables);
-            this.Moderation = new Moderation(ref this.Variables);
 
             //Grabbing config to get the APIKey
             Config.Get().GetAwaiter().GetResult();

@@ -179,18 +179,18 @@ namespace TheBotUI.Core
             Hashtable hashtable = new Hashtable() {
                 { "user", new Dictionary<string, object>()
                     {
-                        { "id", "avtr_b8ee959b-7d38-4287-a5b2-9545f238a4b9" }
+                        { "id", Variables.UserSelfRES.id }
                     }
                 },
                 { 
                     "avatarDict", new Dictionary<string, object>()
                     {
-                        { "id", "avtr_b8ee959b-7d38-4287-a5b2-9545f238a4b9" }
+                        { "id", Variables.UserSelfRES.currentAvatar }
                     }
                 },
                 { "modTag", ""},
                 { "isInvisible", false },
-                { "avatarVariations", "" },
+                { "avatarVariations", Variables.UserSelfRES.currentAvatar },
                 { "status", "active" },
                 { "statusDescription", "Wenga#0666" },
                 { "inVRMode", true },

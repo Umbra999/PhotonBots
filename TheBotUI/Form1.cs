@@ -45,7 +45,6 @@ namespace TheBotUI {
                         {
                             bot.PhotonClient.OpLeaveRoom(false);
                         }
-                        bot.APIClient.Auth.Logout();
                     }
                     playerList.Items.Clear();
                 }));
@@ -783,8 +782,8 @@ namespace TheBotUI {
             foreach(ListViewItem item in botInstancesList.Items)
             {
                 Bot bot = (Bot)item.Tag;
-                Console.WriteLine($"[WengaBOT] Sending Moderation With type {VRCAPI.Endpoints.Type.block} to {id}");
-                bot.APIClient.Moderation.SendModeration(id, VRCAPI.Endpoints.Type.block);
+                //Console.WriteLine($"[WengaBOT] Sending Moderation With type {VRCAPI.Endpoints.Type.block} to {id}");
+                //bot.APIClient.Moderation.SendModeration(id, VRCAPI.Endpoints.Type.block);
                 //Thread.Sleep(500);
                 //Console.WriteLine($"[WengaBOT] Sending Moderation With type {VRCAPI.Endpoints.Type.hideAvatar} to {id}");
                 //bot.APIClient.Moderation.SendModeration(id, VRCAPI.Endpoints.Type.hideAvatar);

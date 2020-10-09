@@ -16,12 +16,6 @@ namespace TheBotUI.Core
         internal static void Register(LoadBalancingClient client)
         {
             Client = client;
-            PhotonPeer.RegisterType(typeof(Vector2), (byte)'W', SerializeVector2, DeserializeVector2);
-            PhotonPeer.RegisterType(typeof(Vector3), (byte)'V', SerializeVector3, DeserializeVector3);
-            PhotonPeer.RegisterType(typeof(Quaternion), (byte)'Q', SerializeQuaternion, DeserializeQuaternion);
-            PhotonPeer.RegisterType(typeof(Player), (byte)'P', SerializePhotonPlayer, DeserializePhotonPlayer);
-            PhotonPeer.RegisterType(typeof(Vector4), 101, SerializeVector4, DeserializeVector4);
-            PhotonPeer.RegisterType(typeof(RPC), 102, RPC.Serialize, RPC.Deserialize);
         }
 
         public static readonly byte[] memVector3 = new byte[3 * 4];

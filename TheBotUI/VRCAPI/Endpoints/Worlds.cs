@@ -31,7 +31,6 @@ namespace VRChatAPI.Endpoints
             RequestClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
             var response = await RequestClient.GetAsync("https://api.vrchat.cloud/api/1/worlds/"+WorldID+ "?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26");
             json = await response.Content.ReadAsStringAsync();
-            await Variables.HttpClient.PutAsync($"Logout", null);
 
             if (response.IsSuccessStatusCode)
             {

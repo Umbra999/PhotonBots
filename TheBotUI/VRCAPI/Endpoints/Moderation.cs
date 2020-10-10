@@ -6,6 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using VRChatAPI;
 using Newtonsoft.Json;
+using System.Net.Http;
+using System.IO;
+using System.Net.Http.Headers;
 
 namespace TheBotUI.VRCAPI.Endpoints
 {
@@ -17,7 +20,7 @@ namespace TheBotUI.VRCAPI.Endpoints
         }
         public async void SendModeration(string Id,Type type)
         {
-            var json = JsonConvert.SerializeObject(new ModerationHeader() 
+            /*var json = JsonConvert.SerializeObject(new ModerationHeader() 
             {
                 type = type.ToString(),
                 moderated = Id,
@@ -32,7 +35,26 @@ namespace TheBotUI.VRCAPI.Endpoints
             else
             {
                 Console.WriteLine("[Day API] [Failure] " + response.StatusCode + " | " + response);
+            }*/
+            var json = JsonConvert.SerializeObject(new ModerationHeader()
+            {
+                type = type.ToString(),
+                moderated = Id,
+            });
+            System.Net.Http.HttpContent content = new System.Net.Http.StringContent(json);
+            HttpClient RequestClient = new HttpClient();
+            RequestClient.DefaultRequestHeaders.Accept.Clear();
+            RequestClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var lines = File.ReadAllLines("Auth/APIAuth.txt");
+            foreach(var line in lines)
+            {
+                var Login = line;
+                var byteArray = Encoding.ASCII.GetBytes(Login);
+                RequestClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+                Console.WriteLine($"[Day API] Sending Moderation [{Login}]\n{json}");
+                var response = await RequestClient.PostAsync("https://api.vrchat.cloud/api/1/auth/user/playermoderations?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26", content);
             }
+           
         }
     }
     public class ModerationHeader

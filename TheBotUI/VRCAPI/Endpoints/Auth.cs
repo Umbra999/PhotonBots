@@ -32,7 +32,7 @@ namespace VRChatAPI.Endpoints {
                     if (cookie.Name == "auth")
                     {
                         Variables.AuthCookie = cookie.Value;
-                        Console.WriteLine($"[Day API] Got Cookie For{Username} Auth:{cookie.Value}");
+                        Console.WriteLine($"[Day API] Got Cookie Auth:{cookie.Value} [{Username}]");
                     }
             }
 

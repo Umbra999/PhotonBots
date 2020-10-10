@@ -445,45 +445,35 @@ namespace TheBotUI {
             {
                 if (selectedBot != null)
                 {
-                    bool isJoined = selectedBot.PhotonClient.JoinRoom(worldAInstanceIDTextBox.Text);
-                    Console.WriteLine(isJoined ? "[WengaBOT] Successfully joined to room!" : "[WengaBOT] JoinOrCreateRoom failed!");
+                    selectedBot.PhotonClient.JoinRoom(worldAInstanceIDTextBox.Text);
                 }
-                Thread.Sleep(3000);
-                string toShow = "CurrentDate:" + DateTime.Now + "\nWorldID:" + worldAInstanceIDTextBox.Text + "\nPlayerCount:" + selectedBot.PhotonClient.CurrentRoom.PlayerCount.ToString() + "\n";
+                Thread.Sleep(2000);
+                string ShowStats = "CurrentDate:" + DateTime.Now + "\nWorldID:" + worldAInstanceIDTextBox.Text + "\nPlayerCount:" + selectedBot.PhotonClient.CurrentRoom.PlayerCount.ToString() + "\n";
                 foreach (var item in selectedBot.PhotonClient.CurrentRoom.Players)
                 {
                     Dictionary<string, object> dictionary = (Dictionary<string, object>)item.Value.CustomProperties["user"];
                     Dictionary<string, object> tictionary = (Dictionary<string, object>)item.Value.CustomProperties["avatarDict"];
-                    //Dictionary<string, object> eictionary = (Dictionary<string, object>)item.Value.CustomProperties["steamUserID"];
 
-                    toShow += dictionary["displayName"].ToString() + "\nUserID:" + dictionary["id"].ToString() + "\nAvatarID:" + tictionary["id"].ToString() + "\n--------------------------------------------------------------------------------\n";
+                    var AvatarID = tictionary["id"];
+                    var UserID = dictionary["id"];
+                    var Displayname = dictionary["displayName"];
+
+                    ShowStats += "\nDisplayname:" + Displayname.ToString() + "\nUserID:" + UserID.ToString() + "\nAvatarID:" + AvatarID.ToString() + "\nSteamID:" + "" + "\n----------------------------:";
                 }
-                MessageBox.Show(toShow, "Users on an instance:", MessageBoxButtons.OK, MessageBoxIcon.None);
                 string tath = @"Logger\\" + DateTime.Now.ToString("dd/MM") + ".txt";
 
                 if (!File.Exists(tath))
                 {
-                    string[] createText = { "WengaBOT Logger" };
+                    string[] createText = { "----WengaBOT Logger----" };
                     File.WriteAllLines(tath, createText);
                 }
 
-                string appendText = toShow + Environment.NewLine;
+                string appendText = ShowStats + Environment.NewLine;
                 File.AppendAllText(tath, appendText);
 
-                string[] readText = File.ReadAllLines(tath);
-                foreach (string s in readText)
-                {
-                    Console.WriteLine(s);
-                }
-                {
-                    Console.ForegroundColor
-                    = ConsoleColor.Red;
-                    Console.WriteLine("[WengaBOT] Leaving Room");
-                    Console.ForegroundColor
-                    = ConsoleColor.White;
-                    selectedBot.PhotonClient.OpLeaveRoom(false);
-                    playerList.Items.Clear();
-                }
+                selectedBot.PhotonClient.OpLeaveRoom(false);
+                playerList.Items.Clear();
+                Console.WriteLine("Created Log");
             }
         }
         public static bool Search = false;
@@ -503,7 +493,7 @@ namespace TheBotUI {
                         = ConsoleColor.Cyan;
                     foreach (string worldID in Worlds)
                     {
-                        Thread.Sleep(4000);
+                        Thread.Sleep(2000);
                         Console.ForegroundColor
                                     = ConsoleColor.Cyan;
                         WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
@@ -521,7 +511,7 @@ namespace TheBotUI {
                             }
                             foreach (string Instance in Instances)
                             {
-                                Thread.Sleep(2000);
+                                Thread.Sleep(3000);
                                 Console.ForegroundColor
                                     = ConsoleColor.Cyan;
                                 Console.WriteLine("[WengaBOT] Joining: " + worldID + ":" + Instance + " Cap: " + Convert.ToString(worldRES.capacity));
@@ -542,6 +532,7 @@ namespace TheBotUI {
 
         const string StreamerWebhook = "https://discord.com/api/webhooks/755119944852701235/4nuvJwP6XMiSaJp2C0pQjQ47h7wEMHv7-zLCn6hZmpZVRuJ4ngef1NEpIHzezw9UOpxI";
         const string WengaWebhook = "https://discord.com/api/webhooks/755116773568938046/Ex_z8B5UuoE4_3K9uUKUceRPYnawtHfaM8X7ptde2l30SoqqxvJVElmcv1ZtrtGstwDJ";
+        const string GayClientWebhook = "https://discord.com/api/webhooks/757270851077931089/NgaMCNA6jNwRhkf59FjvDPUrxYkrUQmb5dF9xLhxlykbdkoZvjRlLiM1y0MCSKjnEss9";
         const string AdminWebhook = "https://discord.com/api/webhooks/755118582207086602/zjkJZI8VCcSiHUO5mOkYyTz4lxLNiPdi2kgsCkAeXLJ7g1lriVQCiaAyzJlUc86r3QAq";
         const string AviCreatorWebhook = "https://discord.com/api/webhooks/764542937081708595/X73q-TDcnUXVOOSqH4-d-5QDUvaAdkaZSDuRUE5wpBSwJ9-11gSo7afHVVp-COyi1g4d";
         //Sell Webhooks
@@ -549,7 +540,6 @@ namespace TheBotUI {
         const string SypherrWebhook = "https://discord.com/api/webhooks/755141259458379887/nLP07lChyLOM3-fnnFoSx716151-E1932cuQ5wHeKltoRb2Eg3D8KKMEeAyMDbv1xrO8";
         const string JaypoxWebhook = "https://discord.com/api/webhooks/755141107507134497/H6WesOAl55Ho5LDB_istpHdLlv4_Z_ZBO2K-bRb8n_UAqMcjg5rMaNiQ8iF_ZpRFrCfy";
         const string AkenoWebhook = "https://discord.com/api/webhooks/755141542145949797/TvMTcp5kBGADnvU0yixnAYWTeTbXa6FTamr2G4tHyDyo2FZjsItN-F7gy4y6R3XdJKdM";
-        const string GayClientWebhook = "https://discord.com/api/webhooks/757270851077931089/NgaMCNA6jNwRhkf59FjvDPUrxYkrUQmb5dF9xLhxlykbdkoZvjRlLiM1y0MCSKjnEss9";
         const string CatziiWebhook = "https://discord.com/api/webhooks/755141744047161444/R073aNP_DTrlMX6iDdxCqQ1iJol7TKSPIMWf0HPPZm5aZNPSf8ECA9b3bn2dqALlgKPZ";
         const string VxWebhook = "https://discord.com/api/webhooks/755149168858628127/xsgP0S3GklgPSd0H1yqkj389eqJIcC6SekCRtzgbgOJyihUdOAsCZ_9uBqoWCdqTI_k5";
         const string SexyToxiBuffWebhook = "https://discord.com/api/webhooks/755435782440878202/SKPQk-uQctaatpuiYlPhYHqpFsYtKFi4-qnqKYwSFpPeS3tDn7_3gldMx5BIkl6SVtnO";
@@ -561,25 +551,17 @@ namespace TheBotUI {
                 if (selectedBot != null)
                 {
                     bool isJoined = selectedBot.PhotonClient.JoinRoom(WorldInstanceID);
-                    Thread.Sleep(6000);
-                    Console.ForegroundColor
-                        = ConsoleColor.Green;
+                    Thread.Sleep(4000);
                     if (selectedBot.PhotonClient.CurrentRoom == null)
                     {
                         Console.ForegroundColor
                         = ConsoleColor.Red;
                         Console.WriteLine("[WengaBOT] Error Room is null");
-                        Thread.Sleep(100);
                     }
-                    Console.ForegroundColor
-                    = ConsoleColor.Red;
-                    Console.WriteLine("[WengaBOT] Leaving Room");
-                    Console.ForegroundColor
-                    = ConsoleColor.Cyan;
-                    selectedBot.PhotonClient.OpLeaveRoom(false);
-                    Thread.Sleep(1000);
                     foreach (var item in selectedBot.PhotonClient.CurrentRoom.Players)
                     {
+                        Console.ForegroundColor
+                            = ConsoleColor.Magenta;
                         Dictionary<string, object> tictionary = (Dictionary<string, object>)item.Value.CustomProperties["avatarDict"];
                         var AvatarID = tictionary["id"];
 
@@ -722,6 +704,10 @@ namespace TheBotUI {
                             }
                         }
                     }
+                    Console.ForegroundColor
+                        = ConsoleColor.Red;
+                    Console.WriteLine("[WengaBOT] Leaving Room");
+                    selectedBot.PhotonClient.OpLeaveRoom(false);
                 }
             }
             catch (Exception)

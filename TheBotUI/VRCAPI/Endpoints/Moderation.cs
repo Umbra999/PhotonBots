@@ -23,14 +23,15 @@ namespace TheBotUI.VRCAPI.Endpoints
                 moderated = Id,
             });
             System.Net.Http.HttpContent content = new System.Net.Http.StringContent(json);
+            Console.WriteLine($"[Day API] Sending Moderation [{Variables.UserSelfRES.username}]\n{json}");
             var response = await Variables.HttpClient.PostAsync($"auth/user/playermoderations?apiKey={Variables.APIKey}", content);
             if (response.IsSuccessStatusCode)
             {
-                Console.WriteLine("[Success] " + response.StatusCode);
+                Console.WriteLine("[Day API] [Success] " + response.StatusCode);
             }
             else
             {
-                Console.WriteLine("[Failure] " + response.StatusCode + " | " + response);
+                Console.WriteLine("[Day API] [Failure] " + response.StatusCode + " | " + response);
             }
         }
     }

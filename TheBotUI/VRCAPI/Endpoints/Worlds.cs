@@ -29,12 +29,17 @@ namespace VRChatAPI.Endpoints
             var Login = lines[randomLineNumber];
             var byteArray = Encoding.ASCII.GetBytes(Login);
             RequestClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+            Console.WriteLine($"[Day API] Getting World {WorldID} [{Login}]");
             var response = await RequestClient.GetAsync("https://api.vrchat.cloud/api/1/worlds/"+WorldID+ "?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26");
             json = await response.Content.ReadAsStringAsync();
+            Console.WriteLine($"[Day API] Logout [{Login}]");
+            var content = new StringContent("");
+            await RequestClient.PutAsync($"Logout", content);
 
             if (response.IsSuccessStatusCode)
             {
                 world = JsonConvert.DeserializeObject<WorldRES>(json);
+                Console.WriteLine($"[Day API] Got World [{Login}]");
             }
             return world;
         }

@@ -33,8 +33,15 @@ namespace VRChatAPI.Endpoints
             var response = await RequestClient.GetAsync("https://api.vrchat.cloud/api/1/worlds/"+WorldID+ "?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26");
             json = await response.Content.ReadAsStringAsync();
             Console.WriteLine($"[Day API] Logout [{Login}]");
-            var content = new StringContent("");
-            await RequestClient.PutAsync($"Logout", content);
+            try
+            {
+                var content = new StringContent("");
+                await RequestClient.PutAsync($"Logout", content);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine($"[Day API] Logout FAILED [{Login}]");
+            }
 
             if (response.IsSuccessStatusCode)
             {
@@ -47,6 +54,24 @@ namespace VRChatAPI.Endpoints
         {
             WorldRES room = JsonConvert.DeserializeObject<WorldRES>(HttpUtils.HttpGet("https://www.vrchat.com/api/1/worlds/" + worldId + "?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26", new Dictionary<string, string>()));
             return room.capacity;
+        }
+        public static string[] GetInstances(WorldRES world)
+        {
+            try
+            {
+                Console.WriteLine($"[Day API] Getting World Instances");
+                List<string> instances = new List<string>();
+                foreach (var instance in world.instances)
+                {
+                    instances.Add(instance[0].ToString());
+                    Console.WriteLine($"[Day API] Got {instance[0].ToString()} with {instance[1].ToString()} People");
+                }
+                return instances.ToArray();
+            }
+            catch (Exception)
+            {
+            }
+            return new string[0];
         }
         public static class HttpUtils
         {
@@ -193,21 +218,6 @@ namespace VRChatAPI.Endpoints
                 return null;
             }
         }
-        public static string[] GetInstances(WorldRES world)
-        {
-            try
-            {
-                List<string> instances = new List<string>();
-                foreach (var instance in world.instances)
-                {
-                    instances.Add(instance[0].ToString());
-                }
-                return instances.ToArray();
-            }
-            catch (Exception)
-            {
-            }
-            return new string[0];
-        }
+        
     }
 }

@@ -22,7 +22,9 @@ namespace VRChatAPI.Endpoints {
         public async Task<UserSelfRES> Login() {
             string json = "";
             UserSelfRES currentUser = null;
-            Console.WriteLine($"[Day API] Loging in Using {Username}:{Password}");
+            Console.ForegroundColor
+                    = ConsoleColor.DarkCyan;
+            Console.WriteLine($"[Day API] Login in Using {Username}:{Password}");
             var response = await Variables.HttpClient.GetAsync($"auth/user?apiKey={Variables.APIKey}");
             json = await response.Content.ReadAsStringAsync();
 
@@ -32,6 +34,8 @@ namespace VRChatAPI.Endpoints {
                     if (cookie.Name == "auth")
                     {
                         Variables.AuthCookie = cookie.Value;
+                        Console.ForegroundColor
+                            = ConsoleColor.DarkCyan;
                         Console.WriteLine($"[Day API] Got Cookie Auth:{cookie.Value} [{Username}]");
                     }
             }

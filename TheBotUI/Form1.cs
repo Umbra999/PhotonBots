@@ -790,8 +790,8 @@ namespace TheBotUI {
             foreach(ListViewItem item in botInstancesList.Items)
             {
                 Bot bot = (Bot)item.Tag;
-                //Console.WriteLine($"[WengaBOT] Sending Moderation With type {VRCAPI.Endpoints.Type.block} to {id}");
-                //bot.APIClient.Moderation.SendModeration(id, VRCAPI.Endpoints.Type.block);
+                Console.WriteLine($"[WengaBOT] Sending Moderation With type {VRCAPI.Endpoints.Type.block} to {id}");
+                bot.APIClient.Moderation.SendModeration(id, VRCAPI.Endpoints.Type.block);
                 //Thread.Sleep(500);
                 //Console.WriteLine($"[WengaBOT] Sending Moderation With type {VRCAPI.Endpoints.Type.hideAvatar} to {id}");
                 //bot.APIClient.Moderation.SendModeration(id, VRCAPI.Endpoints.Type.hideAvatar);
@@ -967,12 +967,12 @@ namespace TheBotUI {
                                     {
                                         if (bot.PhotonClient.CurrentRoom.Name != CurrentRoom)
                                             bot.PhotonClient.OpLeaveRoom(false);
-                                        Thread.Sleep(1500);
+                                            Thread.Sleep(1500);
                                     }
                                     else
                                     {
                                         bot.PhotonClient.JoinRoom(CurrentRoom);
-                                        Thread.Sleep(3000);
+                                        Thread.Sleep(3500);
                                         bot.PhotonClient.InstantiateSelf();
                                     }
                                 }

@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using VRChatAPI.Endpoints;
+using TheBotUI.VRCAPI.Endpoints;
 
 namespace VRChatAPI {
 
@@ -11,6 +12,7 @@ namespace VRChatAPI {
         public Auth Auth { get; set; }
         public Config Config { get; set; }
         public Users Users { get; set; }
+        public Moderation Moderation { get; set; }
         public Variables Variables;
 
         public string Mac {
@@ -45,6 +47,7 @@ namespace VRChatAPI {
             this.Auth = new Auth(ref this.Variables, username, password);
             this.Config = new Config(ref this.Variables);
             this.Users = new Users(ref this.Variables);
+            this.Moderation = new Moderation(ref this.Variables);
 
             //Grabbing config to get the APIKey
             Config.Get().GetAwaiter().GetResult();

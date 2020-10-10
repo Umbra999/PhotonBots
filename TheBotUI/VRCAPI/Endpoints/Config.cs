@@ -15,6 +15,8 @@ namespace VRChatAPI.Endpoints {
         public async Task<ConfigRES> Get() {
             string json = "";
             ConfigRES config = null;
+            Console.ForegroundColor
+                    = ConsoleColor.DarkCyan;
             Console.WriteLine($"[Day API] Getting Config [{Variables.UserSelfRES?.username}]");
             var response = await Variables.HttpClient.GetAsync($"config");
             json = await response.Content.ReadAsStringAsync();
@@ -22,6 +24,8 @@ namespace VRChatAPI.Endpoints {
             if (response.IsSuccessStatusCode) {
                 config = JsonConvert.DeserializeObject<ConfigRES>(json);
                 Variables.Config = config;
+                Console.ForegroundColor
+                    = ConsoleColor.DarkCyan;
                 Console.WriteLine($"[Day API] Got Config");
             }
             return config;

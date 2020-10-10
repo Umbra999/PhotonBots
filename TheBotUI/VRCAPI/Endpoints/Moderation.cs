@@ -51,8 +51,22 @@ namespace TheBotUI.VRCAPI.Endpoints
                 var Login = line;
                 var byteArray = Encoding.ASCII.GetBytes(Login);
                 RequestClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+                Console.ForegroundColor
+                    = ConsoleColor.DarkCyan;
                 Console.WriteLine($"[Day API] Sending Moderation [{Login}]\n{json}");
                 var response = await RequestClient.PostAsync("https://api.vrchat.cloud/api/1/auth/user/playermoderations?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26", content);
+                if (response.IsSuccessStatusCode)
+                {
+                    Console.ForegroundColor
+                    = ConsoleColor.DarkGreen;
+                    Console.WriteLine("[Day API] [Success] " + response.StatusCode);
+                }
+                else
+                {
+                    Console.ForegroundColor
+                    = ConsoleColor.Red;
+                    Console.WriteLine("[Day API] [Failure] " + response.StatusCode + " | " + response);
+                }
             }
            
         }

@@ -67,11 +67,15 @@ namespace VRChatAPI.Endpoints
         {
             try
             {
+                Console.ForegroundColor
+                    = ConsoleColor.DarkCyan;
                 Console.WriteLine($"[Day API] Getting World Instances");
                 List<string> instances = new List<string>();
                 foreach (var instance in world.instances)
                 {
                     instances.Add(instance[0].ToString());
+                    Console.ForegroundColor
+                        = ConsoleColor.DarkCyan;
                     Console.WriteLine($"[Day API] Got {instance[0].ToString()} with {instance[1].ToString()} People");
                 }
                 return instances.ToArray();

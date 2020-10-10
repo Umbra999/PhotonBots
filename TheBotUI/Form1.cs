@@ -521,7 +521,7 @@ namespace TheBotUI {
                             }
                             foreach (string Instance in Instances)
                             {
-                                Thread.Sleep(1000);
+                                Thread.Sleep(2000);
                                 Console.ForegroundColor
                                     = ConsoleColor.Cyan;
                                 Console.WriteLine("[WengaBOT] Joining: " + worldID + ":" + Instance + " Cap: " + Convert.ToString(worldRES.capacity));
@@ -561,7 +561,7 @@ namespace TheBotUI {
                 if (selectedBot != null)
                 {
                     bool isJoined = selectedBot.PhotonClient.JoinRoom(WorldInstanceID);
-                    Thread.Sleep(4000);
+                    Thread.Sleep(6000);
                     Console.ForegroundColor
                         = ConsoleColor.Green;
                     if (selectedBot.PhotonClient.CurrentRoom == null)
@@ -577,6 +577,7 @@ namespace TheBotUI {
                     Console.ForegroundColor
                     = ConsoleColor.Cyan;
                     selectedBot.PhotonClient.OpLeaveRoom(false);
+                    Thread.Sleep(1000);
                     foreach (var item in selectedBot.PhotonClient.CurrentRoom.Players)
                     {
                         Dictionary<string, object> tictionary = (Dictionary<string, object>)item.Value.CustomProperties["avatarDict"];

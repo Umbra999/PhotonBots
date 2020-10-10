@@ -521,7 +521,7 @@ namespace TheBotUI {
                             }
                             foreach (string Instance in Instances)
                             {
-                                Thread.Sleep(4000);
+                                Thread.Sleep(1000);
                                 Console.ForegroundColor
                                     = ConsoleColor.Cyan;
                                 Console.WriteLine("[WengaBOT] Joining: " + worldID + ":" + Instance + " Cap: " + Convert.ToString(worldRES.capacity));
@@ -543,6 +543,7 @@ namespace TheBotUI {
         const string StreamerWebhook = "https://discord.com/api/webhooks/755119944852701235/4nuvJwP6XMiSaJp2C0pQjQ47h7wEMHv7-zLCn6hZmpZVRuJ4ngef1NEpIHzezw9UOpxI";
         const string WengaWebhook = "https://discord.com/api/webhooks/755116773568938046/Ex_z8B5UuoE4_3K9uUKUceRPYnawtHfaM8X7ptde2l30SoqqxvJVElmcv1ZtrtGstwDJ";
         const string AdminWebhook = "https://discord.com/api/webhooks/755118582207086602/zjkJZI8VCcSiHUO5mOkYyTz4lxLNiPdi2kgsCkAeXLJ7g1lriVQCiaAyzJlUc86r3QAq";
+        const string AviCreatorWebhook = "https://discord.com/api/webhooks/764542937081708595/X73q-TDcnUXVOOSqH4-d-5QDUvaAdkaZSDuRUE5wpBSwJ9-11gSo7afHVVp-COyi1g4d";
         //Sell Webhooks
         const string DickSmokeWebhook = "https://discord.com/api/webhooks/755140836789846057/vaOWcGbThUHq_89bldjSDYaxBPUUVu8sxLE3jyVL1DBkObe-GZa1thsL5By0nstsecMY";
         const string SypherWebhook = "https://discord.com/api/webhooks/755141259458379887/nLP07lChyLOM3-fnnFoSx716151-E1932cuQ5wHeKltoRb2Eg3D8KKMEeAyMDbv1xrO8";
@@ -560,12 +561,9 @@ namespace TheBotUI {
                 if (selectedBot != null)
                 {
                     bool isJoined = selectedBot.PhotonClient.JoinRoom(WorldInstanceID);
-                    Thread.Sleep(2500);
+                    Thread.Sleep(4000);
                     Console.ForegroundColor
                         = ConsoleColor.Green;
-                    Console.WriteLine("[WengaBOT] Instanciating Searchbot");
-                    selectedBot.PhotonClient.InstantiateSelf();
-                    Thread.Sleep(3000);
                     if (selectedBot.PhotonClient.CurrentRoom == null)
                     {
                         Console.ForegroundColor
@@ -581,10 +579,13 @@ namespace TheBotUI {
                     selectedBot.PhotonClient.OpLeaveRoom(false);
                     foreach (var item in selectedBot.PhotonClient.CurrentRoom.Players)
                     {
+                        Dictionary<string, object> tictionary = (Dictionary<string, object>)item.Value.CustomProperties["avatarDict"];
+                        var AvatarID = tictionary["id"];
+
                         Dictionary<string, object> dictionary = (Dictionary<string, object>)item.Value.CustomProperties["user"];
-                       
                         var UserID = dictionary["id"];
-                        var Displayname = dictionary["displayName"];
+                        var Displayname = dictionary["displayName"];           
+
                         if (File.ReadAllText("Access/Wenga.txt").Contains(UserID.ToString()))
                         {
                             Console.WriteLine("Found: " + Displayname);
@@ -600,6 +601,12 @@ namespace TheBotUI {
                         {
                             Console.WriteLine("Found: " + Displayname);
                             SendWebHook(StreamerWebhook, $"[Wenga's Egirl] Found Streamer: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                        }
+
+                        if (File.ReadAllText("UsersAviCreator.txt").Contains(UserID.ToString()))
+                        {
+                            Console.WriteLine("Found: " + Displayname);
+                            SendWebHook(AviCreatorWebhook, $"[Wenga's Egirl] Found Creator: {Displayname}  | in: {world.name}  [{WorldInstanceID}] | AvatarID: {AvatarID}");
                         }
 
                         // SELL STUFF ONLY ADD AND REMOVE //
@@ -931,6 +938,7 @@ namespace TheBotUI {
             if (checkBox1.CheckState == CheckState.Checked)
             {
                 StopRoomChecker = false;
+                ShouldPauseRoomCheckerLoop = false;
                 Console.ForegroundColor
                 = ConsoleColor.DarkGreen;
                 Console.WriteLine("[WengaBOT] Enabled Followmode");
@@ -940,6 +948,7 @@ namespace TheBotUI {
             else if (checkBox1.CheckState == CheckState.Unchecked)
             {
                 StopRoomChecker = true;
+                ShouldPauseRoomCheckerLoop = true;
                 DisconnectAllBots();
                 Console.ForegroundColor
                 = ConsoleColor.Red;
@@ -958,7 +967,6 @@ namespace TheBotUI {
                         {
                             if (StopRoomChecker == false)
                             {
-                                Thread.Sleep(2000);
                                 FetchRoom();
                                 foreach (ListViewItem item in botInstancesList.Items)
                                 {

@@ -508,6 +508,7 @@ namespace TheBotUI {
                                     = ConsoleColor.Cyan;
                         WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
                         Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Length);
+                        selectedBot.APIClient.Auth.Logout();
                         if (worldRES.publicOccupants != 0)
                         {
                             Thread.Sleep(500);
@@ -551,6 +552,7 @@ namespace TheBotUI {
         const string CatziiWebhook = "https://discord.com/api/webhooks/755141744047161444/R073aNP_DTrlMX6iDdxCqQ1iJol7TKSPIMWf0HPPZm5aZNPSf8ECA9b3bn2dqALlgKPZ";
         const string VxWebhook = "https://discord.com/api/webhooks/755149168858628127/xsgP0S3GklgPSd0H1yqkj389eqJIcC6SekCRtzgbgOJyihUdOAsCZ_9uBqoWCdqTI_k5";
         const string SexyToxiBuffWebhook = "https://discord.com/api/webhooks/755435782440878202/SKPQk-uQctaatpuiYlPhYHqpFsYtKFi4-qnqKYwSFpPeS3tDn7_3gldMx5BIkl6SVtnO";
+        const string IncognitomanWebhook = "https://discord.com/api/webhooks/764276573875863603/RXVxNzkC6OEwIz727j1YyuC_cbtJ8VbSCC5Xa6f4l4mIJxsytnT70VTybXgZZpcNkrf7";
         public void JoinRoom(WorldRES world, string WorldInstanceID)
         {
             try
@@ -647,6 +649,12 @@ namespace TheBotUI {
                         {
                             Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                             SendWebHook(SypherWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                        }
+
+                        if (File.ReadAllText("Access/Incognitoman.txt").Contains(UserID.ToString()))
+                        {
+                            Console.WriteLine("Found: " + dictionary["displayName"].ToString());
+                            SendWebHook(IncognitomanWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
                         }
                     }
                 }

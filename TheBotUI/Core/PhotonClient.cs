@@ -108,14 +108,14 @@ namespace TheBotUI.Core
         {
             Console.ForegroundColor
                     = ConsoleColor.Yellow;
-            Console.WriteLine($"[WengaBOT] Response received: {opResponse.ToString()}");
+            Console.WriteLine($"[WengaBOT] Response received: {opResponse}");
         }
 
         private void OnStateChanged(ClientState before, ClientState now) 
         {
             Console.ForegroundColor
                     = ConsoleColor.Yellow;
-            Console.WriteLine($"[WengaBOT] Changed state from {before} to {now.ToString()}");
+            Console.WriteLine($"[WengaBOT] Changed state from {before} to {now}");
         }
 
         private void CustomOnEvent(EventData eventData) 

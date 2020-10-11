@@ -547,6 +547,7 @@ namespace TheBotUI {
         const string VxWebhook = "https://discord.com/api/webhooks/755149168858628127/xsgP0S3GklgPSd0H1yqkj389eqJIcC6SekCRtzgbgOJyihUdOAsCZ_9uBqoWCdqTI_k5";
         const string SexyToxiBuffWebhook = "https://discord.com/api/webhooks/755435782440878202/SKPQk-uQctaatpuiYlPhYHqpFsYtKFi4-qnqKYwSFpPeS3tDn7_3gldMx5BIkl6SVtnO";
         const string IncognitomanWebhook = "https://discord.com/api/webhooks/764276573875863603/RXVxNzkC6OEwIz727j1YyuC_cbtJ8VbSCC5Xa6f4l4mIJxsytnT70VTybXgZZpcNkrf7";
+        const string ToksinWebhook = "https://discord.com/api/webhooks/764800785267556352/GtabtiusGZNA5Gi7SUwJ8HKoMQ1U5q45abtH_2BP__SSBU_iD7aITVbIpgR9Wupepjh0";
         public void JoinRoom(WorldRES world, string WorldInstanceID)
         {
             try
@@ -704,6 +705,19 @@ namespace TheBotUI {
                             {
                                 Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                                 SendWebHook(IncognitomanWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                            }
+                        }
+
+                        if (File.ReadAllText("Access/Toksin.txt").Contains(UserID.ToString()))
+                        {
+                            if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                            {
+                                Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                            }
+                            else
+                            {
+                                Console.WriteLine("Found: " + dictionary["displayName"].ToString());
+                                SendWebHook(ToksinWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
                             }
                         }
                     }

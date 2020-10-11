@@ -25,6 +25,6 @@ namespace VRChatAPI.Responses
         public string currentAvatarAssetUrl { get; set; }
         public int acceptedTOSVersion { get; set; }
         public JObject steamDetails { get; set; }
-        public bool hasLoggedInFromClient { get; set; }
+        public static bool hasLoggedInFromClient { get; set; }
     }
 }

@@ -15,6 +15,7 @@ using ExitGames.Client.Photon;
 using System.Collections;
 using VRChatAPI;
 using Newtonsoft.Json;
+using VRChatAPI.Responses;
 #if NET472
 using System.Diagnostics;
 #endif
@@ -457,8 +458,10 @@ namespace TheBotUI {
                     var AvatarID = tictionary["id"];
                     var UserID = dictionary["id"];
                     var Displayname = dictionary["displayName"];
+                    var Status = dictionary["status"];
+                    var Description = dictionary["statusDescription"];
 
-                    ShowStats += "\nDisplayname:" + Displayname.ToString() + "\nUserID:" + UserID.ToString() + "\nAvatarID:" + AvatarID.ToString() + "\nSteamID:" + "" + "\n----------------------------:";
+                    ShowStats += "\nDisplayname:" + Displayname.ToString() + "\nUserID:" + UserID.ToString() + "\nAvatarID:" + AvatarID.ToString() + "\nAllow Copying:" + UserRES.allowAvatarCopying.ToString() + "\nStatus:" + Status.ToString() + "\nDescription:" + Description.ToString() + "\nIs Friend:" + UserRES.isFriend.ToString() + "\n----------------------------:";
                 }
                 string tath = @"Logger\\" + DateTime.Now.ToString("dd/MM") + ".txt";
 
@@ -473,7 +476,7 @@ namespace TheBotUI {
 
                 selectedBot.PhotonClient.OpLeaveRoom(false);
                 playerList.Items.Clear();
-                Console.WriteLine("Created Log");
+                Console.WriteLine("[WengaBOT] Created Log");
             }
         }
         public static bool Search = false;

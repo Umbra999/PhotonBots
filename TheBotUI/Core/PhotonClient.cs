@@ -119,7 +119,8 @@ namespace TheBotUI.Core
 
         private void CustomOnEvent(EventData eventData) {
             byte evCode = eventData.Code;
-            switch (evCode) {
+            switch (evCode) 
+            {
                 case 1:     //USpeak
                 case 201:   //Unreliable PhotonView
                 case 206:   //Reliable PhotonView
@@ -235,11 +236,6 @@ namespace TheBotUI.Core
                 //Form1.SendWebHook("https://discordapp.com/api/webhooks/758563365534302220/6RBmwDCRbeikeRwnKCkVtuR6Qi5Ha97h11y6NwLP4AO10s24UkU_n25tI5NPl5zn7jO3", "[WengaBOT ERROR] Bot disconnected random cause: " + (cause) + " -> Re-Auth");
                 ReconnectToMaster();
             }
-
-            //Console.WriteLine("[WengaBOT] Disconnected Cause:" + cause + "-> Re-Auth Disabled");
-            //Form1.SendWebHook("https://discordapp.com/api/webhooks/758563365534302220/6RBmwDCRbeikeRwnKCkVtuR6Qi5Ha97h11y6NwLP4AO10s24UkU_n25tI5NPl5zn7jO3", "[WengaBOT ERROR] Bot disconnected cause: " + cause);
-            //Form1.SendWebHook("https://discordapp.com/api/webhooks/758563365534302220/6RBmwDCRbeikeRwnKCkVtuR6Qi5Ha97h11y6NwLP4AO10s24UkU_n25tI5NPl5zn7jO3", "[WengaBOT ERROR] Re-auth is disabled, Bot closed");
-            //Application.Exit();
         }
 
         public void OnRegionListReceived(RegionHandler regionHandler) 

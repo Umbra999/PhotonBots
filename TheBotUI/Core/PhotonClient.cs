@@ -54,6 +54,7 @@ namespace TheBotUI.Core
 
             this.AddCallbackTarget(this);
             this.EventReceived += CustomOnEvent;
+            this.EventReceived += Form1.CustomOnEvent;
             this.StateChanged += OnStateChanged;
             this.OpResponseReceived += OnResponseReceived;
 
@@ -117,7 +118,8 @@ namespace TheBotUI.Core
             Console.WriteLine($"[WengaBOT] Changed state from {before} to {now.ToString()}");
         }
 
-        private void CustomOnEvent(EventData eventData) {
+        private void CustomOnEvent(EventData eventData) 
+        {
             byte evCode = eventData.Code;
             switch (evCode) 
             {

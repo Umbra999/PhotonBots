@@ -16,6 +16,7 @@ using System.Collections;
 using VRChatAPI;
 using Newtonsoft.Json;
 using VRChatAPI.Responses;
+using static TheBotUI.Core.SearchWebhooks;
 #if NET472
 using System.Diagnostics;
 #endif
@@ -56,6 +57,19 @@ namespace TheBotUI {
 
         private void Button2_Click(object sender, EventArgs e) {
             this.WindowState = FormWindowState.Maximized;
+        }
+
+        public static void CustomOnEvent(EventData eventData)
+        {
+            if (EventLogger.CheckState == CheckState.Checked)
+            {
+                Console.WriteLine("[WengaBOT] catched " + eventData);
+            }
+
+            else if (EventLogger.CheckState == CheckState.Unchecked)
+            {
+
+            }
         }
 
         private void Button3_Click(object sender, EventArgs e) {
@@ -533,21 +547,6 @@ namespace TheBotUI {
             }){IsBackground = true}.Start();   
         }
 
-        const string StreamerWebhook = "https://discord.com/api/webhooks/755119944852701235/4nuvJwP6XMiSaJp2C0pQjQ47h7wEMHv7-zLCn6hZmpZVRuJ4ngef1NEpIHzezw9UOpxI";
-        const string WengaWebhook = "https://discord.com/api/webhooks/755116773568938046/Ex_z8B5UuoE4_3K9uUKUceRPYnawtHfaM8X7ptde2l30SoqqxvJVElmcv1ZtrtGstwDJ";
-        const string GayClientWebhook = "https://discord.com/api/webhooks/757270851077931089/NgaMCNA6jNwRhkf59FjvDPUrxYkrUQmb5dF9xLhxlykbdkoZvjRlLiM1y0MCSKjnEss9";
-        const string AdminWebhook = "https://discord.com/api/webhooks/755118582207086602/zjkJZI8VCcSiHUO5mOkYyTz4lxLNiPdi2kgsCkAeXLJ7g1lriVQCiaAyzJlUc86r3QAq";
-        const string AviCreatorWebhook = "https://discord.com/api/webhooks/764542937081708595/X73q-TDcnUXVOOSqH4-d-5QDUvaAdkaZSDuRUE5wpBSwJ9-11gSo7afHVVp-COyi1g4d";
-        //Sell Webhooks
-        const string DickSmokeWebhook = "https://discord.com/api/webhooks/755140836789846057/vaOWcGbThUHq_89bldjSDYaxBPUUVu8sxLE3jyVL1DBkObe-GZa1thsL5By0nstsecMY";
-        const string SypherrWebhook = "https://discord.com/api/webhooks/755141259458379887/nLP07lChyLOM3-fnnFoSx716151-E1932cuQ5wHeKltoRb2Eg3D8KKMEeAyMDbv1xrO8";
-        const string JaypoxWebhook = "https://discord.com/api/webhooks/755141107507134497/H6WesOAl55Ho5LDB_istpHdLlv4_Z_ZBO2K-bRb8n_UAqMcjg5rMaNiQ8iF_ZpRFrCfy";
-        const string AkenoWebhook = "https://discord.com/api/webhooks/755141542145949797/TvMTcp5kBGADnvU0yixnAYWTeTbXa6FTamr2G4tHyDyo2FZjsItN-F7gy4y6R3XdJKdM";
-        const string CatziiWebhook = "https://discord.com/api/webhooks/755141744047161444/R073aNP_DTrlMX6iDdxCqQ1iJol7TKSPIMWf0HPPZm5aZNPSf8ECA9b3bn2dqALlgKPZ";
-        const string VxWebhook = "https://discord.com/api/webhooks/755149168858628127/xsgP0S3GklgPSd0H1yqkj389eqJIcC6SekCRtzgbgOJyihUdOAsCZ_9uBqoWCdqTI_k5";
-        const string SexyToxiBuffWebhook = "https://discord.com/api/webhooks/755435782440878202/SKPQk-uQctaatpuiYlPhYHqpFsYtKFi4-qnqKYwSFpPeS3tDn7_3gldMx5BIkl6SVtnO";
-        const string IncognitomanWebhook = "https://discord.com/api/webhooks/764276573875863603/RXVxNzkC6OEwIz727j1YyuC_cbtJ8VbSCC5Xa6f4l4mIJxsytnT70VTybXgZZpcNkrf7";
-        const string ToksinWebhook = "https://discord.com/api/webhooks/764800785267556352/GtabtiusGZNA5Gi7SUwJ8HKoMQ1U5q45abtH_2BP__SSBU_iD7aITVbIpgR9Wupepjh0";
         public void JoinRoom(WorldRES world, string WorldInstanceID)
         {
             try
@@ -562,6 +561,7 @@ namespace TheBotUI {
                         = ConsoleColor.Red;
                         Console.WriteLine("[WengaBOT] Error Room is null");
                     }
+
                     foreach (var item in selectedBot.PhotonClient.CurrentRoom.Players)
                     {
                         Console.ForegroundColor
@@ -1170,6 +1170,11 @@ namespace TheBotUI {
                 })
                 { IsBackground = true }.Start();
             }
+        }
+
+        public static void EventLogger_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

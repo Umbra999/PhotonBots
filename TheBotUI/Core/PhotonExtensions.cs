@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading;
+using System.Windows.Forms;
+using TheBotUI;
 
 public static class PhotonExtensions
 {
@@ -49,6 +51,18 @@ public static class PhotonExtensions
             else
                 Thread.Sleep(25);
         }
+    }
+    public static Player GetPlayer(int PhotonID)
+    {
+        var bot = Form1.selectedBot;
+        foreach (var item in bot.PhotonClient.CurrentRoom.Players)
+        {
+            if (item.Value.ActorNumber == PhotonID)
+            {
+                return item.Value;
+            }
+        }
+        return null;
     }
     private static RaiseEventOptions SetPlayerAsTarget(Player ply)
     {

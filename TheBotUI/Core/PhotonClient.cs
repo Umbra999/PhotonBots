@@ -207,7 +207,7 @@ namespace TheBotUI.Core
 
         public void OnDisconnected(DisconnectCause cause) 
         {
-            if (Form1.Search)
+            if (GlobalVars.Search)
             {
                 Console.ForegroundColor
                     = ConsoleColor.Red;
@@ -215,7 +215,7 @@ namespace TheBotUI.Core
                 //Form1.SendWebHook("https://discordapp.com/api/webhooks/758563365534302220/6RBmwDCRbeikeRwnKCkVtuR6Qi5Ha97h11y6NwLP4AO10s24UkU_n25tI5NPl5zn7jO3", "[WengaBOT ERROR] Bot disconnected while searching cause: " + (cause) + " -> Re-Auth");
                 ReconnectToMaster();
             }
-            else if (Form1.Desync)
+            else if (GlobalVars.Desync)
             {
                 // Add Auto Rejoin world 
                 Console.ForegroundColor

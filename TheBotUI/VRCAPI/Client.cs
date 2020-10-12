@@ -12,6 +12,7 @@ namespace VRChatAPI {
         public Auth Auth { get; set; }
         public Config Config { get; set; }
         public Users Users { get; set; }
+        public Worlds Worlds { get;set;}
         public Moderation Moderation { get; set; }
         public Variables Variables;
 
@@ -48,6 +49,7 @@ namespace VRChatAPI {
             this.Config = new Config(ref this.Variables);
             this.Users = new Users(ref this.Variables);
             this.Moderation = new Moderation(ref this.Variables);
+            this.Worlds = new Worlds(ref this.Variables);
 
             //Grabbing config to get the APIKey
             Config.Get().GetAwaiter().GetResult();
@@ -73,6 +75,11 @@ namespace VRChatAPI {
             Variables.UserSelfRES = Auth.Login().GetAwaiter().GetResult();
             header.Remove("Authorization");
             Variables.CookieContainer.Add(new Uri(Variables.BaseAddress), new Cookie("auth", Variables.AuthCookie));
+            Console.WriteLine($"[Day Experimental API] {username} Got {Variables.HttpClientHandler.CookieContainer.Count} Cookies");
+            foreach (var item in Variables.HttpClientHandler.CookieContainer.GetCookies(new Uri(Variables.BaseAddress)))
+            {
+                Console.WriteLine($"[Day Experimental API] Cookie: {item.ToString()} (from {username})");
+            }
         }
     }
 }

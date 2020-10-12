@@ -13,9 +13,42 @@ using VRChatAPI;
 
 namespace VRChatAPI.Endpoints
 {
-    static class Worlds
+    public class Worlds
     {
+        private Variables Variables;
 
+        public Worlds(ref Variables variables)
+        {
+            Variables = variables;
+        }
+        public async Task<WorldRES> GetWorlds(string WorldID)
+        {
+            string json = "";
+            WorldRES world = null;
+            try
+            {
+                Console.WriteLine($"[Day API] Getting World {WorldID} [{Variables.UserSelfRES.displayName}]");
+                var response = await Variables.HttpClient.GetAsync("https://api.vrchat.cloud/api/1/worlds/" + WorldID + "?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26");
+                if (response.IsSuccessStatusCode)
+                {
+                    world = JsonConvert.DeserializeObject<WorldRES>(json);
+                    Console.ForegroundColor
+                        = ConsoleColor.DarkCyan;
+                    Console.WriteLine($"[Day API] Got World [{Variables.UserSelfRES.displayName}]");
+                }
+                else
+                {
+                    Console.ForegroundColor
+                        = ConsoleColor.Red;
+                    Console.WriteLine($"[Day API] Failed To get World [{Variables.UserSelfRES.displayName}]\n" + json);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return world;
+        }
         public static async Task<WorldRES> GetWorld(string WorldID)
         {
             string json = "";

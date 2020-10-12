@@ -21,7 +21,7 @@ using System.Diagnostics;
 #endif
 namespace TheBotUI.Core
 {
-    public class SearchWebhooks
+    static class SearchWebhooks
     {
         public const string StreamerWebhook = "https://discord.com/api/webhooks/755119944852701235/4nuvJwP6XMiSaJp2C0pQjQ47h7wEMHv7-zLCn6hZmpZVRuJ4ngef1NEpIHzezw9UOpxI";
         public const string WengaWebhook = "https://discord.com/api/webhooks/755116773568938046/Ex_z8B5UuoE4_3K9uUKUceRPYnawtHfaM8X7ptde2l30SoqqxvJVElmcv1ZtrtGstwDJ";
@@ -40,5 +40,187 @@ namespace TheBotUI.Core
         public const string ToksinWebhook = "https://discord.com/api/webhooks/764800785267556352/GtabtiusGZNA5Gi7SUwJ8HKoMQ1U5q45abtH_2BP__SSBU_iD7aITVbIpgR9Wupepjh0";
         public const string SirzechsWebhook = "https://discord.com/api/webhooks/765184879339372544/mO8jdxrqvgxcK8qtZvQUrzWHCrCuIxRAGX7txPogfVfWM4ud75swmD97ztcg60oJ5bqi";
 
+        public static void DoWebhooks(Player player, WorldRES world,string WorldInstanceID)
+        {
+            Dictionary<string, object> tictionary = (Dictionary<string, object>)player.CustomProperties["avatarDict"];
+            var AvatarID = tictionary["id"];
+
+            Dictionary<string, object> dictionary = (Dictionary<string, object>)player.CustomProperties["user"];
+            var UserID = dictionary["id"];
+            var Displayname = dictionary["displayName"];
+
+            if (File.ReadAllText("Access/Wenga.txt").Contains(UserID.ToString()))
+            {
+                Console.WriteLine("Found: " + Displayname);
+                SendWebHook(WengaWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}] | AvatarID: {AvatarID}");
+            }
+
+            if (File.ReadAllText("Access/DayOfThePlay.txt").Contains(UserID.ToString()))
+            {
+                Console.WriteLine("Found: " + dictionary["displayName"].ToString());
+                SendWebHook(GayClientWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+            }
+
+            if (File.ReadAllText("UsersMod.txt").Contains(UserID.ToString()))
+            {
+                Console.WriteLine("Found: " + Displayname);
+                SendWebHook(AdminWebhook, $"[Wenga's Egirl] Found Admin/Moderator: {Displayname}  | in: {world.name}  [{WorldInstanceID}] | AvatarID: {AvatarID}");
+            }
+
+            if (File.ReadAllText("UsersStreamer.txt").Contains(UserID.ToString()))
+            {
+                Console.WriteLine("Found: " + Displayname);
+                SendWebHook(StreamerWebhook, $"[Wenga's Egirl] Found Streamer: {Displayname}  | in: {world.name}  [{WorldInstanceID}] | AvatarID: {AvatarID}");
+            }
+
+            if (File.ReadAllText("UsersAviCreator.txt").Contains(UserID.ToString()))
+            {
+                Console.WriteLine("Found: " + Displayname);
+                SendWebHook(AviCreatorWebhook, $"[Wenga's Egirl] Found Creator: {Displayname}  | in: {world.name}  [{WorldInstanceID}] | AvatarID: {AvatarID}");
+            }
+
+            // SELL STUFF ONLY ADD AND REMOVE //
+            if (File.ReadAllText("Access/Bigsmoke002.txt").Contains(UserID.ToString()))
+            {
+                if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                {
+                    Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                }
+                else
+                {
+                    Console.WriteLine("Found: " + dictionary["displayName"].ToString());
+                    SendWebHook(DickSmokeWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                }
+            }
+
+            if (File.ReadAllText("Access/Jaypox.txt").Contains(UserID.ToString()))
+            {
+                if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                {
+                    Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                }
+                else
+                {
+                    Console.WriteLine("Found: " + dictionary["displayName"].ToString());
+                    SendWebHook(JaypoxWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                }
+            }
+
+            if (File.ReadAllText("Access/Akeno.txt").Contains(UserID.ToString()))
+            {
+                if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                {
+                    Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                }
+                else
+                {
+                    Console.WriteLine("Found: " + dictionary["displayName"].ToString());
+                    SendWebHook(AkenoWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                }
+            }
+
+            if (File.ReadAllText("Access/Catzii.txt").Contains(UserID.ToString()))
+            {
+                if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                {
+                    Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                }
+                else
+                {
+                    Console.WriteLine("Found: " + dictionary["displayName"].ToString());
+                    SendWebHook(CatziiWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                }
+            }
+
+            if (File.ReadAllText("Access/Vx.txt").Contains(UserID.ToString()))
+            {
+                if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                {
+                    Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                }
+                else
+                {
+                    Console.WriteLine("Found: " + dictionary["displayName"].ToString());
+                    SendWebHook(VxWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                }
+            }
+
+            if (File.ReadAllText("Access/SexyToxiBuff.txt").Contains(UserID.ToString()))
+            {
+                if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                {
+                    Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                }
+                else
+                {
+                    Console.WriteLine("Found: " + dictionary["displayName"].ToString());
+                    SendWebHook(SexyToxiBuffWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                }
+            }
+
+            if (File.ReadAllText("Access/Sypherr.txt").Contains(UserID.ToString()))
+            {
+                if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                {
+                    Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                }
+                else
+                {
+                    Console.WriteLine("Found: " + dictionary["displayName"].ToString());
+                    SendWebHook(SypherrWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                }
+            }
+
+            if (File.ReadAllText("Access/Incognitoman.txt").Contains(UserID.ToString()))
+            {
+                if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                {
+                    Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                }
+                else
+                {
+                    Console.WriteLine("Found: " + dictionary["displayName"].ToString());
+                    SendWebHook(IncognitomanWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                }
+            }
+
+            if (File.ReadAllText("Access/Toksin.txt").Contains(UserID.ToString()))
+            {
+                if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                {
+                    Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                }
+                else
+                {
+                    Console.WriteLine("Found: " + dictionary["displayName"].ToString());
+                    SendWebHook(ToksinWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                }
+            }
+
+            if (File.ReadAllText("Access/Sirzechs.txt").Contains(UserID.ToString()))
+            {
+                if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                {
+                    Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                }
+                else
+                {
+                    Console.WriteLine("Found: " + dictionary["displayName"].ToString());
+                    SendWebHook(SirzechsWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                }
+            }
+        }
+        public static void SendWebHook(string URL, string MSG)
+        {
+            NameValueCollection pairs = new NameValueCollection()
+            {
+                { "content", MSG }
+            };
+            byte[] numArray;
+            using (WebClient webClient = new WebClient())
+            {
+                numArray = webClient.UploadValues(URL, pairs);
+            }
+        }
     }
 }

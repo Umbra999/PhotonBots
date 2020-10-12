@@ -24,7 +24,7 @@ using System.Diagnostics;
 namespace TheBotUI {
 
     public partial class Form1 : Form {
-        public Bot selectedBot;
+        public static Bot selectedBot;
 
         public Form1() 
         {
@@ -35,7 +35,8 @@ namespace TheBotUI {
         {
             Console.ForegroundColor
             = ConsoleColor.Red;
-            Console.WriteLine("[WengaBOT] All bots on the instance are disconnected!");
+            Console.WriteLine("[WengaBOT] Disconnecting all Bots. . .");
+            Console.WriteLine($"[Day API] Loging All bots Out. .  .");
             new Thread(() =>
             {
                 Invoke(new MethodInvoker(() =>
@@ -47,10 +48,20 @@ namespace TheBotUI {
                         {
                             bot.PhotonClient.OpLeaveRoom(false);
                         }
+                        try
+                        {
+                            bot.APIClient.Auth.Logout();
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine($"[Day API] Logout Failed!");
+                        }
                     }
                     playerList.Items.Clear();
                 }));
             }).Start();
+            Console.WriteLine("[WengaBOT] All bots are disconnected!");
+            Console.WriteLine($"[Day API] All bots are Loged out!");
             Thread.Sleep(1000);
             Application.Exit();
         }
@@ -61,14 +72,13 @@ namespace TheBotUI {
 
         public static void CustomOnEvent(EventData eventData)
         {
-            if (EventLogger.CheckState == CheckState.Checked)
+            if (GlobalVars.EventLog)
             {
-                Console.WriteLine("[WengaBOT] catched " + eventData);
-            }
-
-            else if (EventLogger.CheckState == CheckState.Unchecked)
-            {
-
+                if (!GlobalVars.IgnoreEvents.Contains(eventData.Code))
+                {
+                    Console.WriteLine($"[Event Logger] Event From {eventData.Sender} [{PhotonExtensions.GetPlayer(eventData.Sender)?.GetDisplayName()}]");
+                    Console.WriteLine(JsonConvert.SerializeObject(eventData, Formatting.Indented));
+                }
             }
         }
 
@@ -158,7 +168,7 @@ namespace TheBotUI {
                                 {
                                     Invoke(new MethodInvoker(() => { playerList.Items.Clear(); }));
                                     List<ListViewItem> players = new List<ListViewItem>();
-                                    if (Search)
+                                    if (GlobalVars.Search)
                                         return;
                                     if (selectedBot.PhotonClient.CurrentRoom != null)
                                     {
@@ -302,8 +312,6 @@ namespace TheBotUI {
                 selectedBot.PhotonClient.InstantiateSelf();
             }
         }
-
-        public static bool Desync = false;
         private void InstantiateInvisButton_Click(object sender, EventArgs e) {
             if (selectedBot.PhotonClient.InRoom) 
             {
@@ -316,7 +324,7 @@ namespace TheBotUI {
                     {
                         100.EventSpammer(5, () =>
                         {
-                            Desync = true;
+                            GlobalVars.Desync = true;
                             foreach (ListViewItem item in botInstancesList.Items)
                             {
                                 var bot = (Bot)item.Tag;
@@ -329,7 +337,7 @@ namespace TheBotUI {
                     Console.ForegroundColor
                         = ConsoleColor.DarkGreen;
                     Console.WriteLine("[WengaBOT] Lobby Desynced");
-                    Desync = false;
+                    GlobalVars.Desync = false;
                 })
                 { IsBackground = true }.Start();
             }
@@ -493,7 +501,6 @@ namespace TheBotUI {
                 Console.WriteLine("[WengaBOT] Created Log");
             }
         }
-        public static bool Search = false;
         private void Searchbutton_Click(object sender, EventArgs e)
         {
             SearchFunc();
@@ -505,20 +512,19 @@ namespace TheBotUI {
                 try
                 {
                     string[] Worlds = File.ReadAllLines(@"Worlds.txt");
-                    Search = true;
+                    GlobalVars.Search = true;
                     Console.ForegroundColor
                         = ConsoleColor.Cyan;
                     foreach (string worldID in Worlds)
                     {
-                        Thread.Sleep(2000);
                         Console.ForegroundColor
                                     = ConsoleColor.Cyan;
                         WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
+                        //WorldRES worldRES = await selectedBot.APIClient.Worlds.GetWorlds(worldID);
                         Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Length);
                         selectedBot.APIClient.Auth.Logout();
                         if (worldRES.publicOccupants != 0)
                         {
-                            Thread.Sleep(500);
                             List<string> Instances = VRChatAPI.Endpoints.Worlds.GetInstances(worldRES).ToList();
                             foreach (var instancetag in Instances)
                             {
@@ -528,16 +534,18 @@ namespace TheBotUI {
                             }
                             foreach (string Instance in Instances)
                             {
-                                Thread.Sleep(3000);
                                 Console.ForegroundColor
                                     = ConsoleColor.Cyan;
                                 Console.WriteLine("[WengaBOT] Joining: " + worldID + ":" + Instance + " Cap: " + Convert.ToString(worldRES.capacity));
                                 JoinRoom(worldRES, worldID + ":" + Instance);
+                                Thread.Sleep(3000);
                             }
+                            Thread.Sleep(500);
                         }
+                        Thread.Sleep(2000);
                     }
                     Console.WriteLine("----Search Stopped----");
-                    Search = false;
+                    GlobalVars.Search = false;
                 }
                 catch (Exception e5)
                 {
@@ -561,181 +569,14 @@ namespace TheBotUI {
                         = ConsoleColor.Red;
                         Console.WriteLine("[WengaBOT] Error Room is null");
                     }
-
                     foreach (var item in selectedBot.PhotonClient.CurrentRoom.Players)
                     {
                         Console.ForegroundColor
-                            = ConsoleColor.Magenta;
-                        Dictionary<string, object> tictionary = (Dictionary<string, object>)item.Value.CustomProperties["avatarDict"];
-                        var AvatarID = tictionary["id"];
-
-                        Dictionary<string, object> dictionary = (Dictionary<string, object>)item.Value.CustomProperties["user"];
-                        var UserID = dictionary["id"];
-                        var Displayname = dictionary["displayName"];           
-
-                        if (File.ReadAllText("Access/Wenga.txt").Contains(UserID.ToString()))
-                        {
-                            Console.WriteLine("Found: " + Displayname);
-                            SendWebHook(WengaWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}] | AvatarID: {AvatarID}");
-                        }
-
-                        if (File.ReadAllText("Access/DayOfThePlay.txt").Contains(UserID.ToString()))
-                        {
-                            Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                            SendWebHook(GayClientWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
-                        }
-
-                        if (File.ReadAllText("UsersMod.txt").Contains(UserID.ToString()))
-                        {
-                            Console.WriteLine("Found: " + Displayname);
-                            SendWebHook(AdminWebhook, $"[Wenga's Egirl] Found Admin/Moderator: {Displayname}  | in: {world.name}  [{WorldInstanceID}] | AvatarID: {AvatarID}");
-                        }                            
-
-                        if (File.ReadAllText("UsersStreamer.txt").Contains(UserID.ToString()))
-                        {
-                            Console.WriteLine("Found: " + Displayname);
-                            SendWebHook(StreamerWebhook, $"[Wenga's Egirl] Found Streamer: {Displayname}  | in: {world.name}  [{WorldInstanceID}] | AvatarID: {AvatarID}");
-                        }
-
-                        if (File.ReadAllText("UsersAviCreator.txt").Contains(UserID.ToString()))
-                        {
-                            Console.WriteLine("Found: " + Displayname);
-                            SendWebHook(AviCreatorWebhook, $"[Wenga's Egirl] Found Creator: {Displayname}  | in: {world.name}  [{WorldInstanceID}] | AvatarID: {AvatarID}");
-                        }
-
-                        // SELL STUFF ONLY ADD AND REMOVE //
-                        if (File.ReadAllText("Access/Bigsmoke002.txt").Contains(UserID.ToString()))
-                        {
-                            if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
-                            {
-                                Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
-                            }
-                            else
-                            {
-                                Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                                SendWebHook(DickSmokeWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
-                            }
-                        }
-
-                        if (File.ReadAllText("Access/Jaypox.txt").Contains(UserID.ToString()))
-                        {
-                            if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
-                            {
-                                Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
-                            }
-                            else
-                            {
-                                Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                                SendWebHook(JaypoxWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
-                            }
-                        }
-
-                        if (File.ReadAllText("Access/Akeno.txt").Contains(UserID.ToString()))
-                        {
-                            if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
-                            {
-                                Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
-                            }
-                            else
-                            {
-                                Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                                SendWebHook(AkenoWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
-                            }
-                        }
-
-                        if (File.ReadAllText("Access/Catzii.txt").Contains(UserID.ToString()))
-                        {
-                            if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
-                            {
-                                Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
-                            }
-                            else
-                            {
-                                Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                                SendWebHook(CatziiWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
-                            }
-                        }
-
-                        if (File.ReadAllText("Access/Vx.txt").Contains(UserID.ToString()))
-                        {
-                            if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
-                            {
-                                Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
-                            }
-                            else
-                            {
-                                Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                                SendWebHook(VxWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
-                            }
-                        }
-
-                        if (File.ReadAllText("Access/SexyToxiBuff.txt").Contains(UserID.ToString()))
-                        {
-                            if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
-                            {
-                                Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
-                            }
-                            else
-                            {
-                                Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                                SendWebHook(SexyToxiBuffWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
-                            }
-                        }
-                        
-                        if (File.ReadAllText("Access/Sypherr.txt").Contains(UserID.ToString()))
-                        {
-                            if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
-                            {
-                                Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
-                            }
-                            else
-                            {
-                                Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                                SendWebHook(SypherrWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
-                            }
-                        }
-
-                        if (File.ReadAllText("Access/Incognitoman.txt").Contains(UserID.ToString()))
-                        {
-                            if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
-                            {
-                                Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
-                            }
-                            else
-                            {
-                                Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                                SendWebHook(IncognitomanWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
-                            }
-                        }
-
-                        if (File.ReadAllText("Access/Toksin.txt").Contains(UserID.ToString()))
-                        {
-                            if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
-                            {
-                                Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
-                            }
-                            else
-                            {
-                                Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                                SendWebHook(ToksinWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
-                            }
-                        }
-
-                        if (File.ReadAllText("Access/Sirzechs.txt").Contains(UserID.ToString()))
-                        {
-                            if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
-                            {
-                                Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
-                            }
-                            else
-                            {
-                                Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                                SendWebHook(SirzechsWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
-                            }
-                        }
+                        = ConsoleColor.Magenta;
+                        SearchWebhooks.DoWebhooks(item.Value, world, WorldInstanceID);
                     }
                     Console.ForegroundColor
-                        = ConsoleColor.Red;
+                            = ConsoleColor.Red;
                     Console.WriteLine("[WengaBOT] Leaving Room");
                     selectedBot.PhotonClient.OpLeaveRoom(false);
                 }
@@ -743,18 +584,6 @@ namespace TheBotUI {
             catch (Exception)
             {
 
-            }
-        }
-        public static void SendWebHook(string URL, string MSG)
-        {
-            NameValueCollection pairs = new NameValueCollection()
-            {
-                { "content", MSG }
-            };
-            byte[] numArray;
-            using (WebClient webClient = new WebClient())
-            {
-                numArray = webClient.UploadValues(URL, pairs);
             }
         }
 
@@ -778,7 +607,7 @@ namespace TheBotUI {
             try
             {
                 string[] Worlds = File.ReadAllLines(@"WorldsCrash.txt");
-                Search = true;
+                GlobalVars.Search = true;
                 Console.ForegroundColor
                     = ConsoleColor.Cyan;
                 foreach (string worldID in Worlds)
@@ -809,7 +638,7 @@ namespace TheBotUI {
                     }
                 }
                 Console.WriteLine("----Search Stopped----");
-                Search = false;
+                GlobalVars.Search = false;
             }
             catch (Exception e5)
             {
@@ -1011,7 +840,7 @@ namespace TheBotUI {
         {
             if (checkBox1.CheckState == CheckState.Checked)
             {
-                ShouldPauseRoomCheckerLoop = false;
+                GlobalVars.ShouldPauseRoomCheckerLoop = false;
                 Console.ForegroundColor
                 = ConsoleColor.DarkGreen;
                 Console.WriteLine("[WengaBOT] Enabled Followmode");
@@ -1020,21 +849,20 @@ namespace TheBotUI {
 
             else if (checkBox1.CheckState == CheckState.Unchecked)
             {
-                ShouldPauseRoomCheckerLoop = true;
+                GlobalVars.ShouldPauseRoomCheckerLoop = true;
                 DisconnectAllBots();
                 Console.ForegroundColor
                 = ConsoleColor.Red;
                 Console.WriteLine("[WengaBOT] Disabled Followmode");
             }
         }
-        public static bool ShouldPauseRoomCheckerLoop = false;
         public void RoomCheckerLoop()
         {
                 new Thread(() =>
                 {
                     while (true)
                     {
-                        if (!ShouldPauseRoomCheckerLoop)
+                        if (!GlobalVars.ShouldPauseRoomCheckerLoop)
                         {
                             if (checkBox1.CheckState == CheckState.Checked)
                             {
@@ -1090,7 +918,7 @@ namespace TheBotUI {
                     {
                         100.EventSpammer(5, () =>
                         {
-                            Desync = true;
+                            GlobalVars.Desync = true;
                             MasterDesync = true;
                             foreach (ListViewItem item in botInstancesList.Items)
                             {
@@ -1104,7 +932,7 @@ namespace TheBotUI {
                     Console.ForegroundColor
                         = ConsoleColor.DarkGreen;
                     Console.WriteLine("[WengaBOT] Masterclient Desynced");
-                    Desync = false;
+                    GlobalVars.Desync = false;
                     MasterDesync = false;
                 })
                 { IsBackground = true }.Start();
@@ -1124,7 +952,7 @@ namespace TheBotUI {
                     {
                         400.EventSpammer(5, () =>
                         {
-                            Desync = true;
+                            GlobalVars.Desync = true;
                             foreach (ListViewItem item in botInstancesList.Items)
                             {
                                 var bot = (Bot)item.Tag;
@@ -1136,7 +964,7 @@ namespace TheBotUI {
                     Console.ForegroundColor
                         = ConsoleColor.DarkGreen;
                     Console.WriteLine("[WengaBOT] USpeak Done");
-                    Desync = false;
+                    GlobalVars.Desync = false;
                 })
                 { IsBackground = true }.Start();
             }
@@ -1155,7 +983,7 @@ namespace TheBotUI {
                     {
                         400.EventSpammer(5, () =>
                         {
-                            Desync = true;
+                            GlobalVars.Desync = true;
                             foreach (ListViewItem item in botInstancesList.Items)
                             {
                                 var bot = (Bot)item.Tag;
@@ -1178,15 +1006,15 @@ namespace TheBotUI {
                     Console.ForegroundColor
                         = ConsoleColor.DarkGreen;
                     Console.WriteLine("[WengaBOT] Lobby disconnected");
-                    Desync = false;
+                    GlobalVars.Desync = false;
                 })
                 { IsBackground = true }.Start();
             }
         }
 
-        public static void EventLogger_CheckedChanged(object sender, EventArgs e)
+        public void EventLogger_CheckedChanged(object sender, EventArgs e)
         {
-
+            GlobalVars.EventLog = EventLogger.Checked;
         }
     }
 }

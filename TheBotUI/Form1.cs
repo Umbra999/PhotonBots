@@ -576,7 +576,7 @@ namespace TheBotUI {
                         if (File.ReadAllText("Access/Wenga.txt").Contains(UserID.ToString()))
                         {
                             Console.WriteLine("Found: " + Displayname);
-                            SendWebHook(WengaWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                            SendWebHook(WengaWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}] | AvatarID: {AvatarID}");
                         }
 
                         if (File.ReadAllText("Access/DayOfThePlay.txt").Contains(UserID.ToString()))
@@ -588,13 +588,13 @@ namespace TheBotUI {
                         if (File.ReadAllText("UsersMod.txt").Contains(UserID.ToString()))
                         {
                             Console.WriteLine("Found: " + Displayname);
-                            SendWebHook(AdminWebhook, $"[Wenga's Egirl] Found Admin/Moderator: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                            SendWebHook(AdminWebhook, $"[Wenga's Egirl] Found Admin/Moderator: {Displayname}  | in: {world.name}  [{WorldInstanceID}] | AvatarID: {AvatarID}");
                         }                            
 
                         if (File.ReadAllText("UsersStreamer.txt").Contains(UserID.ToString()))
                         {
                             Console.WriteLine("Found: " + Displayname);
-                            SendWebHook(StreamerWebhook, $"[Wenga's Egirl] Found Streamer: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                            SendWebHook(StreamerWebhook, $"[Wenga's Egirl] Found Streamer: {Displayname}  | in: {world.name}  [{WorldInstanceID}] | AvatarID: {AvatarID}");
                         }
 
                         if (File.ReadAllText("UsersAviCreator.txt").Contains(UserID.ToString()))
@@ -718,6 +718,19 @@ namespace TheBotUI {
                             {
                                 Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                                 SendWebHook(ToksinWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                            }
+                        }
+
+                        if (File.ReadAllText("Access/Sirzechs.txt").Contains(UserID.ToString()))
+                        {
+                            if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                            {
+                                Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                            }
+                            else
+                            {
+                                Console.WriteLine("Found: " + dictionary["displayName"].ToString());
+                                SendWebHook(SirzechsWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
                             }
                         }
                     }
@@ -998,7 +1011,6 @@ namespace TheBotUI {
         {
             if (checkBox1.CheckState == CheckState.Checked)
             {
-                StopRoomChecker = false;
                 ShouldPauseRoomCheckerLoop = false;
                 Console.ForegroundColor
                 = ConsoleColor.DarkGreen;
@@ -1008,7 +1020,6 @@ namespace TheBotUI {
 
             else if (checkBox1.CheckState == CheckState.Unchecked)
             {
-                StopRoomChecker = true;
                 ShouldPauseRoomCheckerLoop = true;
                 DisconnectAllBots();
                 Console.ForegroundColor
@@ -1017,7 +1028,6 @@ namespace TheBotUI {
             }
         }
         public static bool ShouldPauseRoomCheckerLoop = false;
-        public static bool StopRoomChecker = true;
         public void RoomCheckerLoop()
         {
                 new Thread(() =>
@@ -1026,23 +1036,25 @@ namespace TheBotUI {
                     {
                         if (!ShouldPauseRoomCheckerLoop)
                         {
-                            if (StopRoomChecker == false)
+                            if (checkBox1.CheckState == CheckState.Checked)
                             {
-                                FetchRoom();
-                                foreach (ListViewItem item in botInstancesList.Items)
                                 {
-                                    var bot = (Bot)item.Tag;
-                                    if (bot.PhotonClient.InRoom)
+                                    FetchRoom();
+                                    foreach (ListViewItem item in botInstancesList.Items)
                                     {
-                                        if (bot.PhotonClient.CurrentRoom.Name != CurrentRoom)
-                                            bot.PhotonClient.OpLeaveRoom(false);
+                                        var bot = (Bot)item.Tag;
+                                        if (bot.PhotonClient.InRoom)
+                                        {
+                                            if (bot.PhotonClient.CurrentRoom.Name != CurrentRoom)
+                                                bot.PhotonClient.OpLeaveRoom(false);
                                             Thread.Sleep(1500);
-                                    }
-                                    else
-                                    {
-                                        bot.PhotonClient.JoinRoom(CurrentRoom);
-                                        Thread.Sleep(3500);
-                                        bot.PhotonClient.InstantiateSelf();
+                                        }
+                                        else
+                                        {
+                                            bot.PhotonClient.JoinRoom(CurrentRoom);
+                                            Thread.Sleep(3500);
+                                            bot.PhotonClient.InstantiateSelf();
+                                        }
                                     }
                                 }
                             }

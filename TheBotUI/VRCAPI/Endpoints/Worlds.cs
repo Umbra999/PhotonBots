@@ -49,6 +49,8 @@ namespace VRChatAPI.Endpoints
             }
             return world;
         }
+        public static int LineReader = 0;
+
         public static async Task<WorldRES> GetWorld(string WorldID)
         {
             string json = "";
@@ -57,9 +59,9 @@ namespace VRChatAPI.Endpoints
             RequestClient.DefaultRequestHeaders.Accept.Clear();
             RequestClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             var lines = File.ReadAllLines("Auth/APIAuth.txt");
-            var r = new Random();
-            var randomLineNumber = r.Next(0, lines.Length - 1);
-            var Login = lines[randomLineNumber];
+            var Login = lines[LineReader];
+            LineReader++;
+            if (LineReader >= lines.Length) LineReader = 0;
             var byteArray = Encoding.ASCII.GetBytes(Login);
             RequestClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
             Console.ForegroundColor

@@ -48,20 +48,11 @@ namespace TheBotUI {
                         {
                             bot.PhotonClient.OpLeaveRoom(false);
                         }
-                        try
-                        {
-                            bot.APIClient.Auth.Logout();
-                        }
-                        catch (Exception)
-                        {
-                            Console.WriteLine($"[Day API] Logout Failed!");
-                        }
                     }
                     playerList.Items.Clear();
                 }));
             }).Start();
             Console.WriteLine("[WengaBOT] All bots are disconnected!");
-            Console.WriteLine($"[Day API] All bots are Loged out!");
             Thread.Sleep(1000);
             Application.Exit();
         }

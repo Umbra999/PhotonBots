@@ -40,7 +40,7 @@ namespace TheBotUI.Core
         public const string ToksinWebhook = "https://discord.com/api/webhooks/764800785267556352/GtabtiusGZNA5Gi7SUwJ8HKoMQ1U5q45abtH_2BP__SSBU_iD7aITVbIpgR9Wupepjh0";
         public const string SirzechsWebhook = "https://discord.com/api/webhooks/765184879339372544/mO8jdxrqvgxcK8qtZvQUrzWHCrCuIxRAGX7txPogfVfWM4ud75swmD97ztcg60oJ5bqi";
         public const string MircoPortmannWebhook = "https://discord.com/api/webhooks/765276836552376390/tVePRPxWrdBKq5qj2UvyU8a5PElYvkIbvtctJXcZkJX3kOVPAvrT-sTsua32y5x5Hdox";
-
+        public const string BlankWebhook = "https://discord.com/api/webhooks/765679400518811650/RiFmU-cHuv20VjTPOlWKprziDstHFBLLzhrdBGdyNCM27Q1lp4nRN2Vui1n0U65Gyfu6";
 
         public static void DoWebhooks(Player player, WorldRES world,string WorldInstanceID)
         {
@@ -222,6 +222,19 @@ namespace TheBotUI.Core
                 {
                     Console.WriteLine("Found: " + dictionary["displayName"].ToString());
                     SendWebHook(MircoPortmannWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
+                }
+            }
+
+            if (File.ReadAllText("Access/Blank.txt").Contains(UserID.ToString()))
+            {
+                if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                {
+                    Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                }
+                else
+                {
+                    Console.WriteLine("Found: " + dictionary["displayName"].ToString());
+                    SendWebHook(BlankWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
                 }
             }
         }

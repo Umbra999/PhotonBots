@@ -528,6 +528,7 @@ namespace TheBotUI {
                             {
                                 Console.ForegroundColor
                                     = ConsoleColor.Cyan;
+                                Thread.Sleep(2000);
                                 Console.WriteLine("[WengaBOT] Joining: " + worldID + ":" + Instance + " Cap: " + Convert.ToString(worldRES.capacity));
                                 JoinRoom(worldRES, worldID + ":" + Instance);
                                 Thread.Sleep(3500);
@@ -552,7 +553,12 @@ namespace TheBotUI {
                 if (selectedBot != null)
                 {
                     bool isJoined = selectedBot.PhotonClient.JoinRoom(WorldInstanceID);
-                    Thread.Sleep(4300);
+                    Thread.Sleep(2500);
+                    if (selectedBot.PhotonClient.InRoom)
+                    {
+                        selectedBot.PhotonClient.InstantiateSelf();
+                        Thread.Sleep(2000);
+                    }
                     if (selectedBot.PhotonClient.CurrentRoom == null)
                     {
                         Console.ForegroundColor
@@ -569,6 +575,7 @@ namespace TheBotUI {
                             = ConsoleColor.Red;
                     Console.WriteLine("[WengaBOT] Leaving Room");
                     selectedBot.PhotonClient.OpLeaveRoom(false);
+                    Thread.Sleep(2000);
                 }
             }
             catch (Exception)

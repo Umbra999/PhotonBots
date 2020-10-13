@@ -54,31 +54,31 @@ namespace TheBotUI.Core
             if (File.ReadAllText("Access/Wenga.txt").Contains(UserID.ToString()))
             {
                 Console.WriteLine("Found: " + Displayname);
-                SendWebHook(WengaWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}] | AvatarID: {AvatarID}");
+                SendWebHook(WengaWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
             }
 
             if (File.ReadAllText("Access/DayOfThePlay.txt").Contains(UserID.ToString()))
             {
                 Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                SendWebHook(GayClientWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                SendWebHook(GayClientWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
             }
 
             if (File.ReadAllText("UsersMod.txt").Contains(UserID.ToString()))
             {
                 Console.WriteLine("Found: " + Displayname);
-                SendWebHook(AdminWebhook, $"[Wenga's Egirl] Found Admin/Moderator: {Displayname}  | in: {world.name}  [{WorldInstanceID}] | AvatarID: {AvatarID}");
+                SendWebHook(AdminWebhook, $"**[Wenga's Egirl]**\n \n **Admin/Mod:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
             }
 
             if (File.ReadAllText("UsersStreamer.txt").Contains(UserID.ToString()))
             {
                 Console.WriteLine("Found: " + Displayname);
-                SendWebHook(StreamerWebhook, $"[Wenga's Egirl] Found Streamer: {Displayname}  | in: {world.name}  [{WorldInstanceID}] | AvatarID: {AvatarID}");
+                SendWebHook(StreamerWebhook, $"**[Wenga's Egirl]**\n \n **Streamer:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
             }
 
             if (File.ReadAllText("UsersAviCreator.txt").Contains(UserID.ToString()))
             {
                 Console.WriteLine("Found: " + Displayname);
-                SendWebHook(AviCreatorWebhook, $"[Wenga's Egirl] Found Creator: {Displayname}  | in: {world.name}  [{WorldInstanceID}] | AvatarID: {AvatarID}");
+                SendWebHook(AviCreatorWebhook, $"**[Wenga's Egirl]**\n \n **Creator:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
             }
 
             // SELL STUFF ONLY ADD AND REMOVE //
@@ -91,7 +91,7 @@ namespace TheBotUI.Core
                 else
                 {
                     Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                    SendWebHook(DickSmokeWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                    SendWebHook(DickSmokeWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
                 }
             }
 
@@ -104,7 +104,7 @@ namespace TheBotUI.Core
                 else
                 {
                     Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                    SendWebHook(JaypoxWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                    SendWebHook(JaypoxWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
                 }
             }
 
@@ -117,7 +117,7 @@ namespace TheBotUI.Core
                 else
                 {
                     Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                    SendWebHook(AkenoWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                    SendWebHook(AkenoWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
                 }
             }
 
@@ -130,7 +130,7 @@ namespace TheBotUI.Core
                 else
                 {
                     Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                    SendWebHook(CatziiWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                    SendWebHook(CatziiWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
                 }
             }
 
@@ -143,7 +143,7 @@ namespace TheBotUI.Core
                 else
                 {
                     Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                    SendWebHook(VxWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                    SendWebHook(VxWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
                 }
             }
 
@@ -156,7 +156,7 @@ namespace TheBotUI.Core
                 else
                 {
                     Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                    SendWebHook(SexyToxiBuffWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                    SendWebHook(SexyToxiBuffWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
                 }
             }
 
@@ -169,7 +169,7 @@ namespace TheBotUI.Core
                 else
                 {
                     Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                    SendWebHook(SypherrWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                    SendWebHook(SypherrWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
                 }
             }
 
@@ -182,7 +182,7 @@ namespace TheBotUI.Core
                 else
                 {
                     Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                    SendWebHook(IncognitomanWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                    SendWebHook(IncognitomanWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
                 }
             }
 
@@ -195,7 +195,7 @@ namespace TheBotUI.Core
                 else
                 {
                     Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                    SendWebHook(ToksinWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                    SendWebHook(ToksinWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
                 }
             }
 
@@ -208,7 +208,7 @@ namespace TheBotUI.Core
                 else
                 {
                     Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                    SendWebHook(SirzechsWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                    SendWebHook(SirzechsWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
                 }
             }
 
@@ -221,10 +221,12 @@ namespace TheBotUI.Core
                 else
                 {
                     Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                    SendWebHook(MircoPortmannWebhook, $"[Wenga's Egirl] Found Player: {Displayname}  | in: {world.name}  [{WorldInstanceID}]");
+                    SendWebHook(MircoPortmannWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
                 }
             }
         }
+
+
         public static void SendWebHook(string URL, string MSG)
         {
             NameValueCollection pairs = new NameValueCollection()

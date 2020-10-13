@@ -519,6 +519,7 @@ namespace TheBotUI {
                     {
                         Console.ForegroundColor
                                     = ConsoleColor.Cyan;
+                        Thread.Sleep(1000);
                         WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
                         //WorldRES worldRES = await selectedBot.APIClient.Worlds.GetWorlds(worldID);
                         Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Length);
@@ -538,11 +539,9 @@ namespace TheBotUI {
                                     = ConsoleColor.Cyan;
                                 Console.WriteLine("[WengaBOT] Joining: " + worldID + ":" + Instance + " Cap: " + Convert.ToString(worldRES.capacity));
                                 JoinRoom(worldRES, worldID + ":" + Instance);
-                                Thread.Sleep(3000);
+                                Thread.Sleep(3500);
                             }
-                            Thread.Sleep(500);
                         }
-                        Thread.Sleep(2000);
                     }
                     Console.WriteLine("----Search Stopped----");
                     GlobalVars.Search = false;
@@ -562,7 +561,7 @@ namespace TheBotUI {
                 if (selectedBot != null)
                 {
                     bool isJoined = selectedBot.PhotonClient.JoinRoom(WorldInstanceID);
-                    Thread.Sleep(4000);
+                    Thread.Sleep(4300);
                     if (selectedBot.PhotonClient.CurrentRoom == null)
                     {
                         Console.ForegroundColor

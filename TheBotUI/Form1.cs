@@ -528,7 +528,7 @@ namespace TheBotUI {
                             {
                                 Console.ForegroundColor
                                     = ConsoleColor.Cyan;
-                                Thread.Sleep(2000);
+                                Thread.Sleep(500);
                                 Console.WriteLine("[WengaBOT] Joining: " + worldID + ":" + Instance + " Cap: " + Convert.ToString(worldRES.capacity));
                                 JoinRoom(worldRES, worldID + ":" + Instance);
                                 Thread.Sleep(3500);

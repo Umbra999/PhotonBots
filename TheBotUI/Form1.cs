@@ -303,8 +303,7 @@ namespace TheBotUI {
                 selectedBot.PhotonClient.InstantiateSelf();
             }
         }
-
-        int Desync = 69;
+        int Desync = new Random().Next(int.MinValue + 100, int.MaxValue - 100);
         private void InstantiateInvisButton_Click(object sender, EventArgs e) {
             if (selectedBot.PhotonClient.InRoom) 
             {
@@ -315,7 +314,7 @@ namespace TheBotUI {
                     Console.WriteLine("[WengaBOT] Started Desync");
                     for (int ii = 0; ii < 20; ii++)
                     {
-                        100.EventSpammer(5, () =>
+                        150.EventSpammer(5, () =>
                         {
                             GlobalVars.Desync = true;
                             foreach (ListViewItem item in botInstancesList.Items)

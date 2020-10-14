@@ -303,6 +303,8 @@ namespace TheBotUI {
                 selectedBot.PhotonClient.InstantiateSelf();
             }
         }
+
+        int Desync = 69;
         private void InstantiateInvisButton_Click(object sender, EventArgs e) {
             if (selectedBot.PhotonClient.InRoom) 
             {
@@ -319,8 +321,8 @@ namespace TheBotUI {
                             foreach (ListViewItem item in botInstancesList.Items)
                             {
                                 var bot = (Bot)item.Tag;
-                                bot.PhotonClient.OpRaiseEvent(210, new int[] { int.MaxValue, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.All }, SendOptions.SendReliable);
-                                bot.PhotonClient.OpRaiseEvent(209, new int[] { int.MaxValue, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.All}, SendOptions.SendReliable);
+                                bot.PhotonClient.OpRaiseEvent(210, new int[] { Desync, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.All }, SendOptions.SendReliable);
+                                bot.PhotonClient.OpRaiseEvent(209, new int[] { Desync, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.All}, SendOptions.SendReliable);
                             }
                         });
                         Thread.Sleep(2000);
@@ -514,7 +516,6 @@ namespace TheBotUI {
                         WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
                         //WorldRES worldRES = await selectedBot.APIClient.Worlds.GetWorlds(worldID);
                         Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Length);
-                        selectedBot.APIClient.Auth.Logout();
                         if (worldRES.publicOccupants != 0)
                         {
                             List<string> Instances = VRChatAPI.Endpoints.Worlds.GetInstances(worldRES).ToList();
@@ -553,12 +554,7 @@ namespace TheBotUI {
                 if (selectedBot != null)
                 {
                     bool isJoined = selectedBot.PhotonClient.JoinRoom(WorldInstanceID);
-                    Thread.Sleep(2500);
-                    if (selectedBot.PhotonClient.InRoom)
-                    {
-                        selectedBot.PhotonClient.InstantiateSelf();
-                        Thread.Sleep(2000);
-                    }
+                    Thread.Sleep(3500);
                     if (selectedBot.PhotonClient.CurrentRoom == null)
                     {
                         Console.ForegroundColor
@@ -575,7 +571,7 @@ namespace TheBotUI {
                             = ConsoleColor.Red;
                     Console.WriteLine("[WengaBOT] Leaving Room");
                     selectedBot.PhotonClient.OpLeaveRoom(false);
-                    Thread.Sleep(2000);
+                    Thread.Sleep(1500);
                 }
             }
             catch (Exception)
@@ -920,8 +916,8 @@ namespace TheBotUI {
                             foreach (ListViewItem item in botInstancesList.Items)
                             {
                                 var bot = (Bot)item.Tag;
-                                bot.PhotonClient.OpRaiseEvent(210, new int[] { int.MaxValue, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.MasterClient }, SendOptions.SendReliable);
-                                bot.PhotonClient.OpRaiseEvent(209, new int[] { int.MaxValue, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.MasterClient }, SendOptions.SendReliable);
+                                bot.PhotonClient.OpRaiseEvent(210, new int[] { Desync, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.MasterClient }, SendOptions.SendReliable);
+                                bot.PhotonClient.OpRaiseEvent(209, new int[] { Desync, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.MasterClient }, SendOptions.SendReliable);
                             }
                         });
                         Thread.Sleep(2000);

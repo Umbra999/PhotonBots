@@ -966,49 +966,6 @@ namespace TheBotUI {
                 { IsBackground = true }.Start();
             }
         }
-
-        private void button5_Click_1(object sender, EventArgs e)
-        {
-            if (selectedBot.PhotonClient.InRoom)
-            {
-                new Thread(() =>
-                {
-                    Console.ForegroundColor
-                        = ConsoleColor.DarkRed;
-                    Console.WriteLine("[WengaBOT] Started Disconnect on Lobby");
-                    for (int ii = 0; ii < 20; ii++)
-                    {
-                        400.EventSpammer(5, () =>
-                        {
-                            GlobalVars.Desync = true;
-                            foreach (ListViewItem item in botInstancesList.Items)
-                            {
-                                var bot = (Bot)item.Tag;
-                                bot.PhotonClient.OpRaiseEvent(210, new int[] { int.MaxValue, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.Others }, SendOptions.SendReliable);
-                                bot.PhotonClient.OpRaiseEvent(209, new int[] { int.MaxValue, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.Others }, SendOptions.SendReliable);
-                                bot.PhotonClient.OpRaiseEvent(210, new int[] { int.MaxValue, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.All }, SendOptions.SendReliable);
-                                bot.PhotonClient.OpRaiseEvent(209, new int[] { int.MaxValue, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.All }, SendOptions.SendReliable);
-                            }
-                            foreach (ListViewItem item in botInstancesList.Items)
-                            {
-                                var bot = (Bot)item.Tag;
-                                bot.PhotonClient.OpRaiseEvent(210, new int[] { int.MaxValue, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.Others }, SendOptions.SendReliable);
-                                bot.PhotonClient.OpRaiseEvent(209, new int[] { int.MaxValue, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.Others }, SendOptions.SendReliable);
-                                bot.PhotonClient.OpRaiseEvent(210, new int[] { int.MaxValue, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.All }, SendOptions.SendReliable);
-                                bot.PhotonClient.OpRaiseEvent(209, new int[] { int.MaxValue, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.All }, SendOptions.SendReliable);
-                            }
-                        });
-                        Thread.Sleep(2000);
-                    }
-                    Console.ForegroundColor
-                        = ConsoleColor.DarkGreen;
-                    Console.WriteLine("[WengaBOT] Lobby disconnected");
-                    GlobalVars.Desync = false;
-                })
-                { IsBackground = true }.Start();
-            }
-        }
-
         public void EventLogger_CheckedChanged(object sender, EventArgs e)
         {
             GlobalVars.EventLog = EventLogger.Checked;

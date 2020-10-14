@@ -64,7 +64,7 @@ public static class PhotonExtensions
         }
         return null;
     }
-    private static RaiseEventOptions SetPlayerAsTarget(Player ply)
+    public static RaiseEventOptions SetPlayerAsTarget(Player ply)
     {
         return new RaiseEventOptions
         {

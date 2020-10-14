@@ -23,15 +23,16 @@ using System.Diagnostics;
 
 namespace TheBotUI {
 
-    public partial class Form1 : Form {
+    public partial class Form1 : Form
+    {
         public static Bot selectedBot;
 
-        public Form1() 
+        public Form1()
         {
             InitializeComponent();
         }
 
-        private void Button1_Click(object sender, EventArgs e) 
+        private void Button1_Click(object sender, EventArgs e)
         {
             Console.ForegroundColor
             = ConsoleColor.Red;
@@ -56,7 +57,8 @@ namespace TheBotUI {
             Application.Exit();
         }
 
-        private void Button2_Click(object sender, EventArgs e) {
+        private void Button2_Click(object sender, EventArgs e)
+        {
             this.WindowState = FormWindowState.Maximized;
         }
 
@@ -72,7 +74,8 @@ namespace TheBotUI {
             }
         }
 
-        private void Button3_Click(object sender, EventArgs e) {
+        private void Button3_Click(object sender, EventArgs e)
+        {
             this.WindowState = FormWindowState.Minimized;
         }
 
@@ -80,18 +83,22 @@ namespace TheBotUI {
         private Point _offset;
         private Point _start_point = new Point(0, 0);
 
-        private void panel2_MouseMove(object sender, MouseEventArgs e) {
-            if (_dragging) {
+        private void panel2_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (_dragging)
+            {
                 Point p = PointToScreen(e.Location);
                 this.Location = new Point(p.X - this._start_point.X, p.Y - this._start_point.Y);
             }
         }
 
-        private void panel2_MouseUp(object sender, MouseEventArgs e) {
+        private void panel2_MouseUp(object sender, MouseEventArgs e)
+        {
             _dragging = false;
         }
 
-        private void panel2_MouseDown(object sender, MouseEventArgs e) {
+        private void panel2_MouseDown(object sender, MouseEventArgs e)
+        {
             _dragging = true;
             _start_point = new Point(e.X, e.Y);
         }
@@ -186,7 +193,7 @@ namespace TheBotUI {
                                                 p.SubItems.Add(player.ActorNumber.ToString());
                                                 players.Add(p);
                                             }
-                                            
+
                                         }
                                     }
                                     else
@@ -235,13 +242,15 @@ namespace TheBotUI {
                 foreach (string login in authdata)
                 {
                     string[] userpass = login.Split(new char[] { ':' }, 2);
-                    new Thread(() => {
+                    new Thread(() =>
+                    {
                         Bot bot = new Bot(userpass[0], userpass[1]);
                         if (bot != null)
                         {
                             if (bot.APIClient != null)
                             {
-                                Invoke(new MethodInvoker(() => {
+                                Invoke(new MethodInvoker(() =>
+                                {
                                     ListViewItem item = new ListViewItem(bot.APIClient.Variables.UserSelfRES.displayName);
                                     item.Tag = bot;
                                     botInstancesList.Items.Add(item);
@@ -261,19 +270,19 @@ namespace TheBotUI {
                 }
             }
         }
-        public void NormalAuth_Click(object sender, EventArgs e) 
+        public void NormalAuth_Click(object sender, EventArgs e)
         {
             Auth();
         }
 
-        private void JoinRoomButton_Click(object sender, EventArgs e) 
+        private void JoinRoomButton_Click(object sender, EventArgs e)
         {
             selectedBot.PhotonClient.JoinRoom(worldAInstanceIDTextBox.Text);
             Console.WriteLine(selectedBot.PhotonClient.InRoom ? "[WengaBOT] Successfully joined to room!" : "[WengaBOT] JoinOrCreateRoom failed!");
         }
-        private void LeaveRoomButton_Click(object sender, EventArgs e) 
+        private void LeaveRoomButton_Click(object sender, EventArgs e)
         {
-            new Thread(() => 
+            new Thread(() =>
             {
                 Disconnecting = true;
                 if (selectedBot.PhotonClient.InRoom)
@@ -284,7 +293,8 @@ namespace TheBotUI {
                 playerList.Items.Clear();
                 Thread.Sleep(7000);
                 Disconnecting = false;
-            }) { IsBackground = true }.Start();
+            })
+            { IsBackground = true }.Start();
         }
 
         private void JoinLastRoomButton_Click(object sender, EventArgs e)
@@ -295,16 +305,17 @@ namespace TheBotUI {
             selectedBot.PhotonClient.InstantiateSelf();
 
         }
-        private void InstantiateButton_Click(object sender, EventArgs e) 
+        private void InstantiateButton_Click(object sender, EventArgs e)
         {
-            if (selectedBot.PhotonClient.InRoom) 
+            if (selectedBot.PhotonClient.InRoom)
             {
                 selectedBot.PhotonClient.InstantiateSelf();
             }
         }
         int Desync = new Random().Next(int.MinValue + 100, int.MaxValue - 100);
-        private void InstantiateInvisButton_Click(object sender, EventArgs e) {
-            if (selectedBot.PhotonClient.InRoom) 
+        private void InstantiateInvisButton_Click(object sender, EventArgs e)
+        {
+            if (selectedBot.PhotonClient.InRoom)
             {
                 new Thread(() =>
                 {
@@ -319,8 +330,8 @@ namespace TheBotUI {
                             foreach (ListViewItem item in botInstancesList.Items)
                             {
                                 var bot = (Bot)item.Tag;
-                                bot.PhotonClient.OpRaiseEvent(210, new int[] { Desync, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.All }, SendOptions.SendReliable);
-                                bot.PhotonClient.OpRaiseEvent(209, new int[] { Desync, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.All}, SendOptions.SendReliable);
+                                bot.PhotonClient.OpRaiseEvent(210, new int[] { Desync, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.Others }, SendOptions.SendReliable);
+                                bot.PhotonClient.OpRaiseEvent(209, new int[] { Desync, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.Others }, SendOptions.SendReliable);
                             }
                         });
                         Thread.Sleep(2000);
@@ -440,7 +451,7 @@ namespace TheBotUI {
 
         private void usernameTextBox_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -498,7 +509,7 @@ namespace TheBotUI {
         }
         public void SearchFunc()
         {
-            new Thread(async()=>
+            new Thread(async () =>
             {
                 try
                 {
@@ -542,7 +553,8 @@ namespace TheBotUI {
                     Console.WriteLine(e5.ToString());
                 }
                 SearchFunc();
-            }){IsBackground = true}.Start();   
+            })
+            { IsBackground = true }.Start();
         }
 
         public void JoinRoom(WorldRES world, string WorldInstanceID)
@@ -680,7 +692,7 @@ namespace TheBotUI {
                     = ConsoleColor.Cyan;
                     selectedBot.PhotonClient.OpLeaveRoom(false);
                     playerList.Items.Clear();
-                }    
+                }
             }
             catch (Exception)
             {
@@ -701,7 +713,7 @@ namespace TheBotUI {
                 Console.WriteLine("[WengaBOT]" + id + " Is not a Valid User Id");
                 DerankInput.Text = "Invalid ID";
             }
-            foreach(ListViewItem item in botInstancesList.Items)
+            foreach (ListViewItem item in botInstancesList.Items)
             {
                 Bot bot = (Bot)item.Tag;
                 Console.WriteLine($"[WengaBOT] Sending Moderation With type {VRCAPI.Endpoints.Type.block} to {id}");
@@ -714,7 +726,7 @@ namespace TheBotUI {
                 //bot.APIClient.Moderation.SendModeration(id, VRCAPI.Endpoints.Type.mute);
             }
         }
-       
+
 
         private void BanExploit_Click(object sender, EventArgs e)
         {
@@ -837,7 +849,7 @@ namespace TheBotUI {
                 Console.WriteLine("[WengaBOT] Invalid Avatar ID");
                 AvatarSwitchText.Text = "Invalid ID";
             }
- 
+
         }
 
         public void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -862,38 +874,38 @@ namespace TheBotUI {
         }
         public void RoomCheckerLoop()
         {
-                new Thread(() =>
+            new Thread(() =>
+            {
+                while (true)
                 {
-                    while (true)
+                    if (!GlobalVars.ShouldPauseRoomCheckerLoop)
                     {
-                        if (!GlobalVars.ShouldPauseRoomCheckerLoop)
+                        if (checkBox1.CheckState == CheckState.Checked)
                         {
-                            if (checkBox1.CheckState == CheckState.Checked)
                             {
+                                FetchRoom();
+                                foreach (ListViewItem item in botInstancesList.Items)
                                 {
-                                    FetchRoom();
-                                    foreach (ListViewItem item in botInstancesList.Items)
+                                    var bot = (Bot)item.Tag;
+                                    if (bot.PhotonClient.InRoom)
                                     {
-                                        var bot = (Bot)item.Tag;
-                                        if (bot.PhotonClient.InRoom)
-                                        {
-                                            if (bot.PhotonClient.CurrentRoom.Name != CurrentRoom)
-                                                bot.PhotonClient.OpLeaveRoom(false);
-                                            Thread.Sleep(1500);
-                                        }
-                                        else
-                                        {
-                                            bot.PhotonClient.JoinRoom(CurrentRoom);
-                                            Thread.Sleep(3500);
-                                            bot.PhotonClient.InstantiateSelf();
-                                        }
+                                        if (bot.PhotonClient.CurrentRoom.Name != CurrentRoom)
+                                            bot.PhotonClient.OpLeaveRoom(false);
+                                        Thread.Sleep(1500);
+                                    }
+                                    else
+                                    {
+                                        bot.PhotonClient.JoinRoom(CurrentRoom);
+                                        Thread.Sleep(3500);
+                                        bot.PhotonClient.InstantiateSelf();
                                     }
                                 }
                             }
                         }
                     }
-                })
-                { IsBackground = true }.Start();
+                }
+            })
+            { IsBackground = true }.Start();
         }
 
         private void JoinAll_Click_1(object sender, EventArgs e)
@@ -976,6 +988,39 @@ namespace TheBotUI {
         public void EventLogger_CheckedChanged(object sender, EventArgs e)
         {
             GlobalVars.EventLog = EventLogger.Checked;
+        }
+        
+        private void DesyncID_Click(object sender, EventArgs e)
+        {
+            if (selectedBot.PhotonClient.InRoom)
+            {
+                new Thread(() =>
+                {
+                    Console.ForegroundColor
+                        = ConsoleColor.DarkRed;
+                    Console.WriteLine("[WengaBOT] Started Desync on Target");
+                    int DesyncID = Convert.ToInt32(DesyncInput.Text);
+                    for (int ii = 0; ii < 20; ii++)
+                    {
+                        100.EventSpammer(5, () =>
+                        {
+                            GlobalVars.Desync = true;
+                            foreach (ListViewItem item in botInstancesList.Items)
+                            {
+                                var bot = (Bot)item.Tag;
+                                bot.PhotonClient.OpRaiseEvent(210, new int[] { Desync, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { TargetActors = new int[] { DesyncID } }, SendOptions.SendReliable);
+                                bot.PhotonClient.OpRaiseEvent(209, new int[] { Desync, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { TargetActors = new int[] { DesyncID } }, SendOptions.SendReliable);
+                            }
+                        });
+                        Thread.Sleep(2000);
+                    }
+                    Console.ForegroundColor
+                        = ConsoleColor.DarkGreen;
+                    Console.WriteLine("[WengaBOT] Target Desynced");
+                    GlobalVars.Desync = false;
+                })
+                { IsBackground = true }.Start();
+            }
         }
     }
 }

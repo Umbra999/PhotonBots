@@ -36,7 +36,6 @@ namespace TheBotUI {
             Console.ForegroundColor
             = ConsoleColor.Red;
             Console.WriteLine("[WengaBOT] Disconnecting all Bots. . .");
-            Console.WriteLine($"[Day API] Loging All bots Out. .  .");
             new Thread(() =>
             {
                 Invoke(new MethodInvoker(() =>
@@ -47,12 +46,12 @@ namespace TheBotUI {
                         if (bot.PhotonClient.InRoom)
                         {
                             bot.PhotonClient.OpLeaveRoom(false);
+                            Console.WriteLine("[WengaBOT] All bots are disconnected!");
                         }
                     }
                     playerList.Items.Clear();
                 }));
             }).Start();
-            Console.WriteLine("[WengaBOT] All bots are disconnected!");
             Thread.Sleep(1000);
             Application.Exit();
         }
@@ -562,12 +561,22 @@ namespace TheBotUI {
                     }
                     foreach (var item in selectedBot.PhotonClient.CurrentRoom.Players)
                     {
-                        new Thread(() => 
+                        try
+                        {
+                            new Thread(() =>
+                            {
+                                Console.ForegroundColor
+                                    = ConsoleColor.Magenta;
+                                SearchWebhooks.DoWebhooks(item.Value, world, WorldInstanceID);
+                            })
+                            { IsBackground = true }.Start();
+                        }
+                        catch (Exception)
                         {
                             Console.ForegroundColor
-                                = ConsoleColor.Magenta;
-                            SearchWebhooks.DoWebhooks(item.Value, world, WorldInstanceID);
-                        }) { IsBackground = true }.Start();
+                                    = ConsoleColor.Red;
+                            Console.WriteLine("[WengaBOT] Failed to read Webhooks");
+                        }
                     }
                     Thread.Sleep(4000);
                     Console.ForegroundColor

@@ -44,204 +44,212 @@ namespace TheBotUI.Core
 
         public static void DoWebhooks(Player player, WorldRES world,string WorldInstanceID)
         {
-            Dictionary<string, object> tictionary = (Dictionary<string, object>)player.CustomProperties["avatarDict"];
-            var AvatarID = tictionary["id"];
-
-            Dictionary<string, object> dictionary = (Dictionary<string, object>)player.CustomProperties["user"];
-            var UserID = dictionary["id"];
-            var Displayname = dictionary["displayName"];
-
-            var UserFound = $" > **[--Wenga's Egirl--]** \n> **Player:** {Displayname}  [{UserID}]  \n> **World:** {world.name}  [{WorldInstanceID}]  \n> **AvatarID:** {AvatarID}";
-            var StreamerFound = $" > **[--Wenga's Egirl--]** \n> **Streamer:** {Displayname}  [{UserID}]  \n> **World:** {world.name}  [{WorldInstanceID}]  \n> **AvatarID:** {AvatarID}";
-            var AdminFound = $" > **[--Wenga's Egirl--]** \n> **Admin/Mod:** {Displayname}  [{UserID}]  \n> **World:** {world.name}  [{WorldInstanceID}]  \n> **AvatarID:** {AvatarID}";
-            var CreatorFound = $" > **[--Wenga's Egirl--]** \n> **Creator:** {Displayname}  [{UserID}]  \n> **World:** {world.name}  [{WorldInstanceID}]  \n> **AvatarID:** {AvatarID}";
-
-            if (File.ReadAllText("Access/Wenga.txt").Contains(UserID.ToString()))
+            try
             {
-                Console.WriteLine("Found: " + Displayname);
-                SendWebHook(WengaWebhook, UserFound);
-            }
+                Dictionary<string, object> tictionary = (Dictionary<string, object>)player.CustomProperties["avatarDict"];
+                var AvatarID = tictionary["id"];
 
-            if (File.ReadAllText("Access/DayOfThePlay.txt").Contains(UserID.ToString()))
-            {
-                Console.WriteLine("Found: " + Displayname);
-                SendWebHook(GayClientWebhook, UserFound);
-            }
+                Dictionary<string, object> dictionary = (Dictionary<string, object>)player.CustomProperties["user"];
+                var UserID = dictionary["id"];
+                var Displayname = dictionary["displayName"];
 
-            if (File.ReadAllText("UsersMod.txt").Contains(UserID.ToString()))
-            {
-                Console.WriteLine("Found Admin/Mod: " + Displayname);
-                SendWebHook(AdminWebhook, AdminFound);
-            }
+                var UserFound = $" > **[--Wenga's Egirl--]** \n> **Player:** {Displayname}  [{UserID}]  \n> **World:** {world.name}  [{WorldInstanceID}]  \n> **AvatarID:** {AvatarID}";
+                var StreamerFound = $" > **[--Wenga's Egirl--]** \n> **Streamer:** {Displayname}  [{UserID}]  \n> **World:** {world.name}  [{WorldInstanceID}]  \n> **AvatarID:** {AvatarID}";
+                var AdminFound = $" > **[--Wenga's Egirl--]** \n> **Admin/Mod:** {Displayname}  [{UserID}]  \n> **World:** {world.name}  [{WorldInstanceID}]  \n> **AvatarID:** {AvatarID}";
+                var CreatorFound = $" > **[--Wenga's Egirl--]** \n> **Creator:** {Displayname}  [{UserID}]  \n> **World:** {world.name}  [{WorldInstanceID}]  \n> **AvatarID:** {AvatarID}";
 
-            if (File.ReadAllText("UsersStreamer.txt").Contains(UserID.ToString()))
-            {
-                Console.WriteLine("Found Streamer: " + Displayname);
-                SendWebHook(StreamerWebhook, StreamerFound);
-            }
-
-            if (File.ReadAllText("UsersAviCreator.txt").Contains(UserID.ToString()))
-            {
-                Console.WriteLine("Found Creator: " + Displayname);
-                SendWebHook(AviCreatorWebhook, CreatorFound);
-            }
-
-            // SELL STUFF ONLY ADD AND REMOVE //
-            if (File.ReadAllText("Access/Bigsmoke002.txt").Contains(UserID.ToString()))
-            {
-                if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
-                {
-                    Console.WriteLine("Found Antisearch User: " + Displayname);
-                }
-                else
+                if (File.ReadAllText("Access/Wenga.txt").Contains(UserID.ToString()))
                 {
                     Console.WriteLine("Found: " + Displayname);
-                    SendWebHook(DickSmokeWebhook, UserFound);
+                    SendWebHook(WengaWebhook, UserFound);
                 }
-            }
 
-            if (File.ReadAllText("Access/Jaypox.txt").Contains(UserID.ToString()))
-            {
-                if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
-                {
-                    Console.WriteLine("Found Antisearch User: " + Displayname);
-                }
-                else
+                if (File.ReadAllText("Access/DayOfThePlay.txt").Contains(UserID.ToString()))
                 {
                     Console.WriteLine("Found: " + Displayname);
-                    SendWebHook(JaypoxWebhook, UserFound);
+                    SendWebHook(GayClientWebhook, UserFound);
                 }
-            }
 
-            if (File.ReadAllText("Access/Akeno.txt").Contains(UserID.ToString()))
-            {
-                if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                if (File.ReadAllText("UsersMod.txt").Contains(UserID.ToString()))
                 {
-                    Console.WriteLine("Found Antisearch User: " + Displayname);
+                    Console.WriteLine("Found Admin/Mod: " + Displayname);
+                    SendWebHook(AdminWebhook, AdminFound);
                 }
-                else
-                {
-                    Console.WriteLine("Found: " + Displayname);
-                    SendWebHook(AkenoWebhook, UserFound);
-                }
-            }
 
-            if (File.ReadAllText("Access/Catzii.txt").Contains(UserID.ToString()))
-            {
-                if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                if (File.ReadAllText("UsersStreamer.txt").Contains(UserID.ToString()))
                 {
-                    Console.WriteLine("Found Antisearch User: " + Displayname);
+                    Console.WriteLine("Found Streamer: " + Displayname);
+                    SendWebHook(StreamerWebhook, StreamerFound);
                 }
-                else
-                {
-                    Console.WriteLine("Found: " + Displayname);
-                    SendWebHook(CatziiWebhook, UserFound);
-                }
-            }
 
-            if (File.ReadAllText("Access/Vx.txt").Contains(UserID.ToString()))
-            {
-                if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                if (File.ReadAllText("UsersAviCreator.txt").Contains(UserID.ToString()))
                 {
-                    Console.WriteLine("Found Antisearch User: " + Displayname);
+                    Console.WriteLine("Found Creator: " + Displayname);
+                    SendWebHook(AviCreatorWebhook, CreatorFound);
                 }
-                else
-                {
-                    Console.WriteLine("Found: " + Displayname);
-                    SendWebHook(VxWebhook, UserFound);
-                }
-            }
 
-            if (File.ReadAllText("Access/SexyToxiBuff.txt").Contains(UserID.ToString()))
-            {
-                if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                // SELL STUFF ONLY ADD AND REMOVE //
+                if (File.ReadAllText("Access/Bigsmoke002.txt").Contains(UserID.ToString()))
                 {
-                    Console.WriteLine("Found Antisearch User: " + Displayname);
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(DickSmokeWebhook, UserFound);
+                    }
                 }
-                else
-                {
-                    Console.WriteLine("Found: " + Displayname);
-                    SendWebHook(SexyToxiBuffWebhook, UserFound);
-                }
-            }
 
-            if (File.ReadAllText("Access/Sypherr.txt").Contains(UserID.ToString()))
-            {
-                if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                if (File.ReadAllText("Access/Jaypox.txt").Contains(UserID.ToString()))
                 {
-                    Console.WriteLine("Found Antisearch User: " + Displayname);
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(JaypoxWebhook, UserFound);
+                    }
                 }
-                else
-                {
-                    Console.WriteLine("Found: " + Displayname);
-                    SendWebHook(SypherrWebhook, UserFound);
-                }
-            }
 
-            if (File.ReadAllText("Access/Incognitoman.txt").Contains(UserID.ToString()))
-            {
-                if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                if (File.ReadAllText("Access/Akeno.txt").Contains(UserID.ToString()))
                 {
-                    Console.WriteLine("Found Antisearch User: " + Displayname);
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(AkenoWebhook, UserFound);
+                    }
                 }
-                else
-                {
-                    Console.WriteLine("Found: " + Displayname);
-                    SendWebHook(IncognitomanWebhook, UserFound);
-                }
-            }
 
-            if (File.ReadAllText("Access/Toksin.txt").Contains(UserID.ToString()))
-            {
-                if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                if (File.ReadAllText("Access/Catzii.txt").Contains(UserID.ToString()))
                 {
-                    Console.WriteLine("Found Antisearch User: " + Displayname);
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(CatziiWebhook, UserFound);
+                    }
                 }
-                else
-                {
-                    Console.WriteLine("Found: " + Displayname);
-                    SendWebHook(ToksinWebhook, UserFound);
-                }
-            }
 
-            if (File.ReadAllText("Access/Sirzechs.txt").Contains(UserID.ToString()))
-            {
-                if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                if (File.ReadAllText("Access/Vx.txt").Contains(UserID.ToString()))
                 {
-                    Console.WriteLine("Found Antisearch User: " + Displayname);
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(VxWebhook, UserFound);
+                    }
                 }
-                else
-                {
-                    Console.WriteLine("Found: " + Displayname);
-                    SendWebHook(SirzechsWebhook, UserFound);
-                }
-            }
 
-            if (File.ReadAllText("Access/MircoPortmann.txt").Contains(UserID.ToString()))
-            {
-                if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                if (File.ReadAllText("Access/SexyToxiBuff.txt").Contains(UserID.ToString()))
                 {
-                    Console.WriteLine("Found Antisearch User: " + Displayname);
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(SexyToxiBuffWebhook, UserFound);
+                    }
                 }
-                else
-                {
-                    Console.WriteLine("Found: " + Displayname);
-                    SendWebHook(MircoPortmannWebhook, UserFound);
-                }
-            }
 
-            if (File.ReadAllText("Access/Blank.txt").Contains(UserID.ToString()))
-            {
-                if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                if (File.ReadAllText("Access/Sypherr.txt").Contains(UserID.ToString()))
                 {
-                    Console.WriteLine("Found Antisearch User: " + Displayname);
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(SypherrWebhook, UserFound);
+                    }
                 }
-                else
+
+                if (File.ReadAllText("Access/Incognitoman.txt").Contains(UserID.ToString()))
                 {
-                    Console.WriteLine("Found: " + Displayname);
-                    SendWebHook(BlankWebhook, UserFound);
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(IncognitomanWebhook, UserFound);
+                    }
+                }
+
+                if (File.ReadAllText("Access/Toksin.txt").Contains(UserID.ToString()))
+                {
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(ToksinWebhook, UserFound);
+                    }
+                }
+
+                if (File.ReadAllText("Access/Sirzechs.txt").Contains(UserID.ToString()))
+                {
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(SirzechsWebhook, UserFound);
+                    }
+                }
+
+                if (File.ReadAllText("Access/MircoPortmann.txt").Contains(UserID.ToString()))
+                {
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(MircoPortmannWebhook, UserFound);
+                    }
+                }
+
+                if (File.ReadAllText("Access/Blank.txt").Contains(UserID.ToString()))
+                {
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(BlankWebhook, UserFound);
+                    }
                 }
             }
+            catch (Exception)
+            {
+                Console.WriteLine("[WengaBOT] Failed to read Webhooks");
+            }
+            
         }
 
 

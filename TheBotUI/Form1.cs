@@ -554,7 +554,7 @@ namespace TheBotUI {
                 if (selectedBot != null)
                 {
                     bool isJoined = selectedBot.PhotonClient.JoinRoom(WorldInstanceID);
-                    Thread.Sleep(3500);
+                    Thread.Sleep(2000);
                     if (selectedBot.PhotonClient.CurrentRoom == null)
                     {
                         Console.ForegroundColor
@@ -567,11 +567,11 @@ namespace TheBotUI {
                         = ConsoleColor.Magenta;
                         SearchWebhooks.DoWebhooks(item.Value, world, WorldInstanceID);
                     }
+                    Thread.Sleep(3000);
                     Console.ForegroundColor
                             = ConsoleColor.Red;
                     Console.WriteLine("[WengaBOT] Leaving Room");
                     selectedBot.PhotonClient.OpLeaveRoom(false);
-                    Thread.Sleep(1500);
                 }
             }
             catch (Exception)

@@ -51,34 +51,39 @@ namespace TheBotUI.Core
             var UserID = dictionary["id"];
             var Displayname = dictionary["displayName"];
 
+            var UserFound = $" > **[--Wenga's Egirl--]** \n> **Player:** {Displayname}  [{UserID}]  \n> **World:** {world.name}  [{WorldInstanceID}]  \n> **AvatarID:** {AvatarID}";
+            var StreamerFound = $" > **[--Wenga's Egirl--]** \n> **Streamer:** {Displayname}  [{UserID}]  \n> **World:** {world.name}  [{WorldInstanceID}]  \n> **AvatarID:** {AvatarID}";
+            var AdminFound = $" > **[--Wenga's Egirl--]** \n> **Admin/Mod:** {Displayname}  [{UserID}]  \n> **World:** {world.name}  [{WorldInstanceID}]  \n> **AvatarID:** {AvatarID}";
+            var CreatorFound = $" > **[--Wenga's Egirl--]** \n> **Creator:** {Displayname}  [{UserID}]  \n> **World:** {world.name}  [{WorldInstanceID}]  \n> **AvatarID:** {AvatarID}";
+
             if (File.ReadAllText("Access/Wenga.txt").Contains(UserID.ToString()))
             {
                 Console.WriteLine("Found: " + Displayname);
-                SendWebHook(WengaWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
+                SendWebHook(WengaWebhook, UserFound);
             }
 
             if (File.ReadAllText("Access/DayOfThePlay.txt").Contains(UserID.ToString()))
             {
-                Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                SendWebHook(GayClientWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
+                Console.WriteLine("Found: " + Displayname);
+                SendWebHook(GayClientWebhook, UserFound);
             }
 
             if (File.ReadAllText("UsersMod.txt").Contains(UserID.ToString()))
             {
-                Console.WriteLine("Found: " + Displayname);
-                SendWebHook(AdminWebhook, $"**[Wenga's Egirl]**\n \n **Admin/Mod:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
+                Console.WriteLine("Found Admin/Mod: " + Displayname);
+                SendWebHook(AdminWebhook, AdminFound);
             }
 
             if (File.ReadAllText("UsersStreamer.txt").Contains(UserID.ToString()))
             {
-                Console.WriteLine("Found: " + Displayname);
-                SendWebHook(StreamerWebhook, $"**[Wenga's Egirl]**\n \n **Streamer:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
+                Console.WriteLine("Found Streamer: " + Displayname);
+                SendWebHook(StreamerWebhook, StreamerFound);
             }
 
             if (File.ReadAllText("UsersAviCreator.txt").Contains(UserID.ToString()))
             {
-                Console.WriteLine("Found: " + Displayname);
-                SendWebHook(AviCreatorWebhook, $"**[Wenga's Egirl]**\n \n **Creator:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
+                Console.WriteLine("Found Creator: " + Displayname);
+                SendWebHook(AviCreatorWebhook, CreatorFound);
             }
 
             // SELL STUFF ONLY ADD AND REMOVE //
@@ -86,12 +91,12 @@ namespace TheBotUI.Core
             {
                 if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
                 {
-                    Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                    Console.WriteLine("Found Antisearch User: " + Displayname);
                 }
                 else
                 {
-                    Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                    SendWebHook(DickSmokeWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
+                    Console.WriteLine("Found: " + Displayname);
+                    SendWebHook(DickSmokeWebhook, UserFound);
                 }
             }
 
@@ -99,12 +104,12 @@ namespace TheBotUI.Core
             {
                 if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
                 {
-                    Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                    Console.WriteLine("Found Antisearch User: " + Displayname);
                 }
                 else
                 {
-                    Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                    SendWebHook(JaypoxWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
+                    Console.WriteLine("Found: " + Displayname);
+                    SendWebHook(JaypoxWebhook, UserFound);
                 }
             }
 
@@ -112,12 +117,12 @@ namespace TheBotUI.Core
             {
                 if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
                 {
-                    Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                    Console.WriteLine("Found Antisearch User: " + Displayname);
                 }
                 else
                 {
-                    Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                    SendWebHook(AkenoWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
+                    Console.WriteLine("Found: " + Displayname);
+                    SendWebHook(AkenoWebhook, UserFound);
                 }
             }
 
@@ -125,12 +130,12 @@ namespace TheBotUI.Core
             {
                 if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
                 {
-                    Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                    Console.WriteLine("Found Antisearch User: " + Displayname);
                 }
                 else
                 {
-                    Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                    SendWebHook(CatziiWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
+                    Console.WriteLine("Found: " + Displayname);
+                    SendWebHook(CatziiWebhook, UserFound);
                 }
             }
 
@@ -138,12 +143,12 @@ namespace TheBotUI.Core
             {
                 if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
                 {
-                    Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                    Console.WriteLine("Found Antisearch User: " + Displayname);
                 }
                 else
                 {
-                    Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                    SendWebHook(VxWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
+                    Console.WriteLine("Found: " + Displayname);
+                    SendWebHook(VxWebhook, UserFound);
                 }
             }
 
@@ -151,12 +156,12 @@ namespace TheBotUI.Core
             {
                 if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
                 {
-                    Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                    Console.WriteLine("Found Antisearch User: " + Displayname);
                 }
                 else
                 {
-                    Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                    SendWebHook(SexyToxiBuffWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
+                    Console.WriteLine("Found: " + Displayname);
+                    SendWebHook(SexyToxiBuffWebhook, UserFound);
                 }
             }
 
@@ -164,12 +169,12 @@ namespace TheBotUI.Core
             {
                 if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
                 {
-                    Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                    Console.WriteLine("Found Antisearch User: " + Displayname);
                 }
                 else
                 {
-                    Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                    SendWebHook(SypherrWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
+                    Console.WriteLine("Found: " + Displayname);
+                    SendWebHook(SypherrWebhook, UserFound);
                 }
             }
 
@@ -177,12 +182,12 @@ namespace TheBotUI.Core
             {
                 if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
                 {
-                    Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                    Console.WriteLine("Found Antisearch User: " + Displayname);
                 }
                 else
                 {
-                    Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                    SendWebHook(IncognitomanWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
+                    Console.WriteLine("Found: " + Displayname);
+                    SendWebHook(IncognitomanWebhook, UserFound);
                 }
             }
 
@@ -190,12 +195,12 @@ namespace TheBotUI.Core
             {
                 if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
                 {
-                    Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                    Console.WriteLine("Found Antisearch User: " + Displayname);
                 }
                 else
                 {
-                    Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                    SendWebHook(ToksinWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
+                    Console.WriteLine("Found: " + Displayname);
+                    SendWebHook(ToksinWebhook, UserFound);
                 }
             }
 
@@ -203,12 +208,12 @@ namespace TheBotUI.Core
             {
                 if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
                 {
-                    Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                    Console.WriteLine("Found Antisearch User: " + Displayname);
                 }
                 else
                 {
-                    Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                    SendWebHook(SirzechsWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
+                    Console.WriteLine("Found: " + Displayname);
+                    SendWebHook(SirzechsWebhook, UserFound);
                 }
             }
 
@@ -216,12 +221,12 @@ namespace TheBotUI.Core
             {
                 if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
                 {
-                    Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                    Console.WriteLine("Found Antisearch User: " + Displayname);
                 }
                 else
                 {
-                    Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                    SendWebHook(MircoPortmannWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
+                    Console.WriteLine("Found: " + Displayname);
+                    SendWebHook(MircoPortmannWebhook, UserFound);
                 }
             }
 
@@ -229,12 +234,12 @@ namespace TheBotUI.Core
             {
                 if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
                 {
-                    Console.WriteLine("Found AntiSearch User: " + dictionary["displayName"].ToString());
+                    Console.WriteLine("Found Antisearch User: " + Displayname);
                 }
                 else
                 {
-                    Console.WriteLine("Found: " + dictionary["displayName"].ToString());
-                    SendWebHook(BlankWebhook, $"**[Wenga's Egirl]**\n \n **Player:** {Displayname} \n **UserID:** {UserID}  \n **World:** {world.name}  [{WorldInstanceID}]  \n **AvatarID:** {AvatarID}");
+                    Console.WriteLine("Found: " + Displayname);
+                    SendWebHook(BlankWebhook, UserFound);
                 }
             }
         }

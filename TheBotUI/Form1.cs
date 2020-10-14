@@ -554,7 +554,7 @@ namespace TheBotUI {
                 if (selectedBot != null)
                 {
                     bool isJoined = selectedBot.PhotonClient.JoinRoom(WorldInstanceID);
-                    Thread.Sleep(2000);
+                    Thread.Sleep(2200);
                     if (selectedBot.PhotonClient.CurrentRoom == null)
                     {
                         Console.ForegroundColor
@@ -563,11 +563,14 @@ namespace TheBotUI {
                     }
                     foreach (var item in selectedBot.PhotonClient.CurrentRoom.Players)
                     {
-                        Console.ForegroundColor
-                        = ConsoleColor.Magenta;
-                        SearchWebhooks.DoWebhooks(item.Value, world, WorldInstanceID);
+                        new Thread(() => 
+                        {
+                            Console.ForegroundColor
+                                = ConsoleColor.Magenta;
+                            SearchWebhooks.DoWebhooks(item.Value, world, WorldInstanceID);
+                        }) { IsBackground = true }.Start();
                     }
-                    Thread.Sleep(3000);
+                    Thread.Sleep(4000);
                     Console.ForegroundColor
                             = ConsoleColor.Red;
                     Console.WriteLine("[WengaBOT] Leaving Room");

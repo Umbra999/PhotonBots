@@ -525,6 +525,7 @@ namespace TheBotUI {
                         WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
                         //WorldRES worldRES = await selectedBot.APIClient.Worlds.GetWorlds(worldID);
                         Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Length);
+                        selectedBot.APIClient.Auth.Logout();
                         if (worldRES.publicOccupants != 0)
                         {
                             List<string> Instances = VRChatAPI.Endpoints.Worlds.GetInstances(worldRES).ToList();

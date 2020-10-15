@@ -41,6 +41,7 @@ namespace TheBotUI.Core
         public const string SirzechsWebhook = "https://discord.com/api/webhooks/765184879339372544/mO8jdxrqvgxcK8qtZvQUrzWHCrCuIxRAGX7txPogfVfWM4ud75swmD97ztcg60oJ5bqi";
         public const string MircoPortmannWebhook = "https://discord.com/api/webhooks/765276836552376390/tVePRPxWrdBKq5qj2UvyU8a5PElYvkIbvtctJXcZkJX3kOVPAvrT-sTsua32y5x5Hdox";
         public const string BlankWebhook = "https://discord.com/api/webhooks/765679400518811650/RiFmU-cHuv20VjTPOlWKprziDstHFBLLzhrdBGdyNCM27Q1lp4nRN2Vui1n0U65Gyfu6";
+        public const string APTXWebhook = "https://discord.com/api/webhooks/766062523211841596/Ss1zEfNSE2TI8dOWeKtToE7_drfCus_w1nwz7xNf5D8usNb77hTXQp_WyJj0-eGqMVvI";
 
         public static void DoWebhooks(Player player, WorldRES world,string WorldInstanceID)
         {
@@ -242,6 +243,19 @@ namespace TheBotUI.Core
                     {
                         Console.WriteLine("Found: " + Displayname);
                         SendWebHook(BlankWebhook, UserFound);
+                    }
+                }
+
+                if (File.ReadAllText("Access/APTX.txt").Contains(UserID.ToString()))
+                {
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(APTXWebhook, UserFound);
                     }
                 }
             }

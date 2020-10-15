@@ -71,18 +71,6 @@ namespace VRChatAPI.Endpoints
             json = await response.Content.ReadAsStringAsync();
             Console.ForegroundColor
                     = ConsoleColor.DarkCyan;
-            Console.WriteLine($"[Day API] Logout [{Login}]");
-            try
-            {
-                var content = new StringContent("");
-                await RequestClient.PutAsync($"Logout", content);
-            }
-            catch (Exception)
-            {
-                Console.ForegroundColor
-                    = ConsoleColor.Red;
-                Console.WriteLine($"[Day API] Logout FAILED [{Login}]");
-            }
 
             if (response.IsSuccessStatusCode)
             {

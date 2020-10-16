@@ -521,7 +521,7 @@ namespace TheBotUI {
                     {
                         Console.ForegroundColor
                                     = ConsoleColor.Cyan;
-                        Thread.Sleep(1000);
+                        Thread.Sleep(100);
                         WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
                         //WorldRES worldRES = await selectedBot.APIClient.Worlds.GetWorlds(worldID);
                         Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Length);
@@ -541,7 +541,7 @@ namespace TheBotUI {
                                 Thread.Sleep(500);
                                 Console.WriteLine("[WengaBOT] Joining: " + worldID + ":" + Instance + " Cap: " + Convert.ToString(worldRES.capacity));
                                 JoinRoom(worldRES, worldID + ":" + Instance);
-                                Thread.Sleep(3500);
+                                Thread.Sleep(4100);
                             }
                         }
                     }
@@ -564,13 +564,7 @@ namespace TheBotUI {
                 if (selectedBot != null)
                 {
                     bool isJoined = selectedBot.PhotonClient.JoinRoom(WorldInstanceID);
-                    Thread.Sleep(2850);
-                    if (selectedBot.PhotonClient.CurrentRoom == null)
-                    {
-                        Console.ForegroundColor
-                        = ConsoleColor.Red;
-                        Console.WriteLine("[WengaBOT] Error Room is null");
-                    }
+                    Thread.Sleep(2700);
                     foreach (var item in selectedBot.PhotonClient.CurrentRoom.Players)
                     {
                         try
@@ -580,6 +574,7 @@ namespace TheBotUI {
                                 Console.ForegroundColor
                                     = ConsoleColor.Magenta;
                                 SearchWebhooks.DoWebhooks(item.Value, world, WorldInstanceID);
+                                Thread.Sleep(100);
                             })
                             { IsBackground = true }.Start();
                         }
@@ -590,7 +585,13 @@ namespace TheBotUI {
                             Console.WriteLine("[WengaBOT] Failed to read Webhooks");
                         }
                     }
-                    Thread.Sleep(4000);
+                    if (selectedBot.PhotonClient.CurrentRoom == null)
+                    {
+                        Console.ForegroundColor
+                        = ConsoleColor.Red;
+                        Console.WriteLine("[WengaBOT] Error Room is null");
+                    }
+                    Thread.Sleep(4300);
                     Console.ForegroundColor
                             = ConsoleColor.Red;
                     Console.WriteLine("[WengaBOT] Leaving Room");

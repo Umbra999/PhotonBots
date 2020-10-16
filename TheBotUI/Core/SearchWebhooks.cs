@@ -42,7 +42,7 @@ namespace TheBotUI.Core
         public const string MircoPortmannWebhook = "https://discord.com/api/webhooks/765276836552376390/tVePRPxWrdBKq5qj2UvyU8a5PElYvkIbvtctJXcZkJX3kOVPAvrT-sTsua32y5x5Hdox";
         public const string BlankWebhook = "https://discord.com/api/webhooks/765679400518811650/RiFmU-cHuv20VjTPOlWKprziDstHFBLLzhrdBGdyNCM27Q1lp4nRN2Vui1n0U65Gyfu6";
         public const string APTXWebhook = "https://discord.com/api/webhooks/766062523211841596/Ss1zEfNSE2TI8dOWeKtToE7_drfCus_w1nwz7xNf5D8usNb77hTXQp_WyJj0-eGqMVvI";
-
+        public const string ForgetfulWebhook = "https://discord.com/api/webhooks/766681072632070255/KEQIGfZDWpXdktR3kuc-SvKEI3bcdSlHsNARBgV6K16D0zqQRGeAL2z9l2MMCaDcvMiL";
         public static void DoWebhooks(Player player, WorldRES world,string WorldInstanceID)
         {
             try
@@ -258,10 +258,22 @@ namespace TheBotUI.Core
                         SendWebHook(APTXWebhook, UserFound);
                     }
                 }
+                if (File.ReadAllText("Access/Forgetful.txt").Contains(UserID.ToString()))
+                {
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(ForgetfulWebhook, UserFound);
+                    }
+                }
             }
             catch (Exception)
             {
-                Console.WriteLine("[WengaBOT] Failed to read Webhooks");
+              
             }
             
         }

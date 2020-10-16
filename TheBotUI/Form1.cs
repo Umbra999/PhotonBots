@@ -707,7 +707,7 @@ namespace TheBotUI {
 
         }
 
-        public async void DerankButton_Click(object sender, EventArgs e)
+        public void DerankButton_Click(object sender, EventArgs e)
         {
             string id = DerankInput.Text;
             selectedBot.APIClient.Moderation.SendModeration(id, VRCAPI.Endpoints.Type.block);
@@ -828,6 +828,7 @@ namespace TheBotUI {
             if (AvatarID.Contains("avtr_"))
             {
                 UserSelfRES notif = await VRChatAPI.Endpoints.Users.SwitchAvatar(AvatarID);
+                AvatarSwitchText.Text = "";
             }
             else
             {
@@ -1013,6 +1014,14 @@ namespace TheBotUI {
             if (UserID.Contains("usr_"))
             {
                 NotificationRES notif = await VRChatAPI.Endpoints.Users.SendFriendrequest(UserID);
+                AvatarSwitchText.Text = "";
+            }
+            else
+            {
+                Console.ForegroundColor
+                        = ConsoleColor.Red;
+                Console.WriteLine("[WengaBOT] Invalid UserID");
+                AvatarSwitchText.Text = "Invalid ID";
             }
         }
 

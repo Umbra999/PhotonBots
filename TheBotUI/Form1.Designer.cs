@@ -739,7 +739,7 @@ namespace TheBotUI {
             this.BanExploit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BanExploit.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.BanExploit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.BanExploit.Location = new System.Drawing.Point(1119, 647);
+            this.BanExploit.Location = new System.Drawing.Point(1119, 646);
             this.BanExploit.Margin = new System.Windows.Forms.Padding(4);
             this.BanExploit.Name = "BanExploit";
             this.BanExploit.Size = new System.Drawing.Size(533, 33);

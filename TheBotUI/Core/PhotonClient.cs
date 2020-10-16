@@ -126,6 +126,8 @@ namespace TheBotUI.Core
                 case 1:     //USpeak
                 case 201:   //Unreliable PhotonView
                 case 206:   //Reliable PhotonView
+                case 210:   //Item Ownership
+                case 209:   //Item Ownership
                     break;
 
                 default:
@@ -198,7 +200,7 @@ namespace TheBotUI.Core
                 { "statusDescription", "Wenga#0666" },
                 { "inVRMode", true },
                 { "showSocialRank", true },
-                { "steamUserID", "1337" }
+                { "steamUserID", "666" }
             };
             this.LocalPlayer.SetCustomProperties(hashtable);
             Console.WriteLine($"{(LocalPlayer.CustomProperties.Count > 0 ? $"[WengaBOT] Set CustomProperties! ({LocalPlayer.CustomProperties.Count})" : "[WengaBOT] No CustomProperties were set!")}");
@@ -291,7 +293,7 @@ namespace TheBotUI.Core
 
         public void OnMasterClientSwitched(Player newMasterClient) 
         {
-            if (Form1.MasterDesync)
+            if (GlobalVars.MasterDesync)
             {
                 Console.ForegroundColor
                     = ConsoleColor.Yellow;

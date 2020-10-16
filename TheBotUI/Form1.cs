@@ -312,7 +312,8 @@ namespace TheBotUI {
                 selectedBot.PhotonClient.InstantiateSelf();
             }
         }
-        int Desync = new Random().Next(int.MinValue + 100, int.MaxValue - 100);
+        int Desync = 88;
+            //new Random().Next(int.MinValue + 100, int.MaxValue - 100);
         private void InstantiateInvisButton_Click(object sender, EventArgs e)
         {
             if (selectedBot.PhotonClient.InRoom)
@@ -706,26 +707,10 @@ namespace TheBotUI {
 
         }
 
-        private void DerankButton_Click(object sender, EventArgs e)
+        public async void DerankButton_Click(object sender, EventArgs e)
         {
             string id = DerankInput.Text;
-            if (!id.Contains("usr_"))
-            {
-                Console.WriteLine("[WengaBOT]" + id + " Is not a Valid User Id");
-                DerankInput.Text = "Invalid ID";
-            }
-            foreach (ListViewItem item in botInstancesList.Items)
-            {
-                Bot bot = (Bot)item.Tag;
-                Console.WriteLine($"[WengaBOT] Sending Moderation With type {VRCAPI.Endpoints.Type.block} to {id}");
-                bot.APIClient.Moderation.SendModeration(id, VRCAPI.Endpoints.Type.block);
-                //Thread.Sleep(500);
-                //Console.WriteLine($"[WengaBOT] Sending Moderation With type {VRCAPI.Endpoints.Type.hideAvatar} to {id}");
-                //bot.APIClient.Moderation.SendModeration(id, VRCAPI.Endpoints.Type.hideAvatar);
-                //Thread.Sleep(500);
-                //Console.WriteLine($"[WengaBOT] Sending Moderation With type {VRCAPI.Endpoints.Type.mute} to {id}");
-                //bot.APIClient.Moderation.SendModeration(id, VRCAPI.Endpoints.Type.mute);
-            }
+            selectedBot.APIClient.Moderation.SendModeration(id, VRCAPI.Endpoints.Type.block);
         }
 
 
@@ -837,14 +822,12 @@ namespace TheBotUI {
 
         }
 
-        public void SwitchAvi_Click(object sender, EventArgs e)
+        public async void SwitchAvi_Click(object sender, EventArgs e)
         {
             var AvatarID = AvatarSwitchText.Text;
             if (AvatarID.Contains("avtr_"))
             {
-                // -Day: Add later
-                Console.WriteLine("[Day:] WIP");
-                selectedBot.APIClient.Avatars.Switch(AvatarID);
+                UserSelfRES notif = await VRChatAPI.Endpoints.Users.SwitchAvatar(AvatarID);
             }
             else
             {
@@ -922,7 +905,6 @@ namespace TheBotUI {
             }
         }
 
-        public static bool MasterDesync = false;
         private void MasterDisconnect_Click(object sender, EventArgs e)
         {
             if (selectedBot.PhotonClient.InRoom)
@@ -937,7 +919,7 @@ namespace TheBotUI {
                         100.EventSpammer(5, () =>
                         {
                             GlobalVars.Desync = true;
-                            MasterDesync = true;
+                            GlobalVars.MasterDesync = true;
                             foreach (ListViewItem item in botInstancesList.Items)
                             {
                                 var bot = (Bot)item.Tag;
@@ -951,7 +933,7 @@ namespace TheBotUI {
                         = ConsoleColor.DarkGreen;
                     Console.WriteLine("[WengaBOT] Masterclient Desynced");
                     GlobalVars.Desync = false;
-                    MasterDesync = false;
+                    GlobalVars.MasterDesync = false;
                 })
                 { IsBackground = true }.Start();
             }
@@ -1023,6 +1005,20 @@ namespace TheBotUI {
                 })
                 { IsBackground = true }.Start();
             }
+        }
+
+        public async void AddFriendButton_Click(object sender, EventArgs e)
+        {
+            var UserID = AddFriendText.Text;
+            if (UserID.Contains("usr_"))
+            {
+                NotificationRES notif = await VRChatAPI.Endpoints.Users.SendFriendrequest(UserID);
+            }
+        }
+
+        public async void ApiLogoutButton_Click(object sender, EventArgs e)
+        {
+             await VRChatAPI.Endpoints.Auth.Logout();
         }
     }
 }

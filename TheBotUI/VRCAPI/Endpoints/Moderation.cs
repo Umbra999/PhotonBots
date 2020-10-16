@@ -54,7 +54,7 @@ namespace TheBotUI.VRCAPI.Endpoints
                 Console.ForegroundColor
                     = ConsoleColor.DarkCyan;
                 Console.WriteLine($"[Day API] Sending Moderation [{Login}]\n{json}");
-                var response = await RequestClient.PostAsync("https://api.vrchat.cloud/api/1/auth/user/playermoderations?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26", content);
+                var response = await RequestClient.PostAsync("https://api.vrchat.cloud/api/1/user/playermoderations?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26", content);
                 if (response.IsSuccessStatusCode)
                 {
                     Console.ForegroundColor

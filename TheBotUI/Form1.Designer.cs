@@ -100,14 +100,17 @@ namespace TheBotUI {
             this.Master = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
+            this.EventLogger = new System.Windows.Forms.CheckBox();
+            this.DesyncID = new System.Windows.Forms.Button();
+            this.DesyncInput = new System.Windows.Forms.TextBox();
+            this.AddFriendButton = new System.Windows.Forms.Button();
+            this.AddFriendText = new System.Windows.Forms.TextBox();
+            this.ApiLogoutButton = new System.Windows.Forms.Button();
             this.playerList = new TheBotUI.CustomComponents.CustomListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.botInstancesList = new TheBotUI.CustomComponents.CustomListView();
             this.botInstances = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.EventLogger = new System.Windows.Forms.CheckBox();
-            this.DesyncID = new System.Windows.Forms.Button();
-            this.DesyncInput = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.SuspendLayout();
@@ -708,7 +711,7 @@ namespace TheBotUI {
             this.DerankButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DerankButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.DerankButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.DerankButton.Location = new System.Drawing.Point(1123, 527);
+            this.DerankButton.Location = new System.Drawing.Point(1119, 528);
             this.DerankButton.Margin = new System.Windows.Forms.Padding(4);
             this.DerankButton.Name = "DerankButton";
             this.DerankButton.Size = new System.Drawing.Size(296, 32);
@@ -721,7 +724,7 @@ namespace TheBotUI {
             // 
             this.DerankInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DerankInput.Font = new System.Drawing.Font("Arial", 12F);
-            this.DerankInput.Location = new System.Drawing.Point(1433, 527);
+            this.DerankInput.Location = new System.Drawing.Point(1429, 528);
             this.DerankInput.Margin = new System.Windows.Forms.Padding(4);
             this.DerankInput.Name = "DerankInput";
             this.DerankInput.Size = new System.Drawing.Size(223, 30);
@@ -736,7 +739,7 @@ namespace TheBotUI {
             this.BanExploit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BanExploit.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.BanExploit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.BanExploit.Location = new System.Drawing.Point(1123, 606);
+            this.BanExploit.Location = new System.Drawing.Point(1119, 647);
             this.BanExploit.Margin = new System.Windows.Forms.Padding(4);
             this.BanExploit.Name = "BanExploit";
             this.BanExploit.Size = new System.Drawing.Size(533, 33);
@@ -782,7 +785,7 @@ namespace TheBotUI {
             this.SwitchAvi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SwitchAvi.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.SwitchAvi.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.SwitchAvi.Location = new System.Drawing.Point(1123, 567);
+            this.SwitchAvi.Location = new System.Drawing.Point(1119, 565);
             this.SwitchAvi.Margin = new System.Windows.Forms.Padding(4);
             this.SwitchAvi.Name = "SwitchAvi";
             this.SwitchAvi.Size = new System.Drawing.Size(296, 32);
@@ -795,7 +798,7 @@ namespace TheBotUI {
             // 
             this.AvatarSwitchText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.AvatarSwitchText.Font = new System.Drawing.Font("Arial", 12F);
-            this.AvatarSwitchText.Location = new System.Drawing.Point(1432, 567);
+            this.AvatarSwitchText.Location = new System.Drawing.Point(1429, 567);
             this.AvatarSwitchText.Margin = new System.Windows.Forms.Padding(4);
             this.AvatarSwitchText.Name = "AvatarSwitchText";
             this.AvatarSwitchText.Size = new System.Drawing.Size(223, 30);
@@ -1072,6 +1075,91 @@ namespace TheBotUI {
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click_1);
             // 
+            // EventLogger
+            // 
+            this.EventLogger.AutoSize = true;
+            this.EventLogger.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.12F);
+            this.EventLogger.ForeColor = System.Drawing.Color.LavenderBlush;
+            this.EventLogger.Location = new System.Drawing.Point(591, 160);
+            this.EventLogger.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.EventLogger.Name = "EventLogger";
+            this.EventLogger.Size = new System.Drawing.Size(131, 29);
+            this.EventLogger.TabIndex = 70;
+            this.EventLogger.Text = "Event Log";
+            this.EventLogger.UseVisualStyleBackColor = true;
+            this.EventLogger.CheckedChanged += new System.EventHandler(this.EventLogger_CheckedChanged);
+            // 
+            // DesyncID
+            // 
+            this.DesyncID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.DesyncID.FlatAppearance.BorderSize = 0;
+            this.DesyncID.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.DesyncID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DesyncID.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.DesyncID.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.DesyncID.Location = new System.Drawing.Point(580, 607);
+            this.DesyncID.Margin = new System.Windows.Forms.Padding(4);
+            this.DesyncID.Name = "DesyncID";
+            this.DesyncID.Size = new System.Drawing.Size(303, 32);
+            this.DesyncID.TabIndex = 71;
+            this.DesyncID.Text = "Desync ID";
+            this.DesyncID.UseVisualStyleBackColor = false;
+            this.DesyncID.Click += new System.EventHandler(this.DesyncID_Click);
+            // 
+            // DesyncInput
+            // 
+            this.DesyncInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DesyncInput.Font = new System.Drawing.Font("Arial", 12F);
+            this.DesyncInput.Location = new System.Drawing.Point(889, 607);
+            this.DesyncInput.Margin = new System.Windows.Forms.Padding(4);
+            this.DesyncInput.Name = "DesyncInput";
+            this.DesyncInput.Size = new System.Drawing.Size(223, 30);
+            this.DesyncInput.TabIndex = 72;
+            // 
+            // AddFriendButton
+            // 
+            this.AddFriendButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.AddFriendButton.FlatAppearance.BorderSize = 0;
+            this.AddFriendButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.AddFriendButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddFriendButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.AddFriendButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.AddFriendButton.Location = new System.Drawing.Point(1119, 605);
+            this.AddFriendButton.Margin = new System.Windows.Forms.Padding(4);
+            this.AddFriendButton.Name = "AddFriendButton";
+            this.AddFriendButton.Size = new System.Drawing.Size(296, 32);
+            this.AddFriendButton.TabIndex = 73;
+            this.AddFriendButton.Text = "Add Friend";
+            this.AddFriendButton.UseVisualStyleBackColor = false;
+            this.AddFriendButton.Click += new System.EventHandler(this.AddFriendButton_Click);
+            // 
+            // AddFriendText
+            // 
+            this.AddFriendText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AddFriendText.Font = new System.Drawing.Font("Arial", 12F);
+            this.AddFriendText.Location = new System.Drawing.Point(1429, 605);
+            this.AddFriendText.Margin = new System.Windows.Forms.Padding(4);
+            this.AddFriendText.Name = "AddFriendText";
+            this.AddFriendText.Size = new System.Drawing.Size(223, 30);
+            this.AddFriendText.TabIndex = 74;
+            // 
+            // ApiLogoutButton
+            // 
+            this.ApiLogoutButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.ApiLogoutButton.FlatAppearance.BorderSize = 0;
+            this.ApiLogoutButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.ApiLogoutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ApiLogoutButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.ApiLogoutButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ApiLogoutButton.Location = new System.Drawing.Point(796, 775);
+            this.ApiLogoutButton.Margin = new System.Windows.Forms.Padding(4);
+            this.ApiLogoutButton.Name = "ApiLogoutButton";
+            this.ApiLogoutButton.Size = new System.Drawing.Size(195, 32);
+            this.ApiLogoutButton.TabIndex = 75;
+            this.ApiLogoutButton.Text = "API Logout";
+            this.ApiLogoutButton.UseVisualStyleBackColor = false;
+            this.ApiLogoutButton.Click += new System.EventHandler(this.ApiLogoutButton_Click);
+            // 
             // playerList
             // 
             this.playerList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
@@ -1128,53 +1216,15 @@ namespace TheBotUI {
             this.botInstances.Text = "Bot Instance";
             this.botInstances.Width = 252;
             // 
-            // EventLogger
-            // 
-            this.EventLogger.AutoSize = true;
-            this.EventLogger.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.12F);
-            this.EventLogger.ForeColor = System.Drawing.Color.LavenderBlush;
-            this.EventLogger.Location = new System.Drawing.Point(591, 160);
-            this.EventLogger.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.EventLogger.Name = "EventLogger";
-            this.EventLogger.Size = new System.Drawing.Size(131, 29);
-            this.EventLogger.TabIndex = 70;
-            this.EventLogger.Text = "Event Log";
-            this.EventLogger.UseVisualStyleBackColor = true;
-            this.EventLogger.CheckedChanged += new System.EventHandler(this.EventLogger_CheckedChanged);
-            // 
-            // DesyncID
-            // 
-            this.DesyncID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
-            this.DesyncID.FlatAppearance.BorderSize = 0;
-            this.DesyncID.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.DesyncID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DesyncID.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.DesyncID.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.DesyncID.Location = new System.Drawing.Point(580, 607);
-            this.DesyncID.Margin = new System.Windows.Forms.Padding(4);
-            this.DesyncID.Name = "DesyncID";
-            this.DesyncID.Size = new System.Drawing.Size(303, 32);
-            this.DesyncID.TabIndex = 71;
-            this.DesyncID.Text = "Desync ID";
-            this.DesyncID.UseVisualStyleBackColor = false;
-            this.DesyncID.Click += new System.EventHandler(this.DesyncID_Click);
-            // 
-            // DesyncInput
-            // 
-            this.DesyncInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DesyncInput.Font = new System.Drawing.Font("Arial", 12F);
-            this.DesyncInput.Location = new System.Drawing.Point(889, 607);
-            this.DesyncInput.Margin = new System.Windows.Forms.Padding(4);
-            this.DesyncInput.Name = "DesyncInput";
-            this.DesyncInput.Size = new System.Drawing.Size(223, 30);
-            this.DesyncInput.TabIndex = 72;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
             this.ClientSize = new System.Drawing.Size(1708, 886);
+            this.Controls.Add(this.ApiLogoutButton);
+            this.Controls.Add(this.AddFriendText);
+            this.Controls.Add(this.AddFriendButton);
             this.Controls.Add(this.DesyncInput);
             this.Controls.Add(this.DesyncID);
             this.Controls.Add(this.EventLogger);
@@ -1315,6 +1365,9 @@ namespace TheBotUI {
         public Button DesyncID;
         public TextBox DesyncInput;
         public TextBox AvatarSwitchText;
+        public Button AddFriendButton;
+        public TextBox AddFriendText;
+        public Button ApiLogoutButton;
     }
 }
 

@@ -14,6 +14,8 @@ namespace VRChatAPI {
         public Users Users { get; set; }
         public Worlds Worlds { get;set;}
         public Moderation Moderation { get; set; }
+        public Avatars Avatars { get; set; }
+
         public Variables Variables;
 
         public string Mac {

@@ -795,7 +795,7 @@ namespace TheBotUI {
             // 
             this.AvatarSwitchText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.AvatarSwitchText.Font = new System.Drawing.Font("Arial", 12F);
-            this.AvatarSwitchText.Location = new System.Drawing.Point(1433, 569);
+            this.AvatarSwitchText.Location = new System.Drawing.Point(1432, 567);
             this.AvatarSwitchText.Margin = new System.Windows.Forms.Padding(4);
             this.AvatarSwitchText.Name = "AvatarSwitchText";
             this.AvatarSwitchText.Size = new System.Drawing.Size(223, 30);
@@ -1279,7 +1279,6 @@ namespace TheBotUI {
         public Button UpdateRelease;
         public Label label2;
         public Button SwitchAvi;
-        public TextBox AvatarSwitchText;
         private CheckBox checkBox1;
         public Label label3;
         public Label MasterVarLabel;
@@ -1315,6 +1314,7 @@ namespace TheBotUI {
         private CheckBox EventLogger;
         public Button DesyncID;
         public TextBox DesyncInput;
+        public TextBox AvatarSwitchText;
     }
 }
 

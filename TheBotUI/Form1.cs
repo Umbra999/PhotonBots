@@ -837,13 +837,14 @@ namespace TheBotUI {
 
         }
 
-        private void SwitchAvi_Click(object sender, EventArgs e)
+        public void SwitchAvi_Click(object sender, EventArgs e)
         {
-            var id = AvatarSwitchText.Text;
-            if (id.Contains("avtr_"))
+            var AvatarID = AvatarSwitchText.Text;
+            if (AvatarID.Contains("avtr_"))
             {
                 // -Day: Add later
                 Console.WriteLine("[Day:] WIP");
+                selectedBot.APIClient.Avatars.Switch(AvatarID);
             }
             else
             {
@@ -1022,6 +1023,11 @@ namespace TheBotUI {
                 })
                 { IsBackground = true }.Start();
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }

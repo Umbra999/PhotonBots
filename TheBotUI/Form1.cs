@@ -993,8 +993,8 @@ namespace TheBotUI {
                             foreach (ListViewItem item in botInstancesList.Items)
                             {
                                 var bot = (Bot)item.Tag;
-                                bot.PhotonClient.OpRaiseEvent(210, new int[] { Desync, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { TargetActors = new int[] { DesyncID } }, SendOptions.SendReliable);
-                                bot.PhotonClient.OpRaiseEvent(209, new int[] { Desync, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { TargetActors = new int[] { DesyncID } }, SendOptions.SendReliable);
+                                bot.PhotonClient.OpRaiseEvent(210, new int[] { Desync, Desync }, new RaiseEventOptions() { TargetActors = new int[] { DesyncID, DesyncID } }, SendOptions.SendReliable);
+                                bot.PhotonClient.OpRaiseEvent(209, new int[] { Desync, Desync }, new RaiseEventOptions() { TargetActors = new int[] { DesyncID, DesyncID } }, SendOptions.SendReliable);
                             }
                         });
                         Thread.Sleep(2000);

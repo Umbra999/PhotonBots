@@ -47,19 +47,20 @@ namespace VRChatAPI.Endpoints
         {
             string json = "";
             NotificationRES notif = null;
-            HttpClient RequestClient = new HttpClient();
-            RequestClient.DefaultRequestHeaders.Accept.Clear();
-            RequestClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             Console.WriteLine($"[Day API] Sending Friendrequest to {id}");
             var lines = File.ReadAllLines("Auth/AuthNormal.txt");
             foreach (var line in lines)
             {
+                HttpClient RequestClient = new HttpClient();
+                RequestClient.DefaultRequestHeaders.Accept.Clear();
+                RequestClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var Login = line;
                 var byteArray = Encoding.ASCII.GetBytes(Login);
                 RequestClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
                 Console.ForegroundColor
                     = ConsoleColor.DarkCyan;
                 var response = await RequestClient.PostAsync("https://api.vrchat.cloud/api/1/user/" + id + "/friendRequest?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26", null);
+                var response2 = await RequestClient.PutAsync("https://api.vrchat.cloud/api/1/logout?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26", null);
                 json = await response.Content.ReadAsStringAsync();
 
                 if (response.IsSuccessStatusCode)
@@ -76,6 +77,12 @@ namespace VRChatAPI.Endpoints
                         = ConsoleColor.Red;
                     Console.WriteLine($"[Day API] Failed To Friend [{Login}]\n" + json);
                 }
+                if (response2.IsSuccessStatusCode)
+                {
+                    Console.ForegroundColor
+                        = ConsoleColor.DarkCyan;
+                    Console.WriteLine($"[Day API] Logout Success [{Login}]");
+                }
             }
             return notif;
         }
@@ -84,19 +91,20 @@ namespace VRChatAPI.Endpoints
         {
             string json = "";
             UserSelfRES notif = null;
-            HttpClient RequestClient = new HttpClient();
-            RequestClient.DefaultRequestHeaders.Accept.Clear();
-            RequestClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             Console.ForegroundColor
                     = ConsoleColor.DarkCyan;
             Console.WriteLine($"[Day API] Switching Avatar to {id}");
             var lines = File.ReadAllLines("Auth/AuthNormal.txt");
             foreach (var line in lines)
             {
+                HttpClient RequestClient = new HttpClient();
+                RequestClient.DefaultRequestHeaders.Accept.Clear();
+                RequestClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var Login = line;
                 var byteArray = Encoding.ASCII.GetBytes(Login);
                 RequestClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
                 var response = await RequestClient.PutAsync($"https://api.vrchat.cloud/api/1/avatars/" + id + "/select?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26", null);
+                var response2 = await RequestClient.PutAsync("https://api.vrchat.cloud/api/1/logout?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26", null);
                 json = await response.Content.ReadAsStringAsync();
                 if (response.IsSuccessStatusCode)
                 {
@@ -111,6 +119,12 @@ namespace VRChatAPI.Endpoints
                     Console.ForegroundColor
                         = ConsoleColor.Red;
                     Console.WriteLine($"[Day API] Failed To Switch [{Login}]\n" + json);
+                }
+                if (response2.IsSuccessStatusCode)
+                {
+                    Console.ForegroundColor
+                        = ConsoleColor.DarkCyan;
+                    Console.WriteLine($"[Day API] Logout Success [{Login}]");
                 }
             }
             return notif;

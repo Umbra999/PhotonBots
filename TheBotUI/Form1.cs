@@ -312,7 +312,7 @@ namespace TheBotUI {
                 selectedBot.PhotonClient.InstantiateSelf();
             }
         }
-        int Desync = 88;
+        int Desync = 0;
             //new Random().Next(int.MinValue + 100, int.MaxValue - 100);
         private void InstantiateInvisButton_Click(object sender, EventArgs e)
         {
@@ -331,8 +331,8 @@ namespace TheBotUI {
                             foreach (ListViewItem item in botInstancesList.Items)
                             {
                                 var bot = (Bot)item.Tag;
-                                bot.PhotonClient.OpRaiseEvent(210, new int[] { Desync, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.Others }, SendOptions.SendReliable);
-                                bot.PhotonClient.OpRaiseEvent(209, new int[] { Desync, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.Others }, SendOptions.SendReliable);
+                                bot.PhotonClient.OpRaiseEvent(210, new int[] { Desync, Desync }, new RaiseEventOptions() { Receivers = ReceiverGroup.Others }, SendOptions.SendReliable);
+                                bot.PhotonClient.OpRaiseEvent(209, new int[] { Desync, Desync }, new RaiseEventOptions() { Receivers = ReceiverGroup.Others }, SendOptions.SendReliable);
                             }
                         });
                         Thread.Sleep(2000);
@@ -924,8 +924,8 @@ namespace TheBotUI {
                             foreach (ListViewItem item in botInstancesList.Items)
                             {
                                 var bot = (Bot)item.Tag;
-                                bot.PhotonClient.OpRaiseEvent(210, new int[] { Desync, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.MasterClient }, SendOptions.SendReliable);
-                                bot.PhotonClient.OpRaiseEvent(209, new int[] { Desync, bot.PhotonClient.LocalPlayer.ActorNumber }, new RaiseEventOptions() { Receivers = ReceiverGroup.MasterClient }, SendOptions.SendReliable);
+                                bot.PhotonClient.OpRaiseEvent(210, new int[] { Desync, Desync }, new RaiseEventOptions() { Receivers = ReceiverGroup.MasterClient }, SendOptions.SendReliable);
+                                bot.PhotonClient.OpRaiseEvent(209, new int[] { Desync, Desync }, new RaiseEventOptions() { Receivers = ReceiverGroup.MasterClient }, SendOptions.SendReliable);
                             }
                         });
                         Thread.Sleep(2000);

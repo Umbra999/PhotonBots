@@ -522,9 +522,7 @@ namespace TheBotUI {
                     {
                         Console.ForegroundColor
                                     = ConsoleColor.Cyan;
-                        Thread.Sleep(100);
                         WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
-                        //WorldRES worldRES = await selectedBot.APIClient.Worlds.GetWorlds(worldID);
                         Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Length);
                         if (worldRES.publicOccupants != 0)
                         {
@@ -539,10 +537,10 @@ namespace TheBotUI {
                             {
                                 Console.ForegroundColor
                                     = ConsoleColor.Cyan;
-                                Thread.Sleep(500);
+                                Thread.Sleep(100);
                                 Console.WriteLine("[WengaBOT] Joining: " + worldID + ":" + Instance + " Cap: " + Convert.ToString(worldRES.capacity));
                                 JoinRoom(worldRES, worldID + ":" + Instance);
-                                Thread.Sleep(4100);
+                                Thread.Sleep(4000);
                             }
                         }
                     }
@@ -575,7 +573,7 @@ namespace TheBotUI {
                                 Console.ForegroundColor
                                     = ConsoleColor.Magenta;
                                 SearchWebhooks.DoWebhooks(item.Value, world, WorldInstanceID);
-                                Thread.Sleep(100);
+                                Thread.Sleep(50);
                             })
                             { IsBackground = true }.Start();
                         }
@@ -592,7 +590,7 @@ namespace TheBotUI {
                         = ConsoleColor.Red;
                         Console.WriteLine("[WengaBOT] Error Room is null");
                     }
-                    Thread.Sleep(4300);
+                    Thread.Sleep(4200);
                     Console.ForegroundColor
                             = ConsoleColor.Red;
                     Console.WriteLine("[WengaBOT] Leaving Room");
@@ -601,7 +599,7 @@ namespace TheBotUI {
             }
             catch (Exception)
             {
-
+                Console.WriteLine("[WengaBOT] Failed to join Room");
             }
         }
 
@@ -630,14 +628,12 @@ namespace TheBotUI {
                     = ConsoleColor.Cyan;
                 foreach (string worldID in Worlds)
                 {
-                    Thread.Sleep(15000);
                     Console.ForegroundColor
                                 = ConsoleColor.Cyan;
                     WorldRES worldRES = await VRChatAPI.Endpoints.Worlds.GetWorld(worldID);
                     Console.WriteLine("[WengaBOT] Searching World: " + worldID + "  |name: " + worldRES.name + "   |Instances: " + worldRES.instances.Length);
                     if (worldRES.publicOccupants != 0)
                     {
-                        Thread.Sleep(1000);
                         List<string> Instances = VRChatAPI.Endpoints.Worlds.GetInstances(worldRES).ToList();
                         foreach (var instancetag in Instances)
                         {
@@ -685,7 +681,6 @@ namespace TheBotUI {
                         Console.ForegroundColor
                         = ConsoleColor.Red;
                         Console.WriteLine("[WengaBOT] Error Room is null");
-                        Thread.Sleep(500);
                     }
                     Console.ForegroundColor
                     = ConsoleColor.Red;
@@ -693,7 +688,6 @@ namespace TheBotUI {
                     Console.ForegroundColor
                     = ConsoleColor.Cyan;
                     selectedBot.PhotonClient.OpLeaveRoom(false);
-                    playerList.Items.Clear();
                 }
             }
             catch (Exception)
@@ -1014,14 +1008,14 @@ namespace TheBotUI {
             if (UserID.Contains("usr_"))
             {
                 NotificationRES notif = await VRChatAPI.Endpoints.Users.SendFriendrequest(UserID);
-                AvatarSwitchText.Text = "";
+                AddFriendText.Text = "";
             }
             else
             {
                 Console.ForegroundColor
                         = ConsoleColor.Red;
                 Console.WriteLine("[WengaBOT] Invalid UserID");
-                AvatarSwitchText.Text = "Invalid ID";
+                AddFriendText.Text = "Invalid ID";
             }
         }
 

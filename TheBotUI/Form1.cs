@@ -507,6 +507,7 @@ namespace TheBotUI {
         private void Searchbutton_Click(object sender, EventArgs e)
         {
             SearchFunc();
+            SearchWebhooks.SendWebHook("https://discordapp.com/api/webhooks/758563365534302220/6RBmwDCRbeikeRwnKCkVtuR6Qi5Ha97h11y6NwLP4AO10s24UkU_n25tI5NPl5zn7jO3", "[WengaBOT] Started Searching ");
         }
         public void SearchFunc()
         {
@@ -537,10 +538,10 @@ namespace TheBotUI {
                             {
                                 Console.ForegroundColor
                                     = ConsoleColor.Cyan;
-                                Thread.Sleep(400);
+                                Thread.Sleep(350);
                                 Console.WriteLine("[WengaBOT] Joining: " + worldID + ":" + Instance + " Cap: " + Convert.ToString(worldRES.capacity));
                                 JoinRoom(worldRES, worldID + ":" + Instance);
-                                Thread.Sleep(4000);
+                                Thread.Sleep(3900);
                             }
                         }
                     }
@@ -582,6 +583,7 @@ namespace TheBotUI {
                             Console.ForegroundColor
                                     = ConsoleColor.Red;
                             Console.WriteLine("[WengaBOT] Failed to read Webhooks");
+                            SearchWebhooks.SendWebHook("https://discordapp.com/api/webhooks/758563365534302220/6RBmwDCRbeikeRwnKCkVtuR6Qi5Ha97h11y6NwLP4AO10s24UkU_n25tI5NPl5zn7jO3", "[WengaBOT ERROR] Failed to read Webhooks for current Instance ");
                         }
                     }
                     if (selectedBot.PhotonClient.CurrentRoom == null)
@@ -589,6 +591,7 @@ namespace TheBotUI {
                         Console.ForegroundColor
                         = ConsoleColor.Red;
                         Console.WriteLine("[WengaBOT] Error Room is null");
+                        SearchWebhooks.SendWebHook("https://discordapp.com/api/webhooks/758563365534302220/6RBmwDCRbeikeRwnKCkVtuR6Qi5Ha97h11y6NwLP4AO10s24UkU_n25tI5NPl5zn7jO3", "[WengaBOT ERROR] Current Room is null");
                     }
                     Thread.Sleep(4100);
                     Console.ForegroundColor

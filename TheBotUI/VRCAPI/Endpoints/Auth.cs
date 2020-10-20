@@ -66,7 +66,7 @@ namespace VRChatAPI.Endpoints {
                 notif = JsonConvert.DeserializeObject<UserSelfRES>(json);
                 Console.ForegroundColor
                     = ConsoleColor.DarkCyan;
-                Console.WriteLine($"[Day API] Logout Success");
+                Console.WriteLine($"[Day API] Logout Success\n" + json);
             }
             else
             {

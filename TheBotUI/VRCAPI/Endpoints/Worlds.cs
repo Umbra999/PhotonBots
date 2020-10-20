@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using TheBotUI.VRCAPI.Responses;
 using VRChatAPI;
@@ -68,7 +69,8 @@ namespace VRChatAPI.Endpoints
                     = ConsoleColor.DarkCyan;
             Console.WriteLine($"[Day API] Getting World {WorldID} [{Login}]");
             var response = await RequestClient.GetAsync("https://api.vrchat.cloud/api/1/worlds/"+WorldID+ "?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26");
-            var response2 = await RequestClient.PutAsync("https://api.vrchat.cloud/api/1/logout?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26", null);
+            Thread.Sleep(100);
+            await RequestClient.PutAsync("https://api.vrchat.cloud/api/1/logout?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26", null);
             json = await response.Content.ReadAsStringAsync();
             Console.ForegroundColor
                     = ConsoleColor.DarkCyan;
@@ -79,12 +81,6 @@ namespace VRChatAPI.Endpoints
                 Console.ForegroundColor
                     = ConsoleColor.DarkCyan;
                 Console.WriteLine($"[Day API] Got World [{Login}]");
-            }
-            if (response2.IsSuccessStatusCode)
-            {
-                Console.ForegroundColor
-                    = ConsoleColor.DarkCyan;
-                Console.WriteLine($"[Day API] Log out Success");
             }
             return world;
         }

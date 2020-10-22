@@ -45,6 +45,8 @@ namespace TheBotUI.Core
         public const string ForgetfulWebhook = "https://discord.com/api/webhooks/766681072632070255/KEQIGfZDWpXdktR3kuc-SvKEI3bcdSlHsNARBgV6K16D0zqQRGeAL2z9l2MMCaDcvMiL";
         public const string DannyWebhook = "https://discord.com/api/webhooks/766789797959827467/Wi5k7oJYXfAz9UnpPFuuUEuslVhKN5W81aGntnl_2o-oHocpMN0YKsCTqy0pBfHmVKBt";
         public const string ZozeyWebhook = "https://discord.com/api/webhooks/768032802586624010/WEv0KHuzLjxLDOdUn1AH7qlDiaw4QdpQtH9lPTDXlzw5NtrDe-n87NBFRV3QzaAk-coH";
+        public const string RiasWebhook = "https://discord.com/api/webhooks/768104425633742888/5RpYtyyAQzbJ4ekdnf_v-ZnyPAPdcEDUx9d-EVR-x4QBdR_DPpWQFnp8U5wACzgVDb_F";
+        public const string SchahozWebhook = "https://discord.com/api/webhooks/768507496435548230/hsr3B90GOIiYvgMwxIioKYtRyz4IQCUslvteznqDrVrOVM1BxM5GuFesDyd8GjK8hQXm";
         public static void DoWebhooks(Player player, WorldRES world,string WorldInstanceID)
         {
             try
@@ -297,6 +299,32 @@ namespace TheBotUI.Core
                     {
                         Console.WriteLine("Found: " + Displayname);
                         SendWebHook(ZozeyWebhook, UserFound);
+                    }
+                }
+
+                if (File.ReadAllText("Access/Rias.txt").Contains(UserID.ToString()))
+                {
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(RiasWebhook, UserFound);
+                    }
+                }
+
+                if (File.ReadAllText("Access/Schahoz.txt").Contains(UserID.ToString()))
+                {
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(SchahozWebhook, UserFound);
                     }
                 }
             }

@@ -312,8 +312,7 @@ namespace TheBotUI {
                 selectedBot.PhotonClient.InstantiateSelf();
             }
         }
-        int Desync = 0;
-            //new Random().Next(int.MinValue + 100, int.MaxValue - 100);
+        int Desync = int.MinValue + new Random().Next(1, 100000);
         private void InstantiateInvisButton_Click(object sender, EventArgs e)
         {
             if (selectedBot.PhotonClient.InRoom)

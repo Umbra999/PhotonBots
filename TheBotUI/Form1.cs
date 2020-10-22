@@ -386,7 +386,7 @@ namespace TheBotUI {
             Console.ForegroundColor
             = ConsoleColor.DarkGray;
             Console.WriteLine("[WengaBOT] Connecting all Bots");
-            Thread.Sleep(1500);
+            Thread.Sleep(500);
             if (string.IsNullOrEmpty(worldAInstanceIDTextBox.Text) || !worldAInstanceIDTextBox.Text.Contains("wrld"))
             {
                 worldAInstanceIDTextBox.Text = "[WengaBOT] Incorrect format or empty!";
@@ -399,11 +399,15 @@ namespace TheBotUI {
                     {
                         foreach (ListViewItem item in botInstancesList.Items)
                         {
-                            Thread.Sleep(500);
-                            var bot = (Bot)item.Tag;
-                            bool isJoined = bot.PhotonClient.JoinRoom(worldAInstanceIDTextBox.Text);
-                            Console.WriteLine(isJoined ? "[WengaBOT] Successfully joined to room!" : "[WengaBOT] JoinOrCreateRoom failed!");
-                            Thread.Sleep(500);
+                            new Thread(() =>
+                            {
+                                Thread.Sleep(500);
+                                var bot = (Bot)item.Tag;
+                                bool isJoined = bot.PhotonClient.JoinRoom(worldAInstanceIDTextBox.Text);
+                                Console.WriteLine(isJoined ? "[WengaBOT] Successfully joined to room!" : "[WengaBOT] JoinOrCreateRoom failed!");
+                                Thread.Sleep(500);
+                            })
+                            { IsBackground = true }.Start();
                         }
                     }));
                 }).Start();
@@ -838,7 +842,6 @@ namespace TheBotUI {
         {
             if (checkBox1.CheckState == CheckState.Checked)
             {
-                GlobalVars.ShouldPauseRoomCheckerLoop = false;
                 Console.ForegroundColor
                 = ConsoleColor.DarkGreen;
                 Console.WriteLine("[WengaBOT] Enabled Followmode");
@@ -847,11 +850,15 @@ namespace TheBotUI {
 
             else if (checkBox1.CheckState == CheckState.Unchecked)
             {
-                GlobalVars.ShouldPauseRoomCheckerLoop = true;
-                DisconnectAllBots();
-                Console.ForegroundColor
-                = ConsoleColor.Red;
-                Console.WriteLine("[WengaBOT] Disabled Followmode");
+                new Thread(() =>
+                {
+                    Console.ForegroundColor
+                        = ConsoleColor.Red;
+                    Console.WriteLine("[WengaBOT] Disabled Followmode");
+                    Thread.Sleep(4000);
+                    DisconnectAllBots();
+                })
+                { IsBackground = true }.Start();
             }
         }
         public void RoomCheckerLoop()
@@ -872,13 +879,15 @@ namespace TheBotUI {
                                     if (bot.PhotonClient.InRoom)
                                     {
                                         if (bot.PhotonClient.CurrentRoom.Name != CurrentRoom)
+                                        {
                                             bot.PhotonClient.OpLeaveRoom(false);
-                                        Thread.Sleep(1500);
+                                        }
                                     }
                                     else
                                     {
+                                        Thread.Sleep(1000);
                                         bot.PhotonClient.JoinRoom(CurrentRoom);
-                                        Thread.Sleep(3500);
+                                        Thread.Sleep(3200);
                                         bot.PhotonClient.InstantiateSelf();
                                     }
                                 }
@@ -894,11 +903,15 @@ namespace TheBotUI {
         {
             foreach (ListViewItem item in botInstancesList.Items)
             {
-                var bot = (Bot)item.Tag;
-                bool isJoined = bot.PhotonClient.JoinRoom(worldAInstanceIDTextBox.Text);
-                Console.WriteLine(isJoined ? "[WengaBOT] Successfully joined to room!" : "[WengaBOT] JoinOrCreateRoom failed!");
-                Thread.Sleep(3000);
-                bot.PhotonClient.InstantiateSelf();
+                new Thread(() =>
+                {
+                    var bot = (Bot)item.Tag;
+                    bool isJoined = bot.PhotonClient.JoinRoom(worldAInstanceIDTextBox.Text);
+                    Console.WriteLine(isJoined ? "[WengaBOT] Successfully joined to room!" : "[WengaBOT] JoinOrCreateRoom failed!");
+                    Thread.Sleep(3000);
+                    bot.PhotonClient.InstantiateSelf();
+                })
+                { IsBackground = true }.Start();
             }
         }
 
@@ -1045,6 +1058,29 @@ namespace TheBotUI {
                         
                     }
                 }
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            FetchRoom();
+            foreach (ListViewItem item in botInstancesList.Items)
+            {
+                new Thread(() =>
+                {
+                    var bot = (Bot)item.Tag;
+                    if (bot.PhotonClient.InRoom)
+                    {
+
+                    }
+                    else
+                    {
+                        bot.PhotonClient.JoinRoom(CurrentRoom);
+                        Thread.Sleep(3300);
+                        bot.PhotonClient.InstantiateSelf();
+                    }
+                })
+                { IsBackground = true }.Start();
             }
         }
     }

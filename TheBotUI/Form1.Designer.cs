@@ -111,6 +111,7 @@ namespace TheBotUI {
             this.botInstancesList = new TheBotUI.CustomComponents.CustomListView();
             this.botInstances = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button5 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.SuspendLayout();
@@ -472,7 +473,7 @@ namespace TheBotUI {
             this.joinRoomButton.Location = new System.Drawing.Point(835, 194);
             this.joinRoomButton.Margin = new System.Windows.Forms.Padding(4);
             this.joinRoomButton.Name = "joinRoomButton";
-            this.joinRoomButton.Size = new System.Drawing.Size(196, 32);
+            this.joinRoomButton.Size = new System.Drawing.Size(116, 32);
             this.joinRoomButton.TabIndex = 29;
             this.joinRoomButton.Text = "Join";
             this.joinRoomButton.UseVisualStyleBackColor = false;
@@ -486,10 +487,10 @@ namespace TheBotUI {
             this.leaveRoomButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.leaveRoomButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.leaveRoomButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.leaveRoomButton.Location = new System.Drawing.Point(1039, 194);
+            this.leaveRoomButton.Location = new System.Drawing.Point(959, 194);
             this.leaveRoomButton.Margin = new System.Windows.Forms.Padding(4);
             this.leaveRoomButton.Name = "leaveRoomButton";
-            this.leaveRoomButton.Size = new System.Drawing.Size(239, 32);
+            this.leaveRoomButton.Size = new System.Drawing.Size(119, 32);
             this.leaveRoomButton.TabIndex = 30;
             this.leaveRoomButton.Text = "Leave";
             this.leaveRoomButton.UseVisualStyleBackColor = false;
@@ -503,7 +504,7 @@ namespace TheBotUI {
             this.joinLastRoomButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.joinLastRoomButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.joinLastRoomButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.joinLastRoomButton.Location = new System.Drawing.Point(1285, 194);
+            this.joinLastRoomButton.Location = new System.Drawing.Point(1086, 193);
             this.joinLastRoomButton.Margin = new System.Windows.Forms.Padding(4);
             this.joinLastRoomButton.Name = "joinLastRoomButton";
             this.joinLastRoomButton.Size = new System.Drawing.Size(187, 32);
@@ -643,10 +644,10 @@ namespace TheBotUI {
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.button6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button6.Location = new System.Drawing.Point(1481, 194);
+            this.button6.Location = new System.Drawing.Point(1579, 193);
             this.button6.Margin = new System.Windows.Forms.Padding(4);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(192, 32);
+            this.button6.Size = new System.Drawing.Size(83, 32);
             this.button6.TabIndex = 45;
             this.button6.Text = "Log";
             this.button6.UseVisualStyleBackColor = false;
@@ -1216,12 +1217,30 @@ namespace TheBotUI {
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click_1);
             // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.button8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button8.Location = new System.Drawing.Point(1281, 193);
+            this.button8.Margin = new System.Windows.Forms.Padding(4);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(128, 32);
+            this.button8.TabIndex = 77;
+            this.button8.Text = "JoinMe";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
             this.ClientSize = new System.Drawing.Size(1708, 886);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.AddFriendText);
             this.Controls.Add(this.AddFriendButton);
@@ -1368,6 +1387,7 @@ namespace TheBotUI {
         public Button AddFriendButton;
         public TextBox AddFriendText;
         public Button button5;
+        public Button button8;
     }
 }
 

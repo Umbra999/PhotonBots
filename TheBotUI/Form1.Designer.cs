@@ -105,12 +105,12 @@ namespace TheBotUI {
             this.DesyncInput = new System.Windows.Forms.TextBox();
             this.AddFriendButton = new System.Windows.Forms.Button();
             this.AddFriendText = new System.Windows.Forms.TextBox();
-            this.ApiLogoutButton = new System.Windows.Forms.Button();
             this.playerList = new TheBotUI.CustomComponents.CustomListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.botInstancesList = new TheBotUI.CustomComponents.CustomListView();
             this.botInstances = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button5 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.SuspendLayout();
@@ -809,7 +809,7 @@ namespace TheBotUI {
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.12F);
             this.checkBox1.ForeColor = System.Drawing.Color.LavenderBlush;
-            this.checkBox1.Location = new System.Drawing.Point(589, 194);
+            this.checkBox1.Location = new System.Drawing.Point(591, 193);
             this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(102, 29);
@@ -1143,23 +1143,6 @@ namespace TheBotUI {
             this.AddFriendText.Size = new System.Drawing.Size(223, 30);
             this.AddFriendText.TabIndex = 74;
             // 
-            // ApiLogoutButton
-            // 
-            this.ApiLogoutButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
-            this.ApiLogoutButton.FlatAppearance.BorderSize = 0;
-            this.ApiLogoutButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
-            this.ApiLogoutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ApiLogoutButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.ApiLogoutButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ApiLogoutButton.Location = new System.Drawing.Point(796, 775);
-            this.ApiLogoutButton.Margin = new System.Windows.Forms.Padding(4);
-            this.ApiLogoutButton.Name = "ApiLogoutButton";
-            this.ApiLogoutButton.Size = new System.Drawing.Size(195, 32);
-            this.ApiLogoutButton.TabIndex = 75;
-            this.ApiLogoutButton.Text = "API Logout";
-            this.ApiLogoutButton.UseVisualStyleBackColor = false;
-            this.ApiLogoutButton.Click += new System.EventHandler(this.ApiLogoutButton_Click);
-            // 
             // playerList
             // 
             this.playerList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
@@ -1216,13 +1199,30 @@ namespace TheBotUI {
             this.botInstances.Text = "Bot Instance";
             this.botInstances.Width = 252;
             // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(86)))), ((int)(((byte)(86)))));
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button5.Location = new System.Drawing.Point(793, 775);
+            this.button5.Margin = new System.Windows.Forms.Padding(4);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(195, 32);
+            this.button5.TabIndex = 76;
+            this.button5.Text = "Log Properties";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
             this.ClientSize = new System.Drawing.Size(1708, 886);
-            this.Controls.Add(this.ApiLogoutButton);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.AddFriendText);
             this.Controls.Add(this.AddFriendButton);
             this.Controls.Add(this.DesyncInput);
@@ -1367,7 +1367,7 @@ namespace TheBotUI {
         public TextBox AvatarSwitchText;
         public Button AddFriendButton;
         public TextBox AddFriendText;
-        public Button ApiLogoutButton;
+        public Button button5;
     }
 }
 

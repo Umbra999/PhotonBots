@@ -312,7 +312,7 @@ namespace TheBotUI {
                 selectedBot.PhotonClient.InstantiateSelf();
             }
         }
-        int Desync = int.MinValue + new Random().Next(1, 100000);
+        int Desync = 0;
         private void InstantiateInvisButton_Click(object sender, EventArgs e)
         {
             if (selectedBot.PhotonClient.InRoom)
@@ -1021,9 +1021,31 @@ namespace TheBotUI {
             }
         }
 
-        public async void ApiLogoutButton_Click(object sender, EventArgs e)
+        private void button5_Click_1(object sender, EventArgs e)
         {
-             await VRChatAPI.Endpoints.Auth.Logout();
+            Console.ForegroundColor
+                        = ConsoleColor.Red;
+            Console.WriteLine("Logging all Customproperties");
+            foreach (Player p in selectedBot.PhotonClient.CurrentRoom.Players.Values)
+            {
+                Console.ForegroundColor
+                        = ConsoleColor.Green;
+                Console.WriteLine("\n");
+                foreach (string key in p.CustomProperties.Keys)
+                {
+                    Console.WriteLine($"1: {key} | 2: {p.CustomProperties[key]}");
+                    try
+                    {
+                        var keyVar = p.CustomProperties[key] as Dictionary<string, object>;
+                        foreach (KeyValuePair<string, object> kvp in keyVar)
+                            Console.WriteLine("[Log] Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+                    }
+                    catch (Exception) 
+                    {
+                        
+                    }
+                }
+            }
         }
     }
 }

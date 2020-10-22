@@ -176,6 +176,8 @@ namespace TheBotUI.Core
             Console.WriteLine("[WengaBOT] Connected to Photonserver");
         }
 
+        int RandomSteam = 1 + new Random().Next(1, 100000);
+
         public void OnConnectedToMaster() 
         {
             Console.ForegroundColor
@@ -200,7 +202,7 @@ namespace TheBotUI.Core
                 { "statusDescription", "Wenga#0666" },
                 { "inVRMode", true },
                 { "showSocialRank", true },
-                { "steamUserID", "666" }
+                { "steamUserID", $"{new Random().Next(1, 1337)}" },
             };
             this.LocalPlayer.SetCustomProperties(hashtable);
             Console.WriteLine($"{(LocalPlayer.CustomProperties.Count > 0 ? $"[WengaBOT] Set CustomProperties! ({LocalPlayer.CustomProperties.Count})" : "[WengaBOT] No CustomProperties were set!")}");

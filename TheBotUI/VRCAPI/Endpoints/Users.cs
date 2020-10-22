@@ -60,7 +60,7 @@ namespace VRChatAPI.Endpoints
                 Console.ForegroundColor
                     = ConsoleColor.DarkCyan;
                 var response = await RequestClient.PostAsync("https://api.vrchat.cloud/api/1/user/" + id + "/friendRequest?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26", null);
-                var response2 = await RequestClient.PutAsync("https://api.vrchat.cloud/api/1/logout?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26", null);
+                await RequestClient.PutAsync("https://api.vrchat.cloud/api/1/logout?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26", null);
                 json = await response.Content.ReadAsStringAsync();
 
                 if (response.IsSuccessStatusCode)
@@ -76,12 +76,6 @@ namespace VRChatAPI.Endpoints
                     Console.ForegroundColor
                         = ConsoleColor.Red;
                     Console.WriteLine($"[Day API] Failed To Friend [{Login}]\n" + json);
-                }
-                if (response2.IsSuccessStatusCode)
-                {
-                    Console.ForegroundColor
-                        = ConsoleColor.DarkCyan;
-                    Console.WriteLine($"[Day API] Logout Success [{Login}]");
                 }
             }
             return notif;
@@ -104,7 +98,7 @@ namespace VRChatAPI.Endpoints
                 var byteArray = Encoding.ASCII.GetBytes(Login);
                 RequestClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
                 var response = await RequestClient.PutAsync($"https://api.vrchat.cloud/api/1/avatars/" + id + "/select?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26", null);
-                var response2 = await RequestClient.PutAsync("https://api.vrchat.cloud/api/1/logout?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26", null);
+                await RequestClient.PutAsync("https://api.vrchat.cloud/api/1/logout?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26", null);
                 json = await response.Content.ReadAsStringAsync();
                 if (response.IsSuccessStatusCode)
                 {
@@ -119,12 +113,6 @@ namespace VRChatAPI.Endpoints
                     Console.ForegroundColor
                         = ConsoleColor.Red;
                     Console.WriteLine($"[Day API] Failed To Switch [{Login}]\n" + json);
-                }
-                if (response2.IsSuccessStatusCode)
-                {
-                    Console.ForegroundColor
-                        = ConsoleColor.DarkCyan;
-                    Console.WriteLine($"[Day API] Logout Success [{Login}]");
                 }
             }
             return notif;

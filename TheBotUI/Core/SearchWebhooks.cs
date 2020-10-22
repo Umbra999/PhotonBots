@@ -53,15 +53,17 @@ namespace TheBotUI.Core
             {
                 Dictionary<string, object> tictionary = (Dictionary<string, object>)player.CustomProperties["avatarDict"];
                 var AvatarID = tictionary["id"];
+                var AssetURL = tictionary["assetUrl"];
+                var ReleaseStatus = tictionary["releaseStatus"];
 
                 Dictionary<string, object> dictionary = (Dictionary<string, object>)player.CustomProperties["user"];
                 var UserID = dictionary["id"];
                 var Displayname = dictionary["displayName"];
 
-                var UserFound = $" > **[--Wenga's Egirl--]** \n> **Player:** {Displayname}  [{UserID}]  \n> **World:** {world.name}  [{WorldInstanceID}]  \n> **AvatarID:** {AvatarID}";
-                var StreamerFound = $" > **[--Wenga's Egirl--]** \n> **Streamer:** {Displayname}  [{UserID}]  \n> **World:** {world.name}  [{WorldInstanceID}]  \n> **AvatarID:** {AvatarID}";
-                var AdminFound = $" > **[--Wenga's Egirl--]** \n> **Admin/Mod:** {Displayname}  [{UserID}]  \n> **World:** {world.name}  [{WorldInstanceID}]  \n> **AvatarID:** {AvatarID}";
-                var CreatorFound = $" > **[--Wenga's Egirl--]** \n> **Creator:** {Displayname}  [{UserID}]  \n> **World:** {world.name}  [{WorldInstanceID}]  \n> **AvatarID:** {AvatarID}";
+                var UserFound = $" > **[--Wenga's Egirl--]** \n> **Player:** {Displayname}  [{UserID}]  \n> **World:** {world.name}  [{WorldInstanceID}]  \n> **AvatarID:** {AvatarID} [{ReleaseStatus}] \n> **AssetURL:** {AssetURL}";
+                var StreamerFound = $" > **[--Wenga's Egirl--]** \n> **Streamer:** {Displayname}  [{UserID}]  \n> **World:** {world.name}  [{WorldInstanceID}]  \n> **AvatarID:** {AvatarID} [{ReleaseStatus}] \n> **AssetURL:** {AssetURL}";
+                var AdminFound = $" > **[--Wenga's Egirl--]** \n> **Admin/Mod:** {Displayname}  [{UserID}]  \n> **World:** {world.name}  [{WorldInstanceID}]  \n> **AvatarID:** {AvatarID} [{ReleaseStatus}] \n> **AssetURL:** {AssetURL}";
+                var CreatorFound = $" > **[--Wenga's Egirl--]** \n> **Creator:** {Displayname}  [{UserID}]  \n> **World:** {world.name}  [{WorldInstanceID}]  \n> **AvatarID:** {AvatarID} [{ReleaseStatus}] \n> **AssetURL:** {AssetURL}";
 
                 if (File.ReadAllText("Access/Wenga.txt").Contains(UserID.ToString()))
                 {

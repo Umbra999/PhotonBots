@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using VRChatAPI.Responses;
 
@@ -58,7 +59,8 @@ namespace VRChatAPI.Endpoints {
             Console.ForegroundColor
                     = ConsoleColor.DarkCyan;
             Console.WriteLine($"[Day API] Logging out");
-            var response = await RequestClient.PutAsync("https://api.vrchat.cloud/api/1/logout?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26", null);
+            var response = await RequestClient.PutAsync("https://api.vrchat.cloud/api/1/logout?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26",null);
+            Thread.Sleep(100);
             json = await response.Content.ReadAsStringAsync();
 
             if (response.IsSuccessStatusCode)

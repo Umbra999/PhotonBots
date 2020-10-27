@@ -47,6 +47,11 @@ namespace TheBotUI.Core
         public const string ZozeyWebhook = "https://discord.com/api/webhooks/768032802586624010/WEv0KHuzLjxLDOdUn1AH7qlDiaw4QdpQtH9lPTDXlzw5NtrDe-n87NBFRV3QzaAk-coH";
         public const string RiasWebhook = "https://discord.com/api/webhooks/768104425633742888/5RpYtyyAQzbJ4ekdnf_v-ZnyPAPdcEDUx9d-EVR-x4QBdR_DPpWQFnp8U5wACzgVDb_F";
         public const string SchahozWebhook = "https://discord.com/api/webhooks/768507496435548230/hsr3B90GOIiYvgMwxIioKYtRyz4IQCUslvteznqDrVrOVM1BxM5GuFesDyd8GjK8hQXm";
+        public const string PickelWebhook = "https://discord.com/api/webhooks/769098732830457856/fIqx6B2PJ3aTmcfylSirJNkQg5CpW3VRyQ0o4-Jgkg3pXi5SJvkv7NlylwR4_IdRGXSH";
+        public const string NightWebhook = "https://discord.com/api/webhooks/769740596423426059/3SgrT7_hrp073UKQltu68yoPrOu_32JM-O8fEOEQg-J4LjP8XFwf9s2uadwZeRXAzlIM";
+        public const string PipsquekWebhook = "https://discord.com/api/webhooks/770360909666320384/KBy29GfqncuUMnWLu-RCRi_CRnNtCw4vnhC8sgUnBx3ktEboqjci7N3Qv_zsEC4WmYtg";
+        public const string InjectionWebhook = "https://discord.com/api/webhooks/770375903434768395/v2nnQV9TeVMECDOkVEzwnp38Bl7sel8aS-vyXhZC5qkMMCCl_zv5zoZDUZDiEaIO-Zn1";
+
         public static void DoWebhooks(Player player, WorldRES world,string WorldInstanceID)
         {
             try
@@ -327,6 +332,58 @@ namespace TheBotUI.Core
                     {
                         Console.WriteLine("Found: " + Displayname);
                         SendWebHook(SchahozWebhook, UserFound);
+                    }
+                }
+
+                if (File.ReadAllText("Access/Pickel.txt").Contains(UserID.ToString()))
+                {
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(PickelWebhook, UserFound);
+                    }
+                }
+
+                if (File.ReadAllText("Access/Night.txt").Contains(UserID.ToString()))
+                {
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(NightWebhook, UserFound);
+                    }
+                }
+
+                if (File.ReadAllText("Access/Pipsquek.txt").Contains(UserID.ToString()))
+                {
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(PipsquekWebhook, UserFound);
+                    }
+                }
+
+                if (File.ReadAllText("Access/Injection.txt").Contains(UserID.ToString()))
+                {
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(InjectionWebhook, UserFound);
                     }
                 }
             }

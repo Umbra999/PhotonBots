@@ -263,8 +263,6 @@ C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\bin\x64\Debug\netcoreapp3.0
 C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\bin\x64\Debug\netcoreapp3.0\TheBotUI.pdb
 C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\bin\x64\Debug\netcoreapp3.0\Newtonsoft.Json.dll
 C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\bin\x64\Debug\netcoreapp3.0\0Harmony.dll
-C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\bin\x64\Debug\netcoreapp3.0\Photon3DotNet.dll
-C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\bin\x64\Debug\netcoreapp3.0\PhotonLoadbalancingApi.dll
 C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\obj\x64\Debug\netcoreapp3.0\TheBotUI.csprojAssemblyReference.cache
 C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\obj\x64\Debug\netcoreapp3.0\TheBotUI.Form1.resources
 C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\obj\x64\Debug\netcoreapp3.0\TheBotUI.Properties.Resources.resources
@@ -295,3 +293,9 @@ C:\Users\Dayof\source\repos\PhotonBots\TheBotUI\obj\x64\Debug\netcoreapp3.0\TheB
 C:\Users\Dayof\source\repos\PhotonBots\TheBotUI\obj\x64\Debug\netcoreapp3.0\TheBotUI.csproj.CopyComplete
 C:\Users\Dayof\source\repos\PhotonBots\TheBotUI\obj\x64\Debug\netcoreapp3.0\TheBotUI.dll
 C:\Users\Dayof\source\repos\PhotonBots\TheBotUI\obj\x64\Debug\netcoreapp3.0\TheBotUI.pdb
+C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\bin\x64\Debug\netcoreapp3.0\Photon-NetStandard.dll
+C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\bin\x64\Debug\netcoreapp3.0\PhotonRealtime-DotNet.dll
+C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\bin\x64\Debug\netcoreapp3.0\UnityEngine.AudioModule.dll
+C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\bin\x64\Debug\netcoreapp3.0\UnityEngine.CoreModule.dll
+C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\bin\x64\Debug\netcoreapp3.0\UnityEngine.dll
+C:\Users\Meiner\Documents\GitHub\PhotonBots\TheBotUI\bin\x64\Debug\netcoreapp3.0\Il2CppDummyDll.dll

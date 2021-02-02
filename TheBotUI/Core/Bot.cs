@@ -3,12 +3,15 @@ using System;
 using System.IO;
 using System.IO.Compression;
 using VRChatAPI;
+using UnityEngine;
+using System.Security.Principal;
 
 namespace TheBotUI.Core
 {
 
     public class Bot
     {
+        public string token { get; set; }
         public PhotonClient PhotonClient { get; set; }
         public Client APIClient { get; set; }
         public string CachedRoomID { get; set; }
@@ -19,7 +22,8 @@ namespace TheBotUI.Core
             StreamReader sr = File.OpenText(path);
             string line = null;
             line = sr.ReadLine();
-            PhotonClient = new PhotonClient(APIClient.Variables, line);
+            var auth = APIClient.Variables.AuthCookie;
+            PhotonClient = new PhotonClient(auth, line);
         }
 
         public byte nextChannel = 77;
@@ -122,28 +126,28 @@ namespace TheBotUI.Core
 
         }
 
-        //public static byte[] AudioClipToBytes(AudioClip clip)
-        //{
-        //    float[] samples = new float[clip.samples * clip.channels];
-        //    clip.GetData(samples, 0);
+        public static byte[] AudioClipToBytes(AudioClip clip)
+        {
+            float[] samples = new float[clip.samples * clip.channels];
+            clip.GetData(samples, 0);
 
-        //    byte[] data = new byte[clip.samples * clip.channels];
-        //    for (int i = 0; i < samples.Length; i++)
-        //    {
-        //        //convert to the -128 to +128 range
-        //        float conv = samples[i] * 128.0f;
-        //        int c = Mathf.RoundToInt(conv);
-        //        c += 127;
-        //        if (c < 0)
-        //            c = 0;
-        //        if (c > 255)
-        //            c = 255;
+            byte[] data = new byte[clip.samples * clip.channels];
+            for (int i = 0; i < samples.Length; i++)
+            {
+                //convert to the -128 to +128 range
+                float conv = samples[i] * 128.0f;
+                int c = Mathf.RoundToInt(conv);
+                c += 127;
+                if (c < 0)
+                    c = 0;
+                if (c > 255)
+                    c = 255;
 
-        //        data[i] = (byte)c;
-        //    }
+                data[i] = (byte)c;
+            }
 
-        //    return data;
-        //}
+            return data;
+        }
 
         private static byte[] unzip(byte[] data)
         {

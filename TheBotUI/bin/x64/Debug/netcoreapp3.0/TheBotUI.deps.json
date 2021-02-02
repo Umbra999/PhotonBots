@@ -10,8 +10,11 @@
         "dependencies": {
           "Newtonsoft.Json": "12.0.2",
           "0Harmony": "1.2.0.1",
-          "Photon3DotNet": "4.1.2.14",
-          "PhotonLoadbalancingApi": "4.1.2.14"
+          "Photon-NetStandard": "4.1.4.2",
+          "PhotonRealtime-DotNet": "4.1.4.2",
+          "UnityEngine.AudioModule": "3.7.1.6",
+          "UnityEngine.CoreModule": "3.7.1.6",
+          "UnityEngine": "3.7.1.6"
         },
         "runtime": {
           "TheBotUI.dll": {}
@@ -33,19 +36,51 @@
           }
         }
       },
-      "Photon3DotNet/4.1.2.14": {
+      "Photon-NetStandard/4.1.4.2": {
         "runtime": {
-          "Photon3DotNet.dll": {
-            "assemblyVersion": "4.1.2.14",
-            "fileVersion": "4.1.2.14"
+          "Photon-NetStandard.dll": {
+            "assemblyVersion": "4.1.4.2",
+            "fileVersion": "4.1.4.2"
           }
         }
       },
-      "PhotonLoadbalancingApi/4.1.2.14": {
+      "PhotonRealtime-DotNet/4.1.4.2": {
         "runtime": {
-          "PhotonLoadbalancingApi.dll": {
-            "assemblyVersion": "4.1.2.14",
-            "fileVersion": "4.1.2.14"
+          "PhotonRealtime-DotNet.dll": {
+            "assemblyVersion": "4.1.4.2",
+            "fileVersion": "4.1.4.2"
+          }
+        }
+      },
+      "UnityEngine.AudioModule/3.7.1.6": {
+        "runtime": {
+          "UnityEngine.AudioModule.dll": {
+            "assemblyVersion": "3.7.1.6",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "UnityEngine.CoreModule/3.7.1.6": {
+        "runtime": {
+          "UnityEngine.CoreModule.dll": {
+            "assemblyVersion": "3.7.1.6",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "UnityEngine/3.7.1.6": {
+        "runtime": {
+          "UnityEngine.dll": {
+            "assemblyVersion": "3.7.1.6",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Il2CppDummyDll/3.7.1.6": {
+        "runtime": {
+          "Il2CppDummyDll.dll": {
+            "assemblyVersion": "3.7.1.6",
+            "fileVersion": "0.0.0.0"
           }
         }
       }
@@ -69,12 +104,32 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Photon3DotNet/4.1.2.14": {
+    "Photon-NetStandard/4.1.4.2": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "PhotonLoadbalancingApi/4.1.2.14": {
+    "PhotonRealtime-DotNet/4.1.4.2": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UnityEngine.AudioModule/3.7.1.6": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UnityEngine.CoreModule/3.7.1.6": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UnityEngine/3.7.1.6": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Il2CppDummyDll/3.7.1.6": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

@@ -49,8 +49,14 @@ namespace TheBotUI.Core
         public const string SchahozWebhook = "https://discord.com/api/webhooks/768507496435548230/hsr3B90GOIiYvgMwxIioKYtRyz4IQCUslvteznqDrVrOVM1BxM5GuFesDyd8GjK8hQXm";
         public const string PickelWebhook = "https://discord.com/api/webhooks/769098732830457856/fIqx6B2PJ3aTmcfylSirJNkQg5CpW3VRyQ0o4-Jgkg3pXi5SJvkv7NlylwR4_IdRGXSH";
         public const string NightWebhook = "https://discord.com/api/webhooks/769740596423426059/3SgrT7_hrp073UKQltu68yoPrOu_32JM-O8fEOEQg-J4LjP8XFwf9s2uadwZeRXAzlIM";
-        public const string PipsquekWebhook = "https://discord.com/api/webhooks/770360909666320384/KBy29GfqncuUMnWLu-RCRi_CRnNtCw4vnhC8sgUnBx3ktEboqjci7N3Qv_zsEC4WmYtg";
-        public const string InjectionWebhook = "https://discord.com/api/webhooks/770375903434768395/v2nnQV9TeVMECDOkVEzwnp38Bl7sel8aS-vyXhZC5qkMMCCl_zv5zoZDUZDiEaIO-Zn1";
+        public const string YingWebhook = "https://discord.com/api/webhooks/770360909666320384/KBy29GfqncuUMnWLu-RCRi_CRnNtCw4vnhC8sgUnBx3ktEboqjci7N3Qv_zsEC4WmYtg";
+        public const string InjectionWebhook = "https://discord.com/api/webhooks/776864545561116683/l3h-1SnSaYoL0QDKsi64R2ppFAjLizLvyY0hysHEaZwgN9y-NU0pLuTUZHcIRRu_ZxTw";
+        public const string MuffinWebhook = "https://discord.com/api/webhooks/771351376805756948/F6MnAjW4GlUyHxpToaS3OllwcK5XlDj-gknxqKkc6gjwm7K48LMKij5yQSZDBimLjQKc";
+        public const string TinnyWebhook = "https://discord.com/api/webhooks/771454381245333504/I5z-0twCIOOND-Pl9zcraP92JCHM8oRG6jdZCJpPp87Ta_A2hU0TsgBO_02CU9p2KaUr";
+        public const string WigglyWebhook = "https://discord.com/api/webhooks/771647539467780116/-bAyLSwLeMZ-M3nVHK44AwosQt1JaLuFS-AzvrBSZ7fVskW-391KAnkvRaCWCRX0Rq0q";
+        public const string UmbrellaWebhook = "https://discord.com/api/webhooks/771647677732749332/Qbz3aHmcW6ga3RXVASv17Kk2KH_xkZeKfmctQ4GyhyhpeqOp0pG3itO4VLq6ARDbuoLx";
+        public const string SixringsWebhook = "https://discord.com/api/webhooks/774643692002213899/bJx7yXY-Cv71m-R1B5jV5sZB8D0hVw3G9CL9RcnXy6t3lDIeEMmMXcS_1YinZMttO-9H";
+        public const string KozutohWebhook = "https://discord.com/api/webhooks/776864543871598602/C2NXZwK_ZAM1CUY5DywfyiaiMvmH7uVTShlno1a3broWXUl7hQw2ZyNnc4rMdMlxtzzN";
 
         public static void DoWebhooks(Player player, WorldRES world,string WorldInstanceID)
         {
@@ -361,7 +367,7 @@ namespace TheBotUI.Core
                     }
                 }
 
-                if (File.ReadAllText("Access/Pipsquek.txt").Contains(UserID.ToString()))
+                if (File.ReadAllText("Access/Ying.txt").Contains(UserID.ToString()))
                 {
                     if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
                     {
@@ -370,7 +376,7 @@ namespace TheBotUI.Core
                     else
                     {
                         Console.WriteLine("Found: " + Displayname);
-                        SendWebHook(PipsquekWebhook, UserFound);
+                        SendWebHook(YingWebhook, UserFound);
                     }
                 }
 
@@ -386,6 +392,85 @@ namespace TheBotUI.Core
                         SendWebHook(InjectionWebhook, UserFound);
                     }
                 }
+
+                if (File.ReadAllText("Access/Muffin.txt").Contains(UserID.ToString()))
+                {
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(MuffinWebhook, UserFound);
+                    }
+                }
+
+                if (File.ReadAllText("Access/Tinny.txt").Contains(UserID.ToString()))
+                {
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(TinnyWebhook, UserFound);
+                    }
+                }
+
+                if (File.ReadAllText("Access/Umbrella.txt").Contains(UserID.ToString()))
+                {
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(UmbrellaWebhook, UserFound);
+                    }
+                }
+
+                if (File.ReadAllText("Access/Wiggly.txt").Contains(UserID.ToString()))
+                {
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(WigglyWebhook, UserFound);
+                    }
+                }
+
+                if (File.ReadAllText("Access/Sixrings.txt").Contains(UserID.ToString()))
+                {
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(SixringsWebhook, UserFound);
+                    }
+                }
+
+                if (File.ReadAllText("Access/Kozutoh.txt").Contains(UserID.ToString()))
+                {
+                    if (File.ReadAllText("AntiSearch.txt").Contains(UserID.ToString()))
+                    {
+                        Console.WriteLine("Found Antisearch User: " + Displayname);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Found: " + Displayname);
+                        SendWebHook(KozutohWebhook, UserFound);
+                    }
+                }
+
             }
             catch (Exception)
             {

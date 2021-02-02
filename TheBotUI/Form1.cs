@@ -15,6 +15,7 @@ using ExitGames.Client.Photon;
 using System.Collections;
 using VRChatAPI;
 using Newtonsoft.Json;
+using UnityEngine;
 using VRChatAPI.Responses;
 using static TheBotUI.Core.SearchWebhooks;
 #if NET472
@@ -54,7 +55,7 @@ namespace TheBotUI {
                 }));
             }).Start();
             Thread.Sleep(1000);
-            Application.Exit();
+            System.Windows.Forms.Application.Exit();
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -122,32 +123,32 @@ namespace TheBotUI {
                             if (selectedBot.PhotonClient != null)
                             {
                                 connectionStatusVarLabel.Text = selectedBot.PhotonClient.IsConnectedAndReady ? "Connected" : "Not connected";
-                                connectionStatusVarLabel.ForeColor = selectedBot.PhotonClient.IsConnectedAndReady ? Color.Green : Color.DarkRed;
+                                connectionStatusVarLabel.ForeColor = selectedBot.PhotonClient.IsConnectedAndReady ? System.Drawing.Color.Green : System.Drawing.Color.DarkRed;
                                 pingVarLabel.Text = selectedBot.PhotonClient.LoadBalancingPeer.RoundTripTime.ToString();
-                                pingVarLabel.ForeColor = Color.Green;
+                                pingVarLabel.ForeColor = System.Drawing.Color.Green;
                                 inRoomVarLabel.Text = selectedBot.PhotonClient.InRoom ? "Yes" : "No";
-                                inRoomVarLabel.ForeColor = selectedBot.PhotonClient.InRoom ? Color.Green : Color.DarkRed;
+                                inRoomVarLabel.ForeColor = selectedBot.PhotonClient.InRoom ? System.Drawing.Color.Green : System.Drawing.Color.DarkRed;
                                 playersVarLabel.Text = selectedBot.PhotonClient.CurrentRoom != null && selectedBot.PhotonClient.CurrentRoom.PlayerCount > 0 ? selectedBot.PhotonClient.CurrentRoom.PlayerCount.ToString() + "/" + selectedBot.PhotonClient.CurrentRoom.MaxPlayers.ToString() : "N/A";
-                                playersVarLabel.ForeColor = selectedBot.PhotonClient.CurrentRoom != null && selectedBot.PhotonClient.CurrentRoom.PlayerCount > 0 ? Color.Green : Color.DarkRed;
+                                playersVarLabel.ForeColor = selectedBot.PhotonClient.CurrentRoom != null && selectedBot.PhotonClient.CurrentRoom.PlayerCount > 0 ? System.Drawing.Color.Green : System.Drawing.Color.DarkRed;
                                 MasterVarLabel.Text = selectedBot.PhotonClient.InRoom ? selectedBot.PhotonClient.CurrentRoom.MasterClientId.ToString() : "N/A";
-                                MasterVarLabel.ForeColor = selectedBot.PhotonClient.InRoom ? Color.Green : Color.DarkRed;
+                                MasterVarLabel.ForeColor = selectedBot.PhotonClient.InRoom ? System.Drawing.Color.Green : System.Drawing.Color.DarkRed;
                                 ServerVarLabel.Text = selectedBot.PhotonClient.InRoom ? selectedBot.PhotonClient.CurrentRoom.IsVisible ? "Yes" : "No" : "N/A";
-                                ServerVarLabel.ForeColor = selectedBot.PhotonClient.InRoom ? selectedBot.PhotonClient.CurrentRoom.IsVisible ? Color.Green : Color.DarkRed : Color.DarkRed;
+                                ServerVarLabel.ForeColor = selectedBot.PhotonClient.InRoom ? selectedBot.PhotonClient.CurrentRoom.IsVisible ? System.Drawing.Color.Green : System.Drawing.Color.DarkRed : System.Drawing.Color.DarkRed;
                                 AllMasterVarLabel.Text = selectedBot.PhotonClient.PlayersOnMasterCount.ToString();
-                                AllMasterVarLabel.ForeColor = Color.Green;
+                                AllMasterVarLabel.ForeColor = System.Drawing.Color.Green;
                                 AllPlayersVarLabel.Text = selectedBot.PhotonClient.PlayersInRoomsCount.ToString();
-                                AllPlayersVarLabel.ForeColor = Color.Green;
+                                AllPlayersVarLabel.ForeColor = System.Drawing.Color.Green;
                                 AllRoomsVarLabel.Text = selectedBot.PhotonClient.RoomsCount.ToString();
-                                AllRoomsVarLabel.ForeColor = Color.Green;
+                                AllRoomsVarLabel.ForeColor = System.Drawing.Color.Green;
                                 ConnectionVarLabel.Text = selectedBot.PhotonClient.MasterServerAddress.ToString();
-                                ConnectionVarLabel.ForeColor = Color.Green;
+                                ConnectionVarLabel.ForeColor = System.Drawing.Color.Green;
                                 MasterDisconnect.Text = selectedBot.PhotonClient.InRoom ? "Desync Masterclient" + " [" + selectedBot.PhotonClient.CurrentRoom.MasterClientId.ToString() + "]" : "Desync Masterclient";
                                 OpenVarLabel.Text = selectedBot.PhotonClient.InRoom ? selectedBot.PhotonClient.CurrentRoom.IsOpen ? "Yes" : "No" : "N/A";
-                                OpenVarLabel.ForeColor = selectedBot.PhotonClient.InRoom ? selectedBot.PhotonClient.CurrentRoom.IsOpen ? Color.Green : Color.DarkRed : Color.DarkRed;
+                                OpenVarLabel.ForeColor = selectedBot.PhotonClient.InRoom ? selectedBot.PhotonClient.CurrentRoom.IsOpen ? System.Drawing.Color.Green : System.Drawing.Color.DarkRed : System.Drawing.Color.DarkRed;
                                 RegionVarLabel.Text = selectedBot.PhotonClient.CloudRegion.ToString();
-                                RegionVarLabel.ForeColor = Color.Green;
+                                RegionVarLabel.ForeColor = System.Drawing.Color.Green;
                                 AdressVarLabel.Text = selectedBot.PhotonClient.InRoom ? selectedBot.PhotonClient.GameServerAddress.ToString() : "";
-                                AdressVarLabel.ForeColor = selectedBot.PhotonClient.InRoom ? Color.Green : Color.DarkRed;
+                                AdressVarLabel.ForeColor = selectedBot.PhotonClient.InRoom ? System.Drawing.Color.Green : System.Drawing.Color.DarkRed;
                             }
                         }));
                         Thread.Sleep(1000);
@@ -213,13 +214,9 @@ namespace TheBotUI {
                 }).Start();
             }
         }
-
         public void Auth()
         {
             {
-                botInstancesList.Items.Add("Кря");
-                botInstancesList.Items.Add("Кря");
-                Thread.Sleep(2000);
                 {
                     Console.ForegroundColor
                     = ConsoleColor.Green;
@@ -227,7 +224,6 @@ namespace TheBotUI {
                     botInstancesList.Items.Clear();
                     playerList.Items.Clear();
                 }
-                Thread.Sleep(1000);
                 {
                     Console.ForegroundColor
                     = ConsoleColor.Blue;
@@ -270,6 +266,7 @@ namespace TheBotUI {
                 }
             }
         }
+
         public void NormalAuth_Click(object sender, EventArgs e)
         {
             Auth();
@@ -330,8 +327,7 @@ namespace TheBotUI {
                             foreach (ListViewItem item in botInstancesList.Items)
                             {
                                 var bot = (Bot)item.Tag;
-                                bot.PhotonClient.OpRaiseEvent(210, new int[] { Desync, Desync }, new RaiseEventOptions() { Receivers = ReceiverGroup.Others }, SendOptions.SendReliable);
-                                bot.PhotonClient.OpRaiseEvent(209, new int[] { Desync, Desync }, new RaiseEventOptions() { Receivers = ReceiverGroup.Others }, SendOptions.SendReliable);
+                                bot.PhotonClient.OpRaiseEvent(210, new int[] { Desync, Desync }, new RaiseEventOptions() { Receivers = ReceiverGroup.Others }, SendOptions.SendReliable);                            
                             }
                         });
                         Thread.Sleep(2000);
@@ -760,7 +756,7 @@ namespace TheBotUI {
                                 if (line.Contains("[VRCFlowNetworkManager] Using server url: "))
                                 {
                                     string[] arr = line.Split(new[] { "[VRCFlowNetworkManager] Using server url: " }, StringSplitOptions.None);
-                                    AppVersion = arr[1] + "_2.5";
+                                    AppVersion = arr[1];
                                     File.Delete("release.txt");
                                     Thread.Sleep(100);
                                     File.AppendAllText("release.txt", AppVersion + Environment.NewLine);
@@ -934,7 +930,7 @@ namespace TheBotUI {
                             {
                                 var bot = (Bot)item.Tag;
                                 bot.PhotonClient.OpRaiseEvent(210, new int[] { Desync, Desync }, new RaiseEventOptions() { Receivers = ReceiverGroup.MasterClient }, SendOptions.SendReliable);
-                                bot.PhotonClient.OpRaiseEvent(209, new int[] { Desync, Desync }, new RaiseEventOptions() { Receivers = ReceiverGroup.MasterClient }, SendOptions.SendReliable);
+                                bot.PhotonClient.OpRaiseEvent(209, new int[] { Desync, Desync }, new RaiseEventOptions() { Receivers = ReceiverGroup.MasterClient }, SendOptions.SendReliable);                          
                             }
                         });
                         Thread.Sleep(2000);
@@ -957,16 +953,16 @@ namespace TheBotUI {
                 {
                     Console.ForegroundColor
                         = ConsoleColor.DarkRed;
-                    Console.WriteLine("[WengaBOT] Started USpeak Exploit");
+                    Console.WriteLine("[WengaBOT] Started USpeak");
                     for (int ii = 0; ii < 20; ii++)
                     {
-                        400.EventSpammer(5, () =>
+                        1.EventSpammer(5, () =>
                         {
                             GlobalVars.Desync = true;
                             foreach (ListViewItem item in botInstancesList.Items)
                             {
                                 var bot = (Bot)item.Tag;
-                                bot.PhotonClient.OpRaiseEvent(1, new byte[69], new RaiseEventOptions() { Receivers = ReceiverGroup.All }, SendOptions.SendReliable);
+                                bot.PhotonClient.OpRaiseEvent(1, new byte[60], new RaiseEventOptions() { Receivers = ReceiverGroup.All }, SendOptions.SendReliable);
                             }
                         });
                         Thread.Sleep(2000);
@@ -979,6 +975,29 @@ namespace TheBotUI {
                 { IsBackground = true }.Start();
             }
         }
+
+        public static byte[] AudioClipToBytes(AudioClip clip)
+        {
+            float[] samples = new float[clip.samples * clip.channels];
+            clip.GetData(samples, 0);
+
+            byte[] data = new byte[clip.samples * clip.channels];
+            for (int i = 0; i < samples.Length; i++)
+            {
+                float conv = samples[i] * 128.0f;
+                int c = Mathf.RoundToInt(conv);
+                c += 127;
+                if (c < 0)
+                    c = 0;
+                if (c > 255)
+                    c = 255;
+
+                data[i] = (byte)c;
+            }
+
+            return data;
+        }
+        
         public void EventLogger_CheckedChanged(object sender, EventArgs e)
         {
             GlobalVars.EventLog = EventLogger.Checked;

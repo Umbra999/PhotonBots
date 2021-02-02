@@ -26,12 +26,13 @@ namespace TheBotUI.Core
         private int lastDispatch = Environment.TickCount;
         private int intervalSend = 50;
         private int lastSend = Environment.TickCount;
+        private PhotonClient instance;
 
-        public PhotonClient(Variables variables, string releaseServer) : base(ConnectionProtocol.Udp) 
+        public PhotonClient(string auth, string releaseServer)
         {
             logs = new List<string>(150);
             eventLogs = new List<string>(75);
-            Variables = variables;
+            instance = this;
 
             this.AppId = "bf0942f7-9935-4192-b359-f092fa85bef1";
             AppVersion = releaseServer;
@@ -41,7 +42,7 @@ namespace TheBotUI.Core
             photonThread.IsBackground = true;
             photonThread.Start();
 
-            CustomTypes.Register(this);
+            CustomTypes.Register(instance);
 
             handlerThread = new Thread(HandlerLoop);
             handlerThread.IsBackground = true;
@@ -50,7 +51,7 @@ namespace TheBotUI.Core
             this.AuthValues = new AuthenticationValues() {
                 AuthType = CustomAuthenticationType.Custom
             };
-            this.AuthValues.AddAuthParameter("token", Variables.AuthCookie);
+            this.AuthValues.AddAuthParameter("token", auth);
 
             this.AddCallbackTarget(this);
             this.EventReceived += CustomOnEvent;
@@ -183,25 +184,11 @@ namespace TheBotUI.Core
             Console.ForegroundColor
                     = ConsoleColor.Blue;
             Console.WriteLine("[WengaBOT] Connected to Masterserver");
-            Hashtable hashtable = new Hashtable() {
-                { "user", new Dictionary<string, object>()
-                    {
-                        { "id", Variables.UserSelfRES.id }
-                    }
-                },
-                { 
-                    "avatarDict", new Dictionary<string, object>()
-                    {
-                        { "id", Variables.UserSelfRES.currentAvatar }
-                    }
-                },
-                { "modTag", ""},
-                { "isInvisible", false },
-                { "avatarVariations", Variables.UserSelfRES.currentAvatar },
+            Hashtable hashtable = new Hashtable() 
+            {
                 { "status", "active" },
                 { "statusDescription", "Wenga#0666" },
                 { "inVRMode", true },
-                { "showSocialRank", true },
                 { "steamUserID", $"{new Random().Next(1, 1337)}" },
             };
             this.LocalPlayer.SetCustomProperties(hashtable);
